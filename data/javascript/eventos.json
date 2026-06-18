@@ -1,0 +1,84 @@
+{
+  "id": "js-5",
+  "nome": "Missão 5 — Eventos: Seu Código Reage ao Mundo",
+  "descricao": "addEventListener, click/submit/input, event object, preventDefault, event delegation.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Adicionar interatividade aos botões do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-5-1",
+      "titulo": "addEventListener",
+      "tipo": "multipla-escolha",
+      "explicacao": "addEventListener é tipo 'pendurar um alarme' num elemento. Quando o evento acontecer (click, submit, input), a função dispara. Elemento.addEventListener('click', () => { alert('Clicou!') }).",
+      "pergunta": "Qual método escuta eventos num elemento?",
+      "alternativas": ["onEvent()", "listen()", "addEventListener()", "watch()"],
+      "correta": "addEventListener()",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["evento", "addEventListener"]
+    },
+    {
+      "id": "js-5-2",
+      "titulo": "Eventos de Formulário",
+      "tipo": "multipla-escolha",
+      "explicacao": "submit é o evento de envio de formulário. Quando o usuário aperta Enter ou clica no botão 'Enviar', o submit dispara. Por padrão, a página recarrega — pra evitar isso, usamos preventDefault().",
+      "pergunta": "O que o submit faz por padrão num formulário?",
+      "alternativas": ["Limpa os campos", "Fecha o formulário", "Recarrega a página", "Mostra um alerta"],
+      "correta": "Recarrega a página",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["submit", "formulario"]
+    },
+    {
+      "id": "js-5-3",
+      "titulo": "O Objeto Event",
+      "tipo": "multipla-escolha",
+      "explicacao": "A função do evento recebe um objeto 'event' (ou 'e' de short). Ele contém info: e.target (quem disparou), e.type (tipo do evento), e.key (tecla pressionada). É tipo o 'relatório' do ocorrido.",
+      "pergunta": "O que e.target representa num evento de clique?",
+      "alternativas": ["O elemento que disparou o evento", "O elemento pai", "O documento inteiro", "O próximo elemento"],
+      "correta": "O elemento que disparou o evento",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["event", "target"]
+    },
+    {
+      "id": "js-5-4",
+      "titulo": "preventDefault",
+      "tipo": "complete-codigo",
+      "explicacao": "preventDefault() cancela o comportamento padrão do navegador. Tipo: um link <a> tenta navegar pra outra página. Com e.preventDefault(), você impede isso e faz sua própria ação. É o 'freio de mão' do navegador.",
+      "pergunta": "Num formulário com id 'form', impeça o recarregamento da página ao enviar usando preventDefault.",
+      "codigoInicial": "const form = document.getElementById('form');\nform.addEventListener('submit', (e) => {\n  ",
+      "correta": "const form = document.getElementById('form');\nform.addEventListener('submit', (e) => {\n  e.preventDefault();\n  console.log('Form enviado sem recarregar!');\n});",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["preventDefault", "evento"],
+      "validacao": ""
+    },
+    {
+      "id": "js-5-5",
+      "titulo": "Event Delegation",
+      "tipo": "multipla-escolha",
+      "explicacao": "Event delegation é colocar um único evento no PAI e detectar qual FILHO foi clicado via e.target. Útil pra listas dinâmicas: em vez de addEventListener em cada <li> (que pode nem existir ainda), coloca um na <ul>.",
+      "pergunta": "Por que event delegation é útil pra listas dinâmicas?",
+      "alternativas": ["É mais lento", "Funciona mesmo pra elementos criados depois", "Só funciona com mouse", "Não precisa de JavaScript"],
+      "correta": "Funciona mesmo pra elementos criados depois",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["delegation", "evento"]
+    },
+    {
+      "id": "js-5-6",
+      "titulo": "Interatividade nos Botões",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos adicionar interatividade ao DevEstudos! Cada botão de curso, quando clicado, deve exibir o nome do curso no console. Use querySelectorAll pra pegar todos os botões e addEventListener em cada um.",
+      "pergunta": "Selecione todos '.btn-curso', adicione evento click que exibe o textContent do botão clicado.",
+      "codigoInicial": "const botoes = document.querySelectorAll('.btn-curso');\nbotoes.forEach(botao => {\n  ",
+      "correta": "const botoes = document.querySelectorAll('.btn-curso');\nbotoes.forEach(botao => {\n  botao.addEventListener('click', () => {\n    console.log(botao.textContent);\n  });\n});",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["evento", "click", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

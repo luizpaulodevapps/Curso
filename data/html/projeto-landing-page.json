@@ -1,0 +1,97 @@
+{
+  "id": "html-6",
+  "nome": "Missão 6 — Projeto Landing Page",
+  "descricao": "HTML semântico, acessibilidade e o projeto final: uma landing page completa.",
+  "ordem": 6,
+  "duracao": "3 horas",
+  "projeto": "Landing page completa",
+  "questoes": [
+    {
+      "id": "html-6-1",
+      "titulo": "Tags com Significado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Tags semânticas são tags que têm SIGNIFICADO, tipo <header> (cabeçalho), <nav> (navegação), <main> (principal), <section> (seção), <article> (artigo), <footer> (rodapé). É diferente de usar <div> genérica — é como nomear cada cômodo da casa.",
+      "pergunta": "Qual dessas é uma tag SEMÂNTICA (com significado específico)?",
+      "alternativas": ["<div>", "<span>", "<main>", "<b>"],
+      "correta": "<main>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["semantica", "acessibilidade"]
+    },
+    {
+      "id": "html-6-2",
+      "titulo": "Estrutura da Landing Page",
+      "tipo": "complete-codigo",
+      "explicacao": "Uma landing page tem: header (topo com logotipo), nav (menu), main (conteúdo principal com sections) e footer (rodapé). É tipo um prédio: entrada (header), corredores (nav), salas (sections) e saída (footer).",
+      "pergunta": "Crie a estrutura: header, nav (link 'Início'), main (section com h1), footer com parágrafo.",
+      "codigoInicial": "<header>\n  <h2>Meu Site</h2>\n  <nav>\n    <a href=\"#\">",
+      "correta": "<header>\n  <h2>Meu Site</h2>\n  <nav>\n    <a href=\"#\">Início</a>\n  </nav>\n</header>\n<main>\n  <section>\n    <h1>Bem-vindo!</h1>\n  </section>\n</main>\n<footer>\n  <p>Todos os direitos reservados</p>\n</footer>",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "iniciante",
+      "tags": ["landing-page", "semantica"]
+    },
+    {
+      "id": "html-6-3",
+      "titulo": "Papéis no HTML",
+      "tipo": "multipla-escolha",
+      "explicacao": "O atributo 'role' define o papel de um elemento pra leitores de tela. Se você usa uma <div> como botão, role=\"button\" avisa o leitor de tela 'isso é um botão'. É tipo colocar uma placa numa porta de vidro: 'PUXE'.",
+      "pergunta": "Pra que serve o atributo 'role' no HTML?",
+      "alternativas": ["Mudar a cor do elemento", "Definir o papel do elemento pra acessibilidade", "Criar animações", "Adicionar um link"],
+      "correta": "Definir o papel do elemento pra acessibilidade",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["role", "acessibilidade"]
+    },
+    {
+      "id": "html-6-4",
+      "titulo": "Rótulo pra Todo Mundo",
+      "tipo": "complete-codigo",
+      "explicacao": "aria-label é um rótulo invisível que leitores de tela leem. Perfeito pra botões que só têm ícone (tipo um X pra fechar). O rótulo descreve a ação: 'aria-label=\"Fechar\"' explica o que o X faz.",
+      "pergunta": "Crie um botão com ícone (só '×') e aria-label='Fechar'.",
+      "codigoInicial": "<button aria-label=\"",
+      "correta": "<button aria-label=\"Fechar\">×</button>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["aria-label", "acessibilidade"]
+    },
+    {
+      "id": "html-6-5",
+      "titulo": "Artigo ou Seção?",
+      "tipo": "multipla-escolha",
+      "explicacao": "<article> é pra conteúdo INDEPENDENTE (tipo um post de blog, uma notícia — faz sentido por si só). <section> é uma seção genérica que agrupa conteúdo relacionado (tipo 'Depoimentos', 'Serviços').",
+      "pergunta": "Qual tag usar pra um post de blog que poderia ser lido separadamente?",
+      "alternativas": ["<section>", "<article>", "<div>", "<aside>"],
+      "correta": "<article>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["article", "section"]
+    },
+    {
+      "id": "html-6-6",
+      "titulo": "Landing Page Semântica",
+      "tipo": "complete-codigo",
+      "explicacao": "O projeto final: uma landing page completa e acessível. header com nav, main com hero section (título + descrição + botão) e uma seção 'Sobre', footer com informações. Tudo semântico com role e aria quando necessário.",
+      "pergunta": "Monte uma landing page com: header + nav ('Início', 'Sobre'), main (hero com h1 + p + botão 'Saiba mais'), footer '© 2025'.",
+      "codigoInicial": "<header>\n  <nav>\n    <a href=\"#\">Início</a>\n    <a ",
+      "correta": "<header>\n  <nav>\n    <a href=\"#\">Início</a>\n    <a href=\"#sobre\">Sobre</a>\n  </nav>\n</header>\n<main>\n  <section>\n    <h1>Bem-vindo ao DevEstudos</h1>\n    <p>Aprenda programação do zero.</p>\n    <button aria-label=\"Saiba mais sobre o curso\">Saiba mais</button>\n  </section>\n</main>\n<footer>\n  <p>© 2025 DevEstudos</p>\n</footer>",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["landing-page", "semantica", "acessibilidade"]
+    },
+    {
+      "id": "html-6-7",
+      "titulo": "Erro Real: O Leitor de Tela Perdido",
+      "tipo": "multipla-escolha",
+      "explicacao": "Leitores de tela dependem de landmarks semânticas pra navegar. Uma <nav> sem aria-label (quando há mais de uma) e headings pulando de <h1> direto pra <h3> (quebrando a hierarquia) deixam usuários cegos perdidos. A regra é: nav com aria-label se houver mais de uma, e headings sempre em ordem sequencial sem pular níveis.",
+      "pergunta": "Um leitor de tela não consegue navegar corretamente pela página. A nav não é anunciada e os títulos pulam de <h1> pra <h3>. Qual o problema de acessibilidade?",
+      "alternativas": ["Falta aria-label na nav e a hierarquia de headings está quebrada (h1 → h3 sem h2)", "Falta o atributo role=\"navigation\"", "O leitor de tela precisa ser atualizado", "Faltou o lang=\"pt-BR\" no HTML"],
+      "correta": "Falta aria-label na nav e a hierarquia de headings está quebrada (h1 → h3 sem h2)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "acessibilidade"]
+    }
+  ]
+}

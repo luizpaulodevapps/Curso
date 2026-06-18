@@ -1,0 +1,108 @@
+{
+  "id": "logica-7",
+  "nome": "🏆 Missão Final — Calculadora de XP do DevEstudos",
+  "descricao": "Use tudo que aprendeu: algoritmo, variáveis, operadores, condicionais, loops e arrays para construir a calculadora de XP do DevEstudos. Esta missão integra todos os conceitos do curso.",
+  "ordem": 7,
+  "duracao": "3 horas",
+  "projeto": "Construir o algoritmo da Calculadora de XP do DevEstudos",
+  "questoes": [
+    {
+      "id": "logica-7-1",
+      "titulo": "Interpretando os Requisitos da XP",
+      "tipo": "multipla-escolha",
+      "explicacao": "Requisitos são as regras do negócio. Antes de programar, você precisa entender o que o sistema deve fazer. No DevEstudos, o XP é calculado por: questões fáceis (10 XP), médias (20 XP), difíceis (30 XP), com bônus de 50 XP se o aluno completar todos os módulos. É como as regras de um jogo: você precisa ler o manual antes de jogar.",
+      "pergunta": "No DevEstudos, cada questão fácil vale 10 XP, cada média 20 XP, cada difícil 30 XP. Bônus de 50 XP se completar todos os 6 módulos. Qual expressão calcula o XP total corretamente?",
+      "alternativas": [
+        "totalXP = (faceis + medias + dificeis) * 50",
+        "totalXP = (faceis * 10) + (medias * 20) + (dificeis * 30), se modulosCompletos === 6 então totalXP += 50",
+        "totalXP = faceis * medias * dificeis * 50",
+        "totalXP = 10 + 20 + 30 + 50"
+      ],
+      "correta": "totalXP = (faceis * 10) + (medias * 20) + (dificeis * 30), se modulosCompletos === 6 então totalXP += 50",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["logica", "requisitos", "xp"]
+    },
+    {
+      "id": "logica-7-2",
+      "titulo": "Decompondo em Passos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Decomposição é quebrar um problema grande em partes menores. A calculadora de XP precisa: 1) ler as quantidades de cada tipo de questão, 2) calcular o subtotal de cada tipo, 3) somar tudo, 4) verificar bônus, 5) exibir resultado. É como montar um móvel: você segue os passos um por um, não tenta montar tudo de uma vez.",
+      "pergunta": "Qual a sequência CORRETA de passos para calcular o XP total?",
+      "alternativas": [
+        "Exibir resultado, calcular cada tipo, verificar bônus, ler quantidades",
+        "Ler quantidades, calcular cada tipo, somar, verificar bônus, exibir resultado",
+        "Calcular tudo de uma vez, exibir, perguntar quantidade",
+        "Verificar bônus, ler quantidades, calcular, exibir"
+      ],
+      "correta": "Ler quantidades, calcular cada tipo, somar, verificar bônus, exibir resultado",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["logica", "decomposicao", "sequencia"]
+    },
+    {
+      "id": "logica-7-3",
+      "titulo": "Casos Extremos — Protegendo a Calculadora",
+      "tipo": "multipla-escolha",
+      "explicacao": "Sistemas reais precisam tratar casos inesperados: o que acontece se o usuário digitar -5 questões? Ou 0 módulos completados? Ou letras no lugar de números? Um bom programa valida os dados antes de processar. É como um caixa eletrônico que não deixa você sacar mais do que tem na conta.",
+      "pergunta": "O usuário digitou -3 para questões fáceis e 10 para difíceis. Qual deve ser o comportamento correto da calculadora de XP?",
+      "alternativas": [
+        "Calcular normalmente, XP negativo é aceitável",
+        "Ignorar o valor negativo e usar 0, mostrando um aviso",
+        "Travar o programa com erro",
+        "Multiplicar o XP por -1 pra ficar positivo"
+      ],
+      "correta": "Ignorar o valor negativo e usar 0, mostrando um aviso",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["logica", "validacao", "edge-cases"]
+    },
+    {
+      "id": "logica-7-4",
+      "titulo": "Erro Real: XP Quebrou Depois do Update",
+      "tipo": "multipla-escolha",
+      "explicacao": "O código antigo funcionava, mas depois de uma atualização passou a dar erro. function calcXP(f, m, d) { return f * 10 + m * 20 + d * 30; } Agora chamam calcXP('5', '3', '2'). O problema é que os parâmetros viraram string, então o * funciona (JS converte), mas o código ficou frágil. É como uma balança de supermercado que só pesa em quilos e alguém coloca em libras — o número parece certo, mas a unidade está errada. Sempre valide os tipos na entrada.",
+      "pergunta": "A função calcXP('5', '3', '2') retornou 50+60+60=170 (valor correto por coincidência), mas quando chamaram calcXP('5a', '3', '2') deu NaN. Qual a causa raiz?",
+      "alternativas": [
+        "O operador * não funciona com strings",
+        "Os parâmetros são string, e '5a' não pode ser convertido pra número, gerando NaN",
+        "Faltou ponto e vírgula",
+        "A função tem um bug de precedência"
+      ],
+      "correta": "Os parâmetros são string, e '5a' não pode ser convertido pra número, gerando NaN",
+      "xp": 25,
+      "nivel": "dificil",
+      "tags": ["logica", "erro", "debug"]
+    },
+    {
+      "id": "logica-7-5",
+      "titulo": "Erro Real: Loop Fora dos Trilhos",
+      "tipo": "multipla-escolha",
+      "explicacao": "O código percorre um array de módulos com suas pontuações de XP, mas está acessando um índice além do limite. for (let i = 0; i <= modulos.length; i++) { total += modulos[i].xp; } — quando i === modulos.length, modulos[i] é undefined, e acessar .xp de undefined dá erro! É como um entregador que tenta entregar na casa número 11 de uma rua que só tem 10 casas. O correto é i < modulos.length, não <=",
+      "pergunta": "O código for (let i = 0; i <= modulos.length; i++) { total += modulos[i].xp; } lançou um erro. Por quê?",
+      "alternativas": [
+        "O loop nunca executa",
+        "Quando i === modulos.length, modulos[i] é undefined, e undefined.xp dá TypeError",
+        "A variável total não foi declarada",
+        "O operador += não funciona com números"
+      ],
+      "correta": "Quando i === modulos.length, modulos[i] é undefined, e undefined.xp dá TypeError",
+      "xp": 25,
+      "nivel": "dificil",
+      "tags": ["logica", "erro", "debug"]
+    },
+    {
+      "id": "logica-7-6",
+      "titulo": "Algoritmo Final — Calculadora de XP",
+      "tipo": "complete-codigo",
+      "explicacao": "Esta é a missão final! Você vai escrever o algoritmo completo da Calculadora de XP do DevEstudos. Use variáveis para armazenar as quantidades de cada tipo de questão, calcule os subtotais, some tudo, verifique o bônus de módulos completos, valide se os valores não são negativos (substitua por 0 se forem), e exiba o resultado final. Isto integra todos os conceitos do curso.",
+      "pergunta": "Escreva o algoritmo completo da Calculadora de XP: leia faceis, medias, dificeis, modulosCompletos. Cada fácil 10xp, média 20xp, difícil 30xp. Se modulosCompletos === 6, bonus 50xp. Trate valores negativos como 0. Exiba o total.",
+      "codigoInicial": "// Calculadora de XP do DevEstudos\n// Declare as variaveis de entrada\nconst faceis = 5;\nconst medias = 3;\nconst dificeis = 2;\nconst modulosCompletos = 6;\n\n",
+      "correta": "// Calculadora de XP do DevEstudos\n// Declare as variaveis de entrada\nconst faceis = 5;\nconst medias = 3;\nconst dificeis = 2;\nconst modulosCompletos = 6;\n\nlet total = 0;\n\nconst qtdFaceis = faceis < 0 ? 0 : faceis;\nconst qtdMedias = medias < 0 ? 0 : medias;\nconst qtdDificeis = dificeis < 0 ? 0 : dificeis;\n\ntotal += qtdFaceis * 10;\ntotal += qtdMedias * 20;\ntotal += qtdDificeis * 30;\n\nif (modulosCompletos === 6) {\n  total += 50;\n}\n\nconsole.log('XP Total: ' + total);",
+      "xp": 40,
+      "nivel": "dificil",
+      "tags": ["logica", "projeto-final", "algoritmo", "xp"],
+      "validacao": ""
+    }
+  ]
+}

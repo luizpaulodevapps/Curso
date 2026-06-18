@@ -1,0 +1,84 @@
+{
+  "id": "js-3",
+  "nome": "Missão 3 — Objetos em JavaScript: Modelando o Mundo Real",
+  "descricao": "Object literal, propriedades, métodos, this, Object.keys/values/entries, destructuring.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Criar objetos de usuário e curso para o DevEstudos",
+  "questoes": [
+    {
+      "id": "js-3-1",
+      "titulo": "O que é um Objeto Literal?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Objeto literal é uma coleção de chave:valor entre { }. É tipo uma ficha de cadastro: nome: 'João', idade: 25. Cada informação tem uma etiqueta (chave) e um valor. Serve pra agrupar dados relacionados.",
+      "pergunta": "Qual a sintaxe pra criar um objeto literal vazio?",
+      "alternativas": ["const obj = []", "const obj = {}", "const obj = ()", "const obj = <>"],
+      "correta": "const obj = {}",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["objeto", "literal"]
+    },
+    {
+      "id": "js-3-2",
+      "titulo": "Acessar Propriedades",
+      "tipo": "multipla-escolha",
+      "explicacao": "Duas formas: usuario.nome (notação de ponto) ou usuario['nome'] (notação de colchete). Ponto é mais comum e limpo. Colchete é útil quando a chave tem espaço ou é dinâmica (vem de variável).",
+      "pergunta": "Como acessar a propriedade 'nome' de um objeto 'usuario'?",
+      "alternativas": ["usuario->nome", "usuario.nome", "usuario[nome]", "usuario::nome"],
+      "correta": "usuario.nome",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["propriedade", "acesso"]
+    },
+    {
+      "id": "js-3-3",
+      "titulo": "Métodos em Objetos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Método é uma função dentro de um objeto. Tipo: um carro tem métodos 'ligar()' e 'acelerar()'. Dentro do método, this se refere ao próprio objeto (o carro em si).",
+      "pergunta": "Como se chama uma função que é propriedade de um objeto?",
+      "alternativas": ["Arrow", "Callback", "Método", "Construtor"],
+      "correta": "Método",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["metodo", "objeto"]
+    },
+    {
+      "id": "js-3-4",
+      "titulo": "Object.keys e Object.values",
+      "tipo": "multipla-escolha",
+      "explicacao": "Object.keys(pessoa) retorna um array com as CHAVES: ['nome', 'idade']. Object.values retorna os VALORES: ['João', 25]. É tipo abrir uma ficha e listar os campos ou os preenchimentos.",
+      "pergunta": "O que Object.keys({nome: 'Ana', idade: 20}) retorna?",
+      "alternativas": ["['Ana', 20]", "['nome', 'idade']", "{nome: 'Ana', idade: 20}", "undefined"],
+      "correta": "['nome', 'idade']",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["keys", "values", "objeto"]
+    },
+    {
+      "id": "js-3-5",
+      "titulo": "Destructuring de Objetos",
+      "tipo": "complete-codigo",
+      "explicacao": "Destructuring é tipo 'desempacotar' o objeto: const { nome, idade } = usuario cria duas variáveis com os valores das propriedades. É atalho pra não ficar escrevendo usuario.nome toda hora.",
+      "pergunta": "Dado const usuario = { nome: 'Carlos', idade: 30, curso: 'JS' }, extraia nome e curso com destructuring e exiba ambos.",
+      "codigoInicial": "const usuario = { nome: 'Carlos', idade: 30, curso: 'JS' };\nconst { nome, curso } = ",
+      "correta": "const usuario = { nome: 'Carlos', idade: 30, curso: 'JS' };\nconst { nome, curso } = usuario;\nconsole.log(nome, curso);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["destructuring", "objeto"],
+      "validacao": ""
+    },
+    {
+      "id": "js-3-6",
+      "titulo": "Criar Objetos DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos modelar os dados do DevEstudos com objetos! Um curso tem nome, modulo, xp. Um usuario tem nome, email, cursos (array de objetos curso). Use destructuring pra extrair dados do usuário.",
+      "pergunta": "Crie objeto curso (nome, modulo, xp) e objeto usuario (nome, email, cursos: [curso]). Extraia nome e email com destructuring.",
+      "codigoInicial": "const curso = { nome: 'JavaScript', modulo: 3, xp: 150 };\nconst usuario = ",
+      "correta": "const curso = { nome: 'JavaScript', modulo: 3, xp: 150 };\nconst usuario = { nome: 'Ana', email: 'ana@email.com', cursos: [curso] };\nconst { nome, email } = usuario;\nconsole.log(nome, email);",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["objeto", "destructuring", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

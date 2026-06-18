@@ -1,0 +1,96 @@
+{
+  "id": "logica-3",
+  "nome": "Missão 3 — Operadores: A Caixa de Ferramentas Matemática",
+  "descricao": "Operadores aritméticos (+, -, *, /, %), comparação (===, !==, >, <, >=, <=) e lógicos (&&, ||, !). Precedência.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Calcular fórmula de XP do DevEstudos",
+  "questoes": [
+    {
+      "id": "logica-3-1",
+      "titulo": "Operador de Módulo",
+      "tipo": "multipla-escolha",
+      "explicacao": "% é o resto da divisão. 10 % 3 dá 1 (porque 3*3=9, sobra 1). Útil pra saber se número é par (x % 2 === 0) ou pra ciclar em intervalos.",
+      "pergunta": "Quanto é 10 % 3?",
+      "alternativas": ["3", "3.33", "1", "0"],
+      "correta": "1",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["modulo", "aritmetica"]
+    },
+    {
+      "id": "logica-3-2",
+      "titulo": "Igualdade Estrita",
+      "tipo": "multipla-escolha",
+      "explicacao": "=== compara valor E tipo. 5 === '5' dá false porque um é number e outro é string. É o mais seguro, use sempre ele. == tenta converter os tipos antes (5 == '5' dá true), o que causa bugs.",
+      "pergunta": "Qual o resultado de 5 === '5'?",
+      "alternativas": ["true", "false", "undefined", "NaN"],
+      "correta": "false",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["igualdade", "comparacao"]
+    },
+    {
+      "id": "logica-3-3",
+      "titulo": "Precedência de Operadores",
+      "tipo": "multipla-escolha",
+      "explicacao": "Assim como na matemática, multiplicação vem antes de adição. 2 + 3 * 4 = 14 (não 20) porque * primeiro. Use parênteses pra forçar a ordem: (2 + 3) * 4 = 20.",
+      "pergunta": "Qual o resultado de 2 + 3 * 4?",
+      "alternativas": ["20", "14", "24", "9"],
+      "correta": "14",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["precedencia", "aritmetica"]
+    },
+    {
+      "id": "logica-3-4",
+      "titulo": "Operadores Lógicos",
+      "tipo": "multipla-escolha",
+      "explicacao": "&& (E) — tudo precisa ser true. || (OU) — pelo menos um true. ! (NÃO) — inverte. Tipo: 'se tiver dinheiro && estiver com fome, compra lanche'. Só se as duas condições forem verdade.",
+      "pergunta": "Qual operador lógico representa 'E' (ambas condições precisam ser verdade)?",
+      "alternativas": ["||", "&&", "!", "=="],
+      "correta": "&&",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["logico", "E", "AND"]
+    },
+    {
+      "id": "logica-3-5",
+      "titulo": "Comparação com >=",
+      "tipo": "complete-codigo",
+      "explicacao": ">= significa 'maior ou igual'. Dá true se o valor da esquerda for maior OU igual ao da direita. 5 >= 5 é true, 4 >= 5 é false.",
+      "pergunta": "Dada const xp = 150, crie uma variável 'podeSubir' que seja true se xp for maior ou igual a 100.",
+      "codigoInicial": "const xp = 150;\n// crie a variavel podeSubir\n",
+      "correta": "const xp = 150;\nconst podeSubir = xp >= 100;",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["comparacao", "maior-igual"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-3-6",
+      "titulo": "Calcular XP do DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos calcular o XP total do DevEstudos. Cada questão fácil dá 10 XP, cada difícil dá 25 XP. Total = (faceis * 10) + (dificeis * 25). Precedência: multiplicação antes da adição.",
+      "pergunta": "Calcule o XP total: 5 questões fáceis (10 XP cada) e 3 difíceis (25 XP cada). Guarde em 'xpTotal'.",
+      "codigoInicial": "const faceis = 5;\nconst dificeis = 3;\n// calcule o xpTotal\n",
+      "correta": "const faceis = 5;\nconst dificeis = 3;\nconst xpTotal = (faceis * 10) + (dificeis * 25);",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["aritmetica", "projeto", "xp"],
+      "validacao": "typeof xpTotal !== 'undefined' && xpTotal === 125"
+    },
+    {
+      "id": "logica-3-7",
+      "titulo": "Erro Real: Precedência Enganosa",
+      "tipo": "multipla-escolha",
+      "explicacao": "O operador * tem precedência maior que +, então 3 * 4 é calculado primeiro (12), depois 2 + 12 = 14. O aluno esperava 20 porque pensou (2+3)*4. É como na matemática: multiplicação antes de adição. Use parênteses pra forçar a ordem desejada.",
+      "pergunta": "2 + 3 * 4 deu 14, não 20. Qual operador foi executado primeiro?",
+      "alternativas": ["O + (adição)", "O * (multiplicação)", "O = (atribuição)", "Nenhum, deu erro"],
+      "correta": "O * (multiplicação)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    }
+  ]
+}

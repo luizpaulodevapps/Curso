@@ -1,0 +1,112 @@
+{
+  "id": "arq-saas-5",
+  "nome": "Missão 5 — Planos e Assinaturas: Free, Pro, Enterprise",
+  "descricao": "Modelos de plano, limites e verificação de features.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Modelar planos do DevEstudos",
+  "questoes": [
+    {
+      "id": "arq-saas-5-1",
+      "titulo": "Modelos de plano",
+      "tipo": "multipla-escolha",
+      "explicacao": "Free = experimentar sem compromisso (tipo degustação no supermercado). Pro = pra quem leva a sério (assinatura do clube de vinho). Enterprise = pacote completo com suporte dedicado (contratar um chef particular). Cada um tem features e limites diferentes.",
+      "pergunta": "Qual o principal objetivo de um plano Free em um SaaS?",
+      "alternativas": [
+        "Gerar receita imediata",
+        "Reduzir custo de servidor",
+        "Onboarding e aquisição de usuários (diminuir barreira de entrada)",
+        "Testar infraestrutura"
+      ],
+      "correta": "Onboarding e aquisição de usuários (diminuir barreira de entrada)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["planos", "free", "saas", "negocio"]
+    },
+    {
+      "id": "arq-saas-5-2",
+      "titulo": "Limites do DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "DevEstudos: Free = 1 turma, até 30 alunos. Pro = 10 turmas, até 500 alunos. Enterprise = ilimitado. É como plano de academia: Free = só musculação. Pro = musculação + aulas. Enterprise = acesso total + personal.",
+      "pergunta": "Uma escola no plano Free do DevEstudos tem 2 turmas. O que deve acontecer?",
+      "alternativas": [
+        "O sistema permite, sem restrições",
+        "O sistema bloqueia a criação da segunda turma ou solicita upgrade de plano",
+        "O sistema cobra automaticamente o plano Pro",
+        "O sistema deleta a turma mais antiga"
+      ],
+      "correta": "O sistema bloqueia a criação da segunda turma ou solicita upgrade de plano",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["limites", "planos", "devetudos"]
+    },
+    {
+      "id": "arq-saas-5-3",
+      "titulo": "Como verificar plano no backend",
+      "tipo": "complete-codigo",
+      "explicacao": "Antes de liberar uma feature premium, o backend consulta o plano do tenant. É como o segurança da festa: 'Qual seu ingresso?' antes de deixar entrar na área VIP.",
+      "pergunta": "Complete a lógica para verificar se o tenant pode criar mais uma turma:",
+      "alternativas": [
+        "if (tenant.plano === 'free' && tenant.turmasAtivas >= 1) { bloquear }",
+        "if (tenant.turmasAtivas >= 1) { bloquear }",
+        "if (tenant.plano === 'free') { bloquear }",
+        "if (tenant.plano === 'enterprise') { bloquear }"
+      ],
+      "correta": "if (tenant.plano === 'free' && tenant.turmasAtivas >= 1) { bloquear }",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "backend", "limites"]
+    },
+    {
+      "id": "arq-saas-5-4",
+      "titulo": "Features vs Limites",
+      "tipo": "multipla-escolha",
+      "explicacao": "Coisa diferente: feature é o QUE você pode fazer (exportar relatório, usar API). Limite é QUANTO você pode fazer (10 turmas, 500MB). Free pode ter a feature de 'relatórios' mas com limite de 1 relatório por mês. Pro libera relatórios ilimitados.",
+      "pergunta": "Qual destes é um LIMITE (não uma feature)?",
+      "alternativas": [
+        "Exportar dados em CSV",
+        "Usar API pública",
+        "Máximo de 500 alunos por turma",
+        "Relatórios de desempenho"
+      ],
+      "correta": "Máximo de 500 alunos por turma",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["features", "limites", "planos"]
+    },
+    {
+      "id": "arq-saas-5-5",
+      "titulo": "Erro real: não verificar plano atual",
+      "tipo": "desafio-pratico",
+      "explicacao": "Um SaaS de email marketing liberava a feature de 'automação' pra qualquer um que clicasse no botão 'Ativar'. O plano Free não incluía automação, mas o frontend só escondia o botão — o backend não verificava. Usuários descobriram e ativaram via Postman. Prejuízo de processamento e suporte.",
+      "pergunta": "Qual a falha no sistema descrito?",
+      "alternativas": [
+        "O botão não deveria existir no frontend",
+        "O backend não validava o plano do usuário antes de liberar a feature",
+        "O sistema não tinha plano Free",
+        "A automação era muito complexa"
+      ],
+      "correta": "O backend não validava o plano do usuário antes de liberar a feature",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "seguranca", "backend", "planos"]
+    },
+    {
+      "id": "arq-saas-5-6",
+      "titulo": "Upgrade e downgrade",
+      "tipo": "multipla-escolha",
+      "explicacao": "Upgrade de Free pra Pro: libera features na hora (ninguém gosta de esperar). Downgrade de Pro pra Free: precisa verificar se o tenant não excede os limites do plano Free. Se tiver 15 turmas no Pro, não pode voltar pra Free (limite 1). É como mudar de um apartamento de 3 quartos pra um studio — precisa caber.",
+      "pergunta": "O que deve acontecer se um tenant com 15 turmas tentar fazer downgrade de Pro pra Free?",
+      "alternativas": [
+        "Permitir o downgrade e deletar 14 turmas automaticamente",
+        "Bloquear o downgrade até que o tenant reduza para no máximo 1 turma",
+        "Permitir o downgrade e ignorar o limite",
+        "Redirecionar para o plano Enterprise"
+      ],
+      "correta": "Bloquear o downgrade até que o tenant reduza para no máximo 1 turma",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["upgrade", "downgrade", "limites", "planos"]
+    }
+  ]
+}

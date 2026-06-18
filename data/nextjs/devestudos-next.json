@@ -1,0 +1,83 @@
+{
+  "id": "next-6",
+  "nome": "DevEstudos no Next.js — Migração Final",
+  "descricao": "Migrar o DevEstudos de SPA React pra Next.js. SEO, metadados, imagens, deploy.",
+  "ordem": 6,
+  "duracao": "2 semanas",
+  "projeto": "Migrar o DevEstudos para Next.js",
+  "questoes": [
+    {
+      "id": "next-6-1",
+      "titulo": "SPA vs Next.js",
+      "tipo": "multipla-escolha",
+      "explicacao": "SPA (React puro) carrega um HTML vazio e o JS preenche tudo. Next.js renderiza no servidor e manda HTML pronto. SPA = cardápio em branco que o garçom preenche na mesa. Next = cardápio impresso que chega pronto.",
+      "pergunta": "Qual a diferença principal entre SPA e Next.js?",
+      "alternativas": ["Next.js é mais lento", "Next.js renderiza no servidor, SPA no cliente", "SPA tem mais SEO", "São iguais"],
+      "correta": "Next.js renderiza no servidor, SPA no cliente",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["spa", "ssr"]
+    },
+    {
+      "id": "next-6-2",
+      "titulo": "SEO com Metadata API",
+      "tipo": "complete-codigo",
+      "explicacao": "next export const metadata = { title, description } define SEO de cada página. O Google indexa certinho. No SPA, o Google via JS é mais difícil. É tipo colocar placa na loja: sem placa (metadata), ninguém acha sua página no Google.",
+      "pergunta": "Crie metadata com title 'DevEstudos' e description 'Cursos de programação'.",
+      "codigoInicial": "export const metadata = {\n  title: 'DevEstudos',\n  description: 'Cursos de programação',\n};\n\nexport default function Home() {\n  return <h1>Bem-vindo ao DevEstudos</h1>;\n}\n",
+      "correta": "export const metadata = {\n  title: 'DevEstudos',\n  description: 'Cursos de programação',\n};\n\nexport default function Home() {\n  return <h1>Bem-vindo ao DevEstudos</h1>;\n}",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["seo", "metadata"],
+      "validacao": ""
+    },
+    {
+      "id": "next-6-3",
+      "titulo": "Imagem Otimizada",
+      "tipo": "multipla-escolha",
+      "explicacao": "next/image otimiza imagens automaticamente: redimensiona, converte pra webp, lazy load. <Image src=\"/foto.jpg\" width={400} height={300} alt=\"\" />. É tipo Photoshop automático embutido.",
+      "pergunta": "Qual componente do Next otimiza imagens?",
+      "alternativas": ["<img>", "<Image>", "<Picture>", "<Photo>"],
+      "correta": "<Image>",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["image", "otimizacao"]
+    },
+    {
+      "id": "next-6-4",
+      "titulo": "Estratégia de Migração",
+      "tipo": "multipla-escolha",
+      "explicacao": "Migrar aos poucos: 1) Cria Next.js, 2) Move páginas uma a uma, 3) Componentes React funcionam sem mudança, 4) Adiciona Server Components onde não precisa de interação. Não precisa migrar TUDO de uma vez. É tipo trocar pneu com o carro andando: uma roda de cada vez.",
+      "pergunta": "Qual a melhor estratégia pra migrar React pra Next?",
+      "alternativas": ["Migrar tudo de uma vez", "Migrar página por página gradualmente", "Reescrever do zero", "Não migrar"],
+      "correta": "Migrar página por página gradualmente",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["migracao", "estrategia"]
+    },
+    {
+      "id": "next-6-5",
+      "titulo": "Componentes React no Next",
+      "tipo": "multipla-escolha",
+      "explicacao": "Componentes React existentes funcionam no Next.js sem alteração. Só adicionar 'use client' se usarem hooks. Os componentes de UI (Card, Button, Modal) continuam os mesmos. É tipo mudar de apartamento: seus móveis (componentes) continuam os mesmos.",
+      "pergunta": "Componentes React de UI (Card, Button) funcionam no Next.js?",
+      "alternativas": ["Não, precisa reescrever", "Sim, funcionam com 'use client' se tiverem hooks", "Só no cliente", "Só no servidor"],
+      "correta": "Sim, funcionam com 'use client' se tiverem hooks",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["componentes", "reuso"]
+    },
+    {
+      "id": "next-6-6",
+      "titulo": "Deploy na Vercel",
+      "tipo": "multipla-escolha",
+      "explicacao": "Vercel é da mesma equipe do Next.js. Conecta GitHub: push na main = deploy automático. Zero configuração. DevEstudos na Vercel = URL pública em minutos. É tipo Netflix: você faz o filme (código), eles distribuem pra todo mundo.",
+      "pergunta": "Quem criou o Next.js e oferece deploy integrado?",
+      "alternativas": ["Google", "Meta", "Vercel", "Microsoft"],
+      "correta": "Vercel",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["vercel", "deploy"]
+    }
+  ]
+}

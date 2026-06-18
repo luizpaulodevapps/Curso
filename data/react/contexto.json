@@ -1,0 +1,84 @@
+{
+  "id": "react-4",
+  "nome": "Context API — Estado Global",
+  "descricao": "Compartilhar estado entre vários componentes sem ficar passando props manualmente.",
+  "ordem": 4,
+  "duracao": "1 semana",
+  "projeto": "Contexto de tema para o DevEstudos",
+  "questoes": [
+    {
+      "id": "react-4-1",
+      "titulo": "Prop Drilling - Decoração",
+      "tipo": "multipla-escolha",
+      "explicacao": "Prop drilling = passar prop de pai pra filho pra neto pra bisneto... É insustentável. É tipo passar um recado: 'João fala pra Maria falar pra José falar pra Ana'. Context resolve isso com 'comunicador' direto.",
+      "pergunta": "Qual problema o Context resolve?",
+      "alternativas": ["Renderização lenta", "Prop drilling (passar props por muitos níveis)", "Requisições duplicadas", "Estilos globais"],
+      "correta": "Prop drilling (passar props por muitos níveis)",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["context", "prop drilling"]
+    },
+    {
+      "id": "react-4-2",
+      "titulo": "Criar Contexto",
+      "tipo": "complete-codigo",
+      "explicacao": "createContext cria um 'canal de comunicação'. O Provider 'fornece' o valor. useContext 'consome' em qualquer filho. É tipo rádio: a torre (Provider) transmite, o rádio (useContext) recebe.",
+      "pergunta": "Crie ThemeContext com createContext e ThemeProvider que fornece tema 'dark'.",
+      "codigoInicial": "import { createContext, useContext } from 'react';\n\nconst ThemeContext = createContext(null);\n\nfunction ThemeProvider({ children }) {\n  return <ThemeContext.Provider value=\"dark\">\n    {children}\n  </ThemeContext.Provider>;\n}\n\nfunction Botao() {\n  const tema = useContext(ThemeContext);\n  return <button style={{background: tema === 'dark' ? '#333' : '#fff'}}>Clique</button>;\n}\n",
+      "correta": "import { createContext, useContext } from 'react';\n\nconst ThemeContext = createContext(null);\n\nfunction ThemeProvider({ children }) {\n  return <ThemeContext.Provider value=\"dark\">\n    {children}\n  </ThemeContext.Provider>;\n}\n\nfunction Botao() {\n  const tema = useContext(ThemeContext);\n  return <button style={{background: tema === 'dark' ? '#333' : '#fff'}}>Clique</button>;\n}\n\nexport { ThemeProvider, Botao };",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["context", "provider"],
+      "validacao": ""
+    },
+    {
+      "id": "react-4-3",
+      "titulo": "Estado no Context",
+      "tipo": "complete-codigo",
+      "explicacao": "O melhor uso do Context: estado global com useState dentro do Provider. Qualquer componente pode ler e alterar. É tipo quadro de avisos da empresa: todos veem e podem postar.",
+      "pergunta": "Crie AuthContext com usuario (estado) e login/logout no Provider.",
+      "codigoInicial": "import { createContext, useContext, useState } from 'react';\n\nconst AuthContext = createContext(null);\n\nfunction AuthProvider({ children }) {\n  const [usuario, setUsuario] = useState(null);\n  \n  function login(nome) {\n    setUsuario({nome});\n  }\n  \n  function logout() {\n    setUsuario(null);\n  }\n  \n  return <AuthContext.Provider value={{usuario, login, logout}}>\n    {children}\n  </AuthContext.Provider>;\n}\n\nfunction Perfil() {\n  const {usuario, logout} = useContext(AuthContext);\n  return usuario ? <div><p>Bem-vindo, {usuario.nome}</p><button onClick={logout}>Sair</button></div> : <p>Deslogado</p>;\n}\n",
+      "correta": "import { createContext, useContext, useState } from 'react';\n\nconst AuthContext = createContext(null);\n\nfunction AuthProvider({ children }) {\n  const [usuario, setUsuario] = useState(null);\n  \n  function login(nome) {\n    setUsuario({nome});\n  }\n  \n  function logout() {\n    setUsuario(null);\n  }\n  \n  return <AuthContext.Provider value={{usuario, login, logout}}>\n    {children}\n  </AuthContext.Provider>;\n}\n\nfunction Perfil() {\n  const {usuario, logout} = useContext(AuthContext);\n  return usuario ? <div><p>Bem-vindo, {usuario.nome}</p><button onClick={logout}>Sair</button></div> : <p>Deslogado</p>;\n}\n\nexport { AuthProvider, Perfil };",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["context", "auth"],
+      "validacao": ""
+    },
+    {
+      "id": "react-4-4",
+      "titulo": "Context vs Props",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nem tudo precisa de Context. Props são melhores pra dados que descem 1-2 níveis. Context é pra dados GLOBAIS (tema, usuário, idioma). Context em excesso complica. É tipo: usa interfone (props) pra falar com vizinho, não precisa de telefone (context).",
+      "pergunta": "Quando usar Context em vez de props?",
+      "alternativas": ["Sempre", "Pra dados que muitos componentes profundos precisam", "Nunca", "Só em formulários"],
+      "correta": "Pra dados que muitos componentes profundos precisam",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["context", "props"]
+    },
+    {
+      "id": "react-4-5",
+      "titulo": "Evitar Re-renders",
+      "tipo": "multipla-escolha",
+      "explicacao": "Context re-renderiza TODOS os consumidores quando o valor muda. Pra evitar: separe contexts (tema separado de usuário), use useMemo no value, componentes pequenos. É tipo: se a campainha toca, TODO mundo ouve — melhor ter campainha só pra quem precisa.",
+      "pergunta": "Como evitar re-renders em excesso com Context?",
+      "alternativas": ["Usar um context gigante", "Separar em contexts menores", "Usar props mesmo", "Desativar React"],
+      "correta": "Separar em contexts menores",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["rerender", "performance"]
+    },
+    {
+      "id": "react-4-6",
+      "titulo": "Múltiplos Contexts",
+      "tipo": "multipla-escolha",
+      "explicacao": "Dá pra ter VÁRIOS contexts: ThemeContext, AuthContext, LanguageContext. Cada um cuida de uma preocupação. Não coloque TUDO num context só — é tipo ter uma gaveta pra cada tipo de coisa, não tudo misturado.",
+      "pergunta": "É recomendado ter vários contexts ou um só gigante?",
+      "alternativas": ["Um só pra tudo", "Vários, cada um com sua responsabilidade", "Nenhum, evite context sempre", "Depende da fase da lua"],
+      "correta": "Vários, cada um com sua responsabilidade",
+      "xp": 5,
+      "nivel": "intermediario",
+      "tags": ["multiplos", "organizacao"]
+    }
+  ]
+}

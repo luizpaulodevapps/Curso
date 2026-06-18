@@ -1,0 +1,84 @@
+{
+  "id": "react-2",
+  "nome": "Estado e Eventos — React que Reage",
+  "descricao": "useState guarda dados que mudam. Eventos fazem o componente responder.",
+  "ordem": 2,
+  "duracao": "2 semanas",
+  "projeto": "Componentes interativos do DevEstudos",
+  "questoes": [
+    {
+      "id": "react-2-1",
+      "titulo": "Estado é Memória",
+      "tipo": "multipla-escolha",
+      "explicacao": "useState cria uma 'caixa de memória' pro componente. const [contador, setContador] = useState(0). contador é o valor, setContador atualiza e RE-RENDERIZA o componente. É tipo um display: quando muda o número, o visor atualiza.",
+      "pergunta": "O que o useState retorna?",
+      "alternativas": ["Só o valor", "Um array com [valor, funçãoPraAtualizar]", "Uma função", "Um objeto"],
+      "correta": "Um array com [valor, funçãoPraAtualizar]",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["useState", "estado"]
+    },
+    {
+      "id": "react-2-2",
+      "titulo": "Contador com useState",
+      "tipo": "complete-codigo",
+      "explicacao": "Cada clique no botão chama setContador(contador + 1). O React atualiza SÓ o que mudou, não a página inteira. É tipo controle remoto: aperta volume+, o número sobe e a TV reage.",
+      "pergunta": "Crie componente Contador com useState(0) e botão que incrementa.",
+      "codigoInicial": "import { useState } from 'react';\n\nfunction Contador() {\n  const [contador, setContador] = useState(0);\n  \n  return <div>\n    <p>Contagem: {contador}</p>\n    <button onClick={() => setContador(contador + 1)}>+1</button>\n  </div>;\n}\n",
+      "correta": "import { useState } from 'react';\n\nfunction Contador() {\n  const [contador, setContador] = useState(0);\n  \n  return <div>\n    <p>Contagem: {contador}</p>\n    <button onClick={() => setContador(contador + 1)}>+1</button>\n  </div>;\n}\n\nexport default Contador;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["contador", "useState"],
+      "validacao": ""
+    },
+    {
+      "id": "react-2-3",
+      "titulo": "Evento de Input",
+      "tipo": "complete-codigo",
+      "explicacao": "onChange captura o que o usuário digita. e.target.value é o texto atual. setNome(e.target.value) atualiza o estado a cada tecla. É tipo digitar no celular: cada letra aparece na tela na hora.",
+      "pergunta": "Crie input controlado: useState pra 'nome', onChange atualiza, mostra 'Olá, {nome}'.",
+      "codigoInicial": "import { useState } from 'react';\n\nfunction Saudar() {\n  const [nome, setNome] = useState('');\n  \n  return <div>\n    <input \n      value={nome} \n      onChange={e => setNome(e.target.value)} \n      placeholder=\"Digite seu nome\"\n    />\n    <p>Olá, {nome}!</p>\n  </div>;\n}\n",
+      "correta": "import { useState } from 'react';\n\nfunction Saudar() {\n  const [nome, setNome] = useState('');\n  \n  return <div>\n    <input \n      value={nome} \n      onChange={e => setNome(e.target.value)} \n      placeholder=\"Digite seu nome\"\n    />\n    <p>Olá, {nome}!</p>\n  </div>;\n}\n\nexport default Saudar;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["input", "onChange"],
+      "validacao": ""
+    },
+    {
+      "id": "react-2-4",
+      "titulo": "Imutabilidade",
+      "tipo": "multipla-escolha",
+      "explicacao": "NUNCA MUTE estado diretamente. NÃO: state.push(novo). SIM: setState([...state, novo]). Crie um NOVO array/objeto em vez de modificar o existente. É tipo rachar o ovo: depois de quebrado não volta atrás. Crie um ovo novo.",
+      "pergunta": "Como adicionar item a um array no estado corretamente?",
+      "alternativas": ["state.push(item)", "setState([...state, item])", "state[0] = item", "state.add(item)"],
+      "correta": "setState([...state, item])",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["imutabilidade", "estado"]
+    },
+    {
+      "id": "react-2-5",
+      "titulo": "Lifting State Up",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando dois componentes precisam do mesmo estado, sobe ele pro pai comum. O pai controla, passa via props pros filhos. É tipo caixa d'água: a água sobe pro telhado (pai) e desce pros canos (filhos).",
+      "pergunta": "Lifting state up significa...",
+      "alternativas": ["Criar estado em cada filho", "Subir o estado pro componente pai compartilhar", "Usar estado global", "Remover o estado"],
+      "correta": "Subir o estado pro componente pai compartilhar",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["lifting", "compartilhar"]
+    },
+    {
+      "id": "react-2-6",
+      "titulo": "Estado Derivado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Estado derivado = valor CALCULADO a partir do estado, não guardado separadamente. const total = itens.length. const aprovado = nota >= 7. Não precisa de useState pra tudo. É tipo 'se tem 4 rodas, é um carro' — você deduz, não precisa guardar.",
+      "pergunta": "Estado derivado é um valor que...",
+      "alternativas": ["Precisa de useState", "É calculado a partir de outro estado", "Vem da API", "É global"],
+      "correta": "É calculado a partir de outro estado",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["derivado", "calculo"]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "bd-5",
+  "nome": "Missão 5 — Normalização e Boas Práticas",
+  "descricao": "Evitar duplicação de dados, formas normais, integridade.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Otimizar o modelo do DevEstudos",
+  "questoes": [
+    {
+      "id": "bd-5-1",
+      "titulo": "O Problema da Duplicação",
+      "tipo": "multipla-escolha",
+      "explicacao": "Se você salva o nome do curso em cada módulo em vez de usar curso_id, quando o nome do curso mudar, você precisa atualizar dezenas de registros. Isso é duplicação de dados. Normalização é o processo de eliminar essa duplicação organizando os dados em tabelas separadas com relacionamentos.",
+      "pergunta": "Qual o problema de salvar o nome do curso dentro de cada módulo?",
+      "alternativas": [
+        "Duplicação de dados — se o nome mudar, precisa atualizar todos os módulos",
+        "O banco fica mais rápido",
+        "Economiza espaço",
+        "Não há problema, é uma prática recomendada"
+      ],
+      "correta": "Duplicação de dados — se o nome mudar, precisa atualizar todos os módulos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["normalizacao", "duplicacao"]
+    },
+    {
+      "id": "bd-5-2",
+      "titulo": "Primeira Forma Normal (1FN)",
+      "tipo": "multipla-escolha",
+      "explicacao": "1FN: cada campo deve conter um valor atômico (indivisível). Nada de lista separada por vírgulas em um campo. Em vez de 'JavaScript, React, Next' em um campo 'cursos_do_usuario', crie uma tabela separada 'usuario_curso' com um curso por linha. 1FN = uma informação por campo.",
+      "pergunta": "O que viola a Primeira Forma Normal?",
+      "alternativas": [
+        "Um campo 'tags' com 'javascript, react, next' (lista em texto)",
+        "Uma coluna 'email' com valores únicos",
+        "Uma chave primária",
+        "Uma tabela com várias linhas"
+      ],
+      "correta": "Um campo 'tags' com 'javascript, react, next' (lista em texto)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["normalizacao", "1fn"]
+    },
+    {
+      "id": "bd-5-3",
+      "titulo": "Segunda Forma Normal (2FN)",
+      "tipo": "multipla-escolha",
+      "explicacao": "2FN: todo campo não-chave deve depender da chave completa. Se sua chave é composta (usuario_id + curso_id), o campo 'nome_curso' depende só de curso_id, não dos dois. Solução: mover 'nome_curso' para a tabela 'cursos'. 2FN = cada campo depende da chave inteira, não de parte dela.",
+      "pergunta": "Na tabela 'usuario_curso' com chave (usuario_id, curso_id), o campo 'nome_curso' viola:",
+      "alternativas": [
+        "2FN — nome_curso depende só de curso_id, não da chave completa",
+        "1FN — não é atômico",
+        "3FN — não é transitivo",
+        "Nenhuma, está correto"
+      ],
+      "correta": "2FN — nome_curso depende só de curso_id, não da chave completa",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["normalizacao", "2fn"]
+    },
+    {
+      "id": "bd-5-4",
+      "titulo": "Terceira Forma Normal (3FN)",
+      "tipo": "multipla-escolha",
+      "explicacao": "3FN: campos não-chave não devem depender de outros campos não-chave. Ex: se você tem 'curso_id' e 'curso_nome' na tabela 'modulos', curso_nome depende de curso_id, não da chave 'modulo.id'. Solução: manter só curso_id. 3FN = eliminar dependências transitivas.",
+      "pergunta": "Qual campo em 'modulos' provavelmente viola a 3FN?",
+      "alternativas": [
+        "curso_nome (depende de curso_id, não de modulo.id)",
+        "nome (do módulo)",
+        "ordem",
+        "xp_total"
+      ],
+      "correta": "curso_nome (depende de curso_id, não de modulo.id)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["normalizacao", "3fn"]
+    },
+    {
+      "id": "bd-5-5",
+      "titulo": "Índices — Acelerar Consultas",
+      "tipo": "multipla-escolha",
+      "explicacao": "Índices são como o índice de um livro: em vez de folhear página por página, você vai direto ao capítulo. CREATE INDEX idx_usuario_email ON usuarios(email); acelera buscas por email. Mas índices ocupam espaço e desaceleram escritas (INSERT/UPDATE). Use com moderação — nos campos que você mais busca.",
+      "pergunta": "Quando criar um índice no banco?",
+      "alternativas": [
+        "Em campos usados com frequência em WHERE, JOIN e ORDER BY",
+        "Em todos os campos para garantir performance",
+        "Nunca, índices são desnecessários",
+        "Apenas em chaves primárias"
+      ],
+      "correta": "Em campos usados com frequência em WHERE, JOIN e ORDER BY",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["indices", "performance"]
+    },
+    {
+      "id": "bd-5-6",
+      "titulo": "Practical: Normalize uma Tabela",
+      "tipo": "complete-codigo",
+      "explicacao": "A tabela 'matricula' abaixo viola formas normais. Normalize.",
+      "pergunta": "A tabela abaixo está desnormalizada. Crie as tabelas normalizadas:",
+      "codigoInicial": "-- Tabela atual (desnormalizada):\n-- matricula: id, usuario_nome, usuario_email, \n--   curso_nome, curso_nivel, data_matricula\n\n-- Tabelas normalizadas:\n-- usuarios: id, ",
+      "correta": "nome, email\n-- cursos: id, nome, nivel\n-- matriculas: id, usuario_id (FK → usuarios.id), curso_id (FK → cursos.id), data_matricula",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["pratica", "normalizacao"],
+      "validacao": ""
+    }
+  ]
+}

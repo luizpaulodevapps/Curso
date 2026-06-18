@@ -1,0 +1,131 @@
+{
+  "id": "pg-2",
+  "nome": "Missão 2 — INSERT",
+  "descricao": "Inserir dados em uma tabela.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Cadastrar novos usuários no DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-2-1",
+      "titulo": "INSERT básico",
+      "tipo": "multipla-escolha",
+      "explicacao": "Inserir um registro é como preencher uma ficha de matrícula no DevEstudos: você pega o formulário em branco (a tabela) e preenche os campos com os dados do novo aluno.",
+      "pergunta": "Qual comando insere um novo usuário na tabela usuarios com nome 'Ana' e email 'ana@email.com'?",
+      "alternativas": [
+        "INSERT INTO usuarios (nome, email) VALUES ('Ana', 'ana@email.com');",
+        "INSERT usuarios (nome, email) VALUES ('Ana', 'ana@email.com');",
+        "ADD INTO usuarios VALUES ('Ana', 'ana@email.com');",
+        "INSERT INTO usuarios VALUES nome='Ana', email='ana@email.com';"
+      ],
+      "correta": "INSERT INTO usuarios (nome, email) VALUES ('Ana', 'ana@email.com');",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "insert"]
+    },
+    {
+      "id": "pg-2-2",
+      "titulo": "INSERT múltiplo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você recebeu 5 novos alunos de uma vez no DevEstudos. Fazer INSERT um por um é farinha demais pro seu biscoito. Melhor inserir todos de uma tacada.",
+      "pergunta": "Qual comando insere dois usuários de uma vez na tabela usuarios?",
+      "alternativas": [
+        "INSERT INTO usuarios (nome) VALUES ('João'), ('Maria');",
+        "INSERT INTO usuarios (nome) VALUES ('João'); VALUES ('Maria');",
+        "INSERT INTO usuarios (nome) VALUES ('João') AND ('Maria');",
+        "INSERT INTO usuarios (nome) VALUES ('João', 'Maria');"
+      ],
+      "correta": "INSERT INTO usuarios (nome) VALUES ('João'), ('Maria');",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "insert"]
+    },
+    {
+      "id": "pg-2-3",
+      "titulo": "INSERT com RETURNING",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando você faz check-in no DevEstudos, o sistema devolve seu crachá com o ID. O RETURNING faz exatamente isso: insere e já devolve o que foi criado.",
+      "pergunta": "Qual comando insere um usuário e retorna o ID gerado?",
+      "alternativas": [
+        "INSERT INTO usuarios (nome) VALUES ('Carlos') RETURNING id;",
+        "INSERT INTO usuarios (nome) VALUES ('Carlos') RETURN id;",
+        "INSERT INTO usuarios (nome) VALUES ('Carlos') GET id;",
+        "INSERT INTO usuarios (nome) VALUES ('Carlos') OUTPUT id;"
+      ],
+      "correta": "INSERT INTO usuarios (nome) VALUES ('Carlos') RETURNING id;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "insert", "returning"]
+    },
+    {
+      "id": "pg-2-4",
+      "titulo": "Erro real — violação de NOT NULL",
+      "tipo": "multipla-escolha",
+      "explicacao": "A coluna nome foi definida como NOT NULL — é como um campo obrigatório no formulário do DevEstudos. Se você deixar em branco, a secretária (PostgreSQL) devolve o formulário na sua cara.",
+      "pergunta": "A tabela usuarios define a coluna nome como NOT NULL. O que acontece ao executar `INSERT INTO usuarios (email) VALUES ('teste@email.com');` sem fornecer o nome?",
+      "alternativas": [
+        "O PostgreSQL insere com nome NULL.",
+        "O PostgreSQL define nome como string vazia automaticamente.",
+        "Erro: violação da constraint NOT NULL na coluna nome.",
+        "O PostgreSQL ignora a constraint e insere mesmo assim."
+      ],
+      "correta": "Erro: violação da constraint NOT NULL na coluna nome.",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "insert", "not-null"]
+    },
+    {
+      "id": "pg-2-5",
+      "titulo": "Erro real — duplicar PK",
+      "tipo": "complete-codigo",
+      "explicacao": "O ID de cada aluno do DevEstudos é único, igual CPF. Tentar cadastrar dois alunos com a mesma matrícula não faz sentido — o banco barra na hora.",
+      "pergunta": "A tabela usuarios tem id como PRIMARY KEY. Após inserir um usuário com id=1, executei:\n\nINSERT INTO usuarios (id, nome) VALUES (1, 'Pedro');\n\nQual erro será exibido?",
+      "alternativas": [],
+      "correta": "duplicate key value violates unique constraint \"usuarios_pkey\"",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "insert", "primary-key"]
+    },
+    {
+      "id": "pg-2-6",
+      "titulo": "Ordem das colunas no VALUES",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, o formulário de matrícula pergunta primeiro nome, depois email. Se você inverter na hora de preencher, troca os valores de lugar.",
+      "pergunta": "Qual será o resultado de `INSERT INTO usuarios (nome, email) VALUES ('email@teste.com', 'João');`?",
+      "alternativas": [
+        "Nome será 'João' e email 'email@teste.com'.",
+        "Nome será 'email@teste.com' e email 'João'.",
+        "Erro: tipos incompatíveis entre os valores.",
+        "A inserção falha porque nome não parece um email."
+      ],
+      "correta": "Nome será 'email@teste.com' e email 'João' — os valores seguem a ordem das colunas no INSERT, não o nome das colunas.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "insert", "ordem"]
+    },
+    {
+      "id": "pg-2-7",
+      "titulo": "INSERT com DEFAULT",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Colunas com valor DEFAULT são como campos opcionais que já vêm preenchidos com uma resposta padrão — tipo 'cidade' virando 'Não informada' se você não preencher.",
+      "pergunta": "Se a columa ativo da tabela usuarios tem DEFAULT true, o comando `INSERT INTO usuarios (nome) VALUES ('Ana');` define ativo como true automaticamente.",
+      "alternativas": [],
+      "correta": "Verdadeiro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "insert", "default"]
+    },
+    {
+      "id": "pg-2-8",
+      "titulo": "Desafio — INSERT com data atual",
+      "tipo": "desafio-pratico",
+      "explicacao": "Você está criando o sistema de log do DevEstudos. Cada ação do usuário deve registrar o momento exato em que aconteceu, sem depender do usuário digitar a data.",
+      "pergunta": "Como inserir um registro na tabela logs (colunas: usuario_id, acao, created_at) usando a função CURRENT_TIMESTAMP do PostgreSQL para preencher a data automaticamente? Escreva o comando completo, com usuario_id=10 e acao='login'.",
+      "alternativas": [],
+      "correta": "INSERT INTO logs (usuario_id, acao, created_at) VALUES (10, 'login', CURRENT_TIMESTAMP);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "insert", "current-timestamp", "desafio"]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "next-1",
+  "nome": "Fundamentos Next.js — React Turbinado",
+  "descricao": "Next.js é React com SSR, rotas, layouts. Tipo carro turbinado.",
+  "ordem": 1,
+  "duracao": "1 semana",
+  "projeto": "Estrutura de páginas do DevEstudos",
+  "questoes": [
+    {
+      "id": "next-1-1",
+      "titulo": "Next.js vs React",
+      "tipo": "multipla-escolha",
+      "explicacao": "React é a biblioteca de componentes. Next.js é o framework que adiciona: rotas, SSR, SEO, imagens otimizadas. React é o motor, Next.js é o carro completo. Dá pra usar React sem Next? Dá. Mas Next facilita tudo.",
+      "pergunta": "Next.js adiciona o quê ao React?",
+      "alternativas": ["HTML", "CSS", "Rotas, SSR, otimizações", "JavaScript"],
+      "correta": "Rotas, SSR, otimizações",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["nextjs", "framework"]
+    },
+    {
+      "id": "next-1-2",
+      "titulo": "App Router",
+      "tipo": "multipla-escolha",
+      "explicacao": "App Router = pastas viram rotas. /app/sobre/page.tsx = /sobre. Sem precisar de react-router-dom. É tipo organizar arquivos no Windows: cada pasta é uma URL.",
+      "pergunta": "Em /app/produtos/page.tsx, qual a rota?",
+      "alternativas": ["/app/produtos", "/produtos", "/page/produtos", "/produtos/page"],
+      "correta": "/produtos",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["app router", "rotas"]
+    },
+    {
+      "id": "next-1-3",
+      "titulo": "page.js - A Página",
+      "tipo": "multipla-escolha",
+      "explicacao": "page.js (ou .tsx) define o conteúdo da rota. Toda pasta de rota PRECISA de um page.js. Sem ele, a rota não existe. É tipo 'placa de loja': sem placa, ninguém sabe que a loja existe.",
+      "pergunta": "Qual arquivo é obrigatório pra definir uma rota?",
+      "alternativas": ["layout.js", "page.js", "loading.js", "error.js"],
+      "correta": "page.js",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["page", "rota"]
+    },
+    {
+      "id": "next-1-4",
+      "titulo": "layout.js - Moldura",
+      "tipo": "multipla-escolha",
+      "explicacao": "layout.js envolve as páginas da mesma pasta. O header, footer, sidebar ficam no layout. Não precisa repetir em cada página. É tipo moldura de quadro: a moldura é a mesma, a imagem (página) muda.",
+      "pergunta": "Pra que serve o layout.js?",
+      "alternativas": ["Buscar dados", "Envolver páginas com header/footer comuns", "Estilizar CSS global", "Gerenciar estado"],
+      "correta": "Envolver páginas com header/footer comuns",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["layout", "moldura"]
+    },
+    {
+      "id": "next-1-5",
+      "titulo": "loading.js - Esqueleto",
+      "tipo": "multipla-escolha",
+      "explicacao": "loading.js mostra um 'esqueleto' (skeleton) enquanto a página carrega. Feedback visual imediato. Melhor que nada ou tela branca. É tipo 'preparando seu pedido' do McDonald's — você sabe que algo tá rolando.",
+      "pergunta": "O que loading.js mostra?",
+      "alternativas": ["Erro 404", "Um esqueleto/skeleton enquanto carrega", "A página completa", "Um modal de login"],
+      "correta": "Um esqueleto/skeleton enquanto carrega",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["loading", "skeleton"]
+    },
+    {
+      "id": "next-1-6",
+      "titulo": "error.js - Tratar Erro",
+      "tipo": "multipla-escolha",
+      "explicacao": "error.js captura erros do componente e mostra UI de fallback. recebe {error, reset}. reset() tenta renderizar de novo. É tipo 'esteira de segurança': se algo cair, a esteira para e alguém vem ajudar.",
+      "pergunta": "A função reset() no error.js faz o quê?",
+      "alternativas": ["Reinicia o servidor", "Tenta renderizar a página de novo", "Redireciona pra home", "Deleta o cache"],
+      "correta": "Tenta renderizar a página de novo",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["error", "fallback"]
+    }
+  ]
+}

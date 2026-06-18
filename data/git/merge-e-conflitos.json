@@ -1,0 +1,108 @@
+{
+  "id": "git-4",
+  "nome": "Missão 4 — Juntando Tudo com Merge",
+  "descricao": "Unir branches e resolver conflitos quando duas pessoas mexem no mesmo lugar.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Unir a branch de feature na main",
+  "questoes": [
+    {
+      "id": "git-4-1",
+      "titulo": "git merge — Juntar Históricos",
+      "tipo": "multipla-escolha",
+      "explicacao": "git merge nome-da-branch pega as mudanças da branch informada e traz para a branch atual. Exemplo: estando na main, git merge feature/login incorpora tudo que foi feito na feature/login na main. O merge cria um 'commit de merge' que tem dois pais — as duas branches que foram unidas.",
+      "pergunta": "O que 'git merge' faz?",
+      "alternativas": [
+        "Incorporar as mudanças de uma branch na branch atual",
+        "Criar uma nova branch",
+        "Deletar uma branch",
+        "Enviar código para o GitHub"
+      ],
+      "correta": "Incorporar as mudanças de uma branch na branch atual",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "merge"]
+    },
+    {
+      "id": "git-4-2",
+      "titulo": "Conflito de Merge",
+      "tipo": "multipla-escolha",
+      "explicacao": "Conflito acontece quando o mesmo arquivo foi modificado nas duas branches no mesmo lugar. O Git não sabe qual versão manter. Ele marca o conflito no arquivo com <<<<<<<, =======, >>>>>>>. Você resolve manualmente: edita o arquivo, decide qual versão fica, remove os marcadores, e faz git add + git commit.",
+      "pergunta": "O que causa um conflito de merge?",
+      "alternativas": [
+        "O mesmo trecho de código foi alterado em ambas as branches",
+        "Uma branch está muito antiga",
+        "O Git está corrompido",
+        "Arquivos binários no repositório"
+      ],
+      "correta": "O mesmo trecho de código foi alterado em ambas as branches",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "conflito", "merge"]
+    },
+    {
+      "id": "git-4-3",
+      "titulo": "Resolvendo Conflito na Prática",
+      "tipo": "multipla-escolha",
+      "explicacao": "Após um conflito: 1) Abra o arquivo com marcadores <<<<<<< 2) Edite para manter a versão correta 3) Remova os marcadores 4) git add arquivo resolvido 5) git commit. O commit de merge é criado. Dica: use git mergetool para abrir editor visual de conflitos se preferir.",
+      "pergunta": "Qual o primeiro passo ao resolver um conflito de merge?",
+      "alternativas": [
+        "Abrir o arquivo com conflito e editar removendo os marcadores",
+        "git reset --hard",
+        "Deletar a branch",
+        "git abort"
+      ],
+      "correta": "Abrir o arquivo com conflito e editar removendo os marcadores",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "conflito", "resolucao"]
+    },
+    {
+      "id": "git-4-4",
+      "titulo": "Merge vs Rebase",
+      "tipo": "multipla-escolha",
+      "explicacao": "Merge cria um commit de merge (preserva a história real). Rebase reescreve a história como se as mudanças tivessem sido feitas em sequência (história linear). Regra prática: merge para branches compartilhadas, rebase para branches locais. Nunca faça rebase em branches que outros já usam.",
+      "pergunta": "Qual a diferença prática entre merge e rebase?",
+      "alternativas": [
+        "Merge preserva a história paralela, rebase lineariza a história",
+        "São a mesma coisa com nomes diferentes",
+        "Rebase é mais seguro que merge",
+        "Merge só funciona no GitHub"
+      ],
+      "correta": "Merge preserva a história paralela, rebase lineariza a história",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "merge", "rebase"]
+    },
+    {
+      "id": "git-4-5",
+      "titulo": "Fast-forward Merge",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando não há commits na main desde que a branch foi criada, o Git faz um fast-forward: simplesmente move o ponteiro da main para frente. Não cria commit de merge. É o cenário ideal — significa que você trabalhou sozinho naquela feature e a main não mudou.",
+      "pergunta": "Quando o Git faz um merge fast-forward?",
+      "alternativas": [
+        "Quando a branch de origem não teve novos commits desde a criação da branch",
+        "Sempre que possível",
+        "Quando há conflitos",
+        "Nunca, é preciso forçar com --ff-only"
+      ],
+      "correta": "Quando a branch de origem não teve novos commits desde a criação da branch",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "ff", "fast-forward"]
+    },
+    {
+      "id": "git-4-6",
+      "titulo": "Practical: Resolva um Conflito",
+      "tipo": "complete-codigo",
+      "explicacao": "Você tentou fazer merge e deu conflito no arquivo sistema-xp.js. Resolva.",
+      "pergunta": "Complete os passos para resolver o conflito:",
+      "codigoInicial": "git merge feature/sistema-xp\n# CONFLITO em sistema-xp.js\n",
+      "correta": "# 1. Abrir sistema-xp.js e resolver o conflito manualmente\n# 2. Remover marcadores <<<<<<< ======= >>>>>>>\n# 3. git add sistema-xp.js\n# 4. git commit -m 'Resolve conflito no sistema-xp.js entre main e feature/sistema-xp'",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["pratica", "conflito"],
+      "validacao": ""
+    }
+  ]
+}

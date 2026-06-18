@@ -1,0 +1,103 @@
+{
+  "id": "api-5",
+  "nome": "Missão 5 — DELETE: Removendo Recursos",
+  "descricao": "O método DELETE para remover recursos da API.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Implementar exclusão de cursos e contas no DevEstudos",
+  "questoes": [
+    {
+      "id": "api-5-1",
+      "titulo": "O que é DELETE",
+      "tipo": "multipla-escolha",
+      "explicacao": "DELETE remove um recurso. É como rasgar um documento. Mas no sistema, às vezes a gente só arquiva (soft delete).",
+      "pergunta": "Qual método HTTP remove um recurso do servidor?",
+      "alternativas": [
+        "DELETE /api/cursos/10",
+        "GET /api/cursos/10",
+        "POST /api/cursos/10",
+        "PATCH /api/cursos/10"
+      ],
+      "correta": "DELETE /api/cursos/10",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["delete", "http-methods"]
+    },
+    {
+      "id": "api-5-2",
+      "titulo": "Status 204 No Content",
+      "tipo": "multipla-escolha",
+      "explicacao": "204 No Content significa \"deu certo, mas não tenho nada pra te mostrar\". É o status padrão de DELETE bem-sucedido.",
+      "pergunta": "Qual status code um DELETE bem-sucedido costuma retornar?",
+      "alternativas": [
+        "204 No Content",
+        "200 OK",
+        "404 Not Found",
+        "201 Created"
+      ],
+      "correta": "204 No Content",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["delete", "status-codes"]
+    },
+    {
+      "id": "api-5-3",
+      "titulo": "Soft Delete vs Hard Delete",
+      "tipo": "multipla-escolha",
+      "explicacao": "Hard delete remove do banco pra sempre. Soft delete marca como inativo (deleted_at). É igual lixeira do computador vs apagar de vez.",
+      "pergunta": "O que é soft delete?",
+      "alternativas": [
+        "Marcar o registro como deletado sem removê-lo fisicamente do banco",
+        "Remover o registro permanentemente do banco",
+        "Deletar apenas metade dos dados",
+        "Enviar o registro para outro servidor"
+      ],
+      "correta": "Marcar o registro como deletado sem removê-lo fisicamente do banco",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["delete", "soft-delete"]
+    },
+    {
+      "id": "api-5-4",
+      "titulo": "DELETE e idempotência",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real: tentar deletar algo que já foi deletado e receber 404. DELETE deve ser idempotente: a primeira vez deleta, as próximas retornam sucesso também.",
+      "pergunta": "O que acontece se você chamar DELETE /api/cursos/10 duas vezes seguidas?",
+      "alternativas": [
+        "A primeira retorna 200/204, a segunda também deve retornar sucesso (idempotência)",
+        "A primeira deleta, a segunda retorna 404",
+        "A segunda cria o recurso de volta",
+        "A segunda retorna 500"
+      ],
+      "correta": "A primeira retorna 200/204, a segunda também deve retornar sucesso (idempotência)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["delete", "idempotencia", "erro-real"]
+    },
+    {
+      "id": "api-5-5",
+      "titulo": "DELETE no DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Para deletar um curso no DevEstudos, fazemos um fetch com method DELETE passando o ID na URL.",
+      "pergunta": "Complete o código para deletar o curso com ID 7 do DevEstudos:",
+      "codigoInicial": "fetch('/api/cursos/7', {\n  method: '___'\n}).then(res => {\n  if (res.status === ___) console.log('Curso removido')\n})",
+      "codigoCompleto": "fetch('/api/cursos/7', {\n  method: 'DELETE'\n}).then(res => {\n  if (res.status === 204) console.log('Curso removido')\n})",
+      "respostaEsperada": "DELETE, 204",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["delete", "fetch", "dev estudos"]
+    },
+    {
+      "id": "api-5-6",
+      "titulo": "Segurança no DELETE",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Nem todo mundo pode sair deletando. DELETE exige autenticação e autorização para evitar exclusões indevidas.",
+      "pergunta": "Uma API REST bem construída permite qualquer cliente executar DELETE sem autenticação.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["delete", "seguranca"]
+    }
+  ]
+}

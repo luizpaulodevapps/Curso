@@ -1,0 +1,136 @@
+{
+  "id": "pg-8",
+  "nome": "Missão 8 — Views e Índices",
+  "descricao": "Criar visões otimizadas e acelerar consultas.",
+  "ordem": 8,
+  "duracao": "2 horas",
+  "projeto": "Otimizar consultas do DevEstudos com views e índices",
+  "questoes": [
+    {
+      "id": "pg-8-1",
+      "titulo": "CREATE VIEW",
+      "tipo": "multipla-escolha",
+      "explicacao": "View é uma 'consulta salva' — igual aquela planilha que você monta todo mês no DevEstudos. Ao invés de refazer o SELECT complexo toda vez, você salva como view e consulta como se fosse uma tabela.",
+      "pergunta": "Qual comando cria uma view chamada 'usuarios_ativos' com os usuarios onde ativo = true?",
+      "alternativas": [
+        "CREATE VIEW usuarios_ativos AS SELECT * FROM usuarios WHERE ativo = true;",
+        "CREATE VIEW usuarios_ativos SELECT * FROM usuarios WHERE ativo = true;",
+        "CREATE TABLE usuarios_ativos AS SELECT * FROM usuarios WHERE ativo = true;",
+        "CREATE VIEW usuarios_ativos FROM usuarios WHERE ativo = true;"
+      ],
+      "correta": "CREATE VIEW usuarios_ativos AS SELECT * FROM usuarios WHERE ativo = true;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "view"]
+    },
+    {
+      "id": "pg-8-2",
+      "titulo": "Erro real — VIEW com ORDER BY",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você tenta salvar uma view com ORDER BY, mas o PostgreSQL reclama. Views são 'conjuntos de dados', não listas ordenadas — você ordena quando consulta a view, não quando a define.",
+      "pergunta": "O que acontece ao executar `CREATE VIEW usuarios_ordenados AS SELECT * FROM usuarios ORDER BY nome;`?",
+      "alternativas": [
+        "Funciona normalmente.",
+        "Erro: views não podem conter ORDER BY (a menos que combinado com LIMIT).",
+        "Cria a view mas ignora o ORDER BY.",
+        "Cria a view e ordena, mas ignora em consultas futuras."
+      ],
+      "correta": "Erro: views não podem conter ORDER BY (a menos que combinado com LIMIT).",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "view"]
+    },
+    {
+      "id": "pg-8-3",
+      "titulo": "CREATE INDEX",
+      "tipo": "multipla-escolha",
+      "explicacao": "Índice é como o índice remissivo de um livro: ao invés de folhear página por página procurando 'João', você vai direto na página certa. O PostgreSQL faz a mesma coisa nas buscas.",
+      "pergunta": "Qual comando cria um índice na coluna email da tabela usuarios para acelerar buscas por email?",
+      "alternativas": [
+        "CREATE INDEX idx_email ON usuarios (email);",
+        "CREATE INDEX ON usuarios (email);",
+        "INDEX idx_email ON usuarios (email);",
+        "CREATE INDEX idx_email FROM usuarios (email);"
+      ],
+      "correta": "CREATE INDEX idx_email ON usuarios (email);",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "index"]
+    },
+    {
+      "id": "pg-8-4",
+      "titulo": "Quando usar view vs índice",
+      "tipo": "multipla-escolha",
+      "explicacao": "View é atalho para consultas complexas. Índice é atalho para busca rápida. São ferramentas diferentes: vista é o 'cardápio' (pré-seleção), índice é o 'localizador' (onde encontrar).",
+      "pergunta": "Qual situação pede um ÍNDICE e não uma VIEW?",
+      "alternativas": [
+        "Acelerar WHERE email = 'joao@email.com' em uma tabela de 1 milhão de usuarios.",
+        "Salvar um SELECT com JOIN de 5 tabelas para não repetir sempre.",
+        "Esconder colunas sensíveis (como senha) de usuarios comuns.",
+        "Criar uma versão simplificada de uma tabela para relatórios."
+      ],
+      "correta": "Acelerar WHERE email = 'joao@email.com' em uma tabela de 1 milhão de usuarios.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "index", "view"]
+    },
+    {
+      "id": "pg-8-5",
+      "titulo": "Erro real — índice em coluna de baixa cardinalidade",
+      "tipo": "multipla-escolha",
+      "explicacao": "Criar índice em coluna que só tem 2 valores (ex: ativo = true/false) é como fazer índice remissivo num livro onde toda página remete a 'sim' ou 'não'. Não ajuda — você ainda vai ler metade do livro.",
+      "pergunta": "Por que criar um índice na coluna 'ativo' (boolean, apenas true/false) pode ser ineficiente?",
+      "alternativas": [
+        "Porque o PostgreSQL não permite índice em boolean.",
+        "Porque a baixa cardinalidade (poucos valores únicos) faz o índice ter pouca utilidade — o banco ainda precisaria ler metade da tabela.",
+        "Porque índices booleanos são sempre mais lentos que full scan.",
+        "Porque o índice em boolean corrompe após algumas atualizações."
+      ],
+      "correta": "Porque a baixa cardinalidade (poucos valores únicos) faz o índice ter pouca utilidade — o banco ainda precisaria ler metade da tabela.",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "erro-real", "index"]
+    },
+    {
+      "id": "pg-8-6",
+      "titulo": "Índice único",
+      "tipo": "multipla-escolha",
+      "explicacao": "Índice único é como CPF: garante que não existam dois alunos do DevEstudos com o mesmo email. O banco impede a duplicata na raiz.",
+      "pergunta": "Qual a diferença entre CREATE INDEX e CREATE UNIQUE INDEX?",
+      "alternativas": [
+        "UNIQUE INDEX impede valores duplicados na coluna; INDEX comum apenas acelera buscas.",
+        "UNIQUE INDEX é mais rápido que INDEX comum.",
+        "INDEX comum também impede duplicatas.",
+        "UNIQUE INDEX só pode ser criado em colunas NOT NULL."
+      ],
+      "correta": "UNIQUE INDEX impede valores duplicados na coluna; INDEX comum apenas acelera buscas.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "index", "unique"]
+    },
+    {
+      "id": "pg-8-7",
+      "titulo": "DROP VIEW e DROP INDEX",
+      "tipo": "complete-codigo",
+      "explicacao": "Views e índices não são permanentes. Se não servem mais, você remove. Mas cuidado: DROP VIEW em uma view que outras dependem pode quebrar o sistema do DevEstudos.",
+      "pergunta": "Complete os comandos para remover a view 'usuarios_ativos' e o índice 'idx_email':\n\nDROP ________ usuarios_ativos;\nDROP ________ idx_email;",
+      "alternativas": [],
+      "correta": "DROP VIEW usuarios_ativos;\nDROP INDEX idx_email;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "view", "index", "drop"]
+    },
+    {
+      "id": "pg-8-8",
+      "titulo": "Desafio — view + índice no DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "O relatório mensal do DevEstudos consulta usuarios com matrícula ativa, curso e progresso. Essa consulta JOIN pesada roda toda hora. Você precisa de duas otimizações.",
+      "pergunta": "Crie (1) uma view chamada 'relatorio_alunos' que junte usuarios ativos com suas matrículas e cursos, e (2) um índice na coluna email da tabela usuarios. Escreva ambos os comandos SQL.",
+      "alternativas": [],
+      "correta": "CREATE VIEW relatorio_alunos AS SELECT u.id, u.nome, u.email, c.nome AS curso, m.data_matricula FROM usuarios u JOIN matriculas m ON u.id = m.usuario_id JOIN cursos c ON m.curso_id = c.id WHERE u.ativo = true;\n\nCREATE INDEX idx_email ON usuarios (email);",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "view", "index", "desafio"]
+    }
+  ]
+}

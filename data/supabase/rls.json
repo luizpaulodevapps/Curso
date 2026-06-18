@@ -1,0 +1,103 @@
+{
+  "id": "supa-5",
+  "nome": "Missão 5 — Row Level Security (RLS)",
+  "descricao": "A política de segurança mais importante do Supabase: proteger dados linha a linha.",
+  "ordem": 5,
+  "duracao": "2 horas e 30 minutos",
+  "projeto": "Implementar RLS completo no DevEstudos: cada aluno vê só seus cursos",
+  "questoes": [
+    {
+      "id": "supa-5-1",
+      "titulo": "O que é RLS?",
+      "tipo": "multipla-escolha",
+      "explicacao": "RLS é o segurança da boate na porta do banco: cada linha (row) só aparece se você tem a chave certa pra vê-la.",
+      "pergunta": "O que significa habilitar RLS em uma tabela do Supabase?",
+      "alternativas": [
+        "Nenhuma requisição consegue ler ou escrever sem uma política explícita",
+        "A tabela fica acessível apenas para admins",
+        "Os dados são criptografados automaticamente",
+        "A tabela é duplicada para backup"
+      ],
+      "correta": "Nenhuma requisição consegue ler ou escrever sem uma política explícita",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "rls"]
+    },
+    {
+      "id": "supa-5-2",
+      "titulo": "auth.uid() — o padrão mais importante",
+      "tipo": "complete-codigo",
+      "explicacao": "O padrão ouro do Supabase: cada linha tem um user_id que é comparado com auth.uid(). O usuário só vê o que é dele.",
+      "pergunta": "Complete a política RLS que permite um usuário ver apenas suas próprias inscrições em cursos:",
+      "codigoInicial": "CREATE POLICY \"Usuário vê próprias inscrições\"\n  ON inscricoes\n  FOR SELECT\n  USING (user_id = ___())",
+      "codigoCompleto": "CREATE POLICY \"Usuário vê próprias inscrições\"\n  ON inscricoes\n  FOR SELECT\n  USING (user_id = auth.uid())",
+      "respostaEsperada": "auth.uid",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["supabase", "rls", "auth"]
+    },
+    {
+      "id": "supa-5-3",
+      "titulo": "Enable RLS",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real gravíssimo: criar policies mas esquecer de habilitar RLS na tabela. As políticas existem mas não são aplicadas.",
+      "pergunta": "Uma tabela com RLS habilitado e sem nenhuma política criada permite acesso total a todos os usuários autenticados.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "rls", "erro-real"]
+    },
+    {
+      "id": "supa-5-4",
+      "titulo": "Política muito permissiva",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real: criar uma política USING (true) em uma tabela com dados sensíveis. É tipo deixar a porta de casa aberta.",
+      "pergunta": "O que faz uma política RLS com USING (true)?",
+      "alternativas": [
+        "Libera acesso a todas as linhas para qualquer usuário autenticado",
+        "Bloqueia acesso a todas as linhas",
+        "Libera acesso apenas para admins",
+        "Permite acesso anônimo"
+      ],
+      "correta": "Libera acesso a todas as linhas para qualquer usuário autenticado",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "rls", "seguranca"]
+    },
+    {
+      "id": "supa-5-5",
+      "titulo": "Políticas diferentes por operação",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você pode criar políticas diferentes para SELECT, INSERT, UPDATE, DELETE na mesma tabela. Cada operação tem sua regra.",
+      "pergunta": "Quantas políticas diferentes você pode criar para uma mesma tabela no Supabase?",
+      "alternativas": [
+        "Uma para cada operação (SELECT, INSERT, UPDATE, DELETE)",
+        "Apenas uma política por tabela",
+        "No máximo duas: leitura e escrita",
+        "Não há limite, mas apenas a primeira é aplicada"
+      ],
+      "correta": "Uma para cada operação (SELECT, INSERT, UPDATE, DELETE)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "rls", "policies"]
+    },
+    {
+      "id": "supa-5-6",
+      "titulo": "RLS com relacionamentos",
+      "tipo": "multipla-escolha",
+      "explicacao": "RLS pode verificar dados em outras tabelas via subquery. Ex: permitir UPDATE se o curso pertence ao professor logado.",
+      "pergunta": "Como criar uma política RLS que verifica um relacionamento (ex: só o dono do curso pode editá-lo)?",
+      "alternativas": [
+        "Usando uma subquery: EXISTS (SELECT 1 FROM professores WHERE id = auth.uid())",
+        "Não é possível RLS com relacionamentos",
+        "Criando uma view separada",
+        "Usando uma policy FOR ALL"
+      ],
+      "correta": "Usando uma subquery: EXISTS (SELECT 1 FROM professores WHERE id = auth.uid())",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["supabase", "rls", "relacionamentos"]
+    }
+  ]
+}

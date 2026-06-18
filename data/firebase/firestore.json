@@ -1,0 +1,86 @@
+{
+  "id": "firebase-1",
+  "nome": "Firestore — Banco de Dados do DevEstudos",
+  "descricao": "Firestore NoSQL: coleções, documentos, CRUD, consultas e listeners em tempo real.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Estrutura Firestore do DevEstudos",
+  "questoes": [
+    {
+      "id": "firebase-1-1",
+      "titulo": "Coleção vs Documento",
+      "tipo": "multipla-escolha",
+      "explicacao": "Firestore é um banco NoSQL. 'Coleção' é um grupo de 'documentos'. Pense em coleção como uma pasta e documento como uma ficha dentro dela. Cada documento tem campos (pares chave-valor). Diferente do SQL, não tem tabelas nem linhas.",
+      "pergunta": "No Firestore, um 'documento' pertence sempre a...",
+      "alternativas": ["Uma tabela", "Uma coleção", "Um índice", "Um bucket"],
+      "correta": "Uma coleção",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["firestore", "nosql"]
+    },
+    {
+      "id": "firebase-1-2",
+      "titulo": "Adicionar Documento",
+      "tipo": "complete-codigo",
+      "explicacao": "addDoc cria um documento com ID automático. setDoc cria com ID que você escolhe. É tipo: addDoc é pegar senha na fila (o sistema numera), setDoc é escolher seu próprio número.",
+      "pergunta": "Adicione um novo curso na coleção 'cursos' do DevEstudos com addDoc. O curso tem titulo 'React Avançado' e cargaHoraria 40.",
+      "codigoInicial": "import { addDoc, collection } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst docRef = await addDoc(collection(db, 'cursos'), {\n  titulo: 'React Avançado',\n  cargaHoraria: 40\n});\n",
+      "correta": "import { addDoc, collection } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst docRef = await addDoc(collection(db, 'cursos'), {\n  titulo: 'React Avançado',\n  cargaHoraria: 40\n});\nconsole.log('Curso criado com ID:', docRef.id);",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["addDoc", "crud"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-1-3",
+      "titulo": "Listar Documentos",
+      "tipo": "complete-codigo",
+      "explicacao": "getDocs(collectionRef) busca TODOS os documentos de uma coleção. O retorno é um QuerySnapshot com método forEach. É tipo abrir a gaveta e pegar todas as fichas de uma vez.",
+      "pergunta": "Liste todos os cursos do DevEstudos usando getDocs e mostre o título de cada um.",
+      "codigoInicial": "import { collection, getDocs } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst snapshot = await getDocs(collection(db, 'cursos'));\nsnapshot.forEach(doc => console.log(doc.data().titulo));\n",
+      "correta": "import { collection, getDocs } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst snapshot = await getDocs(collection(db, 'cursos'));\nsnapshot.forEach(doc => console.log(doc.id, doc.data().titulo));",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["getDocs", "listagem"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-1-4",
+      "titulo": "Deletar Documento",
+      "tipo": "complete-codigo",
+      "explicacao": "deleteDoc(docRef) apaga um documento. Cuidado: não existe 'lixeira' no Firestore — depois de deletar, acabou. Sempre confirme antes de deletar dados importantes.",
+      "pergunta": "Delete o curso com ID 'curso123' da coleção 'cursos'.",
+      "codigoInicial": "import { doc, deleteDoc } from 'firebase/firestore';\nimport { db } from './firebase';\n\nawait deleteDoc(doc(db, 'cursos', 'curso123'));\n",
+      "correta": "import { doc, deleteDoc } from 'firebase/firestore';\nimport { db } from './firebase';\n\nawait deleteDoc(doc(db, 'cursos', 'curso123'));\nconsole.log('Curso deletado');",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["deleteDoc", "remover"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-1-5",
+      "titulo": "Consultas com Filtro",
+      "tipo": "complete-codigo",
+      "explicacao": "query combina where, orderBy e limit. where('cargaHoraria', '>=', 30) filtra. orderBy('titulo') ordena. limit(5) limita. É tipo: 'me mostra os 5 cursos mais longos com mais de 30 horas'.",
+      "pergunta": "Busque os 3 cursos com cargaHoraria >= 30, ordenados por titulo.",
+      "codigoInicial": "import { collection, query, where, orderBy, limit, getDocs } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst q = query(\n  collection(db, 'cursos'),\n  where('cargaHoraria', '>=', 30),\n  orderBy('titulo'),\n  limit(3)\n);\n\nconst snapshot = await getDocs(q);\nsnapshot.forEach(doc => console.log(doc.data()));\n",
+      "correta": "import { collection, query, where, orderBy, limit, getDocs } from 'firebase/firestore';\nimport { db } from './firebase';\n\nconst q = query(\n  collection(db, 'cursos'),\n  where('cargaHoraria', '>=', 30),\n  orderBy('titulo'),\n  limit(3)\n);\n\nconst snapshot = await getDocs(q);\nsnapshot.forEach(doc => console.log(doc.id, doc.data()));",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["query", "filtro"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-1-6",
+      "titulo": "Escutar em Tempo Real",
+      "tipo": "multipla-escolha",
+      "explicacao": "onSnapshot é um LISTENER que roda o callback SEMPRE que a coleção muda. Perfeito pra chats, notificações, feeds. Diferente de getDocs (só busca uma vez), onSnapshot fica 'ouvindo'. É tipo grupo de WhatsApp: você vê as mensagens novas automaticamente.",
+      "pergunta": "Qual método mantém os dados sincronizados em tempo real?",
+      "alternativas": ["getDocs()", "fetchDocs()", "onSnapshot()", "watchDocs()"],
+      "correta": "onSnapshot()",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["onsnapshot", "tempo-real"]
+    }
+  ]
+}

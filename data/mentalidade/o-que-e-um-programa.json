@@ -1,0 +1,123 @@
+{
+  "id": "o-que-e-um-programa",
+  "nome": "O que é um Programa — A Cozinha da Programação",
+  "descricao": "Entrada, processamento e saída explicados de forma simples usando a lógica de uma cozinha.",
+  "ordem": 1,
+  "duracao": "1 semana",
+  "questoes": [
+    {
+      "id": "ment-aula-1",
+      "titulo": "📖 A Cozinha da Programação",
+      "tipo": "aula",
+      "explicacao": "Todo programa de computador funciona como uma receita de cozinha: recebe ingredientes (entrada), prepara-os (processamento) e serve o prato pronto (saída).",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["programa", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Pense num programa de computador como o fluxo de uma **cozinha de restaurante**." },
+        { "tipo": "texto", "valor": "1. **Entrada (Input):** São os ingredientes brutos que chegam da despensa. Em um sistema, são os dados fornecidos pelo usuário, como um clique de botão, seu nome digitado, ou arquivos enviados." },
+        { "tipo": "texto", "valor": "2. **Processamento (Processing):** É o trabalho do cozinhar: cortar, misturar, assar. O computador transforma os dados de entrada usando regras lógicas e cálculos matemáticos." },
+        { "tipo": "texto", "valor": "3. **Saída (Output):** É o prato final servido na mesa. Para o usuário, é a informação exibida na tela, um arquivo salvo ou uma mensagem de sucesso." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Exemplo clássico em código:\nlet pao = '🥖';\nlet queijo = '🧀';\nlet sanduiche = pao + queijo; // Processamento\nconsole.log(sanduiche);      // Saída" },
+        { "tipo": "resultado", "valor": "🥖🧀" },
+        { "tipo": "legenda", "valor": "💡 Dica: Lembre-se sempre desse ciclo. Todo software no mundo — do WhatsApp à NASA — segue o padrão Entrada ➔ Processamento ➔ Saída." }
+      ]
+    },
+    {
+      "id": "ment-aula-2",
+      "titulo": "👀 Execução Sequencial",
+      "tipo": "exemplo",
+      "explicacao": "Um computador é extremamente obediente. Ele executa as instruções exatamente de cima para baixo, linha por linha, sem pular nenhuma etapa.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["programa", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Na cozinha, se você tentar assar o bolo antes de misturar os ovos e a farinha, a receita falhará. Na programação, a **ordem dos passos** é fundamental." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// O computador executa exatamente nesta ordem:\nconsole.log('1. Preparando ingredientes...');\nconsole.log('2. Misturando tudo no liquidificador...');\nconsole.log('3. Servindo o suco gelado!');" },
+        { "tipo": "resultado", "valor": "1. Preparando ingredientes...\n2. Misturando tudo no liquidificador...\n3. Servindo o suco gelado!" },
+        { "tipo": "legenda", "valor": "💡 Dica: Se você colocar o passo 3 no topo do arquivo, o computador servirá o suco antes mesmo de preparar os ingredientes, o que geraria um erro lógico!" }
+      ]
+    },
+    {
+      "id": "ment-1",
+      "titulo": "Receita vs Programa",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pense numa receita de bolo: os ingredientes são a **Entrada**; misturar e assar é o **Processamento**; o bolo pronto é a **Saída**. Um programa de computador funciona exatamente igual: dados entram, o sistema processa e o resultado sai.",
+      "pergunta": "Se um programa de computador funciona como uma receita de bolo, o que seriam os 'ingredientes'?",
+      "alternativas": [
+        "O forno onde o bolo assa",
+        "Os dados de entrada enviados pelo usuário",
+        "A forma de alumínio",
+        "O fogão a gás"
+      ],
+      "correta": "Os dados de entrada enviados pelo usuário",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["programa", "entrada", "saida"]
+    },
+    {
+      "id": "ment-2",
+      "titulo": "Processar = Cozinhar",
+      "tipo": "multipla-escolha",
+      "explicacao": "O processamento é o 'cozimento' dos dados. Você joga farinha, ovos e açúcar (entrada), bate e bota no forno (processa) e uma massa nova aparece (saída). O computador faz essa mesma mágica, mas usando cálculos com números e textos.",
+      "pergunta": "Em um sistema de ERP que calcula o salário líquido de um funcionário, qual etapa representa o 'processamento'?",
+      "alternativas": [
+        "O valor fixo do salário bruto digitado no cadastro",
+        "A ação de subtrair os descontos de IR e INSS do salário bruto",
+        "O valor do salário líquido final exibido na tela",
+        "O nome e o cargo do funcionário"
+      ],
+      "correta": "A ação de subtrair os descontos de IR e INSS do salário bruto",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["processamento", "erp"]
+    },
+    {
+      "id": "ment-3",
+      "titulo": "Calculadora de IMC",
+      "tipo": "complete-codigo",
+      "explicacao": "O IMC (Índice de Massa Corporal) é calculado dividindo o peso pela altura multiplicada por ela mesma. Vamos criar essa receita: guardamos o peso, guardamos a altura e processamos o cálculo.",
+      "pergunta": "Complete a linha 3 do código aplicando a fórmula matemática correta para calcular o IMC (peso dividido por altura vezes altura).",
+      "codigoInicial": "let peso = 70;\nlet altura = 1.75;\nlet imc = \nconsole.log(imc);",
+      "correta": "let peso = 70;\nlet altura = 1.75;\nlet imc = peso / (altura * altura);\nconsole.log(imc);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["algoritmo", "imc", "variaveis"],
+      "validacao": "typeof imc !== 'undefined' && Math.abs(imc - 22.86) < 0.01"
+    },
+    {
+      "id": "ment-4",
+      "titulo": "Fila do Supermercado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Por padrão, um programa de computador é muito obediente e executa o código linha por linha, de cima para baixo, exatamente como uma fila de supermercado de caixa único. Ele não pula etapas nem lê a última linha antes da primeira.",
+      "pergunta": "Se você escrever o seguinte código no seu arquivo:\n\nconsole.log('Passo 1')\nconsole.log('Passo 2')\nconsole.log('Passo 3')\n\nQual será a ordem exata de exibição das mensagens na tela?",
+      "alternativas": [
+        "Passo 3, Passo 2, Passo 1",
+        "Passo 1, Passo 2, Passo 3",
+        "Todas as três frases aparecem juntas ao mesmo tempo",
+        "A ordem muda de forma aleatória cada vez que o site abre"
+      ],
+      "correta": "Passo 1, Passo 2, Passo 3",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["fluxo", "sequencial"]
+    },
+    {
+      "id": "ment-5",
+      "titulo": "Seu Primeiro Programa",
+      "tipo": "complete-codigo",
+      "explicacao": "O comando `console.log()` funciona como o 'alto-falante' do seu código. Tudo o que você coloca dentro dos parênteses e entre aspas, o computador pega e imprime textualmente na tela para o usuário ler.",
+      "pergunta": "Complete o código abaixo para fazer o seu programa exibir a clássica mensagem de boas-vindas: 'Olá, mundo!'",
+      "codigoInicial": "console.log(",
+      "correta": "console.log('Olá, mundo!')",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["console", "saida"],
+      "validacao": "string"
+    }
+  ]
+}

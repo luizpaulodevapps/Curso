@@ -1,0 +1,82 @@
+{
+  "id": "react-6",
+  "nome": "Componentizando o DevEstudos — Projeto Final",
+  "descricao": "Quebrar o DevEstudos em componentes React. Estrutura, estado, estratégia.",
+  "ordem": 6,
+  "duracao": "2 semanas",
+  "projeto": "Componentizar o DevEstudos em React",
+  "questoes": [
+    {
+      "id": "react-6-1",
+      "titulo": "Component Tree",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de codar, desenhe a árvore de componentes. App > Header, Main, Footer. Main > Sidebar, Content. Content > ModuleList, ModuleCard. Saber a hierarquia é tipo ter mapa antes de viajar.",
+      "pergunta": "Qual o primeiro passo pra componentizar uma UI?",
+      "alternativas": ["Codar tudo de uma vez", "Desenhar a árvore de componentes", "Instalar bibliotecas", "Escrever CSS"],
+      "correta": "Desenhar a árvore de componentes",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["arvore", "planejamento"]
+    },
+    {
+      "id": "react-6-2",
+      "titulo": "Quebrar em Partes",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada parte da UI vira um componente separado. O header vira Header, a lista de cursos vira CourseList, cada curso vira CourseCard. Componente pequeno = fácil de testar, manter, reutilizar. É tipo Lego: cada peça é simples, juntas formam o castelo.",
+      "pergunta": "Por que quebrar em componentes pequenos?",
+      "alternativas": ["Mais código", "Fácil de manter e reutilizar", "Mais rápido no navegador", "Menos arquivos"],
+      "correta": "Fácil de manter e reutilizar",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["componentizacao", "reutilizacao"]
+    },
+    {
+      "id": "react-6-3",
+      "titulo": "Estado Global vs Local",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nem todo estado precisa ser global. Estado de input (digitação) é local. Usuário logado é global (Context). Regra: se só UM componente usa, é local. Se MUITOS precisam, sobe ou usa context. É tipo: escova de dentes é pessoal, sofá é compartilhado.",
+      "pergunta": "O que determina se um estado deve ser global?",
+      "alternativas": ["Tamanho do dado", "Quantos componentes precisam dele", "Tipo do dado", "Velocidade"],
+      "correta": "Quantos componentes precisam dele",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["estado", "global"]
+    },
+    {
+      "id": "react-6-4",
+      "titulo": "Container vs Presentacional",
+      "tipo": "multipla-escolha",
+      "explicacao": "Componente Container: lógica, estado, dados. Componente Presentacional: só renderiza (UI pura). Separar ajuda na testabilidade. É tipo: Container é o chef de cozinha (decide o cardápio), Presentacional é o garçom (só serve o prato).",
+      "pergunta": "Componente presentacional deve focar em...",
+      "alternativas": ["Buscar dados", "Renderizar UI", "Gerenciar estado", "Chamar APIs"],
+      "correta": "Renderizar UI",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["container", "presentacional"]
+    },
+    {
+      "id": "react-6-5",
+      "titulo": "Props vs Context",
+      "tipo": "multipla-escolha",
+      "explicacao": "Props pra dados que descem 1-2 níveis. Context pra dados profundos/globais. No DevEstudos: tema (Context), moduloAtual (props entre componentes próximos). É tipo: bilhete (props) pra quem tá perto, rádio (context) pra todo mundo.",
+      "pergunta": "No DevEstudos, o tema (claro/escuro) deve ser...",
+      "alternativas": ["Props", "Context", "useState local", "localStorage direto"],
+      "correta": "Context",
+      "xp": 10,
+      "nivel": "avancado",
+      "tags": ["props", "context"]
+    },
+    {
+      "id": "react-6-6",
+      "titulo": "Testar Componentes",
+      "tipo": "multipla-escolha",
+      "explicacao": "Teste de componente verifica: renderiza sem erro, props funcionam, eventos disparam. Ferramentas: React Testing Library, Vitest. Teste pequeno = componente pequeno = fácil de testar. É tipo inspeção de qualidade: cada peça é testada antes de montar o produto final.",
+      "pergunta": "O que um teste de componente deve verificar?",
+      "alternativas": ["Só performance", "Se renderiza, props e eventos funcionam", "Apenas estilo", "Nada, componente não se testa"],
+      "correta": "Se renderiza, props e eventos funcionam",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["teste", "qualidade"]
+    }
+  ]
+}

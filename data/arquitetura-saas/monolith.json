@@ -1,0 +1,107 @@
+{
+  "id": "arq-saas-1",
+  "nome": "Missão 1 — Monolito vs Microsserviços",
+  "descricao": "Quando usar cada arquitetura.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Decidir arquitetura do DevEstudos SaaS",
+  "questoes": [
+    {
+      "id": "arq-saas-1-1",
+      "titulo": "O que é um monolito?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Monolito é tipo food truck: tudo num veículo só. Cozinha, caixa, estoque — tudo junto. Fácil de montar, mas se quebrar, para tudo.",
+      "pergunta": "Qual a principal desvantagem de uma arquitetura monolítica?",
+      "alternativas": [
+        "Se um componente falha, pode derrubar todo o sistema",
+        "É mais lento que microsserviços",
+        "Não funciona na nuvem",
+        "Gasta mais memória"
+      ],
+      "correta": "Se um componente falha, pode derrubar todo o sistema",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["monolito", "arquitetura"]
+    },
+    {
+      "id": "arq-saas-1-2",
+      "titulo": "Microsserviços prematuros",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Over-engineering é começar com microsserviços quando você ainda nem sabe se alguém vai usar seu sistema. É tipo comprar 3 food trucks diferentes antes de vender o primeiro lanche.",
+      "pergunta": "Para uma startup em validação de produto, começar com microsserviços é a escolha mais recomendada.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["microsservicos", "overengineering", "startup"]
+    },
+    {
+      "id": "arq-saas-1-3",
+      "titulo": "Por que DevEstudos começa como monolito",
+      "tipo": "multipla-escolha",
+      "explicacao": "O DevEstudos é uma plataforma de cursos com escolas como tenants. No começo não sabemos quantas escolas vão aderir. Monolito permite iterar rápido e descobrir o product-market fit sem o custo operacional de microsserviços.",
+      "pergunta": "Qual o principal motivo para o DevEstudos começar como monolito?",
+      "alternativas": [
+        "Monolito é mais barato de hospedar",
+        "Velocidade de iteração e validação do produto antes de escalar",
+        "Microsserviços não suportam multi-tenant",
+        "A equipe não sabe programar microsserviços"
+      ],
+      "correta": "Velocidade de iteração e validação do produto antes de escalar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["devestudos", "monolito", "startup"]
+    },
+    {
+      "id": "arq-saas-1-4",
+      "titulo": "Quando extrair um microsserviço",
+      "tipo": "multipla-escolha",
+      "explicacao": "Extrair um microsserviço é como destacar uma estação de trabalho da sua cozinha. Só faça quando a estação estiver tão cheia de pedidos que atrapalha as outras. Um bom sinal é quando uma funcionalidade tem requisitos de escalabilidade ou deploy diferentes do resto.",
+      "pergunta": "Qual destes NÃO é um bom motivo para extrair um microsserviço?",
+      "alternativas": [
+        "Time precisa fazer deploy independente da funcionalidade X",
+        "Funcionalidade X precisa escalar em ritmo diferente do resto",
+        "O código do monolito está feio — vamos reescrever tudo em microsserviços",
+        "Funcionalidade X usa tecnologia diferente (ex: processamento de vídeo)"
+      ],
+      "correta": "O código do monolito está feio — vamos reescrever tudo em microsserviços",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["microsservicos", "decomposicao", "arquitetura"]
+    },
+    {
+      "id": "arq-saas-1-5",
+      "titulo": "Erro real: microsserviços prematuros",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro clássico: uma startup de educação criou 12 microsserviços antes do primeiro cliente. Passaram 6 meses orquestrando containers, enquanto o concorrente fez um monolito em 2 semanas e conquistou o mercado. Moral da história: valide primeiro, distribua depois.",
+      "pergunta": "Qual problema o erro real exemplifica?",
+      "alternativas": [
+        "Escolher a tecnologia errada de container",
+        "Over-engineering: complexidade desnecessária antes de validar o produto",
+        "Usar banco de dados errado para microsserviços",
+        "Não contratar engenheiro de infraestrutura"
+      ],
+      "correta": "Over-engineering: complexidade desnecessária antes de validar o produto",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["overengineering", "erro-real", "startup"]
+    },
+    {
+      "id": "arq-saas-1-6",
+      "titulo": "Comunicação entre serviços",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando você divide em microsserviços, eles precisam se falar. Pode ser via HTTP síncrono (como pedir um café no balcão e esperar) ou via mensageria assíncrona (como deixar um bilhete na geladeira e alguém pegar depois). Cada um tem seu lugar.",
+      "pergunta": "Em qual cenário a comunicação assíncrona (fila/mensageria) é mais adequada?",
+      "alternativas": [
+        "Quando o usuário precisa da resposta imediatamente na tela",
+        "Quando o processamento pode ser feito em segundo plano sem impacto pro usuário",
+        "Quando os serviços estão no mesmo servidor",
+        "Quando o banco de dados é compartilhado"
+      ],
+      "correta": "Quando o processamento pode ser feito em segundo plano sem impacto pro usuário",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["comunicacao", "mensageria", "microsservicos"]
+    }
+  ]
+}

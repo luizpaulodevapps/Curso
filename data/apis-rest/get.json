@@ -1,0 +1,103 @@
+{
+  "id": "api-2",
+  "nome": "Missão 2 — GET: Buscando Dados",
+  "descricao": "O método GET para consultar recursos na API.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Implementar a listagem de cursos do DevEstudos via GET",
+  "questoes": [
+    {
+      "id": "api-2-1",
+      "titulo": "O que é GET",
+      "tipo": "multipla-escolha",
+      "explicacao": "GET é o método HTTP para buscar dados. É como olhar o cardápio antes de pedir.",
+      "pergunta": "Qual método HTTP deve ser usado para LISTAR todos os usuários da plataforma DevEstudos?",
+      "alternativas": [
+        "GET /api/usuarios",
+        "POST /api/usuarios",
+        "DELETE /api/usuarios",
+        "PUT /api/usuarios"
+      ],
+      "correta": "GET /api/usuarios",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["get", "http-methods"]
+    },
+    {
+      "id": "api-2-2",
+      "titulo": "Query Params",
+      "tipo": "multipla-escolha",
+      "explicacao": "Query params são filtros na URL depois do ?. Tipo escolher só cursos gratuitos no DevEstudos.",
+      "pergunta": "Como você busca apenas cursos da categoria 'backend' no DevEstudos usando query params?",
+      "alternativas": [
+        "GET /api/cursos?categoria=backend",
+        "GET /api/cursos/categoria/backend",
+        "GET /api/cursos?categoria=backend",
+        "POST /api/cursos?categoria=backend"
+      ],
+      "correta": "GET /api/cursos?categoria=backend",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["get", "query-params"]
+    },
+    {
+      "id": "api-2-3",
+      "titulo": "Path Params",
+      "tipo": "multipla-escolha",
+      "explicacao": "Path params identificam um recurso específico na URL. É como o número do seu apartamento.",
+      "pergunta": "Qual endpoint retorna os detalhes do usuário com ID 42?",
+      "alternativas": [
+        "GET /api/usuarios/42",
+        "GET /api/usuarios?id=42",
+        "POST /api/usuarios/42",
+        "GET /api/42/usuarios"
+      ],
+      "correta": "GET /api/usuarios/42",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["get", "path-params"]
+    },
+    {
+      "id": "api-2-4",
+      "titulo": "fetch() - o erro da Response",
+      "tipo": "complete-codigo",
+      "explicacao": "fetch() retorna um objeto Response, não o JSON direto. Erro clássico é tentar usar os dados sem chamar .json() primeiro.",
+      "pergunta": "Complete o código para buscar cursos do DevEstudos e exibir no console:",
+      "codigoInicial": "fetch('https://api.dev estudos.com/cursos')\n  .then(resposta => ___)\n  .then(dados => console.log(dados))",
+      "codigoCompleto": "fetch('https://api.dev estudos.com/cursos')\n  .then(resposta => resposta.json())\n  .then(dados => console.log(dados))",
+      "respostaEsperada": "resposta.json()",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["fetch", "javascript", "erro-real"]
+    },
+    {
+      "id": "api-2-5",
+      "titulo": "GET não tem body",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Requisições GET não devem ter corpo. Os dados vão na URL (query params) ou no path.",
+      "pergunta": "É correto enviar um corpo JSON em uma requisição GET.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["get", "boas-praticas"]
+    },
+    {
+      "id": "api-2-6",
+      "titulo": "Idempotência do GET",
+      "tipo": "multipla-escolha",
+      "explicacao": "GET é idempotente: chamar a mesma URL várias vezes não muda o estado do servidor. É como perguntar as horas repetidamente.",
+      "pergunta": "O que significa dizer que o método GET é idempotente?",
+      "alternativas": [
+        "Fazer várias requisições GET idênticas produz o mesmo resultado e não altera o servidor",
+        "GET sempre retorna o mesmo status code",
+        "GET só pode ser chamado uma vez",
+        "GET modifica o recurso no servidor"
+      ],
+      "correta": "Fazer várias requisições GET idênticas produz o mesmo resultado e não altera o servidor",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["get", "idempotencia"]
+    }
+  ]
+}

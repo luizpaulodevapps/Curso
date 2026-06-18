@@ -1,0 +1,103 @@
+{
+  "id": "supa-4",
+  "nome": "Missão 4 — Storage no Supabase",
+  "descricao": "Gerenciando upload e download de arquivos com Supabase Storage.",
+  "ordem": 4,
+  "duracao": "1 hora e 30 minutos",
+  "projeto": "Implementar upload de avatar e materiais de curso no DevEstudos",
+  "questoes": [
+    {
+      "id": "supa-4-1",
+      "titulo": "Buckets no Storage",
+      "tipo": "multipla-escolha",
+      "explicacao": "Buckets são como pastas raiz. Cada bucket tem suas próprias políticas de acesso. Público vs Privado.",
+      "pergunta": "No Supabase Storage, o que é um bucket?",
+      "alternativas": [
+        "Um container de arquivos com políticas de acesso próprias",
+        "Um tipo de banco de dados",
+        "Uma tabela PostgreSQL especial para arquivos",
+        "Um CDN global"
+      ],
+      "correta": "Um container de arquivos com políticas de acesso próprias",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "storage", "buckets"]
+    },
+    {
+      "id": "supa-4-2",
+      "titulo": "Upload de arquivo",
+      "tipo": "complete-codigo",
+      "explicacao": "O método upload do Storage recebe o path e o arquivo. O Supabase lida com o armazenamento no S3 interno.",
+      "pergunta": "Complete o código para fazer upload do avatar do usuário no DevEstudos:",
+      "codigoInicial": "const { data, error } = await supabase.storage\n  .from('___')\n  .upload('avatars/joao.jpg', file)",
+      "codigoCompleto": "const { data, error } = await supabase.storage\n  .from('devestudos')\n  .upload('avatars/joao.jpg', file)",
+      "respostaEsperada": "devestudos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "storage", "upload"]
+    },
+    {
+      "id": "supa-4-3",
+      "titulo": "URL pública vs privada",
+      "tipo": "multipla-escolha",
+      "explicacao": "Bucket público: qualquer um com a URL acessa. Bucket privado: precisa de token de autenticação pra acessar.",
+      "pergunta": "Qual método obtém uma URL pública de um arquivo no Supabase Storage?",
+      "alternativas": [
+        "getPublicUrl()",
+        "getUrl()",
+        "getSignedUrl()",
+        "createPublicUrl()"
+      ],
+      "correta": "getPublicUrl()",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "storage", "urls"]
+    },
+    {
+      "id": "supa-4-4",
+      "titulo": "Políticas de acesso no Storage",
+      "tipo": "multipla-escolha",
+      "explicacao": "Storage também usa RLS! Dá pra criar policies como: 'só o dono pode deletar', 'qualquer logado pode ver'.",
+      "pergunta": "No Storage do Supabase, como você controla quem pode fazer upload de arquivos?",
+      "alternativas": [
+        "Criando políticas RLS no bucket (INSERT policy para upload)",
+        "Configurando no docker-compose",
+        "Não é possível controlar acesso no Storage",
+        "Apenas usuários admin podem fazer upload"
+      ],
+      "correta": "Criando políticas RLS no bucket (INSERT policy para upload)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "storage", "rls"]
+    },
+    {
+      "id": "supa-4-5",
+      "titulo": "Erro real: bucket público sem necessidade",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real: deixar bucket como público quando os arquivos deveriam ser privados (ex: materiais pagos do curso).",
+      "pergunta": "Buckets públicos no Supabase Storage devem ser usados para qualquer tipo de arquivo, inclusive conteúdos pagos.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "storage", "seguranca", "erro-real"]
+    },
+    {
+      "id": "supa-4-6",
+      "titulo": "getSignedUrl para arquivos privados",
+      "tipo": "multipla-escolha",
+      "explicacao": "Para bucket privado, você gera uma URL assinada com tempo de expiração. É como um convite temporário.",
+      "pergunta": "Como acessar um arquivo em bucket privado no Supabase Storage?",
+      "alternativas": [
+        "Usando getSignedUrl() com tempo de expiração",
+        "Usando getPublicUrl()",
+        "Copiando a URL direto do Dashboard",
+        "Baixando o arquivo pelo SQL Editor"
+      ],
+      "correta": "Usando getSignedUrl() com tempo de expiração",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "storage", "signed-url"]
+    }
+  ]
+}

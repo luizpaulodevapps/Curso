@@ -1,0 +1,108 @@
+{
+  "id": "git-9",
+  "nome": "🏆 Missão Final — Contribuindo para o DevEstudos",
+  "descricao": "Aplique tudo: leia uma tarefa real, crie branch, faça commits, push, abra PR e responda a review.",
+  "ordem": 9,
+  "duracao": "4 horas",
+  "projeto": "Fluxo completo de contribuição no DevEstudos",
+  "questoes": [
+    {
+      "id": "git-9-1",
+      "titulo": "Lendo uma Tarefa Real",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você recebeu: 'Adicionar um sistema de conquistas (badges). Quando o usuário completa um módulo, ganha um badge. Deve aparecer no perfil.' Antes de codificar, você precisa: 1) Entender o requisito 2) Planejar a implementação 3) Decidir a abordagem. Isso é o que todo dev faz antes de escrever código.",
+      "pergunta": "Qual o primeiro passo ao receber uma tarefa como essa?",
+      "alternativas": [
+        "Entender o requisito, planejar a implementação e decidir a abordagem antes de codificar",
+        "Começar a codificar imediatamente",
+        "Criar a branch e fazer commit vazio",
+        "Perguntar no chat se alguém já fez"
+      ],
+      "correta": "Entender o requisito, planejar a implementação e decidir a abordagem antes de codificar",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "planejamento"]
+    },
+    {
+      "id": "git-9-2",
+      "titulo": "Erro Real: Push Recusado (Non-fast-forward)",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você tentou git push e recebeu:\n\n```\n! [rejected] main -> main (non-fast-forward)\nerror: failed to push some refs\n```\n\nIsso acontece quando o repositório remoto tem commits que você não tem localmente. Alguém fez push antes de você. Solução: git pull --rebase origin main para atualizar seu local com os commits remotos, depois tenta push de novo.",
+      "pergunta": "O que significa o erro 'non-fast-forward' ao fazer push?",
+      "alternativas": [
+        "O remoto tem commits que você não tem local — precisa fazer pull primeiro",
+        "Sua internet caiu",
+        "O repositório foi deletado",
+        "O Git está corrompido"
+      ],
+      "correta": "O remoto tem commits que você não tem local — precisa fazer pull primeiro",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "erro", "push"]
+    },
+    {
+      "id": "git-9-3",
+      "titulo": "Erro Real: Merge Conflict no PR",
+      "tipo": "multipla-escolha",
+      "explicacao": "Seu PR mostra 'This branch has conflicts that must be resolved'. Isso significa que a main andou e sua branch ficou para trás. Você pode: 1) Resolver online no GitHub (editor simples) ou 2) Localmente: git merge main na sua branch, resolver, git push. O GitHub também tem botão 'Resolve conflicts' para conflitos simples.",
+      "pergunta": "Como resolver conflitos de merge em um PR?",
+      "alternativas": [
+        "Git merge main localmente, resolver, commitar e fazer push, OU usar o resolvedor online do GitHub",
+        "Fechar o PR e abrir um novo",
+        "Deletar a branch e recomeçar",
+        "Pedir para o revisor resolver"
+      ],
+      "correta": "Git merge main localmente, resolver, commitar e fazer push, OU usar o resolvedor online do GitHub",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "erro", "conflito"]
+    },
+    {
+      "id": "git-9-4",
+      "titulo": "Respondendo a Code Review",
+      "tipo": "multipla-escolha",
+      "explicacao": "Seu revisor comentou: 'Sugiro extrair a lógica de cálculo de badges para uma função separada.' Você concorda. O que fazer? 1) Agradece o feedback 2) Faz a alteração 3) Commita 4) Push (o PR atualiza automaticamente) 5) Marca o comentário como resolvido. Não precisa fechar e abrir novo PR — o mesmo PR se atualiza com novos commits.",
+      "pergunta": "Após fazer as alterações solicitadas no code review, o que acontece com o PR?",
+      "alternativas": [
+        "O PR é atualizado automaticamente com git push — os revisores veem as mudanças",
+        "Precisa fechar e abrir um novo PR",
+        "O GitHub ignora commits depois do PR aberto",
+        "Só o autor do PR vê as alterações"
+      ],
+      "correta": "O PR é atualizado automaticamente com git push — os revisores veem as mudanças",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "code-review"]
+    },
+    {
+      "id": "git-9-5",
+      "titulo": "Checklist Antes do Merge",
+      "tipo": "multipla-escolha",
+      "explicacao": "Checklist final antes de mergear: 1) PR aprovado por pelo menos 1 revisor 2) Sem conflitos 3) Branch atualizada com main 4) Testes passando 5) Código revisado. Só então clique em 'Merge pull request'. Depois: delete a branch (GitHub oferece botão) e atualize sua main local.",
+      "pergunta": "Qual a ação correta APÓS o merge do PR no GitHub?",
+      "alternativas": [
+        "Deletar a branch remota (botão no GitHub) e atualizar a main local com git pull",
+        "Manter a branch para referência futura",
+        "Nada, o PR já fechou",
+        "Criar um novo branch da mesma feature"
+      ],
+      "correta": "Deletar a branch remota (botão no GitHub) e atualizar a main local com git pull",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "merge", "cleanup"]
+    },
+    {
+      "id": "git-9-6",
+      "titulo": "Practical: Fluxo Completo de Contribuição",
+      "tipo": "complete-codigo",
+      "explicacao": "Execute o fluxo completo de contribuição profissional.",
+      "pergunta": "Complete o fluxo completo para contribuir com o DevEstudos:",
+      "codigoInicial": "# Tarefa: Adicionar sistema de conquistas (issue #1)\n\n# 1. Branch\n",
+      "correta": "git switch -c feature/sistema-de-conquistas\n\n# 2. Modificações\ngit add .\ngit commit -m 'Implementa badges: XP, streak e nível'\n\n# 3. Sincronizar com main atualizada\ngit switch main\ngit pull origin main --rebase\ngit switch feature/sistema-de-conquistas\ngit rebase main\n\n# 4. Push e PR\ngit push -u origin feature/sistema-de-conquistas\n# Abrir PR no GitHub com descrição:\n# 'Adiciona sistema de conquistas. Closes #1'\n\n# 5. Responder review: novos commits → git push\n# 6. Merge no GitHub\n# 7. Cleanup\ngit switch main\ngit pull origin main\ngit branch -d feature/sistema-de-conquistas\n# Botão 'Delete branch' no GitHub ✅",
+      "xp": 50,
+      "nivel": "avancado",
+      "tags": ["pratica", "fluxo-completo", "final"],
+      "validacao": ""
+    }
+  ]
+}

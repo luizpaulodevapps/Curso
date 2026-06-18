@@ -1,0 +1,176 @@
+{
+  "id": "pg-1",
+  "nome": "Missão 1 — SELECT",
+  "descricao": "Selecionar dados de uma tabela.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Consultar usuários do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-1-aula",
+      "titulo": "📖 O que é SELECT?",
+      "tipo": "aula",
+      "explicacao": "SELECT é o comando fundamental do SQL para buscar dados em tabelas. É como perguntar ao banco: 'me mostre o que está guardado aqui'.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "SELECT é o comando que BUSCA dados em uma tabela. Pense no banco como uma planilha gigante e o SELECT como a ferramenta que exibe as linhas que você quer." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "SELECT * FROM usuarios;" },
+        { "tipo": "resultado", "valor": "| id | nome  | email           |\n| 1  | Luiz  | luiz@email.com  |\n| 2  | Ana   | ana@email.com   |" },
+        { "tipo": "legenda", "valor": "O * significa 'todas as colunas'. É o coringa do SELECT." },
+        { "tipo": "texto", "valor": "Você também pode selecionar colunas específicas em vez de usar *. Isso é mais eficiente." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "SELECT nome, email FROM usuarios;" },
+        { "tipo": "resultado", "valor": "| nome  | email           |\n| Luiz  | luiz@email.com  |\n| Ana   | ana@email.com   |" }
+      ]
+    },
+    {
+      "id": "pg-1-exemplo",
+      "titulo": "👀 SELECT na Prática",
+      "tipo": "exemplo",
+      "explicacao": "Vamos ver o SELECT funcionando com dados reais do DevEstudos, filtrando colunas e entendendo o resultado.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Imagine a tabela 'alunos' do DevEstudos. Vamos buscar apenas quem tem ID específico:" },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "SELECT nome, email, curso FROM alunos WHERE id = 1;" },
+        { "tipo": "resultado", "valor": "| nome  | email           | curso    |\n| Luiz  | luiz@email.com  | React    |" },
+        { "tipo": "legenda", "valor": "A cláusula WHERE filtra linhas. Só volta quem atende à condição." },
+        { "tipo": "texto", "valor": "Sem WHERE, o SELECT retorna todas as linhas da tabela." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "SELECT nome, curso FROM alunos;" },
+        { "tipo": "resultado", "valor": "| nome  | curso     |\n| Luiz  | React     |\n| Ana   | Node.js   |\n| Carla | PostgreSQL|" }
+      ]
+    },
+    {
+      "id": "pg-1-1",
+      "titulo": "SELECT básico",
+      "tipo": "multipla-escolha",
+      "explicacao": "Imagine que o banco do DevEstudos é um armário de fichas. Cada ficha é um usuário. O comando SELECT é sua mão pegando todas as fichas de uma vez.",
+      "pergunta": "Qual comando seleciona TODAS as colunas da tabela usuarios?",
+      "alternativas": [
+        "SELECT * FROM usuarios;",
+        "GET usuarios;",
+        "SHOW usuarios;",
+        "FIND usuarios;"
+      ],
+      "correta": "SELECT * FROM usuarios;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select"]
+    },
+    {
+      "id": "pg-1-2",
+      "titulo": "Colunas específicas",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nem sempre você quer tudo — igual pegar só o nome e email da lista de alunos do DevEstudos em vez de carregar a ficha inteira.",
+      "pergunta": "Qual query retorna apenas nome e email da tabela usuarios?",
+      "alternativas": [
+        "SELECT nome, email FROM usuarios;",
+        "SELECT * FROM usuarios WHERE nome, email;",
+        "GET nome, email FROM usuarios;",
+        "SELECT nome + email FROM usuarios;"
+      ],
+      "correta": "SELECT nome, email FROM usuarios;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select"]
+    },
+    {
+      "id": "pg-1-3",
+      "titulo": "Erro real — ponto-e-vírgula esquecido",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você preparou o café, mas esqueceu de apertar o botão de ligar. O PostgreSQL também não executa nada se faltar o ponto-e-vírgula — ele fica esperando a continuação.",
+      "pergunta": "O que acontece ao rodar `SELECT * FROM usuarios` (sem ponto-e-vírgula)?",
+      "alternativas": [
+        "O PostgreSQL exibe erro de sintaxe e não executa.",
+        "O PostgreSQL executa mas ignora o resultado.",
+        "O PostgreSQL fica esperando mais entrada do usuário (prompt secundário).",
+        "O PostgreSQL assume um ponto-e-vírgula automaticamente."
+      ],
+      "correta": "O PostgreSQL fica esperando mais entrada do usuário (prompt secundário).",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "select"]
+    },
+    {
+      "id": "pg-1-4",
+      "titulo": "SELECT DISTINCT",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pensa na lista de presença do DevEstudos: se o João veio 5 vezes, você não quer o nome dele 5 vezes. O DISTINCT funciona como um 'só uma vez por aluno'.",
+      "pergunta": "Qual query retorna os valores únicos da coluna cidade da tabela usuarios, sem repetições?",
+      "alternativas": [
+        "SELECT DISTINCT cidade FROM usuarios;",
+        "SELECT UNIQUE cidade FROM usuarios;",
+        "SELECT cidade DISTINCT FROM usuarios;",
+        "SELECT DINSTINCT cidade FROM usuarios;"
+      ],
+      "correta": "SELECT DISTINCT cidade FROM usuarios;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select", "distinct"]
+    },
+    {
+      "id": "pg-1-5",
+      "titulo": "Alias com AS",
+      "tipo": "complete-codigo",
+      "explicacao": "Apelidos são como dar um 'nome de guerra' para as colunas. A tabela do DevEstudos chama 'data_cadastro' mas na tela você quer mostrar só 'Cadastro em'.",
+      "pergunta": "Complete a query para exibir a coluna nome com o apelido (alias) 'Nome do Usuário':\n\nSELECT nome ________ usuarios;",
+      "alternativas": [],
+      "correta": "SELECT nome AS \"Nome do Usuário\" FROM usuarios;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select", "alias"]
+    },
+    {
+      "id": "pg-1-6",
+      "titulo": "Comentários SQL",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Comentários são como post-its no código — o PostgreSQL simplesmente ignora e segue reto.",
+      "pergunta": "No PostgreSQL, tudo que vem depois de `--` em uma linha é ignorado pelo banco.",
+      "alternativas": [],
+      "correta": "Verdadeiro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "select", "comentarios"]
+    },
+    {
+      "id": "pg-1-7",
+      "titulo": "Erro real — SELECT sem FROM",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pedir SELECT sem FROM é como mandar você buscar um livro em uma biblioteca que não existe. O PostgreSQL não vai adivinhar de onde tirar os dados.",
+      "pergunta": "Qual o erro ao executar `SELECT nome` sem a cláusula FROM?",
+      "alternativas": [
+        "O PostgreSQL entende que é da tabela atual e executa.",
+        "Erro de sintaxe: falta a cláusula FROM.",
+        "O PostgreSQL assume a tabela 'public' como padrão.",
+        "Retorna NULL silenciosamente."
+      ],
+      "correta": "Erro de sintaxe: falta a cláusula FROM.",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "select"]
+    },
+    {
+      "id": "pg-1-8",
+      "titulo": "Precedência de * com outras colunas",
+      "tipo": "multipla-escolha",
+      "explicacao": "O * é um 'pegue tudo'. Misturar * com colunas específicas não funciona — é como pedir 'me dá o mercado inteiro e também uma maçã específica'.",
+      "pergunta": "O que acontece com `SELECT *, nome FROM usuarios;`?",
+      "alternativas": [
+        "Retorna todas as colunas e depois a coluna nome novamente.",
+        "Erro: * não pode ser combinado com outras colunas no SELECT.",
+        "Retorna apenas as colunas listadas depois do *.",
+        "O * sobrescreve as colunas listadas."
+      ],
+      "correta": "Retorna todas as colunas e depois a coluna nome novamente.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "select", "asterisco"]
+    }
+  ]
+}

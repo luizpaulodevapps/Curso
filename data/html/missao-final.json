@@ -1,0 +1,104 @@
+{
+  "id": "html-7",
+  "nome": "🏆 Missão Final — Publicando o Site DevEstudos",
+  "descricao": "Planejamento, HTML semântico, validação W3C, SEO, Open Graph e debugging. Você vai criar a landing page do DevEstudos do zero.",
+  "ordem": 7,
+  "duracao": "4 horas",
+  "projeto": "Landing page DevEstudos",
+  "questoes": [
+    {
+      "id": "html-7-1",
+      "titulo": "Planejando a Landing Page",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de escrever código, você planeja a estrutura. Uma landing page geralmente tem: hero (título + CTA), seção 'Sobre', seção 'Cursos', seção 'Depoimentos' e footer com contato. O header com nav fica no topo. O footer fica no final. É como desenhar a planta antes de construir.",
+      "pergunta": "Qual a estrutura MAIS comum de uma landing page, do topo ao fim?",
+      "alternativas": [
+        "footer > main > header > nav",
+        "header (com nav) > main (hero, seções) > footer",
+        "main > header > footer > nav",
+        "nav > footer > header > main"
+      ],
+      "correta": "header (com nav) > main (hero, seções) > footer",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["html", "landing-page", "planejamento"]
+    },
+    {
+      "id": "html-7-2",
+      "titulo": "Estrutura Semântica DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "HTML semântico é sobre usar a tag certa pra cada coisa: <header> pro topo, <nav> pro menu, <main> pro conteúdo principal, <section> pra cada bloco, <footer> pro rodapé. Isso ajuda SEO, acessibilidade e manutenção.",
+      "pergunta": "Crie o esqueleto semântico de uma landing page DevEstudos: header com nav (links 'Cursos' e 'Contato'), main com section hero (h1 'DevEstudos' + p 'Aprenda programação'), footer com '© 2025 DevEstudos'.",
+      "codigoInicial": "<header>\n  <nav>\n    <a href=\"#cursos\">Cursos</a>",
+      "correta": "<header>\n  <nav>\n    <a href=\"#cursos\">Cursos</a>\n    <a href=\"#contato\">Contato</a>\n  </nav>\n</header>\n<main>\n  <section>\n    <h1>DevEstudos</h1>\n    <p>Aprenda programação</p>\n  </section>\n</main>\n<footer>\n  <p>© 2025 DevEstudos</p>\n</footer>",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["html", "semantica", "landing-page"]
+    },
+    {
+      "id": "html-7-3",
+      "titulo": "Selinho de Qualidade W3C",
+      "tipo": "multipla-escolha",
+      "explicacao": "O W3C Validator (validator.w3.org) é o 'detector de mentiras' do HTML. Ele lê seu código e aponta cada erro: tags sem fechamento, atributos duplicados, aninhamento errado. Pense nele como um corretor ortográfico, mas pra HTML. Passe sempre seu código por ele antes de publicar.",
+      "pergunta": "O que o validador W3C faz com seu HTML?",
+      "alternativas": [
+        "Minifica o código pra ficar mais rápido",
+        "Verifica se o HTML segue os padrões oficiais e aponta erros",
+        "Converte HTML em PDF",
+        "Publica o site automaticamente"
+      ],
+      "correta": "Verifica se o HTML segue os padrões oficiais e aponta erros",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["html", "w3c", "validacao"]
+    },
+    {
+      "id": "html-7-4",
+      "titulo": "Erro Real: Parse Error Explosivo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erros de parse acontecem quando o HTML viola a sintaxe básica: esquecer de fechar uma tag (<p> sem </p>), aninhar errado (<p><div>...</p></div>) ou usar caracteres especiais sem escapar (& sem &amp;). O navegador tenta 'adivinhar' o que você queria, mas o layout quebra. O validador W3C pega todos esses erros.",
+      "pergunta": "Você escreveu <p>Preço: R$ 50 & 10% de desconto</p> e o parágrafo sumiu. O que causou o problema?",
+      "alternativas": [
+        "O R$ não é permitido em HTML",
+        "O & foi interpretado como início de entidade HTML — precisa ser &amp;",
+        "O <p> precisa de um atributo de estilo",
+        "Números decimais não funcionam em HTML"
+      ],
+      "correta": "O & foi interpretado como início de entidade HTML — precisa ser &amp;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "parse"]
+    },
+    {
+      "id": "html-7-5",
+      "titulo": "Meta Tags e Open Graph",
+      "tipo": "complete-codigo",
+      "explicacao": "Meta tags são 'etiquetas invisíveis' no <head> que dizem ao Google e redes sociais como seu site aparece. O Open Graph (og:) controla como o link aparece quando alguém compartilha no WhatsApp, Facebook, etc. É tipo a capa do livro: se não tiver, ninguém clica.",
+      "pergunta": "Adicione no <head>: charset UTF-8, viewport responsivo, description 'Cursos de programação', og:title 'DevEstudos', og:image 'capa.jpg'.",
+      "codigoInicial": "<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "correta": "<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta name=\"description\" content=\"Cursos de programação\">\n<meta property=\"og:title\" content=\"DevEstudos\">\n<meta property=\"og:image\" content=\"capa.jpg\">",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["html", "seo", "meta", "opengraph"]
+    },
+    {
+      "id": "html-7-6",
+      "titulo": "Erro Real: O Site Que Ninguém Acha",
+      "tipo": "multipla-escolha",
+      "explicacao": "Seu HTML precisa de <title> descritivo, meta description e lang=\"pt-BR\" pro Google entender o assunto e exibir corretamente nos resultados de busca. Sem <title>, o navegador mostra 'index.html' como nome da aba — e o Google mostra 'Sem título' no resultado. É como ter uma loja sem placa na fachada.",
+      "pergunta": "O site foi publicado mas no Google aparece 'index.html' com um texto genérico, e a aba do navegador também mostra 'index.html'. Qual o erro?",
+      "alternativas": [
+        "O servidor não configurou o DNS",
+        "Faltou <title> descritivo no <head> e meta description pro SEO",
+        "O HTML não tem <!DOCTYPE html>",
+        "O arquivo precisa se chamar 'home.html' em vez de 'index.html'"
+      ],
+      "correta": "Faltou <title> descritivo no <head> e meta description pro SEO",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "seo"]
+    }
+  ]
+}

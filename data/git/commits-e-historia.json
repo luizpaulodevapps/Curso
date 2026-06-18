@@ -1,0 +1,108 @@
+{
+  "id": "git-2",
+  "nome": "Missão 2 — Navegando no Histórico",
+  "descricao": "Ver histórico, comparar versões, desfazer mudanças e ignorar arquivos.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Explorar e gerenciar o histórico do DevEstudos",
+  "questoes": [
+    {
+      "id": "git-2-1",
+      "titulo": "git log — A Linha do Tempo",
+      "tipo": "multipla-escolha",
+      "explicacao": "git log mostra o histórico de commits em ordem reversa (mais recente primeiro). Cada entrada mostra: hash, autor, data, mensagem. git log --oneline resume cada commit a uma linha. git log --graph mostra a árvore de branches. É como folhear um álbum de fotos do projeto.",
+      "pergunta": "Qual comando mostra o histórico de commits de forma resumida?",
+      "alternativas": [
+        "git log --oneline",
+        "git history",
+        "git show",
+        "git status"
+      ],
+      "correta": "git log --oneline",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "log", "historico"]
+    },
+    {
+      "id": "git-2-2",
+      "titulo": "git diff — O Que Mudou?",
+      "tipo": "multipla-escolha",
+      "explicacao": "git diff mostra as diferenças entre o working directory e o staging. git diff --staged mostra as diferenças entre staging e último commit. git diff hash1..hash2 compara dois commits. As linhas em verde foram adicionadas, em vermelho removidas. É o 'antes e depois' do código.",
+      "pergunta": "Como ver o que mudou antes de fazer um commit?",
+      "alternativas": [
+        "git diff",
+        "git status",
+        "git log",
+        "git show"
+      ],
+      "correta": "git diff",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "diff"]
+    },
+    {
+      "id": "git-2-3",
+      "titulo": ".gitignore — O Que NÃO Versionar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Arquivo .gitignore na raiz do projeto lista padrões de arquivos que o Git deve ignorar. Exemplos: node_modules/, .env, .next/, dist/. Isso evita versionar bibliotecas, secrets e artefatos de build. Crie .gitignore antes do primeiro commit — é mais fácil que remover depois.",
+      "pergunta": "O que deve estar no .gitignore?",
+      "alternativas": [
+        "node_modules/, .env, .next/, dist/",
+        "Código fonte do projeto",
+        "Arquivos de documentação",
+        "Testes automatizados"
+      ],
+      "correta": "node_modules/, .env, .next/, dist/",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "gitignore"]
+    },
+    {
+      "id": "git-2-4",
+      "titulo": "Desfazendo Mudanças",
+      "tipo": "multipla-escolha",
+      "explicacao": "Três níveis de 'desfazer': git restore arquivo.js descarta mudanças não staged. git restore --staged arquivo.js tira do staging mas mantém as mudanças. git commit --amend altera a mensagem do último commit ou adiciona arquivos esquecidos. git reset --soft HEAD~1 desfaz o último commit mas mantém as mudanças no staging.",
+      "pergunta": "Qual comando desfaz o último commit mantendo as mudanças nos arquivos?",
+      "alternativas": [
+        "git reset --soft HEAD~1",
+        "git restore arquivo.js",
+        "git commit --amend",
+        "git reset --hard HEAD~1"
+      ],
+      "correta": "git reset --soft HEAD~1",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "undo", "reset"]
+    },
+    {
+      "id": "git-2-5",
+      "titulo": "git restore vs git reset",
+      "tipo": "multipla-escolha",
+      "explicacao": "git restore trabalha em arquivos individuais. git reset trabalha em commits. Restore = 'desfaz mudança neste arquivo'. Reset = 'volta o repositório para um commit anterior'. Pense: restore é um CTRL+Z no arquivo, reset é um CTRL+Z no tempo do projeto.",
+      "pergunta": "Qual a diferença entre git restore e git reset?",
+      "alternativas": [
+        "restore desfaz mudanças em arquivos, reset move o ponteiro do repositório para outro commit",
+        "São a mesma coisa com nomes diferentes",
+        "reset desfaz mudanças em arquivos, restore move commits",
+        "Nenhum, ambos fazem a mesma coisa"
+      ],
+      "correta": "restore desfaz mudanças em arquivos, reset move o ponteiro do repositório para outro commit",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "restore", "reset"]
+    },
+    {
+      "id": "git-2-6",
+      "titulo": "Practical: Corrigindo um Erro",
+      "tipo": "complete-codigo",
+      "explicacao": "Você fez um commit com mensagem errada. Corrija sem criar um commit novo.",
+      "pergunta": "Complete a sequência para corrigir a mensagem do último commit:",
+      "codigoInicial": "# Último commit tem mensagem 'arrumei' \n# Queremos mudar para 'Corrige validação de email no formulário de cadastro'\n",
+      "correta": "git commit --amend -m 'Corrige validação de email no formulário de cadastro'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "amend"],
+      "validacao": ""
+    }
+  ]
+}

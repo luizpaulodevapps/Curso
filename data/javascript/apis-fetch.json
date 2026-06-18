@@ -1,0 +1,85 @@
+{
+  "id": "js-7",
+  "nome": "Missão 7 — APIs com Fetch: Buscando Dados no Mundo",
+  "descricao": "fetch(url), .then/.catch, async/await, try/catch, resposta JSON.",
+  "ordem": 7,
+  "duracao": "2 horas",
+  "projeto": "Carregar cursos de uma API para o DevEstudos",
+  "questoes": [
+    {
+      "id": "js-7-1",
+      "titulo": "O que é fetch?",
+      "tipo": "multipla-escolha",
+      "explicacao": "fetch é a função nativa do JavaScript pra fazer requisições HTTP. Ela busca dados de uma URL (tipo encomendar algo que vem de outro lugar). fetch retorna uma Promise — uma promessa de que os dados vão chegar.",
+      "pergunta": "O que fetch(url) retorna?",
+      "alternativas": ["Os dados prontos", "Uma Promise", "Um erro", "Nada"],
+      "correta": "Uma Promise",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["fetch", "Promise"]
+    },
+    {
+      "id": "js-7-2",
+      "titulo": "Promise e then",
+      "tipo": "multipla-escolha",
+      "explicacao": "Promise é tipo 'pedido de delivery': você pede (fetch), e quando chega (.then), você faz algo com o pedido. Se o motoboy cai (.catch), você trata o erro. O then executa quando a resposta chega.",
+      "pergunta": "O que o método .then() faz numa Promise?",
+      "alternativas": ["Dispara um erro", "Executa quando a Promise é resolvida", "Cancela a Promise", "Cria uma nova Promise"],
+      "correta": "Executa quando a Promise é resolvida",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["then", "Promise"]
+    },
+    {
+      "id": "js-7-3",
+      "titulo": "async/await",
+      "tipo": "multipla-escolha",
+      "explicacao": "async/await é açúcar sintático pra trabalhar com Promises de forma mais legível. async marca a função como assíncrona. await 'espera' a Promise resolver. Código parece síncrono mas não é — é tipo assistir a água ferver em vez de ficar olhando.",
+      "pergunta": "O que a palavra-chave 'await' faz?",
+      "alternativas": ["Cria uma Promise", "Pausa a execução até a Promise resolver", "Cancela a requisição", "Transforma em síncrono"],
+      "correta": "Pausa a execução até a Promise resolver",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["async", "await"]
+    },
+    {
+      "id": "js-7-4",
+      "titulo": "Resposta JSON",
+      "tipo": "complete-codigo",
+      "explicacao": "fetch entrega uma Response. Pra extrair o JSON, chama response.json() — que também retorna uma Promise! Então fetch(url).then(res => res.json()).then(dados => ...). É tipo abrir a caixa (response) e depois tirar o produto de dentro (json).",
+      "pergunta": "Complete: faça fetch de '/api/cursos', converta resposta pra JSON, e exiba os dados.",
+      "codigoInicial": "fetch('/api/cursos')\n  .then(res => res.json())\n  .then(dados => ",
+      "correta": "fetch('/api/cursos')\n  .then(res => res.json())\n  .then(dados => console.log(dados))\n  .catch(erro => console.error(erro));",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["fetch", "json", "then"],
+      "validacao": ""
+    },
+    {
+      "id": "js-7-5",
+      "titulo": "try/catch com async/await",
+      "tipo": "complete-codigo",
+      "explicacao": "try/catch é tipo rede de segurança do trapezista: try tenta executar o arriscado (fetch), catch pega se cair (erro de rede, URL inválida). Com async/await, fica mais limpo que .then/.catch.",
+      "pergunta": "Use async/await e try/catch pra buscar '/api/cursos', converter pra JSON e exibir. Capture erros com console.error.",
+      "codigoInicial": "async function carregarCursos() {\n  try {\n    const resposta = await fetch('/api/cursos');\n    const dados = ",
+      "correta": "async function carregarCursos() {\n  try {\n    const resposta = await fetch('/api/cursos');\n    const dados = await resposta.json();\n    console.log(dados);\n  } catch (erro) {\n    console.error('Erro ao carregar cursos:', erro);\n  }\n}",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["async", "await", "fetch", "try", "catch"],
+      "validacao": ""
+    },
+    {
+      "id": "js-7-6",
+      "titulo": "Carregar Cursos da API",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos carregar os cursos do DevEstudos de uma API! Use async/await pra buscar '/api/cursos'. Cada curso tem { id, nome, xp }. Renderize cada nome num <li> dentro de uma <ul id=\"cursos\">.",
+      "pergunta": "Use async/await: busque '/api/cursos', itere com forEach, e pra cada curso crie <li> com o nome dentro de <ul id=\"cursos\">.",
+      "codigoInicial": "async function renderizarCursos() {\n  const res = await fetch('/api/cursos');\n  const cursos = await res.json();\n  const ul = document.getElementById('cursos');\n  cursos.forEach(curso => {\n    ",
+      "correta": "async function renderizarCursos() {\n  const res = await fetch('/api/cursos');\n  const cursos = await res.json();\n  const ul = document.getElementById('cursos');\n  cursos.forEach(curso => {\n    const li = document.createElement('li');\n    li.textContent = curso.nome;\n    ul.appendChild(li);\n  });\n}",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["fetch", "async", "DOM", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

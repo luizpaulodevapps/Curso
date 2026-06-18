@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-1",
+  "nome": "Fundamentos — Como Agentes de IA Funcionam",
+  "descricao": "Contexto, janela, o que o agente vê e como ele pensa.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Configurar o ambiente DevEstudos com IA",
+  "questoes": [
+    {
+      "id": "ia1-1-1",
+      "titulo": "O que um Agente de Código Vê?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando você abre o Claude no VS Code ou o chat do AntiGravity, o agente não vê seu projeto inteiro. Ele vê: os arquivos que você abriu (tabs), o arquivo atual, seleção de texto, e o que você digitou no chat. É como se ele só pudesse olhar por uma janela.",
+      "pergunta": "O que um agente de IA no VS Code consegue 'ver' automaticamente?",
+      "alternativas": [
+        "Os arquivos abertos no editor, a seleção atual e o prompt digitado no chat",
+        "O repositório git inteiro, incluindo arquivos não trackeados",
+        "Todos os arquivos .env e secrets do projeto",
+        "O histórico completo de commits e branches"
+      ],
+      "correta": "Os arquivos abertos no editor, a seleção atual e o prompt digitado no chat",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["contexto", "fundamentos"]
+    },
+    {
+      "id": "ia1-1-2",
+      "titulo": "Janela de Contexto",
+      "tipo": "multipla-escolha",
+      "explicacao": "Janela de contexto é o limite de tokens que o modelo consegue processar. Modelos modernos têm 200k tokens. Cada prompt + arquivos anexados consomem a janela. Quando enche, o modelo 'esquece' o começo da conversa.",
+      "pergunta": "O que acontece quando a janela de contexto enche?",
+      "alternativas": [
+        "O modelo começa a esquecer as primeiras mensagens da conversa",
+        "O modelo fica mais rápido",
+        "O modelo trava e pede para reiniciar",
+        "Nada, a janela é infinita"
+      ],
+      "correta": "O modelo começa a esquecer as primeiras mensagens da conversa",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["contexto", "janela"]
+    },
+    {
+      "id": "ia1-1-3",
+      "titulo": "Tokens não são Palavras",
+      "tipo": "multipla-escolha",
+      "explicacao": "O modelo quebra texto em tokens — pedaços de 1 a 4 caracteres. 'function' é 1 token, 'useState' são 2. Entender tokens ajuda a estimar custo e se o prompt cabe na janela.",
+      "pergunta": "O que é um token para um modelo de IA?",
+      "alternativas": [
+        "Um pedaço de texto de 1 a 4 caracteres processado como unidade",
+        "Uma palavra completa em português",
+        "Um caractere individual",
+        "Uma linha de código"
+      ],
+      "correta": "Um pedaço de texto de 1 a 4 caracteres processado como unidade",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["tokens", "fundamentos"]
+    },
+    {
+      "id": "ia1-1-4",
+      "titulo": "Chat vs Completar Código",
+      "tipo": "multipla-escolha",
+      "explicacao": "Existem dois modos: chat (você conversa e pede refatorações) e inline (sugestão de linha enquanto digita). Saber a diferença evita frustração.",
+      "pergunta": "Quando usar o modo chat em vez do inline completion?",
+      "alternativas": [
+        "Para tarefas complexas como refatorar, criar componentes ou debugar",
+        "Sempre, o chat é superior em tudo",
+        "Para autocompletar nomes de variáveis",
+        "Nunca, o inline é mais rápido"
+      ],
+      "correta": "Para tarefas complexas como refatorar, criar componentes ou debugar",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["chat", "completion"]
+    },
+    {
+      "id": "ia1-1-5",
+      "titulo": "Alucinação — O Agente Inventa",
+      "tipo": "multipla-escolha",
+      "explicacao": "Alucinação é quando o modelo inventa algo que parece verdade. Ex: você pergunta 'tem função fetchUsers?' e ele responde 'sim, na linha 42' — mas não existe. Ele não mente, ele completa o padrão mais provável. Sempre verifique referências a código.",
+      "pergunta": "Por que agentes de IA 'alucinam' código que não existe?",
+      "alternativas": [
+        "O modelo completa padrões prováveis, não fatos — pode inventar coisas que parecem certas",
+        "Porque o modelo é malicioso e quer enganar você",
+        "Porque o contexto está corrompido",
+        "Porque não foi treinado em português"
+      ],
+      "correta": "O modelo completa padrões prováveis, não fatos — pode inventar coisas que parecem certas",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["alucinacao", "fundamentos"]
+    },
+    {
+      "id": "ia1-1-6",
+      "titulo": "Practical: Contexto no AntiGravity",
+      "tipo": "complete-codigo",
+      "explicacao": "Você quer que o agente veja 3 arquivos específicos do DevEstudos.",
+      "pergunta": "Complete o prompt incluindo os arquivos no contexto:",
+      "codigoInicial": "Quero modificar o sistema de XP.\n\nArquivos relevantes:\n- @lib/sistema-xp.ts\n- @components/BarraProgresso.tsx\n- ",
+      "correta": "@app/perfil/page.tsx\n\nAdicione uma animação na barra de progresso quando o XP aumentar.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "@", "contexto"],
+      "validacao": ""
+    }
+  ]
+}

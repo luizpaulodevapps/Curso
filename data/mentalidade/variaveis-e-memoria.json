@@ -1,0 +1,120 @@
+{
+  "id": "variaveis-e-memoria",
+  "nome": "Variáveis — Seus Potes de Memória",
+  "descricao": "Variáveis são como potes com etiqueta. Elas guardam informações para você usar mais tarde no seu programa.",
+  "ordem": 2,
+  "duracao": "1 semana",
+  "questoes": [
+    {
+      "id": "ment-var-aula-1",
+      "titulo": "📖 O Pote com Etiqueta",
+      "tipo": "aula",
+      "explicacao": "Uma variável é como um pote plástico onde guardamos uma informação. Para não esquecer o que tem dentro, colamos uma etiqueta com um nome na tampa.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["variavel", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Computadores têm uma memória gigantesca. Para guardar dados lá dentro e depois encontrá-los facilmente, usamos as **variáveis**." },
+        { "tipo": "texto", "valor": "Pense nelas como **potes com etiqueta**:\n- A **etiqueta** é o nome da variável (ex: `idade`).\n- O **conteúdo** dentro do pote é o valor guardado (ex: `25`)." },
+        { "tipo": "texto", "valor": "No JavaScript, criamos um pote usando a palavra reservada `let` e colocamos o valor lá dentro usando o sinal de igual (`=`), que funciona como uma atribuição." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let idade = 25;\nconsole.log(idade); // Exibe o valor do pote idade" },
+        { "tipo": "resultado", "valor": "25" },
+        { "tipo": "legenda", "valor": "💡 Dica: Dê nomes claros e descritivos para suas etiquetas. Prefira `let precoDoProduto = 10;` em vez de `let p = 10;`." }
+      ]
+    },
+    {
+      "id": "ment-var-aula-2",
+      "titulo": "👀 Potes Modificáveis vs Lacrados",
+      "tipo": "exemplo",
+      "explicacao": "Podemos criar potes cujo valor pode ser trocado a qualquer momento (let), e potes que são trancados de fábrica e nunca mudam (const).",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["let", "const", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Quando usamos a palavra `let`, estamos permitindo que o pote tenha seu valor alterado mais tarde." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let bebida = 'Água';\nbebida = 'Suco'; // Trocamos o conteúdo\nconsole.log(bebida);" },
+        { "tipo": "resultado", "valor": "Suco" },
+        { "tipo": "texto", "valor": "Já a palavra `const` (de constante) cria um pote lacrado. Tentar alterar o valor de uma constante causará um erro que trava o programa!" },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "const cpf = '123.456.789-00';\n// cpf = '000.000.000-00'; // Isso gera um ERRO e o programa para!" },
+        { "tipo": "legenda", "valor": "💡 Dica: Use `const` por padrão para tudo. Só use `let` se você tiver certeza de que precisará alterar o valor daquela variável mais tarde." }
+      ]
+    },
+    {
+      "id": "ment-var-1",
+      "titulo": "O Pote com Nome",
+      "tipo": "multipla-escolha",
+      "explicacao": "Uma variável é como um pote na memória do computador. Você coloca um valor dentro dele e escreve um nome na tampa (a etiqueta). Sempre que o programa precisar desse valor, ele procura pelo nome impresso na etiqueta.",
+      "pergunta": "Se você escreveu a linha de código `let idade = 25;`, para que serve a palavra `idade`?",
+      "alternativas": [
+        "É o valor exato que está guardado na memória",
+        "É o nome do pote (a etiqueta que identifica o dado)",
+        "É o comando que diz que o número é inteiro",
+        "É o comando que finaliza a execução do programa"
+      ],
+      "correta": "É o nome do pote (a etiqueta que identifica o dado)",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["variavel", "memoria"]
+    },
+    {
+      "id": "ment-var-2",
+      "titulo": "Guardar e Usar",
+      "tipo": "complete-codigo",
+      "explicacao": "A palavra `let` serve para fabricar um pote novo. O sinal de igual (`=`) funciona como uma seta que diz 'coloque este valor aqui dentro'. Depois de guardar, basta usar o nome do pote para exibir o conteúdo.",
+      "pergunta": "Complete o código para guardar o nome 'João' dentro do pote `meuNome` e depois exiba essa variável no console.",
+      "codigoInicial": "let meuNome = 'João';\nconsole.log(",
+      "correta": "let meuNome = 'João';\nconsole.log(meuNome);",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["let", "guardar", "console"],
+      "validacao": "typeof meuNome !== 'undefined' && meuNome === 'João'"
+    },
+    {
+      "id": "ment-var-3",
+      "titulo": "Mudar o Conteúdo",
+      "tipo": "complete-codigo",
+      "explicacao": "Potes criados com `let` têm uma vantagem: você pode esvaziar o conteúdo deles e colocar outra coisa dentro. É como trocar o líquido de uma garrafa: antes ela tinha água, agora tem suco. O pote continua sendo o mesmo, mas o valor mudou.",
+      "pergunta": "A variável `bebida` começou guardando 'água'. Complete a linha 3 para mudar o conteúdo dela para 'suco' (não use a palavra let novamente, pois o pote já existe!).",
+      "codigoInicial": "let bebida = 'água';\nconsole.log(bebida);\n",
+      "correta": "let bebida = 'água';\nconsole.log(bebida);\nbebida = 'suco';\nconsole.log(bebida);",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["reatribuicao", "let"],
+      "validacao": "typeof bebida !== 'undefined' && bebida === 'suco'"
+    },
+    {
+      "id": "ment-var-4",
+      "titulo": "O Pote Lacrado",
+      "tipo": "multipla-escolha",
+      "explicacao": "A palavra `const` serve para criar uma constante, ou seja, um pote que vem lacrado de fábrica. O primeiro valor que você colocar lá dentro ficará preso para sempre. Se você tentar mudar o valor de uma `const` mais adiante, o seu programa vai travar e dar erro.",
+      "pergunta": "Analisando as regras de potes abertos (let) e potes lacrados (const), qual dos códigos abaixo vai DAR ERRO se for executado?",
+      "alternativas": [
+        "let nome = 'Ana'; nome = 'Bia';",
+        "const nome = 'Ana'; nome = 'Bia';",
+        "let nome = 'Ana'; console.log(nome);",
+        "const nome = 'Ana'; console.log(nome);"
+      ],
+      "correta": "const nome = 'Ana'; nome = 'Bia';",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["const", "imutavel"]
+    },
+    {
+      "id": "ment-var-5",
+      "titulo": "Calculadora de Gorjeta",
+      "tipo": "complete-codigo",
+      "explicacao": "Podemos usar o valor de um pote para fazer contas matemáticas e guardar o resultado em um segundo pote. Para calcular 10% de gorjeta, basta multiplicar o valor total da conta por `0.10`.",
+      "pergunta": "Complete a linha 2 calculando o valor da gorjeta (multiplicando a variável conta por 0.10).",
+      "codigoInicial": "let conta = 85;\nlet gorjeta = \nconsole.log(gorjeta);",
+      "correta": "let conta = 85;\nlet gorjeta = conta * 0.10;\nconsole.log(gorjeta);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["calculo", "variavel", "operadores"],
+      "validacao": "typeof gorjeta !== 'undefined' && Math.abs(gorjeta - 8.5) < 0.01"
+    }
+  ]
+}

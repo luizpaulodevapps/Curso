@@ -1,0 +1,84 @@
+{
+  "id": "js-moderno-3",
+  "nome": "Classes e POO — A Fábrica de Objetos",
+  "descricao": "Classes são moldes. Objetos são os produtos feitos desse molde.",
+  "ordem": 3,
+  "duracao": "2 semanas",
+  "projeto": "Modelo OOP para entidades do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-moderno-3-1",
+      "titulo": "Classe é o Molde",
+      "tipo": "multipla-escolha",
+      "explicacao": "Classe = forma de pizza. Objeto = pizza pronta. Uma classe define as propriedades e métodos, e dela criamos vários objetos. class Pessoa { constructor(nome) { this.nome = nome } }.",
+      "pergunta": "O que é uma classe?",
+      "alternativas": ["Um objeto pronto", "Um molde pra criar objetos", "Uma função comum", "Um array especial"],
+      "correta": "Um molde pra criar objetos",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["classe", "poo"]
+    },
+    {
+      "id": "js-moderno-3-2",
+      "titulo": "Instanciar Objeto",
+      "tipo": "complete-codigo",
+      "explicacao": "new NomeDaClasse() cria um objeto novo. new Pessoa('João') = cria uma pessoa chamada João. É tipo apertar o botão da fábrica: sai um produto novo.",
+      "pergunta": "Crie classe Pessoa com constructor(nome, idade) e instancie 'Ana', 25.",
+      "codigoInicial": "class Pessoa {\n  constructor(nome, idade) {\n    this.nome = nome;\n    this.idade = idade;\n  }\n}\n\nconst ana = ",
+      "correta": "class Pessoa {\n  constructor(nome, idade) {\n    this.nome = nome;\n    this.idade = idade;\n  }\n}\n\nconst ana = new Pessoa('Ana', 25);\nconsole.log(ana.nome, ana.idade);",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["new", "instancia"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-3-3",
+      "titulo": "Getters e Setters",
+      "tipo": "multipla-escolha",
+      "explicacao": "get e set permitem controlar acesso a propriedades. get nome() { return this._nome } e set nome(val) { this._nome = val.toUpperCase() }. Parece propriedade, mas é método. É tipo porteiro eletrônico: você aperta (acessa) mas tem validação antes de entrar.",
+      "pergunta": "Qual palavra-chave cria um getter em classe?",
+      "alternativas": ["get", "getter", "accessor", "prop"],
+      "correta": "get",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["getter", "setter"]
+    },
+    {
+      "id": "js-moderno-3-4",
+      "titulo": "Herança - Filho do Pai",
+      "tipo": "multipla-escolha",
+      "explicacao": "class Aluno extends Pessoa faz Aluno herdar TUDO de Pessoa. O 'filho' ganha as propriedades e métodos do 'pai', e pode ter os seus próprios. É tipo canivete suíço: faz tudo que uma faca faz, mais outras coisas.",
+      "pergunta": "O que 'extends' faz?",
+      "alternativas": ["Copia o código do pai", "Faz a classe filha herdar da pai", "Junta duas classes", "Deleta a classe pai"],
+      "correta": "Faz a classe filha herdar da pai",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["heranca", "extends"]
+    },
+    {
+      "id": "js-moderno-3-5",
+      "titulo": "super - Chamar o Pai",
+      "tipo": "complete-codigo",
+      "explicacao": "super() dentro do constructor filho chama o constructor do pai. É tipo 'pai, faz sua parte primeiro, depois eu faço a minha'. super(nome) passa o nome pro pai.",
+      "pergunta": "Crie Aluno extends Pessoa com constructor(nome, matricula) chamando super(nome).",
+      "codigoInicial": "class Pessoa {\n  constructor(nome) { this.nome = nome; }\n}\n\nclass Aluno extends Pessoa {\n  constructor(nome, matricula) {\n    super(nome);\n    this.matricula = matricula;\n  }\n}\n\nconst a = new Aluno('Ana', 123);\n",
+      "correta": "class Pessoa {\n  constructor(nome) { this.nome = nome; }\n}\n\nclass Aluno extends Pessoa {\n  constructor(nome, matricula) {\n    super(nome);\n    this.matricula = matricula;\n  }\n}\n\nconst a = new Aluno('Ana', 123);\nconsole.log(a.nome, a.matricula);",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["super", "heranca"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-3-6",
+      "titulo": "Static - Método da Classe",
+      "tipo": "multipla-escolha",
+      "explicacao": "static cria método CHAMADO DIRETO DA CLASSE, não da instância. Math.random() é static — você não cria um Math pra usar. class Util { static somar(a,b) { return a+b } } → Util.somar(1,2). É tipo 'atalho no mural': não precisa entrar na sala, já tá ali fora.",
+      "pergunta": "Como chamamos um método static?",
+      "alternativas": ["new Classe().metodo()", "Classe.metodo()", "metodo()", "this.metodo()"],
+      "correta": "Classe.metodo()",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["static", "classe"]
+    }
+  ]
+}

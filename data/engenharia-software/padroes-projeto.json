@@ -1,0 +1,112 @@
+{
+  "id": "es-5",
+  "nome": "Missão 5 — Padrões de Projeto: O Kit de Ferramentas do Arquiteto",
+  "descricao": "Observer, Strategy, Factory, Repository, Singleton — quando usar e evitar.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Aplicar padrões de projeto no DevEstudos",
+  "questoes": [
+    {
+      "id": "es-5-1",
+      "titulo": "Observer — quando usar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Observer: vários objetos 'observam' outro e são avisados quando algo acontece. Tipo um grupo de WhatsApp: quando alguém manda mensagem, todo mundo recebe. No DevEstudos: quando um curso é publicado, notificar alunos inscritos (e-mail, push, etc.).",
+      "pergunta": "Qual situação no DevEstudos se beneficia do padrão Observer?",
+      "alternativas": [
+        "Calcular nota de um aluno",
+        "Notificar múltiplos canais (e-mail, SMS, push) quando um evento ocorre",
+        "Criptografar senha do usuário",
+        "Gerar relatório de vendas"
+      ],
+      "correta": "Notificar múltiplos canais (e-mail, SMS, push) quando um evento ocorre",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["observer", "notificacao", "eventos"]
+    },
+    {
+      "id": "es-5-2",
+      "titulo": "Strategy — quando evitar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Strategy: você troca o algoritmo em tempo de execução. Tipo escolher entre ir de carro, ônibus ou bicicleta — o jeito de ir muda, mas o destino é o mesmo. Mas EVITE usar Strategy se você tem só uma estratégia e nunca muda. Não crie 15 classes se um if resolve.",
+      "pergunta": "Quando EVITAR o padrão Strategy?",
+      "alternativas": [
+        "Quando você tem várias formas de calcular frete e novas surgem todo mês",
+        "Quando você tem apenas uma forma de calcular algo sem previsão de mudança",
+        "Quando o algoritmo precisa ser escolhido em runtime",
+        "Quando você quer remover condicionais (ifs) do código"
+      ],
+      "correta": "Quando você tem apenas uma forma de calcular algo sem previsão de mudança",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["strategy", "quando-evitar", "design-patterns"]
+    },
+    {
+      "id": "es-5-3",
+      "titulo": "Factory — criando objetos",
+      "tipo": "complete-codigo",
+      "explicacao": "Factory: esconde a complexidade de criar um objeto. Em vez de 'new FormaDePagamento(tipo, dados)' espalhado pelo código, você chama 'PagamentoFactory.criar(tipo, dados)'. A factory decide qual classe concreta instanciar.",
+      "pergunta": "Complete a Factory para criar o pagamento certo no DevEstudos:",
+      "alternativas": [
+        "class PagamentoFactory { static criar(tipo: string): Pagamento { if (tipo === 'cartao') return new PagamentoCartao(); if (tipo === 'boleto') return new PagamentoBoleto(); } }",
+        "class PagamentoFactory { static criar(tipo: string): Pagamento { return new Pagamento(tipo); } }",
+        "class PagamentoFactory { criar(tipo) { return JSON.parse(tipo); } }",
+        "class PagamentoFactory { static criar(tipo: string): any { return {}; } }"
+      ],
+      "correta": "class PagamentoFactory { static criar(tipo: string): Pagamento { if (tipo === 'cartao') return new PagamentoCartao(); if (tipo === 'boleto') return new PagamentoBoleto(); } }",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["factory", "criacao", "design-patterns"]
+    },
+    {
+      "id": "es-5-4",
+      "titulo": "Repository — abstração de dados",
+      "tipo": "multipla-escolha",
+      "explicacao": "Repository: abstrai o acesso a dados. O resto do sistema não sabe se os dados vêm de banco, API, cache ou arquivo. No DevEstudos, CursoRepository pode começar com PostgreSQL e depois adicionar cache Redis sem mudar quem usa.",
+      "pergunta": "Qual o benefício principal do Repository Pattern?",
+      "alternativas": [
+        "Deixar o banco de dados mais rápido",
+        "Isolar a lógica de acesso a dados do resto da aplicação",
+        "Reduzir o número de queries",
+        "Eliminar a necessidade de ORM"
+      ],
+      "correta": "Isolar a lógica de acesso a dados do resto da aplicação",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["repository", "dados", "abstracao"]
+    },
+    {
+      "id": "es-5-5",
+      "titulo": "Erro real: Singleton mal usado",
+      "tipo": "desafio-pratico",
+      "explicacao": "Singleton = uma única instância global. Útil pra config, logger, conexão com banco. MAS usar Singleton pra estado mutável (ex: 'usuarioLogado') em ambiente multi-tenant é desastre — um usuario sobreescreve o outro. Race condition na certa. No DevEstudos, o tenant atual NUNCA pode ser um Singleton.",
+      "pergunta": "Por que usar Singleton para armazenar o tenant atual é perigoso no DevEstudos?",
+      "alternativas": [
+        "Porque Singleton é sempre lento",
+        "Porque se dois usuários de tenants diferentes acessam ao mesmo tempo, o segundo sobrescreve o primeiro",
+        "Porque Singleton só funciona no Node.js",
+        "Porque o tenant atual muda a cada requisição"
+      ],
+      "correta": "Porque se dois usuários de tenants diferentes acessam ao mesmo tempo, o segundo sobrescreve o primeiro",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "singleton", "race-condition", "tenant"]
+    },
+    {
+      "id": "es-5-6",
+      "titulo": "Combinando padrões",
+      "tipo": "desafio-pratico",
+      "explicacao": "Padrões se combinam! No DevEstudos: Repository (abstrai banco) + Factory (cria repository certo) + Observer (notifica eventos). Um sistema bem arquitetado usa vários padrões juntos, cada um resolvendo um problema específico.",
+      "pergunta": "No DevEstudos, quando um curso é criado, queremos salvar no banco e notificar alunos. Qual combinação de padrões atende?",
+      "alternativas": [
+        "Repository (salvar) + Observer (notificar)",
+        "Singleton (salvar) + Factory (notificar)",
+        "Strategy (salvar) + Observer (notificar)",
+        "Factory (salvar) + Singleton (notificar)"
+      ],
+      "correta": "Repository (salvar) + Observer (notificar)",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["combinacao", "design-patterns", "devetudos"]
+    }
+  ]
+}

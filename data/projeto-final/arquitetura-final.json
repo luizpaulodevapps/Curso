@@ -1,0 +1,86 @@
+{
+  "id": "pf-2",
+  "nome": "Missão Final 2 — Arquitetura do DevEstudos",
+  "descricao": "Frontend, backend, banco, storage, auth, multi-tenant e diagrama de arquitetura.",
+  "ordem": 2,
+  "duracao": "3 horas",
+  "projeto": "Documentar a arquitetura completa do DevEstudos",
+  "questoes": [
+    {
+      "id": "pf-2-1",
+      "titulo": "Arquitetura em Camadas",
+      "tipo": "multipla-escolha",
+      "explicacao": "Uma arquitetura bem desenhada separa responsabilidades. O DevEstudos usa: (1) Camada de Apresentação — Next.js com React, SSR e Tailwind; (2) Camada de Lógica — API Routes do Next.js e Server Actions; (3) Camada de Dados — Supabase PostgreSQL + Firebase Auth; (4) Camada de Storage — Supabase Storage para uploads. Cada camada se comunica com a imediatamente inferior, como um restaurante: garçom (frontend) → cozinha (backend) → despensa (banco).",
+      "pergunta": "Qual a função da camada de Lógica na arquitetura do DevEstudos?",
+      "alternativas": [
+        "Processar requisições, validar dados e orquestrar regras de negócio",
+        "Renderizar o HTML e CSS no navegador",
+        "Armazenar os dados dos usuários",
+        "Gerenciar certificados SSL"
+      ],
+      "correta": "Processar requisições, validar dados e orquestrar regras de negócio",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["arquitetura", "camadas"]
+    },
+    {
+      "id": "pf-2-2",
+      "titulo": "Multi-tenant com tenant_id",
+      "tipo": "multipla-escolha",
+      "explicacao": "Multi-tenant significa que uma única instância do sistema atende vários 'clientes' (tenants), mas os dados de cada um são isolados. No DevEstudos, cada tenant é uma 'turma' ou 'escola'. A mágica está no tenant_id: toda tabela tem essa coluna, e toda consulta SQL filtra por WHERE tenant_id = ?. É como um condomínio: o prédio é o mesmo (a instância), mas cada apartamento é isolado (os dados).",
+      "pergunta": "Como o DevEstudos isola os dados de cada tenant?",
+      "alternativas": [
+        "Adicionando tenant_id em todas as tabelas e filtrando por ele nas consultas",
+        "Criando um banco de dados separado para cada tenant",
+        "Usando senhas diferentes para cada tenant",
+        "Não há isolamento, todos veem tudo"
+      ],
+      "correta": "Adicionando tenant_id em todas as tabelas e filtrando por ele nas consultas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["arquitetura", "multi-tenant"]
+    },
+    {
+      "id": "pf-2-3",
+      "titulo": "Por que Firebase + Supabase Juntos?",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Firebase Auth é maduro, rápido e resolve autenticação (login Google, email, GitHub) em minutos. Supabase oferece PostgreSQL de verdade com RLS (Row Level Security), queries relacionais e Realtime. Juntos: Firebase para quem é o usuário (auth), Supabase para o que o usuário faz (dados). Não é competição — é cada um no seu forte.",
+      "pergunta": "Firebase Auth e Supabase competem pela mesma função na arquitetura?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["arquitetura", "firebase", "supabase"]
+    },
+    {
+      "id": "pf-2-4",
+      "titulo": "Fluxo de Dados: Requisição Completa",
+      "tipo": "complete-codigo",
+      "explicacao": "Quando um usuário faz login e acessa seus cursos, o fluxo é: (1) Next.js renderiza a página; (2) O navegador faz uma requisição para API Route; (3) A API Route verifica o token no Firebase Auth; (4) Busca os dados no Supabase filtrando por tenant_id; (5) Retorna os dados para o frontend; (6) Next.js atualiza a tela. Esse fluxo é rápido porque cada parte faz só o que sabe.",
+      "pergunta": "Complete a ordem correta do fluxo ao acessar a lista de cursos:",
+      "codigoInicial": "1. ___ renderiza a página\n2. Requisição para ___\n3. Verificar token no ___\n4. Buscar dados no ___\n5. ___ atualiza a tela",
+      "correta": "Next.js, API Route, Firebase Auth, Supabase, Next.js",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["arquitetura", "fluxo", "dados"],
+      "validacao": ""
+    },
+    {
+      "id": "pf-2-5",
+      "titulo": "Erro Real: Não Documentar Decisões",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro realíssimo: a equipe decide usar Supabase em vez de Firebase por 'ser melhor', mas não documenta o motivo. Seis meses depois, um novo dev entra no projeto e pergunta 'por que não usamos Firebase Firestore?' — ninguém sabe responder. Decisões arquiteturais precisam ser documentadas com o contexto, as alternativas consideradas e o motivo da escolha. No DevEstudos, crie um ADR (Architecture Decision Record) para cada decisão importante.",
+      "pergunta": "Por que é importante documentar decisões arquiteturais?",
+      "alternativas": [
+        "Para que o motivo da escolha não se perca quando a equipe mudar",
+        "Para ocupar espaço no repositório",
+        "Para que o cliente possa aprovar",
+        "Não é importante, o código fala por si"
+      ],
+      "correta": "Para que o motivo da escolha não se perca quando a equipe mudar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["arquitetura", "erro", "documentacao"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "pf-5",
+  "nome": "Missão Final 5 — Apresentação e Portfólio",
+  "descricao": "Como apresentar o DevEstudos como portfólio, README profissional, demo, LinkedIn, GitHub e próximos passos.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Preparar o DevEstudos para o mercado de trabalho",
+  "questoes": [
+    {
+      "id": "pf-5-1",
+      "titulo": "README que Vende o Projeto",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um README profissional é a porta de entrada do seu portfólio. Deve ter: (1) Nome e descrição do projeto; (2) Prints ou GIF da aplicação funcionando; (3) Link do deploy; (4) Tecnologias usadas (com ícones); (5) Instruções de instalação; (6) Funcionalidades principais. Recrutadores olham o README primeiro — se estiver vazio ou bagunçado, já é um ponto negativo.",
+      "pergunta": "Qual elemento NÃO pode faltar no README do DevEstudos?",
+      "alternativas": [
+        "Link do deploy ao vivo para testar a aplicação",
+        "Meu número de CPF",
+        "A lista de compras do mês",
+        "O código fonte de todas as dependências"
+      ],
+      "correta": "Link do deploy ao vivo para testar a aplicação",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["portfolio", "readme", "apresentacao"]
+    },
+    {
+      "id": "pf-5-2",
+      "titulo": "Erro Real: README Vazio",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real de portfólio: o candidato tem um projeto incrível mas o README é uma linha: 'Projeto DevEstudos'. O recrutador não sabe o que faz, como rodar, qual tech stack, nem onde ver online. README vazio é like não colocando legenda na foto do currículo — perde completamente a oportunidade de causar uma boa impressão. Um bom README leva 30 minutos para escrever e pode definir se você passa ou não na triagem.",
+      "pergunta": "Um README minimalista de uma linha é suficiente para causar uma boa impressão em um recrutador?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["portfolio", "erro", "readme"]
+    },
+    {
+      "id": "pf-5-3",
+      "titulo": "LinkedIn + GitHub: O Par Perfeito",
+      "tipo": "multipla-escolha",
+      "explicacao": "LinkedIn é onde recrutadores te encontram; GitHub é onde eles conferem seu código. Os dois precisam estar alinhados: (1) LinkedIn com link para o GitHub; (2) GitHub com link para o LinkedIn; (3) Ambos com o DevEstudos em destaque; (4) LinkedIn com a descrição do projeto na seção de Projetos; (5) README do GitHub com deploy linkado. É like ter currículo impresso e versão digital — os dois precisam contar a mesma história.",
+      "pergunta": "Qual a melhor forma de usar LinkedIn e GitHub juntos para o DevEstudos?",
+      "alternativas": [
+        "LinkedIn com link pro GitHub, GitHub com link pro LinkedIn, e o projeto em destaque nos dois",
+        "Só LinkedIn importa, GitHub é opcional",
+        "Só GitHub importa, LinkedIn é opcional",
+        "Deixar o projeto só no LinkedIn sem link pro GitHub"
+      ],
+      "correta": "LinkedIn com link pro GitHub, GitHub com link pro LinkedIn, e o projeto em destaque nos dois",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["portfolio", "linkedin", "github"]
+    },
+    {
+      "id": "pf-5-4",
+      "titulo": "Demo ao Vivo na Entrevista",
+      "tipo": "desafio-pratico",
+      "explicacao": "Na entrevista técnica, você vai compartilhar a tela e mostrar o DevEstudos rodando. Prepare um roteiro de 5 minutos: (1) Mostre o deploy funcionando (2) Faça login; (3) Navegue pelos cursos; (4) Responda uma questão; (5) Mostre o progresso. Não improvise — ensaie. É como uma apresentação de TCC: você sabe o que vai mostrar, em que ordem, e o que vai falar em cada tela.",
+      "pergunta": "Qual o melhor roteiro para uma demo ao vivo do DevEstudos?",
+      "alternativas": [
+        "1. Abrir deploy 2. Fazer login 3. Mostrar cursos 4. Responder questão 5. Ver progresso",
+        "1. Mostrar código fonte 2. Mostrar banco 3. Mostrar testes 4. Mostrar deploy",
+        "1. Falar sobre a história do projeto 2. Mostrar documentação 3. Mostrar README",
+        "1. Abrir o Figma 2. Mostrar protótipo 3. Mostrar código 4. Explicar cores"
+      ],
+      "correta": "1. Abrir deploy 2. Fazer login 3. Mostrar cursos 4. Responder questão 5. Ver progresso",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["portfolio", "demo", "entrevista"]
+    },
+    {
+      "id": "pf-5-5",
+      "titulo": "Próximos Passos: Open Source, Freelas e Vagas",
+      "tipo": "multipla-escolha",
+      "explicacao": "O DevEstudos é o trampolim. Com ele no portfólio: (1) Contribua para open source — pegue uma issue de um projeto que você usa e resolva; (2) Freelas — ofereça o DevEstudos como case para pequenas empresas que precisam de plataforma de cursos; (3) Vagas — use o DevEstudos como resposta para 'me conte um projeto que você fez'. Você não sai da trilha formado — você sai armado.",
+      "pergunta": "Qual o melhor próximo passo DEPOIS de finalizar o DevEstudos?",
+      "alternativas": [
+        "Contribuir para um projeto open source relevante para ganhar experiência colaborativa",
+        "Apagar o projeto e começar outro do zero",
+        "Não mostrar para ninguém por vergonha",
+        "Esperar uma vaga cair do céu"
+      ],
+      "correta": "Contribuir para um projeto open source relevante para ganhar experiência colaborativa",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["portfolio", "carreira", "proximos-passos"]
+    }
+  ]
+}

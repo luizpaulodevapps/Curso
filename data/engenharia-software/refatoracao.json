@@ -1,0 +1,112 @@
+{
+  "id": "es-6",
+  "nome": "Missão 6 — Refatoração: Deixando o Código Mais Bonito sem Quebrar Tudo",
+  "descricao": "Extract Method, code smells, TDD + Refatoração.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Refatorar parte real do DevEstudos",
+  "questoes": [
+    {
+      "id": "es-6-1",
+      "titulo": "Extract Method",
+      "tipo": "complete-codigo",
+      "explicacao": "Extract Method: pegar um bloco de código que faz uma coisa específica e extrair pra um método separado. Tipo separar os ingredientes de uma receita que estavam tudo misturado. O código fica mais legível e testável.",
+      "pergunta": "O código abaixo tem um bloco que valida e-mail. Como extrair corretamente?",
+      "alternativas": [
+        "function validarEmail(email: string): boolean { return email.includes('@'); }",
+        "// validar email",
+        "if (email.includes('@')) { }",
+        "const validar = 'email.includes(\"@\")'"
+      ],
+      "correta": "function validarEmail(email: string): boolean { return email.includes('@'); }",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["extract-method", "refatoracao", "funcoes"]
+    },
+    {
+      "id": "es-6-2",
+      "titulo": "Code smells: função longa",
+      "tipo": "multipla-escolha",
+      "explicacao": "Code smells são sinais de que algo cheira mal no código. Função longa é o cheiro mais comum. Se você precisa rolar a tela pra ver a função inteira, é um alerta. Se a função tem mais de 20-30 linhas, considere extrair.",
+      "pergunta": "Qual NÃO é um code smell?",
+      "alternativas": [
+        "Função com 200 linhas",
+        "Muitos parâmetros (mais de 3-4)",
+        "Nome de variável descritivo e claro",
+        "Código duplicado em vários lugares"
+      ],
+      "correta": "Nome de variável descritivo e claro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["code-smells", "refatoracao", "boas-praticas"]
+    },
+    {
+      "id": "es-6-3",
+      "titulo": "Replace Conditional with Polymorphism",
+      "tipo": "desafio-pratico",
+      "explicacao": "Em vez de um monte de if/else ou switch pra cada tipo, use polimorfismo. Cada tipo vira uma classe com um método específico. Ex: ao invés de 'if(tipo === 'pdf') gerarPdf(); if(tipo === 'csv') gerarCsv()', use 'RelatorioPDF' e 'RelatorioCSV' com método 'gerar()'.",
+      "pergunta": "Quantas classes seriam criadas ao aplicar polimorfismo num switch de 5 tipos de relatório?",
+      "alternativas": [
+        "1 classe (a classe original)",
+        "5 classes (uma pra cada tipo) + opcionalmente uma interface/base",
+        "2 classes (um pra cada extremo)",
+        "10 classes"
+      ],
+      "correta": "5 classes (uma pra cada tipo) + opcionalmente uma interface/base",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["polimorfismo", "refatoracao", "design-patterns"]
+    },
+    {
+      "id": "es-6-4",
+      "titulo": "TDD + Refatoração: Red-Green-Refactor",
+      "tipo": "multipla-escolha",
+      "explicacao": "Red-Green-Refactor: 1) Escreve um teste que falha (Red). 2) Escreve o código mais simples que faz passar (Green). 3) Refatora o código deixando bonito (Refactor). Os testes garantem que a refatoração não quebrou nada — é seu cinto de segurança.",
+      "pergunta": "Por que escrever o teste ANTES do código (Red) no TDD?",
+      "alternativas": [
+        "Porque é mais divertido",
+        "Pra garantir que o teste realmente testa o que precisa (e falha se a feature não existe)",
+        "Porque o gerente mandou",
+        "Pra economizar tempo"
+      ],
+      "correta": "Pra garantir que o teste realmente testa o que precisa (e falha se a feature não existe)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["tdd", "testes", "red-green-refactor"]
+    },
+    {
+      "id": "es-6-5",
+      "titulo": "Erro real: refatorar sem testes",
+      "tipo": "desafio-pratico",
+      "explicacao": "Caso real: um dev decidiu 'organizar' uma função de 300 linhas. Sem testes. Extraiu métodos, renomeou variáveis, mudou a ordem das operações. Achou que estava tudo igual. Três dias depois, o Financeiro reportou que notas fiscais estavam saindo com valores errados. A refatoração tinha mudado uma linha de cálculo sem querer.",
+      "pergunta": "Qual lição principal deste erro real?",
+      "alternativas": [
+        "Refatoração deve ser evitada",
+        "Nunca refatore código alheio",
+        "Nunca refatore sem testes automatizados que garantam que o comportamento não mudou",
+        "Refatore apenas em sistemas novos"
+      ],
+      "correta": "Nunca refatore sem testes automatizados que garantam que o comportamento não mudou",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "refatoracao", "testes", "seguranca"]
+    },
+    {
+      "id": "es-6-6",
+      "titulo": "Projeto final: refatorar DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "No DevEstudos, a função 'processarMatricula' tem 150 linhas: valida dados, checa limite de vagas, calcula desconto, gera boleto, envia e-mail, atualiza ranking de gamificação. Seu trabalho é identificar os code smells, extrair os métodos e aplicar os padrões corretos.",
+      "pergunta": "Qual o primeiro passo antes de refatorar 'processarMatricula'?",
+      "alternativas": [
+        "Criar testes automatizados que cobrem os comportamentos atuais",
+        "Reescrever a função do zero",
+        "Comentar as partes que parecem erradas",
+        "Perguntar pro ChatGPT"
+      ],
+      "correta": "Criar testes automatizados que cobrem os comportamentos atuais",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["projeto-final", "devetudos", "refatoracao", "testes"]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "firebase-4",
+  "nome": "Cloud Functions — Cálculo de XP do DevEstudos",
+  "descricao": "Funções serverless: triggers, HTTP, chamadas diretas e configuração.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Cloud Function de XP do DevEstudos",
+  "questoes": [
+    {
+      "id": "firebase-4-1",
+      "titulo": "onCall vs onRequest",
+      "tipo": "multipla-escolha",
+      "explicacao": "onCall é chamada direta do cliente Firebase (functions().httpsCallable()). onRequest é um endpoint HTTP comum (req, res). onCall é mais seguro porque já vem com auth do Firebase embutido. onRequest é tipo entregar pizza (genérico), onCall é tipo entregar com crachá do prédio.",
+      "pergunta": "Qual função é chamada DIRETAMENTE do cliente Firebase com auth embutido?",
+      "alternativas": ["onRequest", "onCall", "onCreate", "onUpdate"],
+      "correta": "onCall",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["onCall", "onRequest"]
+    },
+    {
+      "id": "firebase-4-2",
+      "titulo": "Trigger de Criação",
+      "tipo": "complete-codigo",
+      "explicacao": "functions.firestore.document('caminho/{id}').onCreate() roda AUTOMATICAMENTE quando um documento é criado. Perfeito pra gerar dados derivados: criar perfil, calcular XP, enviar notificação. É tipo 'quando chega um pedido novo, a cozinha já começa a preparar'.",
+      "pergunta": "Crie uma function que, ao criar um documento em 'respostas/{id}', loga 'Nova resposta: ID'.",
+      "codigoInicial": "const functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\nexports.novaResposta = functions.firestore\n  .document('respostas/{respostaId}')\n  .onCreate(async (snap, context) => {\n    console.log('Nova resposta:', context.params.respostaId);\n  });\n",
+      "correta": "const functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\nexports.novaResposta = functions.firestore\n  .document('respostas/{respostaId}')\n  .onCreate(async (snap, context) => {\n    const dados = snap.data();\n    console.log('Nova resposta:', context.params.respostaId, '- XP:', dados.xp);\n  });",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["onCreate", "trigger"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-4-3",
+      "titulo": "Trigger de Atualização",
+      "tipo": "multipla-escolha",
+      "explicacao": "onUpdate dispara quando um documento existente é modificado. O callback recebe change.before (dados antigos) e change.after (dados novos). Útil pra auditar mudanças, recalcular totais, ou disparar ações quando um campo específico muda.",
+      "pergunta": "onUpdate recebe change com quais propriedades?",
+      "alternativas": ["change.before e change.after", "change.old e change.new", "change.previous e change.current", "change.from e change.to"],
+      "correta": "change.before e change.after",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["onUpdate", "trigger"]
+    },
+    {
+      "id": "firebase-4-4",
+      "titulo": "Config de Ambiente",
+      "tipo": "multipla-escolha",
+      "explicacao": "functions.config() guarda variáveis de ambiente (API keys, URLs). Configure com 'firebase functions:config:set chave.valor=abc'. No código, leia com functions.config().chave.valor. É tipo .env mas pro server do Firebase.",
+      "pergunta": "Como acessar uma config de ambiente numa Cloud Function?",
+      "alternativas": ["process.env.CHAVE", "functions.config().chave.valor", "config.chave.valor", "env('chave.valor')"],
+      "correta": "functions.config().chave.valor",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["config", "ambiente"]
+    },
+    {
+      "id": "firebase-4-5",
+      "titulo": "Regiões",
+      "tipo": "multipla-escolha",
+      "explicacao": "Por padrão, functions rodam em us-central1. Dá pra mudar com .region('southamerica-east1'). Escolher a região mais próxima dos usuários reduz latência. Pro DevEstudos (Brasil), southamerica-east1 é a melhor escolha.",
+      "pergunta": "Qual região é ideal pra Cloud Functions no Brasil?",
+      "alternativas": ["us-central1", "europe-west1", "southamerica-east1", "asia-southeast1"],
+      "correta": "southamerica-east1",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["regiao", "latencia"]
+    },
+    {
+      "id": "firebase-4-6",
+      "titulo": "Chamar do Cliente",
+      "tipo": "complete-codigo",
+      "explicacao": "Do cliente React, use getFunctions + httpsCallable pra invocar a function. O nome deve bater com o exports da function. A function recebe data e retorna data. É tipo fazer uma ligação: você disca o número (nome), espera, e recebe a resposta.",
+      "pergunta": "Chame a function 'calcularXP' passando {respostas: 5} e mostre o resultado.",
+      "codigoInicial": "import { getFunctions, httpsCallable } from 'firebase/functions';\n\nconst functions = getFunctions();\nconst calcularXP = httpsCallable(functions, 'calcularXP');\n\nconst result = await calcularXP({ respostas: 5 });\nconsole.log('XP total:', result.data);\n",
+      "correta": "import { getFunctions, httpsCallable } from 'firebase/functions';\n\nconst functions = getFunctions();\nconst calcularXP = httpsCallable(functions, 'calcularXP');\n\nconst result = await calcularXP({ respostas: 5 });\nconsole.log('XP total:', result.data.xp);",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["httpsCallable", "cliente"],
+      "validacao": ""
+    }
+  ]
+}

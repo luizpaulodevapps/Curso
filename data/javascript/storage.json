@@ -1,0 +1,85 @@
+{
+  "id": "js-6",
+  "nome": "Missão 6 — Storage: Salvando pra Sempre (ou até limparem)",
+  "descricao": "localStorage, setItem, getItem, removeItem, JSON.parse/stringify, sessionStorage.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Salvar progresso do usuário no DevEstudos",
+  "questoes": [
+    {
+      "id": "js-6-1",
+      "titulo": "localStorage vs sessionStorage",
+      "tipo": "multipla-escolha",
+      "explicacao": "localStorage guarda dados mesmo depois de fechar o navegador (tipo um armário permanente). sessionStorage apaga quando a aba fecha (tipo rascunho temporário). Ambos ficam no navegador, não no servidor.",
+      "pergunta": "Qual é a diferença entre localStorage e sessionStorage?",
+      "alternativas": ["localStorage guarda só números", "sessionStorage persiste depois de fechar o navegador", "localStorage persiste depois de fechar o navegador", "São a mesma coisa"],
+      "correta": "localStorage persiste depois de fechar o navegador",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["localStorage", "sessionStorage"]
+    },
+    {
+      "id": "js-6-2",
+      "titulo": "setItem e getItem",
+      "tipo": "multipla-escolha",
+      "explicacao": "localStorage.setItem('chave', 'valor') guarda. localStorage.getItem('chave') recupera. Tudo vira string: se você guarda 42, volta como '42'. Daí precisa do JSON.parse pra converter de volta.",
+      "pergunta": "O que localStorage.getItem('nome') retorna?",
+      "alternativas": ["Um objeto", "Um número", "Uma string", "Um booleano"],
+      "correta": "Uma string",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["setItem", "getItem"]
+    },
+    {
+      "id": "js-6-3",
+      "titulo": "removeItem",
+      "tipo": "multipla-escolha",
+      "explicacao": "localStorage.removeItem('chave') deleta aquela chave específica. localStorage.clear() limpa TUDO. removeItem é tipo apagar uma página do caderno. clear é tipo rasgar o caderno inteiro.",
+      "pergunta": "Qual método remove UMA chave específica do localStorage?",
+      "alternativas": ["deleteItem()", "removeItem()", "clear()", "erase()"],
+      "correta": "removeItem()",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["removeItem", "localStorage"]
+    },
+    {
+      "id": "js-6-4",
+      "titulo": "JSON.stringify e JSON.parse",
+      "tipo": "complete-codigo",
+      "explicacao": "JSON.stringify(arr) vira o array em string '[\"a\",\"b\"]' pra guardar no storage. JSON.parse(str) faz o oposto: transforma a string de volta em array/objeto. É tipo empacotar pra enviar pelos correios e desempacotar ao receber.",
+      "pergunta": "Dado const cursos = ['Lógica', 'JS'], guarde no localStorage como 'cursos' e depois recupere exibindo.",
+      "codigoInicial": "const cursos = ['Lógica', 'JS'];\nlocalStorage.setItem('cursos', JSON.stringify(cursos));\nconst recuperado = ",
+      "correta": "const cursos = ['Lógica', 'JS'];\nlocalStorage.setItem('cursos', JSON.stringify(cursos));\nconst recuperado = JSON.parse(localStorage.getItem('cursos'));\nconsole.log(recuperado);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["JSON", "stringify", "parse"],
+      "validacao": ""
+    },
+    {
+      "id": "js-6-5",
+      "titulo": "Verificar se Chave Existe",
+      "tipo": "complete-codigo",
+      "explicacao": "Antes de usar um dado do storage, verifique se ele existe. Se a chave não existe, getItem retorna null. Sempre faça essa checagem pra evitar erros. Tipo: ver se tem leite na geladeira antes de fazer café com leite.",
+      "pergunta": "Verifique se existe a chave 'progresso' no localStorage. Se existir, exiba 'Progresso encontrado', senão 'Nenhum progresso'.",
+      "codigoInicial": "const progresso = localStorage.getItem('progresso');\nif (progresso) {\n  ",
+      "correta": "const progresso = localStorage.getItem('progresso');\nif (progresso) {\n  console.log('Progresso encontrado');\n} else {\n  console.log('Nenhum progresso');\n}",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["localStorage", "verificacao"],
+      "validacao": ""
+    },
+    {
+      "id": "js-6-6",
+      "titulo": "Salvar Progresso do Usuário",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos salvar o progresso do DevEstudos! Crie um objeto com moduloAtual, xpTotal, cursosCompletos. Guarde no localStorage como 'progressoDevEstudos'. Depois recupere e exiba o xpTotal.",
+      "pergunta": "Crie e salve um objeto { moduloAtual: 3, xpTotal: 450, cursosCompletos: ['Lógica', 'JS'] } no localStorage como 'progressoDevEstudos'. Depois exiba o xpTotal.",
+      "codigoInicial": "const progresso = {\n  moduloAtual: 3,\n  xpTotal: 450,\n  cursosCompletos: ['Lógica', 'JS']\n};\n// salve no localStorage\n// recupere e exiba xpTotal\n",
+      "correta": "const progresso = {\n  moduloAtual: 3,\n  xpTotal: 450,\n  cursosCompletos: ['Lógica', 'JS']\n};\nlocalStorage.setItem('progressoDevEstudos', JSON.stringify(progresso));\nconst recuperado = JSON.parse(localStorage.getItem('progressoDevEstudos'));\nconsole.log(recuperado.xpTotal);",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["localStorage", "JSON", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

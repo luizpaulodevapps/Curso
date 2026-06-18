@@ -1,0 +1,95 @@
+{
+  "id": "bd-6",
+  "nome": "Missão 6 — Modelagem de Dados (DER)",
+  "descricao": "Diagrama Entidade-Relacionamento, entidades, atributos, relacionamentos 1:N, N:N, 1:1.",
+  "ordem": 6,
+  "duracao": "3 horas",
+  "projeto": "Modelar o DevEstudos completo: usuarios, cursos, modulos, questoes, progresso, flashcards",
+  "questoes": [
+    {
+      "id": "bd-6-1",
+      "titulo": "Entidade, Atributo e Relacionamento",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DER, entidade é um objeto do mundo real (ex: USUARIO, CURSO). Atributo é uma característica (ex: nome, email). Relacionamento é como as entidades se conectam (ex: USUARIO 'faz' CURSO). Pense como um diagrama de família: pessoas (entidades), características delas (atributos), e quem é parente de quem (relacionamentos).",
+      "pergunta": "No DER do DevEstudos, o que é a entidade CURSO?",
+      "alternativas": [
+        "Uma entidade que representa os cursos disponíveis na plataforma",
+        "Um atributo da tabela usuarios",
+        "Um relacionamento entre usuarios e questoes",
+        "Um tipo de dado do banco"
+      ],
+      "correta": "Uma entidade que representa os cursos disponíveis na plataforma",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["der", "modelagem", "entidade"]
+    },
+    {
+      "id": "bd-6-2",
+      "titulo": "Relacionamento 1:N — Curso e Módulos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Relacionamento 1:N (um para muitos) significa que um registro de uma tabela se relaciona com vários de outra. Ex: um CURSO tem vários MODULOS, mas cada MODULO pertence a UM curso. É o tipo mais comum. No DevEstudos: um curso tem 5 módulos, e cada módulo aponta para o mesmo curso_id.",
+      "pergunta": "Qual o tipo de relacionamento entre CURSO e MODULO no DevEstudos?",
+      "alternativas": [
+        "1:N (um curso tem muitos módulos)",
+        "N:N (muitos cursos têm muitos módulos)",
+        "1:1 (um curso tem um módulo)",
+        "Não há relacionamento"
+      ],
+      "correta": "1:N (um curso tem muitos módulos)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["der", "relacionamento", "1-n"]
+    },
+    {
+      "id": "bd-6-3",
+      "titulo": "Relacionamento N:N — Usuário e Curso",
+      "tipo": "multipla-escolha",
+      "explicacao": "N:N (muitos para muitos) acontece quando vários registros de uma tabela se relacionam com vários de outra. Ex: um USUARIO pode fazer vários CURSOS, e um CURSO pode ter vários USUARIOS. No banco, isso exige uma tabela intermediária (ex: matriculas) com duas FKs: usuario_id e curso_id. Sem essa tabela, não tem como representar N:N.",
+      "pergunta": "Como representamos N:N entre USUARIO e CURSO no DevEstudos?",
+      "alternativas": [
+        "Criando uma tabela intermediária (matriculas) com FKs para ambas as tabelas",
+        "Colocando curso_id na tabela usuarios",
+        "Colocando usuario_id na tabela cursos",
+        "N:N não pode ser representado em banco relacional"
+      ],
+      "correta": "Criando uma tabela intermediária (matriculas) com FKs para ambas as tabelas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["der", "relacionamento", "n-n"]
+    },
+    {
+      "id": "bd-6-4",
+      "titulo": "Etapas da Modelagem",
+      "tipo": "multipla-escolha",
+      "explicacao": "Modelar banco tem 3 etapas: (1) Modelo Conceitual — desenho com entidades e relacionamentos, sem pensar em banco ainda; (2) Modelo Lógico — tabelas, colunas, tipos, PKs, FKs; (3) Modelo Físico — SQL CREATE TABLE de verdade. Pense como construir uma casa: primeiro a planta conceitual (cômodos), depois o projeto lógico (fiação, encanamento), e por fim a construção física.",
+      "pergunta": "Qual a ordem correta das etapas de modelagem de dados?",
+      "alternativas": [
+        "Conceitual → Lógico → Físico",
+        "Físico → Lógico → Conceitual",
+        "Lógico → Físico → Conceitual",
+        "Conceitual → Físico → Lógico"
+      ],
+      "correta": "Conceitual → Lógico → Físico",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["der", "modelagem", "etapas"]
+    },
+    {
+      "id": "bd-6-5",
+      "titulo": "Erro Real: Pular a Modelagem",
+      "tipo": "desafio-pratico",
+      "explicacao": "Erro clássico: o dev abre o banco e começa a criar tabelas na base do 'acha que precisa'. Três semanas depois, descobre que faltou uma entidade, que o relacionamento está errado, e precisa dropar tudo e recomeçar. Pular a modelagem é como construir uma casa sem planta — você vai ter que quebrar paredes depois. No DevEstudos, se você criar 'usuarios' sem planejar que cada usuário pode ter flashcards, depois vai ter que refazer a tabela inteira.",
+      "pergunta": "Você precisa modelar o DevEstudos. A entidade USUARIO se relaciona com FLASHCARD. Um usuario pode ter muitos flashcards, e cada flashcard pertence a um usuario. Qual o tipo de relacionamento?",
+      "alternativas": [
+        "1:N (um usuario tem muitos flashcards)",
+        "N:N (muitos usuarios têm muitos flashcards)",
+        "1:1 (um usuario tem um flashcard)",
+        "Não há relacionamento"
+      ],
+      "correta": "1:N (um usuario tem muitos flashcards)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["der", "erro", "modelagem"]
+    }
+  ]
+}

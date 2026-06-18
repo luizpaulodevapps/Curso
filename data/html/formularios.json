@@ -1,0 +1,98 @@
+{
+  "id": "html-5",
+  "nome": "Missão 5 — Formulários",
+  "descricao": "Input, button, select, textarea. Tudo que o usuário usa pra te responder.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Formulário de contato",
+  "questoes": [
+    {
+      "id": "html-5-1",
+      "titulo": "Campo pra Digitar",
+      "tipo": "multipla-escolha",
+      "explicacao": "<input> é a caixinha onde o usuário escreve. O type define o tipo: \"text\" é texto normal, \"password\" esconde os caracteres, \"email\" valida se tem @. É a 'boca' do formulário — recebe o que o usuário diz.",
+      "pergunta": "Qual atributo define SE o input é de texto, senha ou email?",
+      "alternativas": ["name", "type", "value", "id"],
+      "correta": "type",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["input", "form"]
+    },
+    {
+      "id": "html-5-2",
+      "titulo": "Form de Login",
+      "tipo": "complete-codigo",
+      "explicacao": "<form> é o envelope que leva os dados. <label> é a etiqueta dizendo 'o que vai aqui'. <button type=\"submit\"> é o botão de 'enviar carta'. Junta tudo e vira um formulário de login.",
+      "pergunta": "Crie um form de login com: label 'Usuário' (input texto), label 'Senha' (input password), botão 'Entrar'.",
+      "codigoInicial": "<form>\n  <label>",
+      "correta": "<form>\n  <label>Usuário: <input type=\"text\" name=\"usuario\"></label>\n  <label>Senha: <input type=\"password\" name=\"senha\"></label>\n  <button type=\"submit\">Entrar</button>\n</form>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["form", "input"]
+    },
+    {
+      "id": "html-5-3",
+      "titulo": "GET vs POST",
+      "tipo": "multipla-escolha",
+      "explicacao": "GET mostra os dados na URL (tipo ?nome=Joao) — igual escrever num bilhete colado na testa. POST esconde os dados no corpo da requisição — igual carta fechada. Pra senhas, sempre POST.",
+      "pergunta": "Qual método de formulário NÃO mostra os dados na URL?",
+      "alternativas": ["GET", "POST", "PUT", "SEND"],
+      "correta": "POST",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["method", "get", "post"]
+    },
+    {
+      "id": "html-5-4",
+      "titulo": "Menu Suspenso",
+      "tipo": "complete-codigo",
+      "explicacao": "<select> é o menu de escolher 'Qual seu estado?'. <option> é cada opção da lista. É tipo aquela roletinha de 'Qual seu país?' nos cadastros.",
+      "pergunta": "Crie um select com as cidades: São Paulo, Rio de Janeiro, Belo Horizonte.",
+      "codigoInicial": "<select name=\"cidade\">\n  <option value=\"sp\">",
+      "correta": "<select name=\"cidade\">\n  <option value=\"sp\">São Paulo</option>\n  <option value=\"rj\">Rio de Janeiro</option>\n  <option value=\"bh\">Belo Horizonte</option>\n</select>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["select", "option"]
+    },
+    {
+      "id": "html-5-5",
+      "titulo": "Checkbox vs Radio",
+      "tipo": "complete-codigo",
+      "explicacao": "checkbox = posso marcar VÁRIOS (tipo 'quais habilidades você tem?'). radio = só posso marcar UM (tipo 'qual seu gênero?'). A diferença é o type do input. Mesmo name no radio agrupa as opções.",
+      "pergunta": "Crie radio 'Masculino'/'Feminino' (name='genero') e checkbox 'Aceito os termos'.",
+      "codigoInicial": "<label><input type=\"radio\" name=\"genero\" value=\"M\"> Masculino</label>",
+      "correta": "<label><input type=\"radio\" name=\"genero\" value=\"M\"> Masculino</label>\n<label><input type=\"radio\" name=\"genero\" value=\"F\"> Feminino</label>\n<label><input type=\"checkbox\" name=\"termos\"> Aceito os termos</label>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["checkbox", "radio"]
+    },
+    {
+      "id": "html-5-6",
+      "titulo": "Formulário de Contato",
+      "tipo": "complete-codigo",
+      "explicacao": "Hora de montar o formulário completo: nome (input text), email (input email), mensagem (textarea) e botão de enviar. É o famoso 'Fale Conosco' que tem em todo site. O method=\"POST\" esconde os dados.",
+      "pergunta": "Crie um formulário de contato completo: nome, email, textarea pra mensagem e botão 'Enviar'.",
+      "codigoInicial": "<form method=\"POST\">\n  <label>Nome: <input type=\"text\" name=\"nome\"></label>",
+      "correta": "<form method=\"POST\">\n  <label>Nome: <input type=\"text\" name=\"nome\"></label>\n  <label>Email: <input type=\"email\" name=\"email\"></label>\n  <label>Mensagem: <textarea name=\"mensagem\"></textarea></label>\n  <button type=\"submit\">Enviar</button>\n</form>",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "iniciante",
+      "tags": ["form", "contato", "textarea"]
+    },
+    {
+      "id": "html-5-7",
+      "titulo": "Erro Real: O Botão Que Não Faz Nada",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um <button> sem type=\"submit\" dentro de um formulário não envia os dados — ele age como type=\"button\" por padrão em alguns contextos, que não dispara o submit. Além disso, o form precisa de action (pra onde enviar) e method (GET ou POST). Sem esses três, o formulário fica só enfeite.",
+      "pergunta": "O formulário não envia os dados quando o usuário clica no botão. O que pode estar faltando?",
+      "alternativas": ["O button precisa de type=\"submit\" e o form precisa de action e method", "Falta um input type=\"hidden\"", "O form precisa de um ID", "O button precisa de onclick=\"enviar()\""],
+      "correta": "O button precisa de type=\"submit\" e o form precisa de action e method",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "form"]
+    }
+  ]
+}

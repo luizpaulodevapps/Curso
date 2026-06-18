@@ -1,0 +1,90 @@
+{
+  "id": "pf-1",
+  "nome": "Missão Final 1 — Planejamento do Projeto",
+  "descricao": "Requisitos, features, MVP, user stories, wireframes e decisões técnicas do DevEstudos.",
+  "ordem": 1,
+  "duracao": "3 horas",
+  "projeto": "Definir o escopo e planejar o DevEstudos do zero",
+  "questoes": [
+    {
+      "id": "pf-1-1",
+      "titulo": "O que é MVP?",
+      "tipo": "multipla-escolha",
+      "explicacao": "MVP (Minimum Viable Product) é a versão mais simples do seu produto que entrega valor real. Não são todas as features dos sonhos — é só o essencial para funcionar. Pense num carro: o MVP é uma bicicleta. Ela te leva do ponto A ao B, mesmo sem ar condicionado, som ou porta-copos. Depois você evolui para moto, carro, nave espacial.",
+      "pergunta": "Qual seria o MVP do DevEstudos?",
+      "alternativas": [
+        "Usuário se cadastrar, ver cursos, fazer módulos e responder questões",
+        "Usuário se cadastrar, ver cursos, fazer módulos, responder questões, flashcards, ranking, fórum, notificações, gamificação e marketplace",
+        "Apenas a tela de login",
+        "O sistema completo com todos os recursos planejados"
+      ],
+      "correta": "Usuário se cadastrar, ver cursos, fazer módulos e responder questões",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["projeto", "mvp", "planejamento"]
+    },
+    {
+      "id": "pf-1-2",
+      "titulo": "User Stories no DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "User story é uma descrição simples de uma funcionalidade na visão do usuário. Formato: 'Como [papel], quero [ação] para [benefício]'. Ex: 'Como aluno, quero ver meu progresso para saber quanto falta para concluir o curso'. Isso guia o desenvolvimento e garante que cada feature tem um propósito claro.",
+      "pergunta": "Qual user story descreve melhor a funcionalidade de flashcards no DevEstudos?",
+      "alternativas": [
+        "Como aluno, quero criar flashcards para revisar conteúdos importantes",
+        "Como sistema, quero ter flashcards",
+        "Como banco, quero armazenar flashcards",
+        "Como administrador, quero flashcards bonitos"
+      ],
+      "correta": "Como aluno, quero criar flashcards para revisar conteúdos importantes",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["projeto", "user-stories", "planejamento"]
+    },
+    {
+      "id": "pf-1-3",
+      "titulo": "Escopo: O que NÃO entra no MVP",
+      "tipo": "multipla-escolha",
+      "explicacao": "Definir o que NÃO fazer é tão importante quanto definir o que fazer. Se tudo é prioridade, nada é prioridade. No DevEstudos, fórum de discussão, gamificação complexa, marketplace de cursos e notificações push são features legais, mas não são essenciais para o MVP. Elas podem vir depois.",
+      "pergunta": "Qual feature NÃO deve entrar no MVP do DevEstudos?",
+      "alternativas": [
+        "Fórum de discussão entre alunos",
+        "Cadastro e login de usuários",
+        "Listagem de cursos disponíveis",
+        "Responder questões de múltipla escolha"
+      ],
+      "correta": "Fórum de discussão entre alunos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["projeto", "escopo", "mvp"]
+    },
+    {
+      "id": "pf-1-4",
+      "titulo": "Decisões Técnicas: Por que Next.js + Firebase + Supabase?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Next.js para o frontend (SSR, SEO, React), Firebase Auth para autenticação (simples e rápido), Supabase para banco de dados PostgreSQL (relacional, queries poderosas). Cada tecnologia foi escolhida por um motivo: Next.js dá performance e SEO, Firebase Auth evita implementar login do zero, Supabase oferece banco relacional com API fácil.",
+      "pergunta": "Por que escolhemos Supabase para o banco do DevEstudos?",
+      "alternativas": [
+        "É um banco PostgreSQL relacional com API REST fácil e tempo real",
+        "É mais barato que todas as alternativas",
+        "É a única opção que funciona com Next.js",
+        "Porque Firebase Realtime Database não suporta dados"
+      ],
+      "correta": "É um banco PostgreSQL relacional com API REST fácil e tempo real",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["projeto", "decisoes", "tecnologias"]
+    },
+    {
+      "id": "pf-1-5",
+      "titulo": "Erro Real: Escopo Infinito",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "O erro mais comum de projetos reais: não definir um MVP e tentar fazer TUDO de uma vez. O projeto nunca fica pronto porque sempre aparece uma 'feature essencial' nova. É como construir um arranha-céu sem nunca terminar o térreo. O DevEstudos com escopo infinito teria: login, cursos, módulos, flashcards, fórum, ranking, notificações, chat, marketplace, gamificação, integração com LinkedIn… e nunca lançaria.",
+      "pergunta": "Ter um escopo bem definido com MVP reduz o risco do projeto nunca ficar pronto?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["projeto", "erro", "escopo"]
+    }
+  ]
+}

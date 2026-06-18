@@ -1,0 +1,97 @@
+{
+  "id": "html-3",
+  "nome": "Missão 3 — Imagens e Multimídia",
+  "descricao": "Img, video, audio, iframe. Dando vida e movimento ao seu site.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Galeria de mídia",
+  "questoes": [
+    {
+      "id": "html-3-1",
+      "titulo": "Vale Mais que Mil Palavras",
+      "tipo": "multipla-escolha",
+      "explicacao": "<img> é a tag de imagem. Ela é 'autofechante' (não tem </img>). O src diz 'qual arquivo mostrar' e o alt é a descrição pra quem não pode ver a imagem (tipo leitores de tela).",
+      "pergunta": "Qual atributo do <img> define o caminho do arquivo da imagem?",
+      "alternativas": ["alt", "src", "path", "href"],
+      "correta": "src",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["img", "src"]
+    },
+    {
+      "id": "html-3-2",
+      "titulo": "Imagem com Descrição",
+      "tipo": "complete-codigo",
+      "explicacao": "Sempre coloque alt nas imagens! O alt é a descrição textual que aparece se a imagem não carregar ou pra leitores de tela. Tipo legenda de foto em jornal: se a foto não aparecer, a legenda ainda conta a história.",
+      "pergunta": "Adicione uma imagem chamada 'foto.jpg' com alt 'Foto de um pôr do sol' e largura 300.",
+      "codigoInicial": "<img src=\"foto.jpg\" ",
+      "correta": "<img src=\"foto.jpg\" alt=\"Foto de um pôr do sol\" width=\"300\">",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["img", "alt"]
+    },
+    {
+      "id": "html-3-3",
+      "titulo": "Texto Alternativo",
+      "tipo": "multipla-escolha",
+      "explicacao": "O alt é a descrição alternativa. Se a imagem quebrar (arquivo apagado, internet lenta), o texto aparece no lugar. Leitores de tela usam o alt pra descrever a imagem pra pessoas cegas. É acessibilidade pura.",
+      "pergunta": "Pra que serve o atributo 'alt' nas imagens?",
+      "alternativas": ["Aumentar a imagem", "Descrição alternativa da imagem", "Definir a altura da imagem", "Adicionar moldura"],
+      "correta": "Descrição alternativa da imagem",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["alt", "acessibilidade"]
+    },
+    {
+      "id": "html-3-4",
+      "titulo": "Vídeo na Página",
+      "tipo": "complete-codigo",
+      "explicacao": "<video> funciona tipo o Netflix: você coloca o arquivo (src) dentro de <source> ou no atributo src. controls mostra os botões de play/pause/volume. É como ter um videocassete no seu site.",
+      "pergunta": "Insira um vídeo 'video.mp4' com controles e 400px de largura.",
+      "codigoInicial": "<video src=\"video.mp4\" ",
+      "correta": "<video src=\"video.mp4\" controls width=\"400\"></video>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["video", "multimidia"]
+    },
+    {
+      "id": "html-3-5",
+      "titulo": "Incorporando o Mundo",
+      "tipo": "multipla-escolha",
+      "explicacao": "<iframe> é uma 'janela' dentro do seu site que mostra outro site. Útil pra incorporar YouTube, Google Maps, etc. O src é o endereço do que vai aparecer na janelinha. Tipo uma TV sintonizada em outro canal.",
+      "pergunta": "Qual tag usamos pra incorporar um vídeo do YouTube na página?",
+      "alternativas": ["<video>", "<embed>", "<iframe>", "<object>"],
+      "correta": "<iframe>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["iframe", "youtube"]
+    },
+    {
+      "id": "html-3-6",
+      "titulo": "Música Ambiente",
+      "tipo": "complete-codigo",
+      "explicacao": "<audio> é tipo o <video> mas só som. Funciona com .mp3, .ogg, .wav. O controls também adiciona os botões de play/pause/volume. Perfeito pra música de fundo, podcasts, ou audiolivros.",
+      "pergunta": "Adicione um audio 'musica.mp3' com controles e que comece automaticamente (autoplay).",
+      "codigoInicial": "<audio src=\"musica.mp3\" ",
+      "correta": "<audio src=\"musica.mp3\" controls autoplay></audio>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["audio", "autoplay"]
+    },
+    {
+      "id": "html-3-7",
+      "titulo": "Erro Real: A Imagem Fantasma",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando a imagem não aparece e não tem texto alternativo, o problema geralmente é o src com caminho errado (arquivo não existe, nome errado, pasta errada) combinado com a falta do alt. Sem alt, o usuário vê um quadrado vazio sem contexto. Sempre verifique o caminho do arquivo e SEMPRE adicione alt descritivo pra acessibilidade.",
+      "pergunta": "Você colocou <img src=\"imagem.jpg\"> mas a imagem não aparece e não há texto algum no lugar. O que está errado?",
+      "alternativas": ["A tag img precisa de fechamento </img>", "O src está com caminho errado ou o alt está ausente", "Imagens precisam de JavaScript pra carregar", "Falta o atributo width"],
+      "correta": "O src está com caminho errado ou o alt está ausente",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "img"]
+    }
+  ]
+}

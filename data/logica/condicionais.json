@@ -1,0 +1,96 @@
+{
+  "id": "logica-4",
+  "nome": "Missão 4 — Condicionais: O Computador que Decide",
+  "descricao": "if, else if, else, operador ternário, truthy/falsy, switch. Deixando o código tomar decisões.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Classificação de nível por XP no DevEstudos",
+  "questoes": [
+    {
+      "id": "logica-4-1",
+      "titulo": "Estrutura if/else",
+      "tipo": "multipla-escolha",
+      "explicacao": "if é tipo 'se chover, leva guarda-chuva'. Se a condição for true, executa o bloco do if. Senão (else), executa o outro. Só um caminho roda.",
+      "pergunta": "O que vem depois do if pra executar algo quando a condição é falsa?",
+      "alternativas": ["then", "else", "catch", "finally"],
+      "correta": "else",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["if", "else"]
+    },
+    {
+      "id": "logica-4-2",
+      "titulo": "Múltiplas Condições com else if",
+      "tipo": "multipla-escolha",
+      "explicacao": "else if adiciona mais checks. Tipo: se nota >= 7, 'Aprovado'; se >= 5, 'Recuperação'; senão, 'Reprovado'. A primeira condição verdadeira vence e o resto é ignorado.",
+      "pergunta": "Dado if (a > 10) {...} else if (a > 5) {...} else {...}. Se a = 7, qual bloco executa?",
+      "alternativas": ["O primeiro if", "O else if", "O else", "Nenhum"],
+      "correta": "O primeiro if",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["else if", "condicional"]
+    },
+    {
+      "id": "logica-4-3",
+      "titulo": "Truthy e Falsy",
+      "tipo": "multipla-escolha",
+      "explicacao": "No JavaScript, alguns valores se comportam como false em condições: false, 0, '' (string vazia), null, undefined, NaN. Todo o resto é truthy (se comporta como true). Tipo: if ('') não executa, if ('Oi') executa.",
+      "pergunta": "Qual desses valores é FALSY em JavaScript?",
+      "alternativas": ["'false'", "'0'", "0", "[]"],
+      "correta": "0",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["truthy", "falsy"]
+    },
+    {
+      "id": "logica-4-4",
+      "titulo": "Operador Ternário",
+      "tipo": "complete-codigo",
+      "explicacao": "Ternário é um if/else resumido em uma linha: condicao ? valorSeTrue : valorSeFalse. Tipo: idade >= 18 ? 'Maior' : 'Menor'. Economiza linhas pra condições simples.",
+      "pergunta": "Use o operador ternário: const idade = 20. Crie 'status' que seja 'Maior' se >= 18, 'Menor' caso contrário.",
+      "codigoInicial": "const idade = 20;\nconst status = ",
+      "correta": "const idade = 20;\nconst status = idade >= 18 ? 'Maior' : 'Menor';",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["ternario", "condicional"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-4-5",
+      "titulo": "Switch Case",
+      "tipo": "multipla-escolha",
+      "explicacao": "switch é tipo um cardápio: dependendo do número que você aperta, cai uma bebida diferente. Cada case é uma opção. O break impede de 'vazar' pro próximo case. O default é o 'senão'.",
+      "pergunta": "O que o 'default' faz num switch?",
+      "alternativas": ["Sai do switch", "Executa se nenhum case for true", "Repete o switch", "Só executa no primeiro case"],
+      "correta": "Executa se nenhum case for true",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["switch", "default"]
+    },
+    {
+      "id": "logica-4-6",
+      "titulo": "Classificação de Nível por XP",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos classificar o nível do aluno no DevEstudos: xp > 1000 = 'Pleno', xp > 500 = 'Intermediário', xp > 100 = 'Iniciante', senão = 'Novato'. Use if/else if/else.",
+      "pergunta": "Dada const xp = 750, classifique: > 1000 'Pleno', > 500 'Intermediário', > 100 'Iniciante', senao 'Novato'. Exiba o nivel.",
+      "codigoInicial": "const xp = 750;\nlet nivel;\nif (xp > 1000) {\n  nivel = 'Pleno';\n} else",
+      "correta": "const xp = 750;\nlet nivel;\nif (xp > 1000) {\n  nivel = 'Pleno';\n} else if (xp > 500) {\n  nivel = 'Intermediário';\n} else if (xp > 100) {\n  nivel = 'Iniciante';\n} else {\n  nivel = 'Novato';\n}\nconsole.log(nivel);",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["if", "else if", "projeto", "xp"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-4-7",
+      "titulo": "Erro Real: A Condicional Sem Rede de Proteção",
+      "tipo": "multipla-escolha",
+      "explicacao": "A função tem if (nota > 7) pra 'Aprovado' e if (nota < 7) pra 'Reprovado', mas quando a nota é exatamente 7, nenhuma condição é verdadeira, então a função retorna undefined. É como uma catraca de metrô que libera se tiver saldo OU bloqueia se não tiver, mas não trata o caso de o cartão estar exatamente no valor mínimo. Sempre cubra todos os casos com if/else ou um else final.",
+      "pergunta": "A função retorna undefined quando a nota é exatamente 7. O que falta na condicional?",
+      "alternativas": ["Um console.log", "Um tratamento para o caso nota === 7 (else ou >=)", "Um loop for", "Uma variável global"],
+      "correta": "Um tratamento para o caso nota === 7 (else ou >=)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    }
+  ]
+}

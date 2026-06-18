@@ -1,0 +1,97 @@
+{
+  "id": "logica-6",
+  "nome": "Missão 6 — Arrays: Coleções Poderosas",
+  "descricao": "Arrays, índices, length, push, pop, forEach. Organizando múltiplos valores em uma única estrutura.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Gerenciar lista de cursos no DevEstudos",
+  "questoes": [
+    {
+      "id": "logica-6-1",
+      "titulo": "O que é um Array?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Array é uma lista ordenada de valores. Tipo uma mochila com vários compartimentos numerados. Você acessa cada compartimento pelo número (índice). Em JavaScript, usa [ ].",
+      "pergunta": "Como criar um array em JavaScript?",
+      "alternativas": ["const arr = {}", "const arr = []", "const arr = ()", "const arr = <>"],
+      "correta": "const arr = []",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["array", "conceito"]
+    },
+    {
+      "id": "logica-6-2",
+      "titulo": "Índices de Array",
+      "tipo": "multipla-escolha",
+      "explicacao": "Índice é a posição do elemento. Em arrays, a contagem começa em 0 (como andar térreo de prédio). ['a', 'b', 'c'] — 'a' é índice 0, 'b' é 1, 'c' é 2. Confuso no começo, mas você se acostuma.",
+      "pergunta": "Num array ['Maçã', 'Banana', 'Cereja'], qual o índice de 'Banana'?",
+      "alternativas": ["0", "1", "2", "3"],
+      "correta": "1",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["indice", "array"]
+    },
+    {
+      "id": "logica-6-3",
+      "titulo": "Propriedade length",
+      "tipo": "complete-codigo",
+      "explicacao": "length diz quantos elementos tem no array. ['a', 'b', 'c'].length === 3. Útil pra loops (i < array.length) ou pra verificar se array tá vazio (length === 0).",
+      "pergunta": "Dado const frutas = ['Maçã', 'Banana', 'Cereja', 'Damasco'], exiba quantas frutas existem usando length.",
+      "codigoInicial": "const frutas = ['Maçã', 'Banana', 'Cereja', 'Damasco'];\n// exiba a quantidade de frutas\n",
+      "correta": "const frutas = ['Maçã', 'Banana', 'Cereja', 'Damasco'];\nconsole.log(frutas.length);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["length", "array"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-6-4",
+      "titulo": "push e pop",
+      "tipo": "complete-codigo",
+      "explicacao": "push adiciona um item no FINAL do array. pop remove o ÚLTIMO item. Tipo pilha de pratos: você empilha (push) no topo e desempilha (pop) do topo. Úteis pra listas dinâmicas.",
+      "pergunta": "Dado const cursos = ['HTML', 'CSS'], adicione 'JavaScript' com push e exiba o array. Depois remova o último com pop e exiba de novo.",
+      "codigoInicial": "const cursos = ['HTML', 'CSS'];\n// adicione 'JavaScript'\n// exiba\n// remova o ultimo\n// exiba\n",
+      "correta": "const cursos = ['HTML', 'CSS'];\ncursos.push('JavaScript');\nconsole.log(cursos);\ncursos.pop();\nconsole.log(cursos);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["push", "pop", "array"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-6-5",
+      "titulo": "forEach - A Maneira Moderna",
+      "tipo": "multipla-escolha",
+      "explicacao": "forEach executa uma função pra cada item do array. É tipo 'pra cada aluno da sala, entregue a prova'. forEach((item) => { faz algo }) — mais limpo que for tradicional.",
+      "pergunta": "O que o forEach faz com um array?",
+      "alternativas": ["Cria um novo array", "Executa uma função pra cada elemento", "Remove todos os elementos", "Ordena o array"],
+      "correta": "Executa uma função pra cada elemento",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["forEach", "iteracao"]
+    },
+    {
+      "id": "logica-6-6",
+      "titulo": "Gerenciar Lista de Cursos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos gerenciar os cursos do DevEstudos. Crie um array com 3 cursos, adicione mais um, e use forEach pra exibir 'Curso: NOME' pra cada um. Isso é exatamente como listas são usadas em apps reais.",
+      "pergunta": "Crie const cursos = ['Lógica', 'JavaScript']. Adicione 'React'. Use forEach pra exibir 'Curso: ' + nome pra cada um.",
+      "codigoInicial": "const cursos = ['Lógica', 'JavaScript'];\n// adicione 'React'\n// use forEach pra exibir\n",
+      "correta": "const cursos = ['Lógica', 'JavaScript'];\ncursos.push('React');\ncursos.forEach(curso => {\n  console.log('Curso: ' + curso);\n});",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["array", "forEach", "push", "projeto"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-6-7",
+      "titulo": "Erro Real: O Índice Fantasma",
+      "tipo": "multipla-escolha",
+      "explicacao": "Arrays em JavaScript começam no índice 0. Um array de 3 elementos tem índices 0, 1, 2. array.length === 3, mas o último elemento é array[2], não array[3]. Acessar array[3] (que é array[length]) é como pedir a 5ª poltrona num ônibus que só tem 4 fileiras — não existe. O último elemento é sempre array[length - 1].",
+      "pergunta": "O último elemento do array está undefined. const arr = [10, 20, 30]; console.log(arr[arr.length]). Por quê?",
+      "alternativas": ["O array foi corrompido", "arr.length é 3, mas o último índice válido é 2, então arr[3] não existe", "O console.log quebrou", "Porque o array tem tipos mistos"],
+      "correta": "arr.length é 3, mas o último índice válido é 2, então arr[3] não existe",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "git-3",
+  "nome": "Missão 3 — Trabalhando em Paralelo com Branches",
+  "descricao": "Criar branches para desenvolver funcionalidades sem quebrar o principal.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Criar uma branch para uma nova feature do DevEstudos",
+  "questoes": [
+    {
+      "id": "git-3-1",
+      "titulo": "O que é uma Branch?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Branch é uma linha do tempo paralela. A branch main (ou master) é a principal. Você cria uma branch para trabalhar em uma feature sem afetar a main. É como fazer um rascunho em outra folha enquanto a versão final está intacta. Quando termina, você junta (merge) o rascunho na versão final.",
+      "pergunta": "Para que serve uma branch no Git?",
+      "alternativas": [
+        "Trabalhar em funcionalidades isoladas sem afetar a branch principal",
+        "Criar uma cópia do repositório em outro computador",
+        "Deletar arquivos do projeto",
+        "Fazer backup automático"
+      ],
+      "correta": "Trabalhar em funcionalidades isoladas sem afetar a branch principal",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "branch"]
+    },
+    {
+      "id": "git-3-2",
+      "titulo": "Criar e Navegar entre Branches",
+      "tipo": "multipla-escolha",
+      "explicacao": "git branch nome-da-branch cria uma nova branch a partir do commit atual. git checkout nome-da-branch ou git switch nome-da-branch muda para ela. git switch -c nome-da-branch cria e já muda em um comando. git branch (sem argumentos) lista as branches locais com * na atual.",
+      "pergunta": "Qual comando cria uma branch e já muda para ela?",
+      "alternativas": [
+        "git switch -c feature/login",
+        "git branch feature/login",
+        "git new branch feature/login",
+        "git checkout feature/login"
+      ],
+      "correta": "git switch -c feature/login",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "branch", "switch"]
+    },
+    {
+      "id": "git-3-3",
+      "titulo": "Branches São Leves",
+      "tipo": "multipla-escolha",
+      "explicacao": "Diferente de outros sistemas de controle de versão, branches no Git são apenas ponteiros para commits. Criar uma branch custa quase nada em disco. Você pode ter dezenas de branches sem impacto. Isso encoraja criar branches para qualquer coisa: uma feature, um experimento, uma correção rápida.",
+      "pergunta": "Criar uma branch no Git é caro em termos de disco?",
+      "alternativas": [
+        "Não, branches são apenas ponteiros, criá-las é quase instantâneo",
+        "Sim, cada branch duplica o repositório",
+        "Depende do tamanho do projeto",
+        "Sim, precisa de internet para criar"
+      ],
+      "correta": "Não, branches são apenas ponteiros, criá-las é quase instantâneo",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "branch"]
+    },
+    {
+      "id": "git-3-4",
+      "titulo": "Nomenclatura de Branches",
+      "tipo": "multipla-escolha",
+      "explicacao": "Boas práticas de nomenclatura: feature/login, fix/corrige-botao, chore/atualiza-deps, hotfix/crash-login. Use prefixos (feature/, fix/, chore/) e hífens. Evite acentos, espaços e maiúsculas. O nome deve descrever o propósito, não o desenvolvedor.",
+      "pergunta": "Qual nome de branch segue as boas práticas?",
+      "alternativas": [
+        "feature/adiciona-sistema-de-xp",
+        "branch do luiz",
+        "FeatureLogin",
+        "corrige bug"
+      ],
+      "correta": "feature/adiciona-sistema-de-xp",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "branch", "convencao"]
+    },
+    {
+      "id": "git-3-5",
+      "titulo": "Visualizando Branches",
+      "tipo": "multipla-escolha",
+      "explicacao": "git log --graph --oneline --all mostra uma árvore visual de todos os branches e commits. Cada branch aparece como uma linha paralela. Útil para entender a estrutura do repositório antes de fazer merge.",
+      "pergunta": "Qual comando mostra a árvore visual de todos os branches?",
+      "alternativas": [
+        "git log --graph --oneline --all",
+        "git tree",
+        "git branches",
+        "git show --tree"
+      ],
+      "correta": "git log --graph --oneline --all",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "log", "graph"]
+    },
+    {
+      "id": "git-3-6",
+      "titulo": "Practical: Sua Primeira Branch",
+      "tipo": "complete-codigo",
+      "explicacao": "Você vai criar uma branch para adicionar o sistema de XP no DevEstudos.",
+      "pergunta": "Complete a sequência para criar e navegar para a nova branch:",
+      "codigoInicial": "# Estamos na main. Queremos criar uma branch para o sistema de XP.\n",
+      "correta": "git switch -c feature/sistema-xp\n# Agora estamos na branch feature/sistema-xp\ngit add .\ngit commit -m 'Adiciona sistema de XP do DevEstudos'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "branch"],
+      "validacao": ""
+    }
+  ]
+}

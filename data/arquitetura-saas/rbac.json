@@ -1,0 +1,112 @@
+{
+  "id": "arq-saas-3",
+  "nome": "Missão 3 — RBAC: Controle de Acesso Baseado em Papéis",
+  "descricao": "Roles, permissões e hierarquia de acesso.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Implementar RBAC no DevEstudos",
+  "questoes": [
+    {
+      "id": "arq-saas-3-1",
+      "titulo": "O que é RBAC?",
+      "tipo": "multipla-escolha",
+      "explicacao": "RBAC é como um crachá de empresa: dependendo do seu cargo (role), você pode entrar em certas salas. Admin entra em tudo, editor só mexe em conteúdo, viewer só olha. Não precisa dar permissão manual pra cada pessoa — o cargo já define.",
+      "pergunta": "O que significa RBAC?",
+      "alternativas": [
+        "Role-Based Access Control",
+        "Random-Based Access Control",
+        "Resource-Based Application Control",
+        "Role-Bound Application Context"
+      ],
+      "correta": "Role-Based Access Control",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["rbac", "definicao", "acesso"]
+    },
+    {
+      "id": "arq-saas-3-2",
+      "titulo": "Papéis no DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, cada escola tem seus papéis: admin (dono da escola), editor (professor que cria conteúdo) e viewer (aluno que só consome). É como uma escola de verdade: diretor, professor e aluno têm acessos diferentes no mesmo prédio.",
+      "pergunta": "Qual papel do DevEstudos deve poder criar novos cursos?",
+      "alternativas": [
+        "Apenas admin",
+        "Admin e editor",
+        "Admin, editor e viewer",
+        "Apenas viewer"
+      ],
+      "correta": "Admin e editor",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["papeis", "devetudos", "rbac"]
+    },
+    {
+      "id": "arq-saas-3-3",
+      "titulo": "Hierarquia de papéis",
+      "tipo": "multipla-escolha",
+      "explicacao": "Papéis hierárquicos: admin herda tudo de editor, que herda tudo de viewer. Papéis planos: cada papel tem permissões explícitas sem herança. Hierarquia é mais fácil de gerenciar, mas menos flexível.",
+      "pergunta": "Em uma hierarquia de papéis onde Admin > Editor > Viewer, se Editor pode criar cursos, o Admin automaticamente:",
+      "alternativas": [
+        "Não pode criar cursos (precisa de permissão explícita)",
+        "Pode criar cursos (herda a permissão do Editor)",
+        "Só pode criar cursos se for também Editor",
+        "Pode criar, mas precisa aprovação do Editor"
+      ],
+      "correta": "Pode criar cursos (herda a permissão do Editor)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["hierarquia", "heranca", "papeis"]
+    },
+    {
+      "id": "arq-saas-3-4",
+      "titulo": "Implementação no banco",
+      "tipo": "complete-codigo",
+      "explicacao": "Tabelas: roles (id, nome, descricao), user_roles (user_id, role_id, tenant_id). O tenant_id é essencial porque cada escola tem seus próprios admins — o admin da Escola A não pode ser admin na Escola B.",
+      "pergunta": "Complete a query para buscar o papel de um usuário em um tenant específico:",
+      "alternativas": [
+        "SELECT r.nome FROM roles r JOIN user_roles ur ON r.id = ur.role_id WHERE ur.user_id = ? AND ur.tenant_id = ?",
+        "SELECT r.nome FROM roles r WHERE r.user_id = ?",
+        "SELECT * FROM user_roles WHERE user_id = ?",
+        "SELECT r.nome FROM roles r JOIN user_roles ur ON r.id = ur.role_id WHERE ur.user_id = ?"
+      ],
+      "correta": "SELECT r.nome FROM roles r JOIN user_roles ur ON r.id = ur.role_id WHERE ur.user_id = ? AND ur.tenant_id = ?",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "implementacao", "banco"]
+    },
+    {
+      "id": "arq-saas-3-5",
+      "titulo": "Erro real: confundir RBAC com ABAC",
+      "tipo": "multipla-escolha",
+      "explicacao": "RBAC baseia-se em papéis estáticos. ABAC (Attribute-Based Access Control) usa atributos dinâmicos: horário, localização, tipo de dispositivo. Tentar fazer ABAC com RBAC é como usar chave de fenda pra martelar prego — até funciona, mas quebra no meio do caminho.",
+      "pergunta": "Qual cenário exige ABAC em vez de RBAC?",
+      "alternativas": [
+        "Permitir acesso apenas das 8h às 18h em dias úteis",
+        "Definir que admins podem gerenciar usuários",
+        "Definir que editores podem criar conteúdo",
+        "Permitir que viewers vejam cursos"
+      ],
+      "correta": "Permitir acesso apenas das 8h às 18h em dias úteis",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["rbac", "abac", "erro-real", "controle-acesso"]
+    },
+    {
+      "id": "arq-saas-3-6",
+      "titulo": "RBAC no DevEstudos: granularidade",
+      "tipo": "desafio-pratico",
+      "explicacao": "No DevEstudos, o admin de uma escola pode promover outro usuário a editor. Mas o admin NÃO pode promover alguém a admin de outra escola. Isso é RBAC + escopo de tenant — o papel existe, mas é limitado ao tenant do usuário.",
+      "pergunta": "Um admin da Escola A tenta promover um usuário da Escola B a editor. Qual deve ser o comportamento do sistema?",
+      "alternativas": [
+        "Permitir, porque admin pode gerenciar qualquer usuário",
+        "Negar, porque o admin só tem escopo sobre o próprio tenant",
+        "Permitir apenas se o admin também for admin na Escola B",
+        "Permitir e notificar o admin da Escola B"
+      ],
+      "correta": "Negar, porque o admin só tem escopo sobre o próprio tenant",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["escopo", "tenant", "rbac", "devetudos"]
+    }
+  ]
+}

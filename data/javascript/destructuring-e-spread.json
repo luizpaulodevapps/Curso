@@ -1,0 +1,86 @@
+{
+  "id": "js-moderno-1",
+  "nome": "Destructuring e Spread — Desempacotar e Espalhar",
+  "descricao": "Tirar dados de objetos/arrays de forma elegante. Espalhar itens como cartas de baralho.",
+  "ordem": 1,
+  "duracao": "1 semana",
+  "projeto": "Refatorar acesso a dados do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-moderno-1-1",
+      "titulo": "Desestruturar Objeto",
+      "tipo": "complete-codigo",
+      "explicacao": "Destructuring = tirar coisas de dentro sem precisar de ponto. const { nome, idade } = usuario. É tipo abrir a mochila e tirar o estojo e o caderno diretamente, sem revirar tudo.",
+      "pergunta": "Desestruture nome e idade de const user = {nome: 'Ana', idade: 25}.",
+      "codigoInicial": "const user = {nome: 'Ana', idade: 25};\nconst { ",
+      "correta": "const user = {nome: 'Ana', idade: 25};\nconst { nome, idade } = user;\nconsole.log(nome, idade);",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["destructuring", "objeto"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-1-2",
+      "titulo": "Desestruturar Array",
+      "tipo": "complete-codigo",
+      "explicacao": "Com array, a posição define a variável. const [a, b] = [10, 20] → a=10, b=20. É tipo 'primeiro da fila vai pra casa A, segundo pra casa B'.",
+      "pergunta": "Desestruture o array [100, 200, 300] em x, y, z.",
+      "codigoInicial": "const [x, y, z] = [100, 200, 300];\n",
+      "correta": "const [x, y, z] = [100, 200, 300];\nconsole.log(x, y, z);",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["destructuring", "array"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-1-3",
+      "titulo": "Spread - Espalhar",
+      "tipo": "complete-codigo",
+      "explicacao": "... (spread) espalha os itens. É tipo pegar as cartas de um baralho e espalhar na mesa. const copia = [...original]. Muito útil pra clonar arrays sem referência.",
+      "pergunta": "Crie const nums = [1,2,3] e const clone = [...nums], mostre clone no console.",
+      "codigoInicial": "const nums = [1, 2, 3];\nconst clone = ",
+      "correta": "const nums = [1, 2, 3];\nconst clone = [...nums];\nconsole.log(clone);",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["spread", "clone"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-1-4",
+      "titulo": "Rest - Juntar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Rest (... na função) junta vários argumentos num array. function soma(...nums) soma todos os números que vierem. Spread espalha, rest junta — são opostos. É tipo abrir a mão (spread) vs fechar o punho (rest).",
+      "pergunta": "O que o '...' faz em function(...args)?",
+      "alternativas": ["Espalha os args", "Junta os args num array", "Ignora os args", "Repete os args"],
+      "correta": "Junta os args num array",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["rest", "parametros"]
+    },
+    {
+      "id": "js-moderno-1-5",
+      "titulo": "Valor Padrão no Destructuring",
+      "tipo": "multipla-escolha",
+      "explicacao": "Dá pra definir valor padrão caso a propriedade não exista: const { nome = 'Anônimo' } = user. Se user não tiver nome, usa 'Anônimo'. É tipo 'se não tiver café, serve água'.",
+      "pergunta": "Qual o valor de 'cargo' em const { cargo = 'Dev' } = {}?",
+      "alternativas": ["undefined", "'Dev'", "null", "error"],
+      "correta": "'Dev'",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["default", "valor padrao"]
+    },
+    {
+      "id": "js-moderno-1-6",
+      "titulo": "Unir Objetos com Spread",
+      "tipo": "complete-codigo",
+      "explicacao": "Spread também funciona em objetos: const completo = { ...obj1, ...obj2 }. Junta as propriedades. Se houver conflito, o último vence (igual cascata). No DevEstudos, você usa isso pra combinar dados do usuário com config padrão.",
+      "pergunta": "Una {nome: 'Ana'} e {idade: 25, cidade: 'SP'} num só objeto usando spread.",
+      "codigoInicial": "const parte1 = {nome: 'Ana'};\nconst parte2 = {idade: 25, cidade: 'SP'};\nconst completo = { ",
+      "correta": "const parte1 = {nome: 'Ana'};\nconst parte2 = {idade: 25, cidade: 'SP'};\nconst completo = { ...parte1, ...parte2 };\nconsole.log(completo);",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["spread", "objeto"],
+      "validacao": ""
+    }
+  ]
+}

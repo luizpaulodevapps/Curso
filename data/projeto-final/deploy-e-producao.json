@@ -1,0 +1,90 @@
+{
+  "id": "pf-4",
+  "nome": "Missão Final 4 — Deploy e Produção",
+  "descricao": "Vercel, Supabase, Firebase, CI/CD GitHub Actions, Sentry, analytics, domínio próprio e SSL.",
+  "ordem": 4,
+  "duracao": "3 horas",
+  "projeto": "Colocar o DevEstudos no ar com deploy profissional",
+  "questoes": [
+    {
+      "id": "pf-4-1",
+      "titulo": "Onde fazer o deploy de cada parte?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada parte do DevEstudos vai para um lugar: (1) Next.js → Vercel (plataforma dos criadores do Next.js, deploy com um git push); (2) Banco de dados → Supabase (PostgreSQL gerenciado); (3) Autenticação → Firebase Auth (gerenciado pelo Google); (4) Storage de arquivos → Supabase Storage. Cada um no seu forte, como um time de futebol: cada jogador na posição que sabe jogar.",
+      "pergunta": "Onde fazer o deploy do frontend Next.js do DevEstudos?",
+      "alternativas": [
+        "Vercel — integração nativa com Next.js, deploy automático no git push",
+        "Supabase — é onde vai o banco, não o frontend",
+        "Firebase Hosting — mas perde SSR do Next.js",
+        "Qualquer um dos três funciona igual"
+      ],
+      "correta": "Vercel — integração nativa com Next.js, deploy automático no git push",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["deploy", "vercel", "producao"]
+    },
+    {
+      "id": "pf-4-2",
+      "titulo": "CI/CD com GitHub Actions",
+      "tipo": "multipla-escolha",
+      "explicacao": "CI/CD (Continuous Integration / Continuous Deployment) é o robô que testa e faz deploy automaticamente. Quando você faz git push, o GitHub Actions: (1) Roda os testes; (2) Se passar, faz deploy na Vercel; (3) Se falhar, avisa no PR. É como ter um质量控制 (controle de qualidade) que verifica cada peça antes de enviar para o cliente. Nada de 'funciona na minha máquina' — se não passar no CI, não vai pra produção.",
+      "pergunta": "O que o CI/CD do DevEstudos faz quando você abre um Pull Request?",
+      "alternativas": [
+        "Roda os testes automaticamente para garantir que o código não quebrou nada",
+        "Faz deploy direto em produção sem verificar nada",
+        "Apaga o banco de dados de produção",
+        "Envia um email para todos os usuários avisando do PR"
+      ],
+      "correta": "Roda os testes automaticamente para garantir que o código não quebrou nada",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["deploy", "ci-cd", "github-actions"]
+    },
+    {
+      "id": "pf-4-3",
+      "titulo": "Monitoramento: Sentry + Analytics",
+      "tipo": "multipla-escolha",
+      "explicacao": "Monitoramento é o alarme de incêndio do seu sistema. Sentry captura erros em tempo real com stack trace completo (linha do código que quebrou, navegador do usuário, ação que causou o erro). Analytics mostra quantos usuários estão online, quais páginas mais acessam, onde estão desistindo. Sem monitoramento, você só descobre que o sistema caiu quando um usuário reclama no Twitter.",
+      "pergunta": "Para que serve o Sentry no DevEstudos?",
+      "alternativas": [
+        "Capturar e notificar erros em produção com detalhes do contexto",
+        "Fazer deploy automático",
+        "Gerenciar banco de dados",
+        "Autenticar usuários"
+      ],
+      "correta": "Capturar e notificar erros em produção com detalhes do contexto",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["deploy", "monitoramento", "sentry"]
+    },
+    {
+      "id": "pf-4-4",
+      "titulo": "Variáveis de Ambiente: O Erro Clássico",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro clássico de deploy: o dev esquece de configurar as variáveis de ambiente (API keys, secrets, URLs) no ambiente de produção. O código funciona local porque as variáveis estão no .env.local, mas em produção… nada funciona. O Supabase não conecta, o Firebase não autentica, o Sentry não reporta. É como mudar de apartamento mas deixar todas as chaves no apartamento velho.",
+      "pergunta": "Variáveis de ambiente configuradas no .env.local são automaticamente usadas em produção?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["deploy", "erro", "variaveis-ambiente"]
+    },
+    {
+      "id": "pf-4-5",
+      "titulo": "Domínio Próprio e SSL",
+      "tipo": "multipla-escolha",
+      "explicacao": "Domínio próprio (devestudos.com.br) passa credibilidade. SSL (HTTPS) é obrigatório — sem ele, navegadores mostram 'Não seguro', e o Firebase Auth nem funciona (requer HTTPS). A Vercel fornece SSL automático (Let's Encrypt) e gerencia o domínio. É como uma loja física: o domínio é o endereço comercial, o SSL é a porta com tranca — você não abre uma loja sem endereço e sem porta.",
+      "pergunta": "Por que SSL é obrigatório para o DevEstudos?",
+      "alternativas": [
+        "Firebase Auth exige HTTPS, e navegadores bloqueiam conexões inseguras",
+        "SSL deixa o site mais bonito",
+        "SSL acelera o banco de dados",
+        "É opcional, só recomendado"
+      ],
+      "correta": "Firebase Auth exige HTTPS, e navegadores bloqueiam conexões inseguras",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["deploy", "ssl", "dominio"]
+    }
+  ]
+}

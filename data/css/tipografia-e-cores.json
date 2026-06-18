@@ -1,0 +1,102 @@
+{
+  "id": "css-2",
+  "nome": "Missão 2 — Tipografia e Cores",
+  "descricao": "Fontes, cores, alinhamento e espaçamento. Deixando o texto bonito de ler.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Página de texto estilizada",
+  "questoes": [
+    {
+      "id": "css-2-1",
+      "titulo": "A Fonte da Letra",
+      "tipo": "multipla-escolha",
+      "explicacao": "font-family define a fonte do texto: 'Arial', 'Times New Roman', etc. Sempre coloque uma fonte reserva (fallback): font-family: Arial, sans-serif; Se Arial não tiver, usa sans-serif. É tipo 'quero pizza de calabresa, se não tiver, qualquer pizza salgada'.",
+      "pergunta": "Qual propriedade define a FONTE do texto no CSS?",
+      "alternativas": ["font-size", "font-family", "font-type", "text-font"],
+      "correta": "font-family",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["fonte", "font-family"]
+    },
+    {
+      "id": "css-2-2",
+      "titulo": "Texto Estilizado",
+      "tipo": "complete-codigo",
+      "explicacao": "Dá pra controlar: font-size (tamanho), font-weight (peso: bold = negrito), font-family (fonte). É tipo escolher as configurações de texto do Word: tamanho 12, negrito, Arial. Pronto, seu texto fica do seu jeito.",
+      "pergunta": "Crie CSS pra classe 'titulo' com: Arial, tamanho 32px, negrito e cor azul escuro (#00008B).",
+      "codigoInicial": ".titulo {\n  font-family: ",
+      "correta": ".titulo {\n  font-family: Arial, sans-serif;\n  font-size: 32px;\n  font-weight: bold;\n  color: #00008B;\n}",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["fonte", "cor"]
+    },
+    {
+      "id": "css-2-3",
+      "titulo": "Alinhamento de Texto",
+      "tipo": "multipla-escolha",
+      "explicacao": "text-align alinha o texto: left (esquerda), center (centro), right (direita), justify (justificado — igual livro). text-align: center centraliza o texto igual título de trabalho escolar no centro da página.",
+      "pergunta": "Qual propriedade centraliza o texto horizontalmente?",
+      "alternativas": ["align: center", "text-align: center", "center: text", "vertical-align: center"],
+      "correta": "text-align: center",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["alinhamento", "text-align"]
+    },
+    {
+      "id": "css-2-4",
+      "titulo": "Cor e Fundo",
+      "tipo": "complete-codigo",
+      "explicacao": "color muda a cor do texto. background-color muda a cor de fundo. Dá pra usar nome (red), hex (#FF0000), rgb (rgb(255,0,0)). Tipo pintar uma parede: a tinta (color) e a parede (background).",
+      "pergunta": "Crie um body com fundo cinza claro (#F0F0F0), texto cor #333 e 'Arial' como fonte.",
+      "codigoInicial": "body {\n  background-color: ",
+      "correta": "body {\n  background-color: #F0F0F0;\n  color: #333;\n  font-family: Arial, sans-serif;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["cor", "background"]
+    },
+    {
+      "id": "css-2-5",
+      "titulo": "Espaçamento Entre Linhas",
+      "tipo": "multipla-escolha",
+      "explicacao": "line-height controla o espaço entre as linhas de texto. line-height: 1.5 significa 1.5x o tamanho da fonte. Tipo pular linha num caderno: com espaço duplo (1.5) é mais fácil de ler que espaço simples (1.0).",
+      "pergunta": "O que a propriedade 'line-height' controla?",
+      "alternativas": ["Largura da linha", "Espaço entre linhas de texto", "Altura das letras", "Espaço entre palavras"],
+      "correta": "Espaço entre linhas de texto",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["line-height", "espacamento"]
+    },
+    {
+      "id": "css-2-6",
+      "titulo": "Artigo Bonito",
+      "tipo": "complete-codigo",
+      "explicacao": "Hora de estilizar um artigo completo. Título grande e centralizado, subtítulo menor, parágrafos com fonte confortável e espaçamento bom. É como diagramar uma revista: cada elemento tem seu estilo.",
+      "pergunta": "Estilize: h1 (Arial 36px, centro, azul), h2 (Arial 24px, esquerda, verde), p (Georgia 16px, line-height 1.6).",
+      "codigoInicial": "h1 {\n  font-family: Arial;\n  ",
+      "correta": "h1 {\n  font-family: Arial;\n  font-size: 36px;\n  text-align: center;\n  color: blue;\n}\nh2 {\n  font-family: Arial;\n  font-size: 24px;\n  text-align: left;\n  color: green;\n}\np {\n  font-family: Georgia;\n  font-size: 16px;\n  line-height: 1.6;\n}",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "iniciante",
+      "tags": ["tipografia", "artigo"]
+    },
+    {
+      "id": "css-2-7",
+      "titulo": "Erro Real: Texto Invisível",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro é contraste insuficiente: texto claro (#FFF) em fundo amarelo claro (#FFE) é quase ilegível. As cores são muito próximas em luminosidade. Solução: escolher cores com contraste adequado (use ferramentas como WebAIM Contrast Checker) ou escurecer o texto/botão.",
+      "pergunta": "Um botão tem background-color: #FFE e color: #FFF. O texto no botão branco com fundo amarelo claro está ilegível. Qual o problema?",
+      "alternativas": [
+        "A propriedade color não funciona em botões",
+        "O contraste entre texto e fundo é insuficiente — cores muito próximas",
+        "Falta especificar font-weight no botão",
+        "O navegador não renderiza branco sobre amarelo"
+      ],
+      "correta": "O contraste entre texto e fundo é insuficiente — cores muito próximas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "contraste"]
+    }
+  ]
+}

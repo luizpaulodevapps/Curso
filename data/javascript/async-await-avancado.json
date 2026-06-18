@@ -1,0 +1,84 @@
+{
+  "id": "js-moderno-4",
+  "nome": "Async/Await Avançado — Múltiplas Promises",
+  "descricao": "Gerenciar várias operações assíncronas ao mesmo tempo. Promise.all, race, allSettled.",
+  "ordem": 4,
+  "duracao": "1 semana",
+  "projeto": "Carregamento paralelo de dados no DevEstudos",
+  "questoes": [
+    {
+      "id": "js-moderno-4-1",
+      "titulo": "Promise.all - Todas Juntas",
+      "tipo": "multipla-escolha",
+      "explicacao": "Promise.all recebe array de promises e resolve TODAS em paralelo. Se UMA falhar, tudo falha. É tipo pedir pizza, sushi e hambúrguer ao mesmo tempo: só começa a comer quando tudo chegar — se um não chegar, nada feito.",
+      "pergunta": "O que Promise.all faz se uma promise rejeitar?",
+      "alternativas": ["Continua com as outras", "Rejeita todas", "Ignora o erro", "Tenta de novo"],
+      "correta": "Rejeita todas",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["promise.all", "paralelo"]
+    },
+    {
+      "id": "js-moderno-4-2",
+      "titulo": "Promise.all na Prática",
+      "tipo": "complete-codigo",
+      "explicacao": "Buscar dados de módulos do DevEstudos em paralelo: const [cursos, usuarios] = await Promise.all([buscarCursos(), buscarUsuarios()]). Muito mais rápido que um depois do outro.",
+      "pergunta": "Use Promise.all pra chamar duas funções async e logar os resultados.",
+      "codigoInicial": "async function buscarCursos() { return ['React', 'Next'] }\nasync function buscarUsuarios() { return ['Ana', 'João'] }\n\nasync function carregarTudo() {\n  const [cursos, usuarios] = ",
+      "correta": "async function buscarCursos() { return ['React', 'Next'] }\nasync function buscarUsuarios() { return ['Ana', 'João'] }\n\nasync function carregarTudo() {\n  const [cursos, usuarios] = await Promise.all([buscarCursos(), buscarUsuarios()]);\n  console.log(cursos, usuarios);\n}\n\ncarregarTudo();",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["promise.all", "paralelo"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-4-3",
+      "titulo": "Promise.race - Primeiro a Chegar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Promise.race resolve com a PRIMEIRA promise que completar (sucesso ou erro). Útil pra timeout: corre contra o relógio. É tipo Uber: várias corridas ao mesmo destino, só paga quem chegar primeiro.",
+      "pergunta": "Promise.race devolve...",
+      "alternativas": ["Todas as promises", "A primeira que resolver ou rejeitar", "Só as que falharem", "A última"],
+      "correta": "A primeira que resolver ou rejeitar",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["promise.race", "tempo"]
+    },
+    {
+      "id": "js-moderno-4-4",
+      "titulo": "Promise.allSettled - Todas, Erro ou Não",
+      "tipo": "multipla-escolha",
+      "explicacao": "Promise.allSettled espera TODAS terminarem, mesmo com erro. Retorna array com status 'fulfilled' ou 'rejected'. Perfeito pra carregar vários módulos do DevEstudos onde alguns podem falhar. É tipo prova: cada aluno termina quando consegue — alguns erram, outros acertam, mas todos entregam.",
+      "pergunta": "Promise.allSettled difere de Promise.all porque...",
+      "alternativas": ["É mais rápido", "Não rejeita se uma falhar", "Só aceita uma promise", "Ignora sucessos"],
+      "correta": "Não rejeita se uma falhar",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["allsettled", "falha"]
+    },
+    {
+      "id": "js-moderno-4-5",
+      "titulo": "Erro em Async Function",
+      "tipo": "complete-codigo",
+      "explicacao": "try/catch dentro de async function captura erros de await. Se uma promise rejeita, cai no catch. O DevEstudos usa isso pra mostrar 'Erro ao carregar módulo' sem quebrar a página.",
+      "pergunta": "Crie async function que tenta buscar dados e captura erro exibindo 'Deu ruim: ERRO'.",
+      "codigoInicial": "async function carregarDados() {\n  try {\n    const dados = await Promise.reject('API fora do ar');\n  } catch (erro) {\n    console.log('Deu ruim:', erro);\n  }\n}\n\n",
+      "correta": "async function carregarDados() {\n  try {\n    const dados = await Promise.reject('API fora do ar');\n  } catch (erro) {\n    console.log('Deu ruim:', erro);\n  }\n}\n\ncarregarDados();",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["try", "catch"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-4-6",
+      "titulo": "AbortController - Cancelar",
+      "tipo": "multipla-escolha",
+      "explicacao": "AbortController CANCELA uma requisição em andamento. Criamos o controller, passamos { signal } pro fetch, e chamamos controller.abort() pra cancelar. Útil se o usuário sair da página antes de carregar. É tipo 'desliga a TV' — para o que tiver carregando.",
+      "pergunta": "Qual método do AbortController cancela a requisição?",
+      "alternativas": ["cancel()", "abort()", "stop()", "terminate()"],
+      "correta": "abort()",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["abort", "cancelamento"]
+    }
+  ]
+}

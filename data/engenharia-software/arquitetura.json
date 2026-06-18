@@ -1,0 +1,107 @@
+{
+  "id": "es-3",
+  "nome": "Missão 3 — Arquitetura de Software: Camadas que se Beijam",
+  "descricao": "Clean Architecture, camadas e a Dependency Rule.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Separar camadas no DevEstudos",
+  "questoes": [
+    {
+      "id": "es-3-1",
+      "titulo": "Camadas da arquitetura",
+      "tipo": "multipla-escolha",
+      "explicacao": "Três camadas clássicas: Presentation (React/Next.js — a vitrine), Business (regras de negócio — a cozinha), Data (banco de dados — a despensa). Cada uma tem seu papel e não deve vazar pra outra.",
+      "pergunta": "Onde deve ficar a lógica 'desconto de 10% para primeira compra'?",
+      "alternativas": [
+        "Presentation (componente React)",
+        "Business (camada de domínio/serviço)",
+        "Data (query SQL)",
+        "Config (arquivo .env)"
+      ],
+      "correta": "Business (camada de domínio/serviço)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["camadas", "arquitetura", "separacao"]
+    },
+    {
+      "id": "es-3-2",
+      "titulo": "Dependency Rule",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Dependency Rule: as dependências apontam pra dentro. A camada de negócio não sabe se você usa React, Angular ou Vue. Ela não sabe se o banco é PostgreSQL ou MySQL. É o coração do sistema — isolado do mundo exterior.",
+      "pergunta": "Na Dependency Rule, a camada de Business (domínio) pode depender diretamente da camada de Data (banco).",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["dependency-rule", "camadas", "arquitetura"]
+    },
+    {
+      "id": "es-3-3",
+      "titulo": "Clean Architecture no DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, as regras de negócio (calcular prazo de curso, validar matrícula, aplicar gamificação) devem ficar isoladas do Next.js. Se amanhã trocarmos React por outro framework, o negócio não muda. É tipo a receita da pizza: não importa se o forno é a gás ou elétrico, a receita é a mesma.",
+      "pergunta": "O que acontece se a lógica de 'calcular certificado' estiver dentro de um useEffect do React?",
+      "alternativas": [
+        "Funciona perfeitamente, React é bom pra isso",
+        "Se trocar de framework, a lógica é perdida ou precisa ser reescrita",
+        "Fica mais rápido porque o React otimiza",
+        "O certificado será mais seguro"
+      ],
+      "correta": "Se trocar de framework, a lógica é perdida ou precisa ser reescrita",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["clean-architecture", "react", "devetudos"]
+    },
+    {
+      "id": "es-3-4",
+      "titulo": "Hexagonal Architecture",
+      "tipo": "multipla-escolha",
+      "explicacao": "Hexagonal (Ports & Adapters) é a Clean Architecture com outra roupagem. A ideia é que seu domínio (hexágono) se comunica com o mundo externo via 'portas' (interfaces) e 'adaptadores' (implementações). Trocar de banco? Só troca o adaptador. O domínio não sabe que o banco mudou.",
+      "pergunta": "Em Hexagonal Architecture, o que é uma 'porta' (port)?",
+      "alternativas": [
+        "Uma conexão direta com o banco de dados",
+        "Uma interface que define como o domínio se comunica com o mundo externo",
+        "Uma rota HTTP",
+        "Um endpoint de API"
+      ],
+      "correta": "Uma interface que define como o domínio se comunica com o mundo externo",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["hexagonal", "ports-adapters", "clean-architecture"]
+    },
+    {
+      "id": "es-3-5",
+      "titulo": "Erro real: lógica no componente React",
+      "tipo": "desafio-pratico",
+      "explicacao": "Um sistema educacional tinha a regra 'aluno não pode matricular em mais de 5 cursos' dentro de um onSubmit do React. Quando criaram um app mobile, a regra não existia lá — aluno podia matricular em 10 cursos pelo celular. A regra precisava estar no BACKEND, no coração do negócio.",
+      "pergunta": "Onde DEVERIA estar a regra 'limite de 5 matrículas por aluno'?",
+      "alternativas": [
+        "No componente React que exibe o botão de matrícula",
+        "No backend, na camada de serviço/domínio",
+        "No banco de dados como check constraint",
+        "No arquivo de configuração do Next.js"
+      ],
+      "correta": "No backend, na camada de serviço/domínio",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "camadas", "regra-negocio", "frontend"]
+    },
+    {
+      "id": "es-3-6",
+      "titulo": "Organizando pastas no DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "Organização de pastas importa. Uma boa estrutura separa: /src/domain (entidades, regras), /src/application (casos de uso), /src/infra (banco, API), /src/presentation (React). Cada pasta com seu papel.",
+      "pergunta": "Em qual pasta deve ficar a classe 'Curso' com os métodos 'calcularCargaHoraria' e 'validarConteudo'?",
+      "alternativas": [
+        "src/presentation/componentes",
+        "src/domain/entities",
+        "src/infra/database",
+        "src/application/services"
+      ],
+      "correta": "src/domain/entities",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["organizacao", "pastas", "dominio", "devetudos"]
+    }
+  ]
+}

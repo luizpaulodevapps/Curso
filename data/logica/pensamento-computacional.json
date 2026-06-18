@@ -1,0 +1,132 @@
+{
+  "id": "logica-1",
+  "nome": "Missão 1 — Pensamento Computacional: Receitas para o Computador",
+  "descricao": "Algoritmos, sequência de passos, entrada → processamento → saída. Como ensinar o computador a seguir receitas.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Escrever um algoritmo para fazer café",
+  "questoes": [
+    {
+      "id": "logica-1-1",
+      "titulo": "📖 O que é Pensamento Computacional?",
+      "tipo": "aula",
+      "explicacao": "Pensamento Computacional é uma forma de resolver problemas usando os mesmos princípios que um computador usa. Não é sobre programar, mas sobre pensar de forma lógica, organizada e estruturada.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["logica", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Pensamento Computacional tem quatro pilares: **decomposição** (quebrar um problema grande em partes menores), **reconhecimento de padrões** (identificar coisas que se repetem), **abstração** (focar no que importa, ignorar detalhes) e **algoritmo** (criar uma sequência de passos)." },
+        { "tipo": "texto", "valor": "**Decomposição** é o primeiro passo. Imagine organizar uma festa: em vez de pensar 'fazer festa' (problema enorme), você divide em: convidados, comida, música, decoração. Cada parte vira uma tarefa menor e mais fácil de resolver." },
+        { "tipo": "texto", "valor": "**Reconhecimento de padrões** é perceber que 'ligar o computador' e 'ligar a TV' seguem o mesmo padrão: apertar um botão de energia. Identificar padrões ajuda a resolver problemas novos com soluções que já conhecemos." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Exemplo de decomposição em código\nfunction prepararCafe() {\n  ferverAgua();       // Passo 1\n  colherPo();         // Passo 2\n  despejarAgua();     // Passo 3\n  coar();             // Passo 4\n  servir();           // Passo 5\n}" },
+        { "tipo": "resultado", "valor": "Cada função pequena resolve uma parte do problema total. Juntas, formam o algoritmo completo." },
+        { "tipo": "legenda", "valor": "💡 Dica: Quando um problema parecer grande demais, pergunte-se: 'Como posso dividir isso em partes menores?'" }
+      ]
+    },
+    {
+      "id": "logica-1-2",
+      "titulo": "👀 Receita de Bolo como Algoritmo",
+      "tipo": "exemplo",
+      "explicacao": "Uma receita de bolo é o exemplo mais clássico de algoritmo. Tem entrada (ingredientes), processamento (passos), e saída (bolo pronto). Vamos ver como decompor uma receita em passos lógicos.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["logica", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Toda receita segue uma sequência. Se você pular a ordem — tipo colocar o bolo no forno antes de misturar os ingredientes — o resultado é um desastre. Computador é igual: **a ordem importa**." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Algoritmo: Bolo de Cenoura\n// ENTRADA: 3 cenouras, 3 ovos, 1 xícara de óleo,\n//          2 xícaras de açúcar, 3 xícaras de farinha,\n//          1 colher de fermento\n\nfunction fazerBoloCenoura() {\n  descascarCenouras();\n  baterCenourasOvosOleo();\n  misturarAcucar();\n  adicionarFarinha();\n  adicionarFermento();\n  assar(180, 40); // 180°C por 40 min\n  return \"Bolo pronto!\";\n}" },
+        { "tipo": "texto", "valor": "Perceba a decomposição: 'fazer bolo' foi quebrado em 6 subpassos. Cada passo é uma tarefa atômica. Se algo der errado, você sabe exatamente qual passo revisar — igual debugar um código." },
+        { "tipo": "resultado", "valor": "O programa segue cada passo na sequência exata e produz 'Bolo pronto!' no final." },
+        { "tipo": "legenda", "valor": "💡 Dica: Antes de programar, escreva o algoritmo em português. Se você consegue explicar os passos para uma criança, consegue transformar em código." }
+      ]
+    },
+    {
+      "id": "logica-1-3",
+      "titulo": "O que é um Algoritmo?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Algoritmo é uma sequência finita de passos para resolver um problema. É tipo uma receita de bolo: você precisa seguir a ordem certa para o bolo dar certo.",
+      "pergunta": "O que é um algoritmo?",
+      "alternativas": ["Um tipo de variável", "Uma sequência de passos para resolver um problema", "Um loop infinito", "Um erro no código"],
+      "correta": "Uma sequência de passos para resolver um problema",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["algoritmo", "conceito"]
+    },
+    {
+      "id": "logica-1-4",
+      "titulo": "Entrada → Processamento → Saída",
+      "tipo": "multipla-escolha",
+      "explicacao": "Num programa, você tem entrada (input), processamento (os passos), e saída (output). Tipo uma máquina de café: você coloca água e pó (entrada), a máquina processa, e sai café (saída).",
+      "pergunta": "Numa receita de café, qual seria a 'entrada' (input)?",
+      "alternativas": ["Beber o café", "Água, pó de café e filtro", "O sabor do café", "A xícara suja"],
+      "correta": "Água, pó de café e filtro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["input", "processamento", "output"]
+    },
+    {
+      "id": "logica-1-5",
+      "titulo": "Ordem dos Passos",
+      "tipo": "multipla-escolha",
+      "explicacao": "A ordem importa! Se você colocar o leite antes do café ou aquecer antes de colocar o pó, o resultado muda. Computador é literal: ele segue exatamente o que você mandou, na ordem que você mandou.",
+      "pergunta": "O que acontece se a ordem dos passos de um algoritmo estiver errada?",
+      "alternativas": ["O resultado pode ser diferente do esperado", "Nada, o computador corrige", "O código compila mais rápido", "O algoritmo vira um loop"],
+      "correta": "O resultado pode ser diferente do esperado",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["ordem", "sequencia"]
+    },
+    {
+      "id": "logica-1-6",
+      "titulo": "Instruções Claras",
+      "tipo": "multipla-escolha",
+      "explicacao": "Computador não 'adivinha'. Se você diz 'pegue um pouco de água', ele trava porque 'um pouco' é ambíguo. Tem que ser 'pegue 200ml de água'. Precisão é tudo.",
+      "pergunta": "Por que instruções precisam ser precisas num algoritmo?",
+      "alternativas": ["Pra ocupar mais linhas de código", "Porque o computador interpreta tudo ao pé da letra", "Porque deixa o código mais bonito", "Não precisa ser preciso"],
+      "correta": "Porque o computador interpreta tudo ao pé da letra",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["precisao", "instrucoes"]
+    },
+    {
+      "id": "logica-1-7",
+      "titulo": "Algoritmo vs Código",
+      "tipo": "multipla-escolha",
+      "explicacao": "Algoritmo é o plano, o raciocínio. Código é a tradução desse plano pra linguagem que o computador entende (JavaScript, Python, etc). Primeiro você pensa o algoritmo, depois escreve o código.",
+      "pergunta": "Qual a diferença entre algoritmo e código?",
+      "alternativas": ["São a mesma coisa", "Algoritmo é o plano; código é a implementação", "Código é o plano; algoritmo é a implementação", "Algoritmo só existe em JavaScript"],
+      "correta": "Algoritmo é o plano; código é a implementação",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["algoritmo", "codigo", "conceito"]
+    },
+    {
+      "id": "logica-1-8",
+      "titulo": "Erro Real: Passo Faltando no Algoritmo",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro é que o algoritmo pula uma etapa essencial: colocar água antes de ligar a cafeteira. Isso viola o princípio de sequência correta — cada passo depende do anterior. Como uma receita de bolo que manda assar antes de misturar os ingredientes: o resultado é um desastre. Sempre liste todos os passos na ordem certa.",
+      "pergunta": "O algoritmo de fazer café está quebrado — falta colocar água antes de ligar. Qual o princípio violado?",
+      "alternativas": ["Princípio da sequência correta de passos", "Princípio da economia de linhas", "Princípio da variável única", "Princípio do loop infinito"],
+      "correta": "Princípio da sequência correta de passos",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    },
+    {
+      "id": "logica-1-9",
+      "titulo": "🧪 Algoritmo do Café - Complete",
+      "tipo": "complete-codigo",
+      "explicacao": "Um algoritmo pode ser escrito em português mesmo, antes de virar código. O importante é ter passos lógicos e ordenados. Vamos escrever um algoritmo simples pra fazer café.",
+      "pergunta": "Complete o algoritmo para fazer café, colocando os passos na ordem lógica: ferver água, colocar pó no filtro, despejar água, servir.",
+      "codigoInicial": "// Algoritmo: Fazer Café\n// 1. Ferver água\n// 2. \n// 3. Despejar água quente no pó\n// 4. ",
+      "correta": "// Algoritmo: Fazer Café\n// 1. Ferver água\n// 2. Colocar pó no filtro\n// 3. Despejar água quente no pó\n// 4. Servir o café",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["algoritmo", "sequencia", "cafe", "laboratorio"],
+      "validacao": ""
+    }
+  ]
+}

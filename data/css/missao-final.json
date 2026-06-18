@@ -1,0 +1,104 @@
+{
+  "id": "css-7",
+  "nome": "🏆 Missão Final — Tema Completo do DevEstudos",
+  "descricao": "Crie o tema escuro completo do DevEstudos com variáveis CSS, troca de tema, escala de design e debug de cascata. A prova final do seu conhecimento em CSS.",
+  "ordem": 7,
+  "duracao": "4 horas",
+  "projeto": "Tema completo DevEstudos com dark/light",
+  "questoes": [
+    {
+      "id": "css-7-1",
+      "titulo": "Arquitetura de Variáveis",
+      "tipo": "multipla-escolha",
+      "explicacao": "A arquitetura ideal é declarar as variáveis em :root (escopo global) e agrupar por categoria: cores (--cor-*), tipografia (--fonte-*), espaçamento (--esp-*). Isso cria um design system organizado — como uma biblioteca onde cada livro tem seu lugar.",
+      "pergunta": "Qual a melhor prática para organizar variáveis CSS em um projeto de tema completo?",
+      "alternativas": [
+        "Declarar cada variável separadamente em cada seletor que a usa",
+        "Centralizar todas em :root com nomes categorizados (--cor-, --fonte-, --esp-)",
+        "Usar variáveis apenas no arquivo HTML com <style>",
+        "Criar variáveis com nomes curtos como --a, --b, --c para economia"
+      ],
+      "correta": "Centralizar todas em :root com nomes categorizados (--cor-, --fonte-, --esp-)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "variaveis", "arquitetura", "design-system"]
+    },
+    {
+      "id": "css-7-2",
+      "titulo": "Troca de Tema via Classe",
+      "tipo": "complete-codigo",
+      "explicacao": "Para alternar entre claro e escuro, coloca-se uma classe no <html> (ex: data-theme=\"dark\"). No CSS, [data-theme=\"dark\"] sobrescreve as variáveis de :root. É como virar uma chave: a classe no HTML decide qual conjunto de cores será usado.",
+      "pergunta": "Crie o CSS para tema escuro usando [data-theme=\"dark\"] no html. Defina --bg (preto #0a0a23), --text (branco #eee), --primary (roxo #6C63FF). Já existe :root com tema claro.",
+      "codigoInicial": ":root {\n  --bg: #f5f5f5;\n  --text: #222;\n  --primary: #6C63FF;\n}\n\n[data-theme=\"dark\"] {\n  ",
+      "correta": ":root {\n  --bg: #f5f5f5;\n  --text: #222;\n  --primary: #6C63FF;\n}\n\n[data-theme=\"dark\"] {\n  --bg: #0a0a23;\n  --text: #eee;\n  --primary: #6C63FF;\n}",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["css", "tema", "dark-mode", "data-theme"]
+    },
+    {
+      "id": "css-7-3",
+      "titulo": "Escala de Design Consistente",
+      "tipo": "multipla-escolha",
+      "explicacao": "Uma escala de design usa valores padronizados para espaçamento e tipografia: --esp-xs (4px), --esp-sm (8px), --esp-md (16px), --esp-lg (24px), --esp-xl (48px). Isso garante consistência visual — como um grid de arquitetura onde todas as medidas seguem a mesma proporção.",
+      "pergunta": "Qual benefício uma escala consistente de espaçamento e tipografia traz para um tema CSS?",
+      "alternativas": [
+        "Deixa o CSS mais curto, com menos linhas",
+        "Garante consistência visual e ritmo no design, facilitando manutenção",
+        "Elimina a necessidade de media queries",
+        "Acelera o carregamento da página"
+      ],
+      "correta": "Garante consistência visual e ritmo no design, facilitando manutenção",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "escala", "design-system", "espacamento"]
+    },
+    {
+      "id": "css-7-4",
+      "titulo": "Erro Real: Cascade Traiçoeira",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro: a ordem da cascata CSS importa. Um seletor com a mesma especificidade declarado DEPOIS sobrescreve o anterior. Ao alternar tema, se o CSS do tema escuro vem antes do claro no arquivo, o claro sempre vence. Solução: garantir que o tema escuro (com [data-theme]) seja declarado depois ou tenha maior especificidade.",
+      "pergunta": "Meu theme toggle não funciona: quando ativo data-theme=\"dark\" no <html>, as cores do tema escuro aparecem por um instante e voltam ao claro. O CSS do tema escuro está declarado ANTES do claro no arquivo. Qual o problema?",
+      "alternativas": [
+        "O JavaScript do toggle está com erro",
+        "A cascata CSS faz o tema claro (declarado depois) sobrescrever o escuro — ambos têm a mesma especificidade",
+        "O navegador não suporta data-theme",
+        "Falta usar !important nas variáveis do escuro"
+      ],
+      "correta": "A cascata CSS faz o tema claro (declarado depois) sobrescrever o escuro — ambos têm a mesma especificidade",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "cascata"]
+    },
+    {
+      "id": "css-7-5",
+      "titulo": "Erro Real: DevTools na Prática",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro é não usar o DevTools do navegador para depurar CSS. A aba Elements > Styles mostra quais regras estão sendo aplicadas, quais estão riscadas (sobrescritas), e permite editar valores em tempo real. É tipo um raio-X do CSS: você vê exatamente o que o navegador está processando.",
+      "pergunta": "Estou tentando entender por que uma regra CSS não está sendo aplicada. Qual a melhor abordagem usando ferramentas do navegador?",
+      "alternativas": [
+        "Abrir o DevTools, inspecionar o elemento e ver na aba Styles quais regras estão ativas e quais foram sobrescritas",
+        "Comentar partes do CSS até descobrir o problema",
+        "Adicionar !important em todas as regras",
+        "Recarregar a página várias vezes até funcionar"
+      ],
+      "correta": "Abrir o DevTools, inspecionar o elemento e ver na aba Styles quais regras estão ativas e quais foram sobrescritas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "devtools"]
+    },
+    {
+      "id": "css-7-6",
+      "titulo": "Tema Completo DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "O tema completo do DevEstudos une tudo: variáveis para claro e escuro, escala de espaçamento, tipografia com fallback, reset universal e theme toggle via [data-theme]. É o design system completo que a plataforma merece.",
+      "pergunta": "Monte o tema final DevEstudos: :root com --bg (#f5f5f5), --text (#222), --primary (#6C63FF), --font ('Segoe UI', sans-serif). [data-theme=\"dark\"] com --bg (#0a0a23), --text (#eee). * com box-sizing, body usando as variáveis e line-height 1.6.",
+      "codigoInicial": ":root {\n  --bg: #f5f5f5;\n  --text: #222;\n  --primary: #6C63FF;\n  --font: 'Segoe UI', sans-serif;\n}\n\n[data-theme=\"dark\"] {\n  --bg: #0a0a23;\n  --text: #eee;\n  --primary: #6C63FF;\n}\n\n* {\n  ",
+      "correta": ":root {\n  --bg: #f5f5f5;\n  --text: #222;\n  --primary: #6C63FF;\n  --font: 'Segoe UI', sans-serif;\n}\n\n[data-theme=\"dark\"] {\n  --bg: #0a0a23;\n  --text: #eee;\n  --primary: #6C63FF;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-color: var(--bg);\n  color: var(--text);\n  font-family: var(--font);\n  line-height: 1.6;\n}",
+      "validacao": "",
+      "xp": 30,
+      "nivel": "avancado",
+      "tags": ["css", "tema", "devestudos", "final", "design-system"]
+    }
+  ]
+}

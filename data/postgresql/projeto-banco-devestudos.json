@@ -1,0 +1,143 @@
+{
+  "id": "pg-9",
+  "nome": "Missão 9 — Projeto Final: Banco do DevEstudos",
+  "descricao": "Modelar e criar o banco de dados completo do DevEstudos do zero.",
+  "ordem": 9,
+  "duracao": "4 horas",
+  "projeto": "Criar o banco de dados completo do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-9-1",
+      "titulo": "Modelar tabela usuarios",
+      "tipo": "multipla-escolha",
+      "explicacao": "A tabela de usuarios é o coração do DevEstudos. Cada campo precisa do tipo certo: nome é texto, data_cadastro é data, e o ID precisa ser único e automático.",
+      "pergunta": "Qual definição de coluna é a mais adequada para o ID da tabela usuarios, que deve ser gerado automaticamente?",
+      "alternativas": [
+        "id SERIAL PRIMARY KEY",
+        "id INT PRIMARY KEY",
+        "id VARCHAR(10) PRIMARY KEY",
+        "id UUID DEFAULT gen_random_uuid() PRIMARY KEY"
+      ],
+      "correta": "id SERIAL PRIMARY KEY — gera inteiros automaticamente de forma simples e eficiente para a maioria dos casos.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "projeto", "modelagem"]
+    },
+    {
+      "id": "pg-9-2",
+      "titulo": "Relacionamento cursos-modulos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um curso no DevEstudos tem vários módulos. Mas um módulo pertence a um único curso. Esse relacionamento 1:N é a base do banco — como uma pasta (curso) que contém vários papéis (módulos).",
+      "pergunta": "Qual coluna deve existir na tabela modulos para representar o relacionamento com cursos?",
+      "alternativas": [
+        "curso_id INT REFERENCES cursos(id)",
+        "id_curso INT (sem FK)",
+        "cursos INT[] (array de IDs)",
+        "modulo_id INT REFERENCES cursos(id)"
+      ],
+      "correta": "curso_id INT REFERENCES cursos(id) — FK que liga cada módulo ao seu curso.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "projeto", "relacionamento"]
+    },
+    {
+      "id": "pg-9-3",
+      "titulo": "Design de questões",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada módulo do DevEstudos tem várias questões. Mas uma questão pode ter tipos diferentes (múltipla escolha, dissertativa, etc). Como guardar as alternativas de forma flexível?",
+      "pergunta": "Qual a melhor estratégia para armazenar alternativas de questões no banco?",
+      "alternativas": [
+        "Tabela separada alternativas (id, questao_id, texto, correta) — permite número variável de alternativas por questão.",
+        "Colunas alternativas TEXT[] (array) na tabela questoes.",
+        "Colunas fixas: alternativa_a, alternativa_b, alternativa_c, alternativa_d na tabela questoes.",
+        "Armazenar tudo como JSON em uma coluna da tabela questoes."
+      ],
+      "correta": "Tabela separada alternativas (id, questao_id, texto, correta) — permite número variável de alternativas por questão.",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "projeto", "modelagem"]
+    },
+    {
+      "id": "pg-9-4",
+      "titulo": "Progresso do usuário",
+      "tipo": "multipla-escolha",
+      "explicacao": "O progresso de cada aluno no DevEstudos precisa registrar: qual módulo, qual usuário, em qual questão ele parou e qual a pontuação. É um relacionamento N:N com atributos.",
+      "pergunta": "Qual é a estrutura correta para a tabela progresso?",
+      "alternativas": [
+        "Tabela progresso (usuario_id, modulo_id, questoes_concluidas INT, pontuacao INT, PRIMARY KEY composta).",
+        "Adicionar coluna progresso na tabela usuarios como JSON.",
+        "Tabela progresso com colunas: id, usuario_id, modulo_id (sem PK composta).",
+        "Tabela progresso (id SERIAL, usuario_id, modulo_id, percentual DECIMAL) com PK simples e FK para usuarios e modulos."
+      ],
+      "correta": "Tabela progresso (id SERIAL, usuario_id FK, modulo_id FK, percentual DECIMAL, concluido BOOLEAN, ultimo_acesso TIMESTAMP) — PK simples, FKs compostas com UNIQUE se necessário.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "projeto", "progresso"]
+    },
+    {
+      "id": "pg-9-5",
+      "titulo": "Flashcards — design da tabela",
+      "tipo": "multipla-escolha",
+      "explicacao": "Os flashcards do DevEstudos são como cartas de baralho: têm uma pergunta na frente e resposta no verso. O sistema de repetição espaçada precisa de campos de revisão.",
+      "pergunta": "Qual coluna é essencial para implementar repetição espaçada (SRS) nos flashcards?",
+      "alternativas": [
+        "proxima_revisao TIMESTAMP — para saber quando revisar cada card.",
+        "dificuldade INT — para classificar a dificuldade.",
+        "categoria VARCHAR — para agrupar por assunto.",
+        "vezes_visto INT — para contar quantas vezes foi visto."
+      ],
+      "correta": "proxima_revisao TIMESTAMP — permite agendar a próxima revisão de cada card com base no algoritmo SRS.",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "projeto", "flashcards"]
+    },
+    {
+      "id": "pg-9-6",
+      "titulo": "Esquema completo — parte 1",
+      "tipo": "complete-codigo",
+      "explicacao": "Chegou a hora de escrever SQL de verdade. O banco do DevEstudos começa com usuarios e cursos. Escolha os tipos certos e as constraints.",
+      "pergunta": "Escreva o comando CREATE TABLE completo para a tabela usuarios, com colunas: id (SERIAL PK), nome (VARCHAR 100 NOT NULL), email (VARCHAR 255 UNIQUE NOT NULL), senha_hash (VARCHAR 255 NOT NULL), ativo (BOOLEAN DEFAULT true), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP).",
+      "alternativas": [],
+      "correta": "CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR(100) NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, senha_hash VARCHAR(255) NOT NULL, ativo BOOLEAN DEFAULT true, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "projeto", "create-table"]
+    },
+    {
+      "id": "pg-9-7",
+      "titulo": "Esquema completo — parte 2",
+      "tipo": "desafio-pratico",
+      "explicacao": "Você já tem usuarios e cursos. Agora precisa criar matriculas, a tabela que liga alunos a cursos com informação extra: a data em que o aluno se matriculou.",
+      "pergunta": "Escreva o comando CREATE TABLE para matriculas com: id SERIAL PK, usuario_id INT FK para usuarios, curso_id INT FK para cursos, data_matricula DATE DEFAULT CURRENT_DATE, ativa BOOLEAN DEFAULT true. Lembre-se de adicionar as constraints FOREIGN KEY.",
+      "alternativas": [],
+      "correta": "CREATE TABLE matriculas (id SERIAL PRIMARY KEY, usuario_id INT NOT NULL REFERENCES usuarios(id), curso_id INT NOT NULL REFERENCES cursos(id), data_matricula DATE DEFAULT CURRENT_DATE, ativa BOOLEAN DEFAULT true);",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "projeto", "create-table", "fk"]
+    },
+    {
+      "id": "pg-9-8",
+      "titulo": "Script completo do DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "Missão final: você é o DBA do DevEstudos e precisa entregar o script completo de criação do banco. Todas as tabelas, com relacionamentos, constraints e índices.",
+      "pergunta": "Escreva o script SQL completo para criar o banco do DevEstudos com as seguintes tabelas: usuarios (id SERIAL PK, nome, email UNIQUE, senha_hash, created_at), cursos (id SERIAL PK, nome, descricao, created_at), modulos (id SERIAL PK, curso_id FK, nome, descricao, ordem INT), questoes (id SERIAL PK, modulo_id FK, titulo, pergunta, tipo, xp INT, nivel), alternativas (id SERIAL PK, questao_id FK, texto, correta BOOLEAN), progresso (id SERIAL PK, usuario_id FK, modulo_id FK, percentual DECIMAL, concluido BOOLEAN), flashcards (id SERIAL PK, usuario_id FK, pergunta, resposta, proxima_revisao TIMESTAMP). Inclua pelo menos 2 índices em colunas de busca frequente.",
+      "alternativas": [],
+      "correta": "-- DevEstudos — Script completo de criação do banco\n\nCREATE TABLE usuarios (\n  id SERIAL PRIMARY KEY,\n  nome VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE NOT NULL,\n  senha_hash VARCHAR(255) NOT NULL,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE TABLE cursos (\n  id SERIAL PRIMARY KEY,\n  nome VARCHAR(150) NOT NULL,\n  descricao TEXT,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE TABLE modulos (\n  id SERIAL PRIMARY KEY,\n  curso_id INT NOT NULL REFERENCES cursos(id),\n  nome VARCHAR(150) NOT NULL,\n  descricao TEXT,\n  ordem INT NOT NULL\n);\n\nCREATE TABLE questoes (\n  id SERIAL PRIMARY KEY,\n  modulo_id INT NOT NULL REFERENCES modulos(id),\n  titulo VARCHAR(200),\n  pergunta TEXT NOT NULL,\n  tipo VARCHAR(20) NOT NULL,\n  xp INT DEFAULT 10,\n  nivel VARCHAR(20) DEFAULT 'iniciante'\n);\n\nCREATE TABLE alternativas (\n  id SERIAL PRIMARY KEY,\n  questao_id INT NOT NULL REFERENCES questoes(id),\n  texto TEXT NOT NULL,\n  correta BOOLEAN DEFAULT false\n);\n\nCREATE TABLE progresso (\n  id SERIAL PRIMARY KEY,\n  usuario_id INT NOT NULL REFERENCES usuarios(id),\n  modulo_id INT NOT NULL REFERENCES modulos(id),\n  percentual DECIMAL(5,2) DEFAULT 0,\n  concluido BOOLEAN DEFAULT false,\n  ultimo_acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE TABLE flashcards (\n  id SERIAL PRIMARY KEY,\n  usuario_id INT NOT NULL REFERENCES usuarios(id),\n  pergunta TEXT NOT NULL,\n  resposta TEXT NOT NULL,\n  proxima_revisao TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE INDEX idx_questoes_modulo ON questoes(modulo_id);\nCREATE INDEX idx_flashcards_revisao ON flashcards(proxima_revisao);\nCREATE INDEX idx_progresso_usuario ON progresso(usuario_id);",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "projeto", "script-completo", "desafio"]
+    },
+    {
+      "id": "pg-9-9",
+      "titulo": "Consultas do relatório final",
+      "tipo": "desafio-pratico",
+      "explicacao": "O DevEstudos precisa de um relatório final: para cada curso, quantos alunos estão matriculados, qual a média de progresso deles e quantos flashcards estão pendentes (proxima_revisao <= NOW()).",
+      "pergunta": "Escreva uma consulta SQL que retorne: nome do curso, total de matriculados, média de percentual de progresso, total de flashcards pendentes (proxima_revisao <= NOW()) para aquele curso. Use JOINs entre cursos, matriculas, progresso e flashcards.",
+      "alternativas": [],
+      "correta": "SELECT c.nome AS curso, COUNT(DISTINCT m.usuario_id) AS total_alunos, COALESCE(AVG(p.percentual), 0) AS media_progresso, COUNT(DISTINCT f.id) FILTER (WHERE f.proxima_revisao <= NOW()) AS flashcards_pendentes FROM cursos c LEFT JOIN modulos mo ON c.id = mo.curso_id LEFT JOIN progresso p ON mo.id = p.modulo_id LEFT JOIN matriculas m ON c.id = m.curso_id AND m.ativa = true LEFT JOIN flashcards f ON m.usuario_id = f.usuario_id AND f.proxima_revisao <= NOW() GROUP BY c.nome;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "projeto", "relatorio", "desafio"]
+    }
+  ]
+}

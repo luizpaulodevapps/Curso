@@ -1,0 +1,136 @@
+{
+  "id": "pg-6",
+  "nome": "Missão 6 — JOINs",
+  "descricao": "Combinar dados de múltiplas tabelas.",
+  "ordem": 6,
+  "duracao": "3 horas",
+  "projeto": "Relacionar usuários com cursos no DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-6-1",
+      "titulo": "INNER JOIN",
+      "tipo": "multipla-escolha",
+      "explicacao": "INNER JOIN é como cruzar a lista de alunos com a lista de cursos: só aparece quem está nas DUAS listas. Aluno sem curso? Não aparece. Curso sem aluno? Também não.",
+      "pergunta": "Qual query retorna apenas usuarios que têm matrícula (registro em ambas as tabelas)?",
+      "alternativas": [
+        "SELECT * FROM usuarios INNER JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios JOIN matriculas WHERE usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios, matriculas WHERE usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios INNER JOIN matriculas ON usuarios.id = matriculas.id;"
+      ],
+      "correta": "SELECT * FROM usuarios INNER JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "join", "inner-join"]
+    },
+    {
+      "id": "pg-6-2",
+      "titulo": "LEFT JOIN",
+      "tipo": "multipla-escolha",
+      "explicacao": "LEFT JOIN é como fazer a chamada no DevEstudos: você quer ver TODOS os alunos da lista, mesmo que alguns nunca tenham assistido aula (sem registro na outra tabela).",
+      "pergunta": "Qual query retorna todos os usuarios, mesmo os sem matrícula (exibindo NULL nas colunas de matricula)?",
+      "alternativas": [
+        "SELECT * FROM usuarios LEFT JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios RIGHT JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios INNER JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios FULL JOIN matriculas ON usuarios.id = matriculas.usuario_id;"
+      ],
+      "correta": "SELECT * FROM usuarios LEFT JOIN matriculas ON usuarios.id = matriculas.usuario_id;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "join", "left-join"]
+    },
+    {
+      "id": "pg-6-3",
+      "titulo": "Erro real — esquecer ON clause",
+      "tipo": "multipla-escolha",
+      "explicacao": "Esquecer o ON no JOIN é como jogar duas listas de presença no ar e esperar que elas se organizem sozinhas. O resultado é um CROSS JOIN — cada aluno combinado com cada curso, um de cada vez.",
+      "pergunta": "O que acontece ao executar `SELECT * FROM usuarios JOIN matriculas;` (sem ON)?",
+      "alternativas": [
+        "Retorna erro: JOIN exige cláusula ON.",
+        "Faz um CROSS JOIN — cada linha de usuarios combinada com cada linha de matriculas.",
+        "Assume ON usuarios.id = matriculas.usuario_id automaticamente.",
+        "Retorna apenas registros onde usuário e matrícula existem."
+      ],
+      "correta": "Faz um CROSS JOIN — cada linha de usuarios combinada com cada linha de matriculas.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "join", "cross-join"]
+    },
+    {
+      "id": "pg-6-4",
+      "titulo": "Múltiplos JOINs",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, um aluno tem matrícula, que tem curso, que tem módulos. Para juntar tudo, você encadeia JOINs igual conectar vagões de trem.",
+      "pergunta": "Qual query junta usuarios com matriculas e cursos corretamente?",
+      "alternativas": [
+        "SELECT * FROM usuarios JOIN matriculas ON usuarios.id = matriculas.usuario_id JOIN cursos ON matriculas.curso_id = cursos.id;",
+        "SELECT * FROM usuarios JOIN matriculas AND cursos ON usuarios.id = matriculas.usuario_id = cursos.id;",
+        "SELECT * FROM usuarios, matriculas, cursos WHERE usuarios.id = matriculas.usuario_id;",
+        "SELECT * FROM usuarios JOIN matriculas JOIN cursos;"
+      ],
+      "correta": "SELECT * FROM usuarios JOIN matriculas ON usuarios.id = matriculas.usuario_id JOIN cursos ON matriculas.curso_id = cursos.id;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "join", "multi-join"]
+    },
+    {
+      "id": "pg-6-5",
+      "titulo": "Alias de tabelas",
+      "tipo": "complete-codigo",
+      "explicacao": "Escrever usuarios.id toda hora cansa. Apelidos (alias) para tabelas são como 'apelidos' na chamada do DevEstudos: 'u' no lugar de 'usuarios', 'm' no lugar de 'matriculas'.",
+      "pergunta": "Reescreva com alias: junte a tabela usuarios (alias u) com matriculas (alias m) onde u.id = m.usuario_id:\n\n________ u\n________ m ON u.id = m.usuario_id;",
+      "alternativas": [],
+      "correta": "SELECT * FROM usuarios u JOIN matriculas m ON u.id = m.usuario_id;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "join", "alias"]
+    },
+    {
+      "id": "pg-6-6",
+      "titulo": "SELF JOIN",
+      "tipo": "multipla-escolha",
+      "explicacao": "SELF JOIN é quando a tabela dança com ela mesma. No DevEstudos, um usuario pode ser indicado por outro — você junta usuarios com usuarios pra achar a árvore de indicações.",
+      "pergunta": "A tabela usuarios tem coluna indicado_por (FK para o próprio id). Qual query retorna o nome do usuario e o nome de quem o indicou?",
+      "alternativas": [
+        "SELECT u.nome AS usuario, i.nome AS indicador FROM usuarios u LEFT JOIN usuarios i ON u.indicado_por = i.id;",
+        "SELECT u.nome, u.indicado_por FROM usuarios u;",
+        "SELECT * FROM usuarios u JOIN usuarios i;",
+        "SELECT u.nome, i.nome FROM usuarios u, usuarios i;"
+      ],
+      "correta": "SELECT u.nome AS usuario, i.nome AS indicador FROM usuarios u LEFT JOIN usuarios i ON u.indicado_por = i.id;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "join", "self-join"]
+    },
+    {
+      "id": "pg-6-7",
+      "titulo": "FULL JOIN",
+      "tipo": "multipla-escolha",
+      "explicacao": "FULL JOIN é o 'todo mundo junto': alunos sem curso aparecem com NULL no curso, cursos sem alunos aparecem com NULL no aluno. Ninguém fica de fora.",
+      "pergunta": "Qual tipo de JOIN retorna TODOS os registros de ambas as tabelas, com NULL onde não há correspondência?",
+      "alternativas": [
+        "FULL OUTER JOIN",
+        "INNER JOIN",
+        "LEFT JOIN",
+        "RIGHT JOIN"
+      ],
+      "correta": "FULL OUTER JOIN",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "join", "full-join"]
+    },
+    {
+      "id": "pg-6-8",
+      "titulo": "Desafio — JOIN + filtros",
+      "tipo": "desafio-pratico",
+      "explicacao": "O DevEstudos quer um relatório: nome do aluno, nome do curso e data da matrícula, apenas de alunos ativos, ordenado por data de matrícula (mais recente primeiro), limitado a 20.",
+      "pergunta": "Escreva a query completa com JOIN entre usuarios, matriculas e cursos, filtro WHERE usuarios.ativo = true, ORDER BY matriculas.data_matricula DESC, LIMIT 20.",
+      "alternativas": [],
+      "correta": "SELECT u.nome, c.nome AS curso, m.data_matricula FROM usuarios u JOIN matriculas m ON u.id = m.usuario_id JOIN cursos c ON m.curso_id = c.id WHERE u.ativo = true ORDER BY m.data_matricula DESC LIMIT 20;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "join", "desafio"]
+    }
+  ]
+}

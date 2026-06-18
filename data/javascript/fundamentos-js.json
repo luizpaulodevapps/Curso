@@ -1,0 +1,124 @@
+{
+  "id": "js-1",
+  "nome": "Missão 1 — Fundamentos do JavaScript: A Base do DevEstudos",
+  "descricao": "let, const, var, escopo de bloco, funções (declaration e arrow), template literals, strict mode.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Primeiras funções do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-1-1",
+      "titulo": "📖 O que é JavaScript?",
+      "tipo": "aula",
+      "explicacao": "JavaScript é a linguagem de programação que dá vida às páginas web. Com ela, você pode criar desde interações simples até aplicações completas como o DevEstudos.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["javascript", "conceito"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "JavaScript nasceu em 1995 e hoje é uma das linguagens mais usadas do mundo. Ela roda no navegador (front-end) e também no servidor (back-end com Node.js)." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Isso é um comentário em JS\nconsole.log('Olá, DevEstudos!');" },
+        { "tipo": "resultado", "valor": "Olá, DevEstudos!" },
+        { "tipo": "texto", "valor": "Variáveis são como caixinhas que guardam valores. No JavaScript moderno, usamos let (valor que pode mudar) e const (valor fixo)." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let nome = 'Luiz';\nconst idade = 30;\nlet linguagem = 'JavaScript';\n\nconsole.log(nome, idade, linguagem);" },
+        { "tipo": "resultado", "valor": "Luiz 30 JavaScript" },
+        { "tipo": "legenda", "valor": "Use const como padrão. Só use let se precisar reatribuir o valor." },
+        { "tipo": "texto", "valor": "JavaScript tem tipos dinâmicos. Os principais são: string (texto), number (número), boolean (true/false), undefined, null, object (array, objeto literal)." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let texto = 'Olá';\nlet numero = 42;\nlet verdadeiro = true;\nlet lista = [1, 2, 3];\nlet pessoa = { nome: 'Ana', idade: 25 };" }
+      ]
+    },
+    {
+      "id": "js-1-2",
+      "titulo": "👀 Primeiro Código JS",
+      "tipo": "exemplo",
+      "explicacao": "Vamos ver na prática como declarar variáveis e exibir valores no console.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["javascript", "exemplo", "variaveis"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Crie um arquivo index.js e escreva o código abaixo para ver JavaScript funcionando:" },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Declarando variáveis\nlet nome = 'Luiz';\nconst idade = 30;\nlet linguagem = 'JavaScript';\n\nconsole.log('Nome:', nome);\nconsole.log('Idade:', idade);\nconsole.log('Linguagem:', linguagem);\nconsole.log('Olá, ' + nome + '! Você tem ' + idade + ' anos.');" },
+        { "tipo": "resultado", "valor": "Nome: Luiz\nIdade: 30\nLinguagem: JavaScript\nOlá, Luiz! Você tem 30 anos." },
+        { "tipo": "legenda", "valor": "O console.log() é seu melhor amigo para depurar código. Use ele sempre que precisar ver o valor de uma variável." }
+      ]
+    },
+    {
+      "id": "js-1-3",
+      "titulo": "let vs const vs var",
+      "tipo": "multipla-escolha",
+      "explicacao": "let e const respeitam escopo de bloco ({ }) e não vazam pra fora. var ignora blocos e vaza, causando bugs. const não reatribui. Regra: const padrão, let quando precisar mudar, var evite.",
+      "pergunta": "Qual declaração NÃO permite reatribuição e respeita escopo de bloco?",
+      "alternativas": ["var", "let", "const", "function"],
+      "correta": "const",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["let", "const", "var", "escopo"]
+    },
+    {
+      "id": "js-1-4",
+      "titulo": "Escopo de Bloco",
+      "tipo": "multipla-escolha",
+      "explicacao": "let e const ficam presos dentro das { } onde foram criados. Tipo: se você declara dentro de um if, não existe fora dele. var ignora isso — é tipo fumaça que escapa por qualquer fresta.",
+      "pergunta": "Uma variável let declarada dentro de um bloco { } está disponível...",
+      "alternativas": ["Em qualquer lugar do código", "Só dentro daquele bloco", "Só em funções", "Em todo o arquivo"],
+      "correta": "Só dentro daquele bloco",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["escopo", "bloco"]
+    },
+    {
+      "id": "js-1-5",
+      "titulo": "Function Declaration",
+      "tipo": "multipla-escolha",
+      "explicacao": "function soma(a, b) { return a + b } é uma declaração de função. Ela 'flutua' (hoisting) pro topo, então pode ser chamada antes de ser declarada. É tipo um elevador que já sabe onde quer ir.",
+      "pergunta": "Qual a sintaxe pra declarar uma função chamada 'soma' que recebe dois parâmetros?",
+      "alternativas": ["function soma(a, b) {}", "const soma = a, b => {}", "soma(a, b) => {}", "def soma(a, b):"],
+      "correta": "function soma(a, b) {}",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["funcao", "declaracao"]
+    },
+    {
+      "id": "js-1-6",
+      "titulo": "Arrow Function",
+      "tipo": "complete-codigo",
+      "explicacao": "Arrow function é a versão moderna e mais curta: const soma = (a, b) => a + b. O => é tipo uma seta que aponta 'recebe isso e retorna aquilo'. Se for única expressão, o return é implícito.",
+      "pergunta": "Crie uma arrow function 'saudacao' que recebe 'nome' e retorna 'Olá, ' + nome.",
+      "codigoInicial": "const saudacao = ",
+      "correta": "const saudacao = (nome) => 'Olá, ' + nome;",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["arrow", "funcao"],
+      "validacao": ""
+    },
+    {
+      "id": "js-1-7",
+      "titulo": "Template Literals",
+      "tipo": "complete-codigo",
+      "explicacao": "Template literals usam crases ` ` e permitem interpolar variáveis com ${}. Tipo: `Olá, ${nome}!` ao invés de 'Olá, ' + nome + '!'. Muito mais limpo e legível.",
+      "pergunta": "Crie uma template literal que exiba 'Bem-vindo ao DevEstudos, [nome]!' usando const usuario = 'Ana'.",
+      "codigoInicial": "const usuario = 'Ana';\nconst mensagem = ",
+      "correta": "const usuario = 'Ana';\nconst mensagem = `Bem-vindo ao DevEstudos, ${usuario}!`;\nconsole.log(mensagem);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["template", "string", "interpolacao"],
+      "validacao": ""
+    },
+    {
+      "id": "js-1-8",
+      "titulo": "Primeira Função DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos criar a primeira função utilitária do DevEstudos! Ela calcula o XP ganho numa missão: número de acertos * valor por acerto. Use arrow function com template literal pra exibir o resultado.",
+      "pergunta": "Crie arrow function 'calcularXp' que recebe 'acertos' e 'valorPorAcerto' e retorna o total. Exiba 'XP total: [valor]'.",
+      "codigoInicial": "const calcularXp = ",
+      "correta": "const calcularXp = (acertos, valorPorAcerto) => acertos * valorPorAcerto;\nconst total = calcularXp(5, 15);\nconsole.log(`XP total: ${total}`);",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["funcao", "arrow", "template", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

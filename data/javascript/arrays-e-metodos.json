@@ -1,0 +1,84 @@
+{
+  "id": "js-2",
+  "nome": "Missão 2 — Métodos de Array: O Poder do Dado em Linha",
+  "descricao": "map, filter, reduce, find, some, every, spread operator. Transformando coleções como um maestro.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Transformar dados de cursos do DevEstudos com arrays",
+  "questoes": [
+    {
+      "id": "js-2-1",
+      "titulo": "map - Transformar Cada Item",
+      "tipo": "multipla-escolha",
+      "explicacao": "map cria um NOVO array com cada item transformado. É tipo pegar cada ingressante, colocar um crachá neles, e formar uma nova fila. O array original não é modificado.",
+      "pergunta": "O que o método map retorna?",
+      "alternativas": ["O mesmo array modificado", "Um novo array transformado", "Um único valor", "Nada"],
+      "correta": "Um novo array transformado",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["map", "array"]
+    },
+    {
+      "id": "js-2-2",
+      "titulo": "filter - Selecionar Itens",
+      "tipo": "multipla-escolha",
+      "explicacao": "filter cria um novo array só com os itens que passam num teste. Tipo peneira: você joga tudo, e só o que é fino passa. Se o callback retorna true, o item entra no novo array.",
+      "pergunta": "O que filter faz com cada elemento do array?",
+      "alternativas": ["Modifica o elemento", "Testa se atende uma condição e filtra", "Remove o último elemento", "Junta todos em um valor"],
+      "correta": "Testa se atende uma condição e filtra",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["filter", "array"]
+    },
+    {
+      "id": "js-2-3",
+      "titulo": "find - Encontrar um Item",
+      "tipo": "multipla-escolha",
+      "explicacao": "find procura e retorna o PRIMEIRO item que satisfaz a condição. Tipo: 'qual o primeiro aluno que tirou nota 10?'. Só o primeiro, mesmo que tenha mais. Se não achar, retorna undefined.",
+      "pergunta": "O que find retorna se não encontrar nenhum item que satisfaça a condição?",
+      "alternativas": ["false", "null", "undefined", "[]"],
+      "correta": "undefined",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["find", "array"]
+    },
+    {
+      "id": "js-2-4",
+      "titulo": "some e every",
+      "tipo": "complete-codigo",
+      "explicacao": "some = 'algum item atende?' (true se pelo menos um). every = 'todos atendem?' (só true se TODOS passarem). some é tipo: 'tem alguém maior de idade na sala?'. every: 'todos são maior de idade?'.",
+      "pergunta": "Dado const idades = [15, 22, 18, 30], use every pra verificar se TODOS são >= 18. Exiba o resultado.",
+      "codigoInicial": "const idades = [15, 22, 18, 30];\nconst todosAdultos = ",
+      "correta": "const idades = [15, 22, 18, 30];\nconst todosAdultos = idades.every(idade => idade >= 18);\nconsole.log(todosAdultos);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["some", "every"],
+      "validacao": ""
+    },
+    {
+      "id": "js-2-5",
+      "titulo": "Spread Operator (...)",
+      "tipo": "multipla-escolha",
+      "explicacao": "...espalha' os itens de um array. Tipo pegar uma caixa de lápis e derrubar tudo na mesa. Útil pra copiar arrays (evitando referência), combinar arrays, ou passar argumentos.",
+      "pergunta": "O que o operador ... faz num array?",
+      "alternativas": ["Remove itens duplicados", "Espalha os elementos individualmente", "Junta todos em um", "Ordena o array"],
+      "correta": "Espalha os elementos individualmente",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["spread", "operador"]
+    },
+    {
+      "id": "js-2-6",
+      "titulo": "Transformar Cursos com map",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos transformar uma lista de cursos do DevEstudos. Dado um array de nomes, use map pra criar um array de objetos com { nome: '...', xp: 100 }. Isso é exatamente como dados são modelados em apps reais.",
+      "pergunta": "Dado const cursos = ['Lógica', 'JavaScript', 'React'], use map pra transformar em objetos com nome e xp: 100 pra cada.",
+      "codigoInicial": "const cursos = ['Lógica', 'JavaScript', 'React'];\nconst cursosComXp = cursos.map(curso => ",
+      "correta": "const cursos = ['Lógica', 'JavaScript', 'React'];\nconst cursosComXp = cursos.map(curso => ({ nome: curso, xp: 100 }));\nconsole.log(cursosComXp);",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["map", "projeto", "objeto"],
+      "validacao": ""
+    }
+  ]
+}

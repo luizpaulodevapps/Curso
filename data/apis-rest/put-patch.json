@@ -1,0 +1,99 @@
+{
+  "id": "api-4",
+  "nome": "Missão 4 — PUT vs PATCH: Atualizando Dados",
+  "descricao": "Diferença entre substituir (PUT) e atualizar parcialmente (PATCH).",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Implementar edição de perfil e atualização de curso no DevEstudos",
+  "questoes": [
+    {
+      "id": "api-4-1",
+      "titulo": "PUT vs PATCH",
+      "tipo": "multipla-escolha",
+      "explicacao": "PUT substitui o recurso inteiro. PATCH atualiza só os campos enviados. PUT é como trocar o carro inteiro, PATCH é só pintar de outra cor.",
+      "pergunta": "Qual a diferença principal entre PUT e PATCH?",
+      "alternativas": [
+        "PUT substitui o recurso completo; PATCH atualiza apenas campos específicos",
+        "PUT é mais rápido que PATCH",
+        "PATCH substitui o recurso completo; PUT atualiza campos específicos",
+        "Não há diferença, são sinônimos"
+      ],
+      "correta": "PUT substitui o recurso completo; PATCH atualiza apenas campos específicos",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["put", "patch", "http-methods"]
+    },
+    {
+      "id": "api-4-2",
+      "titulo": "PUT na prática",
+      "tipo": "complete-codigo",
+      "explicacao": "No PUT você precisa enviar o recurso completo, mesmo que só vá mudar um campo. Se esquecer um campo, ele é perdido.",
+      "pergunta": "Complete a requisição PUT para atualizar o nome e o email do usuário ID 5 (enviando o objeto completo):",
+      "codigoInicial": "fetch('/api/usuarios/5', {\n  method: '___',\n  headers: { 'Content-Type': '___' },\n  body: JSON.stringify({ nome: 'Maria', email: 'maria@email.com', idade: 28, cargo: 'dev' })\n})",
+      "codigoCompleto": "fetch('/api/usuarios/5', {\n  method: 'PUT',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ nome: 'Maria', email: 'maria@email.com', idade: 28, cargo: 'dev' })\n})",
+      "respostaEsperada": "PUT, application/json",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["put", "fetch", "javascript"]
+    },
+    {
+      "id": "api-4-3",
+      "titulo": "PATCH na prática",
+      "tipo": "complete-codigo",
+      "explicacao": "No PATCH você envia só os campos que quer atualizar. O resto permanece intacto.",
+      "pergunta": "Complete a requisição PATCH para atualizar APENAS o email do usuário ID 5:",
+      "codigoInicial": "fetch('/api/usuarios/5', {\n  method: '___',\n  headers: { ___: ___ },\n  body: JSON.stringify({ email: 'novo@email.com' })\n})",
+      "codigoCompleto": "fetch('/api/usuarios/5', {\n  method: 'PATCH',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ email: 'novo@email.com' })\n})",
+      "respostaEsperada": "PATCH, 'Content-Type', 'application/json'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["patch", "fetch", "javascript"]
+    },
+    {
+      "id": "api-4-4",
+      "titulo": "Erro real: PUT como PATCH",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real comum: usar PUT enviando só um campo e perder todo o resto do recurso. PUT substitui, não atualiza parcialmente.",
+      "pergunta": "O que acontece se você enviar PUT /api/usuarios/1 com body { \"nome\": \"Novo Nome\" } sem incluir os outros campos?",
+      "alternativas": [
+        "O usuário perde todos os outros campos (email, idade, etc.)",
+        "Apenas o nome é atualizado, o resto permanece",
+        "O servidor ignora a requisição",
+        "O usuário é duplicado"
+      ],
+      "correta": "O usuário perde todos os outros campos (email, idade, etc.)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["put", "erro-real"]
+    },
+    {
+      "id": "api-4-5",
+      "titulo": "PUT vs PATCH no DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, usaríamos PATCH para atualizar a bio do perfil e PUT para substituir o perfil completo após edição pesada.",
+      "pergunta": "No DevEstudos, um usuário quer alterar apenas a foto do perfil. Qual método usar?",
+      "alternativas": [
+        "PATCH /api/usuarios/1",
+        "PUT /api/usuarios/1",
+        "POST /api/usuarios/1",
+        "GET /api/usuarios/1"
+      ],
+      "correta": "PATCH /api/usuarios/1",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["put", "patch", "devestudos"]
+    },
+    {
+      "id": "api-4-6",
+      "titulo": "Idempotência do PUT",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "PUT é idempotente porque substituir o mesmo recurso várias vezes com os mesmos dados produz o mesmo resultado.",
+      "pergunta": "O método PUT é considerado idempotente.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["put", "idempotencia"]
+    }
+  ]
+}

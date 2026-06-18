@@ -1,0 +1,90 @@
+{
+  "id": "bd-3",
+  "nome": "Missão 3 — Chaves Primárias e Estrangeiras",
+  "descricao": "PKs, FKs, AUTO_INCREMENT, UUID e como conectar tabelas no DevEstudos.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Relacionar usuarios com progresso no DevEstudos",
+  "questoes": [
+    {
+      "id": "bd-3-1",
+      "titulo": "Chave Primária é como CPF",
+      "tipo": "multipla-escolha",
+      "explicacao": "Chave primária (PK) é um identificador único para cada registro na tabela. Pense no CPF: cada pessoa tem um CPF diferente, que nunca se repete. No banco, a PK funciona igual — cada linha tem um valor único na coluna de PK. No DevEstudos, usuarios.id = 1 é a Maria, id = 2 é o João. Simples e único.",
+      "pergunta": "Qual propriedade define uma chave primária?",
+      "alternativas": [
+        "É única para cada registro e nunca se repete na tabela",
+        "Pode ser nula e se repetir",
+        "Deve ser sempre do tipo VARCHAR",
+        "É opcional em toda tabela"
+      ],
+      "correta": "É única para cada registro e nunca se repete na tabela",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["banco", "pk", "chave-primaria"]
+    },
+    {
+      "id": "bd-3-2",
+      "titulo": "AUTO_INCREMENT: O Balcão de Senhas",
+      "tipo": "multipla-escolha",
+      "explicacao": "AUTO_INCREMENT é como um balcão de senhas de padaria: o primeiro cliente tira 1, o segundo tira 2, o terceiro 3… O banco faz isso sozinho. Toda vez que você insere um novo registro, ele pega o próximo número automaticamente. No DevEstudos, quando um novo usuário se cadastra, o id é gerado automaticamente com AUTO_INCREMENT.",
+      "pergunta": "O que faz o AUTO_INCREMENT em uma coluna?",
+      "alternativas": [
+        "Gera automaticamente um número sequencial único para cada novo registro",
+        "Acelera as consultas de leitura",
+        "Impede a exclusão de registros",
+        "Criptografa os dados da coluna"
+      ],
+      "correta": "Gera automaticamente um número sequencial único para cada novo registro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["banco", "auto-increment", "pk"]
+    },
+    {
+      "id": "bd-3-3",
+      "titulo": "Chave Estrangeira é como Endereço",
+      "tipo": "multipla-escolha",
+      "explicacao": "Chave estrangeira (FK) é um campo que guarda a PK de outra tabela. É como seu endereço: você não mora dentro da casa do seu amigo, mas tem o endereço dele anotado. No DevEstudos, a tabela 'progresso' tem 'usuario_id' que guarda o id do usuário. 'Este progresso pertence ao usuário 5' — isso é uma FK.",
+      "pergunta": "No DevEstudos, como ligamos um registro de progresso a um usuário?",
+      "alternativas": [
+        "Colocando o usuario_id (FK) no progresso, apontando para usuarios.id (PK)",
+        "Copiando todos os dados do usuário para dentro do progresso",
+        "Criando uma nova tabela para cada usuário",
+        "Não é possível relacionar tabelas diferentes"
+      ],
+      "correta": "Colocando o usuario_id (FK) no progresso, apontando para usuarios.id (PK)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["banco", "fk", "chave-estrangeira"]
+    },
+    {
+      "id": "bd-3-4",
+      "titulo": "Erro Real: CPF como Chave Primária",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real:很多 sistemas usam CPF como chave primária porque 'é único'. Problema: CPF é dado pessoal que pode mudar (erro de digitação na hora de cadastrar, retificação, etc.). Se o CPF do João mudar de 123 para 456, você precisa atualizar em TODAS as tabelas que referenciam aquele CPF. Com id numérico interno, você muda o CPF uma vez e pronto — o id 5 continua sendo o João.",
+      "pergunta": "Por que NÃO devemos usar CPF como chave primária no DevEstudos?",
+      "alternativas": [
+        "Dados pessoais podem mudar, e a PK precisa ser estável e imutável",
+        "CPF é muito curto para ser PK",
+        "CPF tem letras, e PK só aceita números",
+        "CPF é opcional, nem todo usuário tem"
+      ],
+      "correta": "Dados pessoais podem mudar, e a PK precisa ser estável e imutável",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["banco", "erro", "pk", "cpf"]
+    },
+    {
+      "id": "bd-3-5",
+      "titulo": "UUID vs AUTO_INCREMENT",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "UUID é um identificador universal único que parece '550e8400-e29b-41d4-a716-446655440000'. Diferente do AUTO_INCREMENT (1, 2, 3), o UUID é gerado de forma que mesmo dois bancos diferentes gerem o mesmo valor — é único no mundo. Vantagem: segurança (ninguém chuta URLs tipo /usuario/3). Desvantagem: ocupa mais espaço e é mais lento.",
+      "pergunta": "UUID é mais rápido e ocupa menos espaço que AUTO_INCREMENT?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["banco", "uuid", "pk"]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "next-2",
+  "nome": "Rotas e Navegação — Links e Parâmetros",
+  "descricao": "Navegar entre páginas, rotas dinâmicas, parâmetros, grupos.",
+  "ordem": 2,
+  "duracao": "1 semana",
+  "projeto": "Navegação entre cursos do DevEstudos",
+  "questoes": [
+    {
+      "id": "next-2-1",
+      "titulo": "Link - Navegar sem Recarregar",
+      "tipo": "complete-codigo",
+      "explicacao": "<Link> do Next navega entre páginas SEM recarregar (client-side navigation). <a href> recarrega. Link é tipo teleporte: você muda de sala sem passar pela porta.",
+      "pergunta": "Crie Link pra '/cursos' com texto 'Ver cursos'.",
+      "codigoInicial": "import Link from 'next/link';\n\nfunction Nav() {\n  return <nav>\n    ",
+      "correta": "import Link from 'next/link';\n\nfunction Nav() {\n  return <nav>\n    <Link href=\"/cursos\">Ver cursos</Link>\n  </nav>;\n}\n\nexport default Nav;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["link", "navegacao"],
+      "validacao": ""
+    },
+    {
+      "id": "next-2-2",
+      "titulo": "useRouter - Navegação por Código",
+      "tipo": "complete-codigo",
+      "explicacao": "useRouter().push('/') navega programaticamente. Depois de um submit, por exemplo. É tipo controle remoto: em vez de clicar no link, o código aperta o botão.",
+      "pergunta": "Use useRouter pra redirecionar pra '/' após submit de formulário.",
+      "codigoInicial": "import { useRouter } from 'next/navigation';\n\nfunction FormCadastro() {\n  const router = useRouter();\n  \n  function handleSubmit(e) {\n    e.preventDefault();\n    router.push('/');\n  }\n  \n  return <form onSubmit={handleSubmit}>\n    <button type=\"submit\">Cadastrar</button>\n  </form>;\n}\n",
+      "correta": "import { useRouter } from 'next/navigation';\n\nfunction FormCadastro() {\n  const router = useRouter();\n  \n  function handleSubmit(e) {\n    e.preventDefault();\n    router.push('/');\n  }\n  \n  return <form onSubmit={handleSubmit}>\n    <button type=\"submit\">Cadastrar</button>\n  </form>;\n}\n\nexport default FormCadastro;",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["router", "push"],
+      "validacao": ""
+    },
+    {
+      "id": "next-2-3",
+      "titulo": "Rota Dinâmica",
+      "tipo": "multipla-escolha",
+      "explicacao": "[parametro] cria rota dinâmica. /app/blog/[slug]/page.tsx = /blog/qualquer-coisa. O slug vem como parâmetro. É tipo 'caixa de correio número X' — o número muda (123, 456), mas a caixa é a mesma.",
+      "pergunta": "Em /app/post/[id]/page.tsx, como pegar o id?",
+      "alternativas": ["useParams()", "params.id nas props", "location.id", "query.id"],
+      "correta": "params.id nas props",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["dinamica", "params"]
+    },
+    {
+      "id": "next-2-4",
+      "titulo": "Params é Promise",
+      "tipo": "complete-codigo",
+      "explicacao": "No Next.js 16, params é Promise, precisa await. async function Page({ params }: { params: Promise<{id: string}> }) { const { id } = await params }. É tipo 'esperar a carta chegar' antes de ler.",
+      "pergunta": "Crie página de curso que recebe params.id e mostra 'Curso: ID'.",
+      "codigoInicial": "export default async function CursoPage({ params }) {\n  const { id } = await params;\n  return <div>\n    <h1>Curso: {id}</h1>\n  </div>;\n}\n",
+      "correta": "export default async function CursoPage({ params }) {\n  const { id } = await params;\n  return <div>\n    <h1>Curso: {id}</h1>\n  </div>;\n}",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["params", "async"],
+      "validacao": ""
+    },
+    {
+      "id": "next-2-5",
+      "titulo": "Grupo de Rotas",
+      "tipo": "multipla-escolha",
+      "explicacao": "(grupo) no nome da pasta agrupa sem afetar a URL. /app/(marketing)/sobre/page.tsx = /sobre. A pasta (marketing) SOME da URL. Útil pra separar 'marketing' de 'dashboard' sem poluir as rotas.",
+      "pergunta": "Qual o propósito de (marketing) na pasta?",
+      "alternativas": ["Criar /marketing/sobre", "Agrupar sem mudar a URL", "Deletar a rota", "Proteger a rota"],
+      "correta": "Agrupar sem mudar a URL",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["grupo", "organizacao"]
+    },
+    {
+      "id": "next-2-6",
+      "titulo": "Link Ativo com usePathname",
+      "tipo": "complete-codigo",
+      "explicacao": "usePathname() pega a URL atual. Compara com href pra destacar link ativo no menu. É tipo 'você está aqui' do shopping: mostra visualmente onde o usuário está.",
+      "pergunta": "Crie NavLink que usa usePathname pra destacar link ativo (classe 'ativo').",
+      "codigoInicial": "import Link from 'next/link';\nimport { usePathname } from 'next/navigation';\n\nfunction NavLink({ href, children }) {\n  const pathname = usePathname();\n  const ativo = pathname === href;\n  \n  return <Link href={href} className={ativo ? 'ativo' : ''}>\n    {children}\n  </Link>;\n}\n",
+      "correta": "import Link from 'next/link';\nimport { usePathname } from 'next/navigation';\n\nfunction NavLink({ href, children }) {\n  const pathname = usePathname();\n  const ativo = pathname === href;\n  \n  return <Link href={href} className={ativo ? 'ativo' : ''}>\n    {children}\n  </Link>;\n}\n\nexport default NavLink;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pathname", "ativo"],
+      "validacao": ""
+    }
+  ]
+}

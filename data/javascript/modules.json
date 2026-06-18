@@ -1,0 +1,84 @@
+{
+  "id": "js-moderno-2",
+  "nome": "Módulos ES — Exportar e Importar",
+  "descricao": "Dividir código em arquivos. Cada arquivo faz uma coisa só.",
+  "ordem": 2,
+  "duracao": "1 semana",
+  "projeto": "Modularizar o código do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-moderno-2-1",
+      "titulo": "Por que Modularizar?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Módulos são gavetas: cada gaveta guarda um tipo de coisa. Um arquivo = uma responsabilidade. Código modular é mais fácil de achar, testar, e reutilizar. É tipo ter gavetas separadas pra meias, cuecas e camisetas.",
+      "pergunta": "Qual o benefício de dividir código em módulos?",
+      "alternativas": ["Código mais rápido", "Cada arquivo cuida de uma coisa", "Menos arquivos", "Não precisa de comentários"],
+      "correta": "Cada arquivo cuida de uma coisa",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["modulo", "organizacao"]
+    },
+    {
+      "id": "js-moderno-2-2",
+      "titulo": "Export Nomeado",
+      "tipo": "multipla-escolha",
+      "explicacao": "export na frente de uma função/variável permite usar em outros arquivos. export function somar(a,b) { return a + b }. É tipo colocar um item na vitrine da loja — outros módulos podem 'comprar' (importar).",
+      "pergunta": "Como exportamos uma função pra usar em outro arquivo?",
+      "alternativas": ["module.exports", "export function", "global.function", "window.function"],
+      "correta": "export function",
+      "xp": 5,
+      "nivel": "intermediario",
+      "tags": ["export", "modulo"]
+    },
+    {
+      "id": "js-moderno-2-3",
+      "titulo": "Import Nomeado",
+      "tipo": "complete-codigo",
+      "explicacao": "import { nome } from './arquivo.js' puxa a exportação nomeada. Use as chaves quando não for default. É tipo 'pegar o item X da gaveta Y'.",
+      "pergunta": "Importe a função 'somar' de './utils.js' e use pra somar 5 + 3.",
+      "codigoInicial": "import { somar } from './utils.js';\n",
+      "correta": "import { somar } from './utils.js';\nconsole.log(somar(5, 3));",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["import", "named"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-2-4",
+      "titulo": "Export Default",
+      "tipo": "multipla-escolha",
+      "explicacao": "export default é a 'exportação principal' do arquivo. Só pode UM por arquivo. Na importação, não precisa de chaves. É tipo o 'carro-chefe' do restaurante — a especialidade da casa.",
+      "pergunta": "Quantos export default podem existir num arquivo?",
+      "alternativas": ["Vários", "Apenas um", "Nenhum", "Depende"],
+      "correta": "Apenas um",
+      "xp": 5,
+      "nivel": "intermediario",
+      "tags": ["export default", "modulo"]
+    },
+    {
+      "id": "js-moderno-2-5",
+      "titulo": "Re-export — Repassar",
+      "tipo": "multipla-escolha",
+      "explicacao": "export { nome } from './arquivo' re-exporta algo de outro módulo. Útil pra criar 'barris' (barrel files) que centralizam exports. É tipo um distribuidor: recebe de várias fábricas e repassa pras lojas.",
+      "pergunta": "O que faz 'export { somar } from './math.js''?",
+      "alternativas": ["Importa e usa somar", "Re-exporta somar de outro módulo", "Cria uma nova função", "Deleta o módulo"],
+      "correta": "Re-exporta somar de outro módulo",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["re-export", "barrel"]
+    },
+    {
+      "id": "js-moderno-2-6",
+      "titulo": "Import Dinâmico",
+      "tipo": "complete-codigo",
+      "explicacao": "import('modulo') carrega UM MÓDULO sob demanda (lazy loading). Retorna Promise. Útil pra carregar código pesado só quando necessário. O DevEstudos usa isso pra carregar módulos só quando o usuário avança no curso.",
+      "pergunta": "Use import() dinâmico pra carregar './modulo.js' e chamar sua função 'init'.",
+      "codigoInicial": "async function carregarModulo() {\n  const modulo = await import('./modulo.js');\n  modulo.init();\n}\n\n",
+      "correta": "async function carregarModulo() {\n  const modulo = await import('./modulo.js');\n  modulo.init();\n}\n\ncarregarModulo();",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["import", "dinamico"],
+      "validacao": ""
+    }
+  ]
+}

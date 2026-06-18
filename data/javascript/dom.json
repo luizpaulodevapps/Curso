@@ -1,0 +1,85 @@
+{
+  "id": "js-4",
+  "nome": "Missão 4 — DOM: Dando Vida ao HTML",
+  "descricao": "getElementById, querySelector, textContent, innerHTML, createElement, appendChild, classList.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Renderizar lista de cursos dinamicamente no DevEstudos",
+  "questoes": [
+    {
+      "id": "js-4-1",
+      "titulo": "getElementById",
+      "tipo": "multipla-escolha",
+      "explicacao": "document.getElementById('titulo') pega um elemento HTML pelo seu ID. É tipo: 'cadê o crachá número 42?'. O ID é único — só UM elemento pode ter aquele ID. Rápido e direto.",
+      "pergunta": "O que document.getElementById('app') retorna?",
+      "alternativas": ["Todos elementos com classe 'app'", "O elemento com id 'app'", "Um array de elementos", "O primeiro elemento <div>"],
+      "correta": "O elemento com id 'app'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["DOM", "getElementById"]
+    },
+    {
+      "id": "js-4-2",
+      "titulo": "querySelector vs querySelectorAll",
+      "tipo": "multipla-escolha",
+      "explicacao": "querySelector pega o PRIMEIRO elemento que combina com o seletor CSS. querySelectorAll pega TODOS (retorna NodeList, tipo array). .classe, #id, div > p — funciona como CSS.",
+      "pergunta": "Qual método retorna TODOS os elementos que combinam com o seletor?",
+      "alternativas": ["getElementById", "querySelector", "querySelectorAll", "getElementsByName"],
+      "correta": "querySelectorAll",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["querySelector", "DOM"]
+    },
+    {
+      "id": "js-4-3",
+      "titulo": "textContent vs innerHTML",
+      "tipo": "multipla-escolha",
+      "explicacao": "textContent mexe só no texto, ignora HTML. innerHTML interpreta HTML como tags. textContent = segurança (evita injeção), innerHTML = útil mas perigoso se o conteúdo vem de usuário.",
+      "pergunta": "Qual propriedade interpreta tags HTML no elemento?",
+      "alternativas": ["textContent", "innerText", "innerHTML", "value"],
+      "correta": "innerHTML",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["textContent", "innerHTML", "DOM"]
+    },
+    {
+      "id": "js-4-4",
+      "titulo": "createElement e appendChild",
+      "tipo": "complete-codigo",
+      "explicacao": "createElement('li') cria um novo elemento no JavaScript (mas ele fica 'no ar', sem lugar no HTML). appendChild coloca ele dentro de um elemento pai. É tipo: 'criar um boneco de papel e colar no mural'.",
+      "pergunta": "Crie um elemento <li> com textContent 'JavaScript' e adicione dentro de uma <ul> com id 'lista'.",
+      "codigoInicial": "const ul = document.getElementById('lista');\nconst li = document.createElement('li');\n",
+      "correta": "const ul = document.getElementById('lista');\nconst li = document.createElement('li');\nli.textContent = 'JavaScript';\nul.appendChild(li);",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["createElement", "appendChild", "DOM"],
+      "validacao": ""
+    },
+    {
+      "id": "js-4-5",
+      "titulo": "classList - Adicionar Classe",
+      "tipo": "complete-codigo",
+      "explicacao": "classList é tipo um controle remoto das classes CSS: .add('ativa') liga, .remove('ativa') desliga, .toggle('ativa') alterna. Muito mais limpo que mexer em className direto.",
+      "pergunta": "Selecione um elemento com id 'botao' e adicione a classe 'destaque' usando classList.",
+      "codigoInicial": "const botao = document.getElementById('botao');\n",
+      "correta": "const botao = document.getElementById('botao');\nbotao.classList.add('destaque');",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["classList", "DOM", "classe"],
+      "validacao": ""
+    },
+    {
+      "id": "js-4-6",
+      "titulo": "Renderizar Lista de Cursos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos renderizar dinamicamente a lista de cursos do DevEstudos! Pra cada curso no array, crie um <li> com o nome, adicione classes de estilo, e insira na <ul>. É exatamente como apps React renderizam listas.",
+      "pergunta": "Dado const cursos = ['Lógica', 'JS', 'React'], renderize cada um como <li class=\"curso-item\"> dentro de uma <ul id=\"lista-cursos\">.",
+      "codigoInicial": "const cursos = ['Lógica', 'JS', 'React'];\nconst ul = document.getElementById('lista-cursos');\ncursos.forEach(curso => {\n  // crie li, adicione classe, textContent, append\n});\n",
+      "correta": "const cursos = ['Lógica', 'JS', 'React'];\nconst ul = document.getElementById('lista-cursos');\ncursos.forEach(curso => {\n  const li = document.createElement('li');\n  li.classList.add('curso-item');\n  li.textContent = curso;\n  ul.appendChild(li);\n});",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["DOM", "forEach", "createElement", "projeto"],
+      "validacao": ""
+    }
+  ]
+}

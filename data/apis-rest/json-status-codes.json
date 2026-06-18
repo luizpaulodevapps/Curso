@@ -1,0 +1,98 @@
+{
+  "id": "api-6",
+  "nome": "Missão 6 — JSON, Status Codes e Headers",
+  "descricao": "Estrutura JSON, códigos de status HTTP e headers de requisição.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Interpretar respostas da API do DevEstudos corretamente",
+  "questoes": [
+    {
+      "id": "api-6-1",
+      "titulo": "Estrutura JSON",
+      "tipo": "multipla-escolha",
+      "explicacao": "JSON é o formato de troca de dados mais usado em APIs. É uma coleção de chave-valor, tipo uma ficha de cadastro.",
+      "pergunta": "Qual das opções é um JSON válido?",
+      "alternativas": [
+        "{\"nome\": \"João\", \"idade\": 30}",
+        "{nome: \"João\", idade: 30}",
+        "{\"nome\": \"João\", \"idade\": 30,}",
+        "{\"nome\": 'João', \"idade\": 30}"
+      ],
+      "correta": "{\"nome\": \"João\", \"idade\": 30}",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["json", "formatos"]
+    },
+    {
+      "id": "api-6-2",
+      "titulo": "Status 2xx (Sucesso)",
+      "tipo": "multipla-escolha",
+      "explicacao": "200 OK é o genérico de sucesso. 201 Created é pra criação. 204 No Content é sucesso sem resposta.",
+      "pergunta": "Qual status code indica que um recurso foi criado com sucesso?",
+      "alternativas": ["201", "200", "204", "301"],
+      "correta": "201",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["status-codes", "2xx"]
+    },
+    {
+      "id": "api-6-3",
+      "titulo": "401 vs 403",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real clássico: 401 é \"quem é você?\" (não autenticado), 403 é \"você não pode entrar aqui\" (sem permissão).",
+      "pergunta": "Um usuário tenta acessar o painel admin sem estar logado. Qual status code o servidor retorna?",
+      "alternativas": [
+        "401 Unauthorized",
+        "403 Forbidden",
+        "404 Not Found",
+        "500 Internal Server Error"
+      ],
+      "correta": "401 Unauthorized",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["status-codes", "401", "403", "erro-real"]
+    },
+    {
+      "id": "api-6-4",
+      "titulo": "Headers: Authorization",
+      "tipo": "complete-codigo",
+      "explicacao": "O header Authorization envia o token de autenticação. O formato mais comum é 'Bearer SEU_TOKEN'.",
+      "pergunta": "Complete o header Authorization para enviar o token 'abc123':",
+      "codigoInicial": "fetch('/api/cursos', {\n  headers: {\n    'Authorization': '___ ___'\n  }\n})",
+      "codigoCompleto": "fetch('/api/cursos', {\n  headers: {\n    'Authorization': 'Bearer abc123'\n  }\n})",
+      "respostaEsperada": "Bearer abc123",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["headers", "authorization"]
+    },
+    {
+      "id": "api-6-5",
+      "titulo": "Status 4xx vs 5xx",
+      "tipo": "multipla-escolha",
+      "explicacao": "4xx é erro do cliente (você mandou algo errado). 5xx é erro do servidor (a culpa é do backend).",
+      "pergunta": "Se o servidor do DevEstudos caiu (crash), qual faixa de status é retornada?",
+      "alternativas": ["5xx", "4xx", "3xx", "2xx"],
+      "correta": "5xx",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["status-codes", "4xx", "5xx"]
+    },
+    {
+      "id": "api-6-6",
+      "titulo": "Header Accept",
+      "tipo": "multipla-escolha",
+      "explicacao": "O header Accept diz ao servidor qual formato você aceita como resposta. É como dizer \"só falo inglês\".",
+      "pergunta": "Qual header informa o servidor que o cliente aceita JSON como resposta?",
+      "alternativas": [
+        "Accept: application/json",
+        "Content-Type: application/json",
+        "Accept: text/html",
+        "Content-Encoding: application/json"
+      ],
+      "correta": "Accept: application/json",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["headers", "accept"]
+    }
+  ]
+}

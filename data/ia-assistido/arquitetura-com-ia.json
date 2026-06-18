@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-6",
+  "nome": "Arquitetura com IA — Projetos Multi-arquivo",
+  "descricao": "Planejar e implementar features que envolvem vários arquivos.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Sistema de notificações do DevEstudos",
+  "questoes": [
+    {
+      "id": "ia1-6-1",
+      "titulo": "Peça o Plano Primeiro",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de escrever código, peça o plano: 'Quero notificações push. Quais arquivos criar? Dá um plano.' O agente lista: types, contexto, componente, hook. Você revisa e aprova. Plano aprovado = código na direção certa.",
+      "pergunta": "Qual o primeiro passo para feature multi-arquivo?",
+      "alternativas": [
+        "Pedir um plano: 'Quais arquivos preciso criar/modificar? Dá o plano primeiro'",
+        "Pedir tudo de uma vez",
+        "Criar manualmente e preencher",
+        "Começar pelo mais complexo"
+      ],
+      "correta": "Pedir um plano: 'Quais arquivos preciso criar/modificar? Dá o plano primeiro'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["arquitetura", "planejamento"]
+    },
+    {
+      "id": "ia1-6-2",
+      "titulo": "Mantenha Contexto Focado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Conversas longas enchem a janela. Para tarefas grandes, comece conversa nova e cole um resumo: 'Já implementamos: types, contexto, hook de notificações. Agora precisamos do componente NotificationBell.' Isso mantém o foco e evita esquecimento.",
+      "pergunta": "Como lidar com janela de contexto cheia?",
+      "alternativas": [
+        "Nova conversa com resumo do que já foi feito",
+        "Continuar na mesma até o fim",
+        "Reenviar o prompt original sempre",
+        "Desistir e fazer manual"
+      ],
+      "correta": "Nova conversa com resumo do que já foi feito",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["contexto", "conversa-longa"]
+    },
+    {
+      "id": "ia1-6-3",
+      "titulo": "Conexões Entre Arquivos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Depois de criar os arquivos, conecte-os: 'Importe o hook useNotifications no Header e renderize NotificationBell ao lado do perfil.' O agente gerencia imports e props se você mapear as conexões explicitamente.",
+      "pergunta": "Como garantir conexão entre componentes separados?",
+      "alternativas": [
+        "'Importe X em Y e passe a prop Z' — conexões explícitas",
+        "O agente conecta automaticamente no final",
+        "Conectar manualmente depois",
+        "Criar tudo em um arquivo"
+      ],
+      "correta": "'Importe X em Y e passe a prop Z' — conexões explícitas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["conexoes", "imports"]
+    },
+    {
+      "id": "ia1-6-4",
+      "titulo": "Evite Regenerar o que Funciona",
+      "tipo": "multipla-escolha",
+      "explicacao": "O agente tende a regenerar o arquivo inteiro. Se só mudou 3 linhas: 'Mude apenas as linhas X-Y no @arquivo. Não mexa no resto.' Isso evita refatorações acidentais.",
+      "pergunta": "Como evitar que o agente mexa em código que funciona?",
+      "alternativas": [
+        "'Mude apenas as linhas X-Y. Não altere nada fora desse intervalo'",
+        "Não tem como evitar",
+        "Backup manual antes",
+        "Aceitar que vai mexer em tudo"
+      ],
+      "correta": "'Mude apenas as linhas X-Y. Não altere nada fora desse intervalo'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["preservacao", "escopo"]
+    },
+    {
+      "id": "ia1-6-5",
+      "titulo": "Checklist de Arquitetura",
+      "tipo": "multipla-escolha",
+      "explicacao": "Checklist mental: 1) Plano aprovado? 2) Contexto suficiente (@arquivos)? 3) Etapas definidas? 4) Restrições claras? 5) Como testar? Vira hábito e as conversas ficam mais produtivas.",
+      "pergunta": "Qual item NÃO faz parte do checklist?",
+      "alternativas": [
+        "'Capricha nos comentários'",
+        "Plano aprovado?",
+        "Contexto com @arquivos?",
+        "Restrições claras?"
+      ],
+      "correta": "'Capricha nos comentários'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["checklist", "planejamento"]
+    },
+    {
+      "id": "ia1-6-6",
+      "titulo": "Practical: Plano de Notificações",
+      "tipo": "complete-codigo",
+      "explicacao": "Planeje a implementação de notificações no DevEstudos.",
+      "pergunta": "Complete o plano:",
+      "codigoInicial": "## Plano: Sistema de Notificações\n\nArquivos:\n1. @types/notificacoes.ts — tipos\n2. @contexts/NotificacoesContext.tsx — contexto\n3. @components/NotificationBell.tsx — sino\n4. @components/NotificacoesDropdown.tsx — dropdown\n\nEtapas:\n1. ",
+      "correta": "1. Criar tipos e contexto\n2. Prover contexto no layout\n3. Criar NotificationBell\n4. Criar NotificacoesDropdown\n5. Importar Bell no Header\n\nConexões:\n- Contexto provido em layout.tsx\n- NotificationBell importado no Header\n- Dropdown aberto ao clicar no Bell\n\nNÃO usar bibliotecas externas.",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "plano"],
+      "validacao": ""
+    }
+  ]
+}

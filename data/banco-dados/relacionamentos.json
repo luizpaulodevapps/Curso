@@ -1,0 +1,108 @@
+{
+  "id": "bd-4",
+  "nome": "Missão 4 — Relacionamentos e JOINs",
+  "descricao": "Conectar tabelas com JOIN para consultar dados relacionados.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Relacionar usuários, cursos e progresso",
+  "questoes": [
+    {
+      "id": "bd-4-1",
+      "titulo": "INNER JOIN — Só o que se Conecta",
+      "tipo": "multipla-escolha",
+      "explicacao": "SELECT usuarios.nome, progresso.questao_id FROM usuarios INNER JOIN progresso ON usuarios.id = progresso.usuario_id; traz só os usuários que têm progresso registrado. INNER JOIN = 'só o que existe dos dois lados'. Se o usuário nunca respondeu nada, ele não aparece.",
+      "pergunta": "O que INNER JOIN retorna?",
+      "alternativas": [
+        "Apenas registros que têm correspondência em ambas as tabelas",
+        "Todos os registros da tabela da esquerda",
+        "Todos os registros da tabela da direita",
+        "Todos os registros de ambas"
+      ],
+      "correta": "Apenas registros que têm correspondência em ambas as tabelas",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "join", "inner-join"]
+    },
+    {
+      "id": "bd-4-2",
+      "titulo": "LEFT JOIN — Tudo da Esquerda",
+      "tipo": "multipla-escolha",
+      "explicacao": "SELECT usuarios.nome, COALESCE(COUNT(progresso.id), 0) FROM usuarios LEFT JOIN progresso ON usuarios.id = progresso.usuario_id; traz todos os usuários, mesmo os que não têm progresso. LEFT JOIN = 'tudo da esquerda, se tiver da direita mostra, senão NULL'. Essencial para ver quem NÃO fez algo.",
+      "pergunta": "Qual JOIN traz todos os cursos mesmo os que não têm módulos cadastrados?",
+      "alternativas": [
+        "SELECT * FROM cursos LEFT JOIN modulos ON cursos.id = modulos.curso_id;",
+        "SELECT * FROM cursos INNER JOIN modulos ON cursos.id = modulos.curso_id;",
+        "SELECT * FROM cursos RIGHT JOIN modulos;",
+        "SELECT * FROM cursos JOIN modulos;"
+      ],
+      "correta": "SELECT * FROM cursos LEFT JOIN modulos ON cursos.id = modulos.curso_id;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "left-join"]
+    },
+    {
+      "id": "bd-4-3",
+      "titulo": "ON — A Condição do JOIN",
+      "tipo": "multipla-escolha",
+      "explicacao": "ON usuarios.id = progresso.usuario_id define como as tabelas se conectam. É sempre: chave primária de um lado = chave estrangeira do outro. Sem ON, o JOIN não sabe como conectar as tabelas — e você pode acabar com um produto cartesiano (toda combinação possível).",
+      "pergunta": "Qual a condição correta para conectar progresso com questao?",
+      "alternativas": [
+        "ON progresso.questao_id = questao.id",
+        "ON progresso.id = questao.id",
+        "ON progresso.usuario_id = questao.id",
+        "ON questao.modulo_id = progresso.id"
+      ],
+      "correta": "ON progresso.questao_id = questao.id",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "on", "join"]
+    },
+    {
+      "id": "bd-4-4",
+      "titulo": "JOIN de Várias Tabelas",
+      "tipo": "multipla-escolha",
+      "explicacao": "SELECT usuarios.nome, cursos.nome FROM usuarios JOIN progresso ON usuarios.id = progresso.usuario_id JOIN questoes ON progresso.questao_id = questoes.id JOIN modulos ON questoes.modulo_id = modulos.id JOIN cursos ON modulos.curso_id = cursos.id; Conecta 5 tabelas em sequência: usuário → progresso → questão → módulo → curso.",
+      "pergunta": "Quantas tabelas são conectadas na query acima?",
+      "alternativas": [
+        "5 (usuarios, progresso, questoes, modulos, cursos)",
+        "3",
+        "4",
+        "2"
+      ],
+      "correta": "5 (usuarios, progresso, questoes, modulos, cursos)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "multi-join"]
+    },
+    {
+      "id": "bd-4-5",
+      "titulo": "GROUP BY — Agrupar por Categoria",
+      "tipo": "multipla-escolha",
+      "explicacao": "SELECT nivel, COUNT(*) FROM cursos GROUP BY nivel; conta quantos cursos existem em cada nível. GROUP BY sempre vem acompanhado de funções de agregação (COUNT, SUM, AVG). Sem GROUP BY, você conta tudo junto. Com GROUP BY, você conta por categoria.",
+      "pergunta": "Como contar quantos módulos cada curso tem?",
+      "alternativas": [
+        "SELECT curso_id, COUNT(*) FROM modulos GROUP BY curso_id;",
+        "SELECT * FROM modulos;",
+        "SELECT COUNT(*) FROM modulos;",
+        "SELECT curso_id, COUNT(*) FROM modulos;"
+      ],
+      "correta": "SELECT curso_id, COUNT(*) FROM modulos GROUP BY curso_id;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "group-by"]
+    },
+    {
+      "id": "bd-4-6",
+      "titulo": "Practical: Query com JOIN",
+      "tipo": "complete-codigo",
+      "explicacao": "Liste todos os usuários com o nome dos cursos que eles estão fazendo.",
+      "pergunta": "Complete a query:",
+      "codigoInicial": "SELECT usuarios.nome, cursos.nome ",
+      "correta": "FROM usuarios\nJOIN progresso ON usuarios.id = progresso.usuario_id\nJOIN questoes ON progresso.questao_id = questoes.id\nJOIN modulos ON questoes.modulo_id = modulos.id\nJOIN cursos ON modulos.curso_id = cursos.id\nGROUP BY usuarios.nome, cursos.nome;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["pratica", "join"],
+      "validacao": ""
+    }
+  ]
+}

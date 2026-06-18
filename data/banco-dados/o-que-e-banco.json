@@ -1,0 +1,147 @@
+{
+  "id": "bd-1",
+  "nome": "Missão 1 — O que é um Banco de Dados?",
+  "descricao": "Conceitos fundamentais: tabelas, registros, campos, chaves.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Entender como o DevEstudos pode usar banco de dados",
+  "questoes": [
+    {
+      "id": "bd-1-1",
+      "titulo": "📖 O que é um Banco de Dados?",
+      "tipo": "aula",
+      "explicacao": "Um banco de dados é um sistema organizado para armazenar, gerenciar e recuperar informações. Pense nele como um arquivo digital inteligente.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["banco", "conceito"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Um banco de dados organiza dados em tabelas. Cada tabela representa uma entidade do mundo real: usuários, produtos, pedidos. As tabelas são formadas por linhas (registros) e colunas (campos)." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "-- Uma tabela usuarios se parece com isso:\n-- id | nome  | email           | xp\n-- 1  | Ana   | ana@email.com   | 500\n-- 2  | João  | joao@email.com  | 300\n-- 3  | Carla | carla@email.com | 800" },
+        { "tipo": "resultado", "valor": "3 registros na tabela usuarios" },
+        { "tipo": "texto", "valor": "Cada coluna tem um tipo de dado específico. No SQL, definimos a estrutura da tabela com o comando CREATE TABLE. É como desenhar a planta de uma casa antes de construí-la." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "CREATE TABLE usuarios (\n  id INT PRIMARY KEY,\n  nome VARCHAR(100),\n  email VARCHAR(200),\n  xp INT\n);" },
+        { "tipo": "texto", "valor": "Depois da tabela criada, inserimos dados com INSERT e consultamos com SELECT. O SELECT é o comando mais usado do SQL — é como perguntar: 'O que tem guardado aqui?'" },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "-- Inserir um registro\nINSERT INTO usuarios (id, nome, email, xp) VALUES (1, 'Ana', 'ana@email.com', 500);\n\n-- Consultar todos os usuarios\nSELECT * FROM usuarios;" },
+        { "tipo": "resultado", "valor": "id | nome | email | xp\n1  | Ana  | ana@email.com | 500" },
+        { "tipo": "legenda", "valor": "O banco de dados relacional (SQL) é como um fichário organizado — cada prateleira (tabela) guarda um tipo de informação, e as fichas (registros) se conectam por referências (chaves)." }
+      ]
+    },
+    {
+      "id": "bd-1-2",
+      "titulo": "👀 Visualizando uma Tabela de Usuários",
+      "tipo": "exemplo",
+      "explicacao": "Vamos visualizar como seria a tabela de usuários do DevEstudos na prática.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["banco", "exemplo", "tabela"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Imagine que o DevEstudos precisa guardar informações de cada aluno. Criamos uma tabela 'usuarios' com os campos: id (identificador único), nome, email e xp (pontuação acumulada)." },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "-- Criando a tabela\nCREATE TABLE usuarios (\n  id INT PRIMARY KEY,\n  nome VARCHAR(100),\n  email VARCHAR(200),\n  xp INT\n);\n\n-- Inserindo alguns alunos\nINSERT INTO usuarios VALUES (1, 'Ana', 'ana@email.com', 1500);\nINSERT INTO usuarios VALUES (2, 'Bruno', 'bruno@email.com', 2300);\nINSERT INTO usuarios VALUES (3, 'Carla', 'carla@email.com', 980);\n\n-- Consultando quem tem mais xp\nSELECT nome, xp FROM usuarios ORDER BY xp DESC;" },
+        { "tipo": "resultado", "valor": "nome  | xp\nBruno | 2300\nAna   | 1500\nCarla | 980" },
+        { "tipo": "legenda", "valor": "A consulta SELECT ordenou os alunos do maior XP para o menor. Em um banco real, essa consulta buscaria entre milhões de registros em milissegundos!" }
+      ]
+    },
+    {
+      "id": "bd-1-3",
+      "titulo": "Banco de Dados vs Planilha",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um banco de dados é como uma planilha do Excel, mas muito mais poderosa. Enquanto uma planilha tem abas soltas, um banco tem tabelas que se relacionam entre si. Exemplo: no DevEstudos, uma tabela 'usuarios' e uma 'progresso' — cada progresso pertence a um usuário. Isso é um relacionamento, coisa que planilha não faz bem.",
+      "pergunta": "Qual a principal vantagem de um banco de dados sobre uma planilha?",
+      "alternativas": [
+        "Relacionar dados entre tabelas de forma eficiente e segura",
+        "Planilhas não salvam dados",
+        "Banco de dados é mais bonito visualmente",
+        "Não há diferença significativa"
+      ],
+      "correta": "Relacionar dados entre tabelas de forma eficiente e segura",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["conceitos", "banco"]
+    },
+    {
+      "id": "bd-1-4",
+      "titulo": "Tabela, Registro, Campo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Tabela = estrutura (ex: 'usuarios'). Registro (ou linha) = um item na tabela (ex: 'João'). Campo (ou coluna) = um atributo (ex: 'nome', 'email'). Pense numa agenda: a tabela é a agenda inteira, um registro é um contato, e campo é o nome/telefone/email daquele contato.",
+      "pergunta": "No DevEstudos, a tabela 'usuarios' tem os campos: id, nome, email, xp. O que é 'João, joao@email.com, 500'?",
+      "alternativas": [
+        "Um registro (linha) da tabela usuarios",
+        "Uma nova tabela",
+        "A estrutura do banco",
+        "Uma query SQL"
+      ],
+      "correta": "Um registro (linha) da tabela usuarios",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["tabela", "registro", "campo"]
+    },
+    {
+      "id": "bd-1-5",
+      "titulo": "Chave Primária (PK)",
+      "tipo": "multipla-escolha",
+      "explicacao": "Chave primária é um identificador único para cada registro. Ex: id = 1, id = 2. Nunca se repete na tabela. É como o CPF — cada pessoa tem um número único. No DevEstudos, cada usuário tem um id único. A chave primária é como o agente encontra um registro específico entre milhões.",
+      "pergunta": "Qual a característica de uma chave primária?",
+      "alternativas": [
+        "É única para cada registro e nunca se repete na tabela",
+        "Pode ser nula",
+        "Pode se repetir em vários registros",
+        "É opcional"
+      ],
+      "correta": "É única para cada registro e nunca se repete na tabela",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["pk", "chave-primaria"]
+    },
+    {
+      "id": "bd-1-6",
+      "titulo": "Chave Estrangeira (FK)",
+      "tipo": "multipla-escolha",
+      "explicacao": "Chave estrangeira é um campo que referencia a chave primária de outra tabela. Ex: na tabela 'progresso', o campo 'usuario_id' é uma FK que aponta para 'usuarios.id'. É assim que tabelas se conectam. FK = 'este progresso pertence ao usuário 5'.",
+      "pergunta": "Para que serve uma chave estrangeira?",
+      "alternativas": [
+        "Conectar registros entre tabelas diferentes",
+        "Identificar unicamente um registro na própria tabela",
+        "Acelerar consultas",
+        "Criptografar dados"
+      ],
+      "correta": "Conectar registros entre tabelas diferentes",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["fk", "chave-estrangeira"]
+    },
+    {
+      "id": "bd-1-7",
+      "titulo": "Tipos de Dados Comuns",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada campo tem um tipo: INT (número inteiro), VARCHAR (texto curto), TEXT (texto longo), BOOLEAN (true/false), DATE (data), DECIMAL (número decimal). Escolher o tipo certo economiza espaço e evita erros. 'email' deve ser VARCHAR, 'data_nascimento' deve ser DATE.",
+      "pergunta": "Qual tipo de dado usar para armazenar o XP total de um usuário?",
+      "alternativas": [
+        "INT (número inteiro)",
+        "VARCHAR",
+        "DATE",
+        "BOOLEAN"
+      ],
+      "correta": "INT (número inteiro)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["tipos", "dados"]
+    },
+    {
+      "id": "bd-1-8",
+      "titulo": "Practical: Modele uma Tabela",
+      "tipo": "complete-codigo",
+      "explicacao": "Modele a tabela 'modulos' do DevEstudos.",
+      "pergunta": "Complete a definição da tabela modulos:",
+      "codigoInicial": "-- Tabela: modulos\n-- Campos:\n-- id (INT, chave primária)\n-- nome (VARCHAR, \n-- curso_id (",
+      "correta": "INT, chave estrangeira → cursos.id)\n-- ordem (INT)\n-- xp_total (INT)\n-- descricao (TEXT)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "modelagem"],
+      "validacao": ""
+    }
+  ]
+}

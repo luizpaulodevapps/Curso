@@ -1,0 +1,90 @@
+{
+  "id": "pf-3",
+  "nome": "Missão Final 3 — Implementação e Testes",
+  "descricao": "Roteiro de implementação, priorização, Git workflow, testes unitários, integração e E2E.",
+  "ordem": 3,
+  "duracao": "4 horas",
+  "projeto": "Implementar o DevEstudos na prática com testes e Git profissional",
+  "questoes": [
+    {
+      "id": "pf-3-1",
+      "titulo": "Priorização: O que construir primeiro?",
+      "tipo": "multipla-escolha",
+      "explicacao": "A ordem de implementação importa. Construa na sequência: (1) Auth — sem login, ninguém usa; (2) Banco — schemas, migrations; (3) CRUD — criar, ler, atualizar, deletar dados; (4) Features específicas — flashcards, progresso. É como fazer um bolo: primeiro a massa, depois o recheio, por último a decoração. Não adianta decorar antes de assar.",
+      "pergunta": "Qual a primeira coisa a implementar no DevEstudos?",
+      "alternativas": [
+        "Autenticação (login/cadastro)",
+        "Tela de flashcards",
+        "Sistema de ranking",
+        "Tema dark mode"
+      ],
+      "correta": "Autenticação (login/cadastro)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["implementacao", "priorizacao"]
+    },
+    {
+      "id": "pf-3-2",
+      "titulo": "Git Workflow: Branches e PRs",
+      "tipo": "multipla-escolha",
+      "explicacao": "Git profissional não é commit direto na main. O fluxo correto: (1) Crie uma branch a partir da main (feature/login); (2) Faça commits atômicos (um commit por mudança lógica); (3) Abra um Pull Request; (4) Alguém revisa o código; (5) Só depois faz merge. É como um artigo acadêmico: você escreve, revisa, e só depois publica.",
+      "pergunta": "Qual o fluxo Git correto para implementar uma feature?",
+      "alternativas": [
+        "Branch → Commits → Pull Request → Code Review → Merge",
+        "Commit direto na main",
+        "Pull Request sem branch",
+        "Apagar o repo e começar de novo"
+      ],
+      "correta": "Branch → Commits → Pull Request → Code Review → Merge",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["implementacao", "git", "workflow"]
+    },
+    {
+      "id": "pf-3-3",
+      "titulo": "Testes: Unitário vs Integração vs E2E",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada tipo de teste tem um alvo: (1) Teste unitário — testa uma função isolada (ex: calcularXP()); (2) Teste de integração — testa a comunicação entre partes (ex: API Route + banco); (3) Teste E2E — testa o fluxo completo do usuário (ex: login → ver curso → responder questão). A pirâmide de testes: muitos unitários, alguns de integração, poucos E2E. Pense como check-up médico: unitário é medir pressão (específico), integração é exame de sangue (sistema), E2E é corpo inteiro.",
+      "pergunta": "Qual teste verifica se a API Route do DevEstudos se comunica corretamente com o Supabase?",
+      "alternativas": [
+        "Teste de integração",
+        "Teste unitário",
+        "Teste E2E",
+        "Teste de carga"
+      ],
+      "correta": "Teste de integração",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["implementacao", "testes"]
+    },
+    {
+      "id": "pf-3-4",
+      "titulo": "Erro Real: Implementar Sem Testes",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real que já aconteceu em produção: um dev implementou uma 'feature simples' de deletar usuário, mas esqueceu que outras tabelas dependiam daquele usuário (progresso, flashcards). Sem testes, o bug foi pra produção e 50 usuários perderam o progresso. No DevEstudos, um DELETE sem verificar FKs pode destruir dados de um tenant inteiro. Testes não são opcionais — são seguro de vida.",
+      "pergunta": "Implementar sem testes em um sistema multi-tenant como o DevEstudos pode afetar todos os tenants de uma vez?",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["implementacao", "erro", "testes"]
+    },
+    {
+      "id": "pf-3-5",
+      "titulo": "Desafio: Planeje o Roteiro",
+      "tipo": "desafio-pratico",
+      "explicacao": "Você precisa organizar as tarefas em ordem de implementação. Priorize pelo valor que entregam e pela dependência entre elas. Auth primeiro (sem login não há usuário), depois banco (sem dados não há funcionalidade), depois CRUD de cursos (conteúdo principal), e por fim features extras como flashcards e progresso.",
+      "pergunta": "Ordene as tarefas de implementação do DevEstudos:",
+      "alternativas": [
+        "1. Auth 2. Schema do banco 3. CRUD de cursos 4. Flashcards 5. Progresso",
+        "1. Flashcards 2. Progresso 3. CRUD 4. Schema 5. Auth",
+        "1. Tema dark 2. Auth 3. Flashcards 4. Schema 5. CRUD",
+        "1. Auth 2. Flashcards 3. CRUD 4. Schema 5. Progresso"
+      ],
+      "correta": "1. Auth 2. Schema do banco 3. CRUD de cursos 4. Flashcards 5. Progresso",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["implementacao", "pratica", "priorizacao"]
+    }
+  ]
+}

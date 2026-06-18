@@ -1,0 +1,107 @@
+{
+  "id": "css-3",
+  "nome": "Missão 3 — Box Model",
+  "descricao": "Margin, border, padding, content. Todo elemento HTML é uma caixa de papelão.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Cards estilizados",
+  "questoes": [
+    {
+      "id": "css-3-1",
+      "titulo": "A Caixa de Papelão",
+      "tipo": "multipla-escolha",
+      "explicacao": "Box Model = content + padding + border + margin. É uma caixa de papelão: o conteúdo é o produto dentro, padding é o plástico bolha, border é a caixa em si, margin é o espaço entre as caixas na prateleira.",
+      "pergunta": "O que é o 'padding' no Box Model?",
+      "alternativas": ["Espaço DENTRO da borda, entre a borda e o conteúdo", "Espaço FORA da borda, entre elementos", "A grossura da borda", "O conteúdo do elemento"],
+      "correta": "Espaço DENTRO da borda, entre a borda e o conteúdo",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["box model", "padding"]
+    },
+    {
+      "id": "css-3-2",
+      "titulo": "Empurrar os Vizinhos",
+      "tipo": "complete-codigo",
+      "explicacao": "margin empurra outros elementos pra longe. É tipo você abrir os braços no ônibus pra não encostar no vizinho. margin: 20px dá 20 pixels de espaço em volta. padding é o espaço interno, margin é o externo.",
+      "pergunta": "Crie CSS pra um .card com margin de 10px em volta e padding de 20px interno.",
+      "codigoInicial": ".card {\n  ",
+      "correta": ".card {\n  margin: 10px;\n  padding: 20px;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["margin", "padding"]
+    },
+    {
+      "id": "css-3-3",
+      "titulo": "Borda Arredondada",
+      "tipo": "complete-codigo",
+      "explicacao": "border-radius arredonda os cantos. border-radius: 10px deixa os cantos com curvatura de 10px. Quanto maior, mais redondo. border-radius: 50% vira um círculo (se width = height). É tipo lixa de unha: vai tirando as pontas.",
+      "pergunta": "Crie uma .box com borda azul sólida 2px, padding 15px e cantos arredondados de 8px.",
+      "codigoInicial": ".box {\n  border: ",
+      "correta": ".box {\n  border: 2px solid blue;\n  padding: 15px;\n  border-radius: 8px;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["border", "border-radius"]
+    },
+    {
+      "id": "css-3-4",
+      "titulo": "Lados Individuais",
+      "tipo": "multipla-escolha",
+      "explicacao": "Dá pra definir cada lado separado: margin-top, margin-right, margin-bottom, margin-left (sentido horário). Ou usar shorthand: margin: top right bottom left. É tipo medir os quatro pneus do carro separadamente.",
+      "pergunta": "margin: 10px 20px define o quê?",
+      "alternativas": [
+        "top=10px, right=20px, bottom=10px, left=20px",
+        "top=10px, right=20px, bottom=0, left=0",
+        "top=10px, left=20px",
+        "todos os lados = 10px e 20px"
+      ],
+      "correta": "top=10px, right=20px, bottom=10px, left=20px",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["shorthand", "lados"]
+    },
+    {
+      "id": "css-3-5",
+      "titulo": "Caixa Cansada",
+      "tipo": "multipla-escolha",
+      "explicacao": "box-sizing: border-box faz o padding E a border caberem DENTRO da largura. box-sizing: content-box (padrão) soma tudo fora. border-box é tipo 'a mala cabe no bagageiro' — o tamanho total é o que você declarou.",
+      "pergunta": "Qual box-sizing faz a largura INCLUIR padding e border?",
+      "alternativas": ["content-box", "border-box", "padding-box", "margin-box"],
+      "correta": "border-box",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["box-sizing", "border-box"]
+    },
+    {
+      "id": "css-3-6",
+      "titulo": "Cartão de Visita",
+      "tipo": "complete-codigo",
+      "explicacao": "Agora é montar um card completo: largura fixa, borda, padding interno, margin entre cards, cantos arredondados e até uma sombrinha (box-shadow) pra dar profundidade. Igual cartão de visita digital.",
+      "pergunta": "Crie um .card-completo com: largura 300px, padding 20px, margin 15px, borda 1px sólida #CCC, border-radius 10px, box-shadow 2px 2px 5px #999.",
+      "codigoInicial": ".card-completo {\n  width: 300px;\n  ",
+      "correta": ".card-completo {\n  width: 300px;\n  padding: 20px;\n  margin: 15px;\n  border: 1px solid #CCC;\n  border-radius: 10px;\n  box-shadow: 2px 2px 5px #999;\n}",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["card", "box-model"]
+    },
+    {
+      "id": "css-3-7",
+      "titulo": "Erro Real: Overflow Misterioso",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro é box-sizing padrão (content-box). Com width: 100% + padding: 20px, o elemento calcula 100% + 20px + 20px = 100% + 40px, estourando o container. Solução: usar box-sizing: border-box para padding e border caberem dentro da largura declarada.",
+      "pergunta": "Meu elemento tem width: 100% e padding: 20px. Ele está vazando para fora do container pai. Por quê?",
+      "alternativas": [
+        "O padding não é permitido com width: 100%",
+        "O box-sizing padrão (content-box) soma o padding à largura, ultrapassando 100%",
+        "Falta definir overflow: hidden no container",
+        "O elemento pai precisa ter width definida"
+      ],
+      "correta": "O box-sizing padrão (content-box) soma o padding à largura, ultrapassando 100%",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "box-sizing"]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "js-8",
+  "nome": "Missão 8 — DevEstudos Quiz: O Desafio Final",
+  "descricao": "DOM + eventos + storage + fetch. Combinando tudo que aprendemos pra construir um quiz completo.",
+  "ordem": 8,
+  "duracao": "2 horas",
+  "projeto": "Construir o quiz do DevEstudos do zero",
+  "questoes": [
+    {
+      "id": "js-8-1",
+      "titulo": "Estrutura do Projeto Quiz",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um quiz tem: 1) buscar perguntas (fetch), 2) exibir na tela (DOM), 3) ouvir respostas (eventos), 4) calcular resultado, 5) salvar progresso (storage). É tipo um jogo de tabuleiro: cada área cuida de uma parte.",
+      "pergunta": "Qual é a PRIMEIRA etapa pra construir um quiz?",
+      "alternativas": ["Salvar no localStorage", "Estilizar com CSS", "Obter as perguntas (via API ou array)", "Adicionar eventos de clique"],
+      "correta": "Obter as perguntas (via API ou array)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["projeto", "estrutura"]
+    },
+    {
+      "id": "js-8-2",
+      "titulo": "Renderizar Pergunta no DOM",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pra exibir uma pergunta, você pega o objeto pergunta (com texto e alternativas) e cria elementos HTML: um <h2> pro enunciado, vários <button> ou <label> pras alternativas. É tipo montar um cardápio com os dados.",
+      "pergunta": "Qual método criaríamos pra exibir uma pergunta na tela?",
+      "alternativas": ["calcularPontuacao()", "renderizarPergunta(pergunta)", "salvarProgresso()", "buscarDados()"],
+      "correta": "renderizarPergunta(pergunta)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["DOM", "renderizacao"]
+    },
+    {
+      "id": "js-8-3",
+      "titulo": "Evento de Resposta",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando o usuário clica numa alternativa, precisamos: 1) identificar qual foi clicada (e.target), 2) comparar com a resposta correta, 3) atualizar a pontuação, 4) passar pra próxima pergunta. Tudo num evento click.",
+      "pergunta": "O que fazer quando o usuário clica numa alternativa?",
+      "alternativas": ["Só mudar de cor", "Verificar se é a correta e atualizar pontuação", "Recarregar a página", "Nada"],
+      "correta": "Verificar se é a correta e atualizar pontuação",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["evento", "resposta"]
+    },
+    {
+      "id": "js-8-4",
+      "titulo": "Salvar Progresso do Quiz",
+      "tipo": "complete-codigo",
+      "explicacao": "No meio do quiz, o usuário pode fechar o navegador! Por isso salvamos o progresso: perguntaAtual, pontuacao, respostas. Com JSON.stringify e localStorage, o usuário volta de onde parou. É tipo um save point de videogame.",
+      "pergunta": "Crie função salvarProgresso(perguntaAtual, pontuacao) que salva no localStorage como 'quizProgress'.",
+      "codigoInicial": "function salvarProgresso(perguntaAtual, pontuacao) {\n  const progresso = { perguntaAtual, pontuacao };\n  ",
+      "correta": "function salvarProgresso(perguntaAtual, pontuacao) {\n  const progresso = { perguntaAtual, pontuacao };\n  localStorage.setItem('quizProgress', JSON.stringify(progresso));\n}",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["localStorage", "progresso", "funcao"],
+      "validacao": ""
+    },
+    {
+      "id": "js-8-5",
+      "titulo": "Fluxo Completo do Quiz",
+      "tipo": "multipla-escolha",
+      "explicacao": "Fluxo: 1) async/await busca perguntas, 2) renderiza a primeira, 3) usuário clica, 4) verifica resposta, 5) salva progresso, 6) avança ou mostra resultado. Tudo conectado como esteiras de fábrica: uma etapa alimenta a próxima.",
+      "pergunta": "Qual a sequência CORRETA do fluxo do quiz?",
+      "alternativas": ["Renderizar → Buscar dados → Clicar → Salvar", "Buscar dados → Renderizar → Clicar → Verificar → Salvar → Avançar", "Salvar → Buscar → Renderizar → Clicar", "Clicar → Buscar → Renderizar → Salvar"],
+      "correta": "Buscar dados → Renderizar → Clicar → Verificar → Salvar → Avançar",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["fluxo", "logica"]
+    },
+    {
+      "id": "js-8-6",
+      "titulo": "Montar Função Principal",
+      "tipo": "complete-codigo",
+      "explicacao": "Hora de juntar TUDO! A função main do quiz: busca perguntas, configura eventos, e inicia o jogo. Use async/await, DOM, eventos. É a peça central que orquestra o espetáculo todo.",
+      "pergunta": "Complete a função main(): busque '/api/quiz', guarde em perguntas, chame renderizarPergunta(perguntas[0]).",
+      "codigoInicial": "async function main() {\n  const res = await fetch('/api/quiz');\n  const perguntas = await res.json();\n  ",
+      "correta": "async function main() {\n  const res = await fetch('/api/quiz');\n  const perguntas = await res.json();\n  renderizarPergunta(perguntas[0]);\n}\n\nmain();",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["main", "fetch", "projeto", "final"],
+      "validacao": ""
+    }
+  ]
+}

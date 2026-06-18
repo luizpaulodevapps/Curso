@@ -1,0 +1,123 @@
+{
+  "id": "fluxo-de-dados",
+  "nome": "Fluxo de Dados — O DNA do Programa",
+  "descricao": "Como os dados caminham pelo programa: de variável em variável até se transformarem no resultado final.",
+  "ordem": 3,
+  "duracao": "1 semana",
+  "questoes": [
+    {
+      "id": "ment-flux-aula-1",
+      "titulo": "📖 O Pipeline de Dados",
+      "tipo": "aula",
+      "explicacao": "Os dados de um programa fluem como uma esteira de fábrica: o resultado de uma linha de código vira a entrada da próxima linha.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["fluxo", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Raramente um dado entra e sai de um programa sem passar por transformações. O caminho que o dado faz é chamado de **Fluxo de Dados** ou **Pipeline**." },
+        { "tipo": "texto", "valor": "Imagine fazer café:\n1. O grão de café (entrada 1) é moído ➔ vira pó (resultado 1).\n2. O pó (entrada 2) recebe água quente (entrada 3) ➔ vira café coado (resultado 2).\n3. O café coado (entrada 4) recebe açúcar ➔ vira o café doce na xícara (saída final)." },
+        { "tipo": "texto", "valor": "Na programação, fazemos isso passando o resultado de uma variável como entrada para o cálculo da próxima variável." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let precoOriginal = 100;\nlet desconto = 15;\nlet precoComDesconto = precoOriginal - desconto;\nlet precoFinal = precoComDesconto * 1.10; // Adicionando imposto\nconsole.log(precoFinal);" },
+        { "tipo": "resultado", "valor": "93.5" },
+        { "tipo": "legenda", "valor": "💡 Dica: Dividir um cálculo complexo em várias etapas com variáveis intermediárias deixa seu código muito mais legível e fácil de dar manutenção." }
+      ]
+    },
+    {
+      "id": "ment-flux-aula-2",
+      "titulo": "👀 Investigando com Console",
+      "tipo": "exemplo",
+      "explicacao": "Quando o resultado final do programa está errado, precisamos agir como detetives e inspecionar o valor das variáveis em cada etapa para achar onde o dado quebrou.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["debug", "console", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "O processo de investigar e corrigir erros no código é chamado de **Debug** (ou depuração). A nossa ferramenta principal para isso é o `console.log()`." },
+        { "tipo": "texto", "valor": "Ao espalhar `console.log()` ao longo das etapas, podemos ver o valor exato de cada variável em tempo real:" },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "let nota1 = 8;\nlet nota2 = 6;\nconsole.log('Espiando nota1:', nota1);\nconsole.log('Espiando nota2:', nota2);\n\nlet media = (nota1 + nota2) / 2;\nconsole.log('Média calculada:', media);" },
+        { "tipo": "resultado", "valor": "Espiando nota1: 8\nEspiando nota2: 6\nMédia calculada: 7" },
+        { "tipo": "legenda", "valor": "💡 Dica: Se o resultado da média fosse 11 (caso tivéssemos esquecido os parênteses: `nota1 + nota2 / 2`), os `console.log` intermediários nos ajudariam a perceber que os valores das notas estavam certos, mas a fórmula da média estava errada!" }
+      ]
+    },
+    {
+      "id": "ment-flux-1",
+      "titulo": "Dado Andarilho",
+      "tipo": "multipla-escolha",
+      "explicacao": "Os dados viajam pelo programa como uma carta passando de mão em mão. Cada linha de código pode pegar esse dado, ler o seu valor, transformá-lo um pouco e passá-lo para a próxima variável até chegar na tela.",
+      "pergunta": "Analisando o código abaixo:\n\nlet nota1 = 8;\nlet nota2 = 7;\nlet media = (nota1 + nota2) / 2;\nconsole.log(media);\n\nQual é o caminho que o número 8 percorre no sistema?",
+      "alternativas": [
+        "Ele pula direto para o comando console.log sem passar pelas outras linhas",
+        "Ele entra no pote nota1, é puxado para o cálculo da média e o seu resultado transformado é exibido",
+        "Ele fica bloqueado dentro do pote nota1 para sempre, sem que o restante do código saiba que ele existe",
+        "Ele se funde imediatamente com a nota2 na primeira linha, transformando o pote no número 15"
+      ],
+      "correta": "Ele entra no pote nota1, é puxado para o cálculo da média e o seu resultado transformado é exibido",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["fluxo", "dados", "variaveis"]
+    },
+    {
+      "id": "ment-flux-2",
+      "titulo": "Pipeline de Café",
+      "tipo": "complete-codigo",
+      "explicacao": "Na programação, chamamos de 'Pipeline' quando o resultado de uma etapa vira a entrada da etapa seguinte. É como fazer café: o grão vira pó (etapa 1), o pó recebe água quente (etapa 2) e o café cai na xícara (etapa 3).",
+      "pergunta": "Complete a linha 4 do código para finalizar a transformação final do dado, dividindo a variável `subtraido` por 5.",
+      "codigoInicial": "let numero = 10;\nlet triplicado = numero * 3;\nlet subtraido = triplicado - 5;\nlet dividido = \nconsole.log(dividido);",
+      "correta": "let numero = 10;\nlet triplicado = numero * 3;\nlet subtraido = triplicado - 5;\nlet dividido = subtraido / 5;\nconsole.log(dividido);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["pipeline", "fluxo", "operadores"],
+      "validacao": "typeof dividido !== 'undefined' && Math.abs(dividido - 5) < 0.01"
+    },
+    {
+      "id": "ment-flux-3",
+      "titulo": "Debug = Detetive",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando um programa apresenta um comportamento estranho ou um resultado errado, você precisa agir como um detetive. O processo de caçar erros se chama **Debug**. A sua principal lupa nessa investigação é o `console.log()`, usado para espiar o valor dos potes em cada etapa do caminho.",
+      "pergunta": "Se o seu sistema de ERP começar a exibir um cálculo de imposto totalmente errado, qual deve ser a sua primeira atitude técnica?",
+      "alternativas": [
+        "Apagar todo o código do sistema e começar a escrever do absoluto zero",
+        "Espalhar comandos console.log pelas etapas do cálculo para descobrir em qual linha o dado foi corrompido",
+        "Ignorar o problema e esperar que o navegador corrija o erro sozinho na próxima atualização",
+        "Desinstalar o VS Code do computador"
+      ],
+      "correta": "Espalhar comandos console.log pelas etapas do cálculo para descobrir em qual linha o dado foi corrompido",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["debug", "fluxo", "boas-praticas"]
+    },
+    {
+      "id": "ment-flux-4",
+      "titulo": "Média Escolar",
+      "tipo": "complete-codigo",
+      "explicacao": "Calcular médias é um fluxo muito comum em sistemas. Primeiro você junta e soma todas as entradas individuais e, em seguida, divide o resultado pelo número total de itens recebidos.",
+      "pergunta": "Complete a linha 5 do código para calcular a média final (dividindo o pote `soma` por 3).",
+      "codigoInicial": "let n1 = 7.5;\nlet n2 = 8.0;\nlet n3 = 9.5;\nlet soma = n1 + n2 + n3;\nlet media = \nconsole.log(media);",
+      "correta": "let n1 = 7.5;\nlet n2 = 8.0;\nlet n3 = 9.5;\nlet soma = n1 + n2 + n3;\nlet media = soma / 3;\nconsole.log(media);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["media", "fluxo", "calculo"],
+      "validacao": "typeof media !== 'undefined' && Math.abs(media - 8.33) < 0.01"
+    },
+    {
+      "id": "ment-flux-5",
+      "titulo": "A Grande Máquina",
+      "tipo": "multipla-escolha",
+      "explicacao": "No fim do dia, qualquer programa do mundo — desde uma calculadora simples até o ERP mais complexo — se resume ao mesmo fluxo: uma máquina que recebe dados, transforma esses dados através de regras lógicas e entrega um resultado útil.",
+      "pergunta": "Pensando no fluxo universal da programação, qual das opções abaixo define melhor o que é um software?",
+      "alternativas": [
+        "Um texto livre e artístico escrito para computadores lerem nas horas vagas",
+        "Uma máquina lógica sequencial que recebe entradas, processa transformações e gera saídas",
+        "Uma tela estática que exibe imagens aleatórias que mudam conforme o clima",
+        "Um gerador automático de arquivos pesados que serve apenas para ocupar espaço no HD"
+      ],
+      "correta": "Uma máquina lógica sequencial que recebe entradas, processa transformações e gera saídas",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["conclusao", "fluxo", "arquitetura"]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "arq-saas-4",
+  "nome": "Missão 4 — Permissões Granulares: CRUD por Recurso",
+  "descricao": "Permissões finas, herança e escopo por recurso.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Implementar permissões CRUD no DevEstudos",
+  "questoes": [
+    {
+      "id": "arq-saas-4-1",
+      "titulo": "Permissões CRUD",
+      "tipo": "multipla-escolha",
+      "explicacao": "CRUD = Create, Read, Update, Delete. Pra cada recurso (usuários, cursos, módulos), você define quem pode criar, ler, atualizar ou deletar. É como as chaves de um condomínio: algumas salas você só pode abrir (ler), outras você pode reformar (editar).",
+      "pergunta": "Qual operação do CRUD geralmente é mais restrita em sistemas SaaS?",
+      "alternativas": [
+        "Create e Delete (criar e excluir recursos)",
+        "Read (apenas leitura)",
+        "Update (atualização)",
+        "Todas têm o mesmo nível de restrição"
+      ],
+      "correta": "Create e Delete (criar e excluir recursos)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["crud", "permissoes", "conceito"]
+    },
+    {
+      "id": "arq-saas-4-2",
+      "titulo": "Permissão por recurso",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, um editor pode editar CURSOS mas não pode gerenciar USUÁRIOS. É como na cozinha de um restaurante: o chef pode mudar o cardápio, mas não pode alterar o salário dos garçons. Cada recurso tem seu dono.",
+      "pergunta": "Um editor no DevEstudos deve ter permissão para deletar usuários?",
+      "alternativas": [
+        "Sim, editor pode tudo relacionado ao conteúdo",
+        "Não, gerenciar usuários é permissão de admin",
+        "Sim, desde que o usuário seja da mesma escola",
+        "Não, editor só pode ler usuários, não deletar"
+      ],
+      "correta": "Não, gerenciar usuários é permissão de admin",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["recursos", "permissoes", "devetudos"]
+    },
+    {
+      "id": "arq-saas-4-3",
+      "titulo": "Herança de permissões",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Herança: se você pode editar um CURSO, pode editar os MÓDULOS dentro dele? Nem sempre. As vezes o professor cria o curso, mas um assistente gerencia os módulos. Herança é conveniente, mas pode abrir brechas.",
+      "pergunta": "Em um modelo de herança de permissões, ter permissão de UPDATE em um curso automaticamente concede UPDATE em todos os módulos daquele curso.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["heranca", "permissoes"]
+    },
+    {
+      "id": "arq-saas-4-4",
+      "titulo": "Escopo entre tenants",
+      "tipo": "multipla-escolha",
+      "explicacao": "Professor pode editar CURSOS da própria escola, não de outra. Mesmo que o papel seja 'editor', o escopo é limitado ao tenant. É como um síndico que manda só no prédio dele — não pode ir no prédio vizinho e mandar pintar a parede.",
+      "pergunta": "Como garantir que um editor da Escola A não edite cursos da Escola B?",
+      "alternativas": [
+        "Verificando se o tenant_id do usuário bate com o tenant_id do curso em toda operação",
+        "Criando um banco separado para cada escola",
+        "Bloqueando o IP da Escola B",
+        "Criptografando os dados da Escola B"
+      ],
+      "correta": "Verificando se o tenant_id do usuário bate com o tenant_id do curso em toda operação",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["escopo", "tenant", "seguranca"]
+    },
+    {
+      "id": "arq-saas-4-5",
+      "titulo": "Erro real: permissão muito ampla",
+      "tipo": "desafio-pratico",
+      "explicacao": "Um SaaS educacional tinha um papel 'admin' que podia TUDO em qualquer escola. Um admin mal-intencionado (ou um bug) deletou 200 cursos de outras escolas. O erro? Não tinha separação de escopo por tenant no momento da exclusão.",
+      "pergunta": "Qual era a falha no sistema que permitiu o admin deletar cursos de outras escolas?",
+      "alternativas": [
+        "O admin não deveria ter permissão de DELETE em cursos",
+        "A permissão DELETE não checava o tenant_id do curso contra o tenant_id do admin",
+        "O sistema não pedia confirmação antes de deletar",
+        "O banco de dados não tinha backup"
+      ],
+      "correta": "A permissão DELETE não checava o tenant_id do curso contra o tenant_id do admin",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "permissoes", "escopo", "delete"]
+    },
+    {
+      "id": "arq-saas-4-6",
+      "titulo": "Matriz de permissões",
+      "tipo": "desafio-pratico",
+      "explicacao": "Monte a matriz: Admin pode CRUD em tudo do próprio tenant. Editor pode CRUD em cursos e módulos (próprio tenant), mas só READ em usuários. Viewer só READ em cursos e módulos. Desafio: implementar a checagem de UPDATE em curso.",
+      "pergunta": "Qual sequência de verificações é necessária antes de permitir que um editor atualize um curso?",
+      "alternativas": [
+        "Verificar se o usuário tem papel de editor OU admin E se o tenant_id do curso corresponde ao tenant_id do usuário",
+        "Verificar apenas se o usuário é editor",
+        "Verificar apenas o tenant_id",
+        "Verificar se o curso existe"
+      ],
+      "correta": "Verificar se o usuário tem papel de editor OU admin E se o tenant_id do curso corresponde ao tenant_id do usuário",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["matriz", "permissoes", "checagem", "devetudos"]
+    }
+  ]
+}

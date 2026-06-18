@@ -1,0 +1,102 @@
+{
+  "id": "css-6",
+  "nome": "Missão 6 — Tema DevEstudos",
+  "descricao": "CSS variables, dark theme e o tema oficial da plataforma. Seu toque final no CSS.",
+  "ordem": 6,
+  "duracao": "3 horas",
+  "projeto": "Tema escuro do DevEstudos",
+  "questoes": [
+    {
+      "id": "css-6-1",
+      "titulo": "Variáveis que Vivi",
+      "tipo": "multipla-escolha",
+      "explicacao": "CSS variables (variaveis CSS) guardam valores pra reutilizar. --cor-principal: blue; depois usa var(--cor-principal). Se mudar a variável, muda TUDO de uma vez. É tipo uma fórmula mágica: mudou a receita, todos os bolos mudam.",
+      "pergunta": "Como se declara uma variável CSS?",
+      "alternativas": ["$cor: blue", "var cor = blue", "--cor: blue", "cor: blue !global"],
+      "correta": "--cor: blue",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["variaveis", "css-variables"]
+    },
+    {
+      "id": "css-6-2",
+      "titulo": "Definindo o Tema",
+      "tipo": "complete-codigo",
+      "explicacao": ":root é o elemento raiz (<html>). Variáveis colocadas em :root ficam disponíveis GLOBALMENTE em todo o CSS. É tipo a central de distribuição: sai de lá pra toda a fábrica.",
+      "pergunta": "No :root, crie variáveis: --cor-primaria (roxo #6C63FF), --cor-fundo (branco #FFF) e --fonte-padrao (Arial).",
+      "codigoInicial": ":root {\n  --cor-primaria: ",
+      "correta": ":root {\n  --cor-primaria: #6C63FF;\n  --cor-fundo: #FFF;\n  --fonte-padrao: Arial, sans-serif;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["root", "variaveis"]
+    },
+    {
+      "id": "css-6-3",
+      "titulo": "Usando a Variável",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pra USAR uma variável: propriedade: var(--nome-da-variavel). Exemplo: color: var(--cor-primaria). Se a variável não existir, dá pra colocar um fallback: var(--cor, blue) usa blue se --cor não existir.",
+      "pergunta": "Como usamos uma variável CSS chamada --cor-primaria no CSS?",
+      "alternativas": ["$--cor-primaria", "var(--cor-primaria)", "--cor-primaria()", "get(--cor-primaria)"],
+      "correta": "var(--cor-primaria)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["var", "css-variables"]
+    },
+    {
+      "id": "css-6-4",
+      "titulo": "Modo Escuro",
+      "tipo": "complete-codigo",
+      "explicacao": "O dark theme muda as cores de fundo e texto. Usando variáveis, é só trocar os valores: fundo escuro (#1a1a2e), texto claro (#EEE). É o 'modo noturno' do seu celular — cansa menos os olhos.",
+      "pergunta": "Crie um tema escuro: body com fundo #1a1a2e e cor #EEE. Use variáveis --bg e --text.",
+      "codigoInicial": ":root {\n  --bg: #1a1a2e;\n  --text: #EEE;\n}\n\nbody {\n  background-color: ",
+      "correta": ":root {\n  --bg: #1a1a2e;\n  --text: #EEE;\n}\n\nbody {\n  background-color: var(--bg);\n  color: var(--text);\n  font-family: Arial, sans-serif;\n}",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["dark-theme", "tema"]
+    },
+    {
+      "id": "css-6-5",
+      "titulo": "O Seletor Universal",
+      "tipo": "multipla-escolha",
+      "explicacao": "O seletor * (asterisco) seleciona TODOS os elementos. * { box-sizing: border-box; } aplica border-box em absolutamente tudo na página. É tipo um passe de mágica que afeta todo mundo de uma vez.",
+      "pergunta": "O que o seletor '*' faz no CSS?",
+      "alternativas": ["Seleciona o primeiro elemento", "Seleciona TODOS os elementos", "Seleciona elementos com classe", "Seleciona o elemento raiz"],
+      "correta": "Seleciona TODOS os elementos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["seletor", "universal"]
+    },
+    {
+      "id": "css-6-6",
+      "titulo": "Tema Completo DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "O tema oficial do DevEstudos: variáveis pra tudo (cores, fontes, espaçamentos), reset básico com *, tema claro e escuro. A .classe theme-toggle muda as variáveis. É o sistema de design da plataforma em CSS.",
+      "pergunta": "Monte o tema DevEstudos: :root (--bg #0f0f23, --text #e0e0e0, --primary #6C63FF), * com box-sizing, body usando as variáveis.",
+      "codigoInicial": ":root {\n  --bg: #0f0f23;\n  --text: #e0e0e0;\n  --primary: #6C63FF;\n}\n\n* {\n  ",
+      "correta": ":root {\n  --bg: #0f0f23;\n  --text: #e0e0e0;\n  --primary: #6C63FF;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background-color: var(--bg);\n  color: var(--text);\n  font-family: 'Segoe UI', sans-serif;\n  line-height: 1.6;\n}\n\na {\n  color: var(--primary);\n}",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["tema", "devestudos", "css-variables"]
+    },
+    {
+      "id": "css-6-7",
+      "titulo": "Erro Real: Tema Fantasma",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro: usar var(--cor-primaria) sem definir a variável --cor-primaria em lugar nenhum. A propriedade usa o valor inicial (inherit/none) ou falha silenciosamente. Solução: sempre definir a variável em :root antes de usar, e usar fallback: var(--cor-primaria, #6C63FF) como segurança.",
+      "pergunta": "Adicionei um tema escuro usando var(--cor-primaria), var(--bg) etc., mas as cores simplesmente sumiram — tudo ficou sem estilo. O que aconteceu?",
+      "alternativas": [
+        "O navegador não suporta CSS variables",
+        "As variáveis não foram declaradas em :root ou antes do uso — CSS variables precisam existir para serem usadas",
+        "Faltou importar o arquivo CSS corretamente",
+        "As variáveis precisam ser declaradas com $ em vez de --"
+      ],
+      "correta": "As variáveis não foram declaradas em :root ou antes do uso — CSS variables precisam existir para serem usadas",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "css-variables"]
+    }
+  ]
+}

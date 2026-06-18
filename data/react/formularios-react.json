@@ -1,0 +1,85 @@
+{
+  "id": "react-5",
+  "nome": "Formulários React — Dados Controlados",
+  "descricao": "React controla cada input. Validação em tempo real, submit sem reload.",
+  "ordem": 5,
+  "duracao": "1 semana",
+  "projeto": "Formulário de cadastro do DevEstudos",
+  "questoes": [
+    {
+      "id": "react-5-1",
+      "titulo": "Input Controlado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Input controlado = React DITA o valor do input via state. value={nome} + onChange. O input não guarda o próprio valor — o React guarda. É tipo ventríloquo: o boneco (input) só fala o que o ventríloquo (React) manda.",
+      "pergunta": "Num input controlado, quem guarda o valor?",
+      "alternativas": ["O próprio input", "O React (via state)", "O navegador", "A API"],
+      "correta": "O React (via state)",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["controlado", "input"]
+    },
+    {
+      "id": "react-5-2",
+      "titulo": "Form com Submit",
+      "tipo": "complete-codigo",
+      "explicacao": "onSubmit no form, com e.preventDefault(), pega os dados e processa sem recarregar a página. O state já tem os valores atualizados em tempo real.",
+      "pergunta": "Crie form com email input + submit. Mostre 'Enviado: EMAIL' no clique.",
+      "codigoInicial": "import { useState } from 'react';\n\nfunction FormEmail() {\n  const [email, setEmail] = useState('');\n  \n  function handleSubmit(e) {\n    e.preventDefault();\n    alert('Enviado: ' + email);\n  }\n  \n  return <form onSubmit={handleSubmit}>\n    <input value={email} onChange={e => setEmail(e.target.value)} placeholder=\"Email\" />\n    <button type=\"submit\">Enviar</button>\n  </form>;\n}\n",
+      "correta": "import { useState } from 'react';\n\nfunction FormEmail() {\n  const [email, setEmail] = useState('');\n  \n  function handleSubmit(e) {\n    e.preventDefault();\n    alert('Enviado: ' + email);\n  }\n  \n  return <form onSubmit={handleSubmit}>\n    <input value={email} onChange={e => setEmail(e.target.value)} placeholder=\"Email\" />\n    <button type=\"submit\">Enviar</button>\n  </form>;\n}\n\nexport default FormEmail;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["form", "submit"],
+      "validacao": ""
+    },
+    {
+      "id": "react-5-3",
+      "titulo": "Múltiplos Campos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vários campos = um objeto no estado. const [form, setForm] = useState({nome: '', email: ''}). Um onChange genérico: setForm({...form, [e.target.name]: e.target.value}).",
+      "pergunta": "Crie form com nome + email usando objeto no estado e onChange genérico.",
+      "codigoInicial": "import { useState } from 'react';\n\nfunction FormCadastro() {\n  const [form, setForm] = useState({nome: '', email: ''});\n  \n  function handleChange(e) {\n    setForm({...form, [e.target.name]: e.target.value});\n  }\n  \n  return <form>\n    <input name=\"nome\" value={form.nome} onChange={handleChange} placeholder=\"Nome\" />\n    <input name=\"email\" value={form.email} onChange={handleChange} placeholder=\"Email\" />\n  </form>;\n}\n",
+      "correta": "import { useState } from 'react';\n\nfunction FormCadastro() {\n  const [form, setForm] = useState({nome: '', email: ''});\n  \n  function handleChange(e) {\n    setForm({...form, [e.target.name]: e.target.value});\n  }\n  \n  return <form>\n    <input name=\"nome\" value={form.nome} onChange={handleChange} placeholder=\"Nome\" />\n    <input name=\"email\" value={form.email} onChange={handleChange} placeholder=\"Email\" />\n    <p>{form.nome} - {form.email}</p>\n  </form>;\n}\n\nexport default FormCadastro;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["multiplos", "objeto"],
+      "validacao": ""
+    },
+    {
+      "id": "react-5-4",
+      "titulo": "Validar na Hora",
+      "tipo": "complete-codigo",
+      "explicacao": "Validação em tempo real: estado derivado. const emailValido = email.includes('@'). Mostra erro (style vermelho) se inválido, feedback verde se OK. É tipo WhatsApp: 'digitando...' aparece antes de enviar.",
+      "pergunta": "Adicione validação: mostrar 'Email inválido' se email não tiver @.",
+      "codigoInicial": "const [email, setEmail] = useState('');\nconst emailValido = email.includes('@');\n\nreturn <div>\n  <input value={email} onChange={e => setEmail(e.target.value)} />\n  {!emailValido && email.length > 0 && <span style={{color: 'red'}}>Email inválido</span>}\n</div>;\n",
+      "correta": "const [email, setEmail] = useState('');\nconst emailValido = email.includes('@');\n\nreturn <div>\n  <input value={email} onChange={e => setEmail(e.target.value)} />\n  {!emailValido && email.length > 0 && <span style={{color: 'red'}}>Email inválido</span>}\n  {emailValido && <span style={{color: 'green'}}>Email válido ✓</span>}\n</div>;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["validacao", "feedback"],
+      "validacao": ""
+    },
+    {
+      "id": "react-5-5",
+      "titulo": "Botão Desabilitado",
+      "tipo": "multipla-escolha",
+      "explicacao": "disabled={!formValido} no botão de submit. Enquanto o form não estiver válido, o botão fica 'cinza' e não clicável. É tipo botão de 'comprar' quando o carrinho tá vazio — não faz sentido clicar.",
+      "pergunta": "Como desabilitar o botão de submit enquanto form for inválido?",
+      "alternativas": ["botão sempre habilitado", "disabled={!formValido}", "onClick={null}", "style={{opacity: 0.5}}"],
+      "correta": "disabled={!formValido}",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["disabled", "validacao"]
+    },
+    {
+      "id": "react-5-6",
+      "titulo": "Input Não Controlado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Input não controlado = o próprio DOM guarda o valor. useRef + ref acessa o valor só quando precisa (submit). Menos re-renders, mas menos controle. É tipo 'só olhar a nota quando chegar no caixa'.",
+      "pergunta": "Como acessamos o valor de um input não controlado?",
+      "alternativas": ["onChange", "useRef + ref", "useState", "value prop"],
+      "correta": "useRef + ref",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["nao controlado", "ref"]
+    }
+  ]
+}

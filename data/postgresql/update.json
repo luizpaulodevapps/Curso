@@ -1,0 +1,131 @@
+{
+  "id": "pg-3",
+  "nome": "Missão 3 — UPDATE",
+  "descricao": "Atualizar registros existentes.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Atualizar perfil de usuários do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-3-1",
+      "titulo": "UPDATE básico",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um aluno do DevEstudos mudou de email. Você precisa corrigir na ficha dele sem rasurar a dos outros. O WHERE é seu 'localizador de ficha'.",
+      "pergunta": "Qual comando altera o email do usuário com id=5 para 'novo@email.com'?",
+      "alternativas": [
+        "UPDATE usuarios SET email = 'novo@email.com' WHERE id = 5;",
+        "UPDATE usuarios SET email = 'novo@email.com';",
+        "UPDATE usuarios WHERE id = 5 SET email = 'novo@email.com';",
+        "ALTER usuarios SET email = 'novo@email.com' WHERE id = 5;"
+      ],
+      "correta": "UPDATE usuarios SET email = 'novo@email.com' WHERE id = 5;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "update"]
+    },
+    {
+      "id": "pg-3-2",
+      "titulo": "Múltiplas colunas",
+      "tipo": "multipla-escolha",
+      "explicacao": "O aluno mudou de nome e de email. Você poderia fazer dois comandos, mas é mais eficiente atualizar tudo de uma vez — igual trocar nome e endereço na mesma ficha.",
+      "pergunta": "Qual comando atualiza nome E email do usuário com id=3?",
+      "alternativas": [
+        "UPDATE usuarios SET nome = 'João', email = 'joao@email.com' WHERE id = 3;",
+        "UPDATE usuarios SET nome = 'João' AND email = 'joao@email.com' WHERE id = 3;",
+        "UPDATE usuarios SET (nome, email) = ('João', 'joao@email.com') WHERE id = 3;",
+        "UPDATE usuarios SET nome = 'João', SET email = 'joao@email.com' WHERE id = 3;"
+      ],
+      "correta": "UPDATE usuarios SET nome = 'João', email = 'joao@email.com' WHERE id = 3;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "update"]
+    },
+    {
+      "id": "pg-3-3",
+      "titulo": "Erro real — UPDATE sem WHERE",
+      "tipo": "multipla-escolha",
+      "explicacao": "Esquecer o WHERE no UPDATE é como entrar no escritório do DevEstudos e trocar o nome de TODAS as carteirinhas porque você queria alterar só uma. Catástrofe.",
+      "pergunta": "O que acontece ao executar `UPDATE usuarios SET email = 'todos@email.com';` (sem WHERE)?",
+      "alternativas": [
+        "Nada — o PostgreSQL exige WHERE obrigatoriamente.",
+        "Atualiza o email de todos os registros da tabela.",
+        "Atualiza apenas o primeiro registro.",
+        "Retorna erro de sintaxe."
+      ],
+      "correta": "Atualiza o email de todos os registros da tabela.",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "update"]
+    },
+    {
+      "id": "pg-3-4",
+      "titulo": "Erro real — esquecer SET",
+      "tipo": "complete-codigo",
+      "explicacao": "Você está com pressa e escreve o UPDATE pela metade. O PostgreSQL não adivinha o que você queria — ele simplesmente aponta o erro.",
+      "pergunta": "Qual o erro em `UPDATE usuarios nome = 'Ana' WHERE id = 1;`? Explique o que está faltando.",
+      "alternativas": [],
+      "correta": "Falta a palavra-chave SET. O correto é: UPDATE usuarios SET nome = 'Ana' WHERE id = 1;",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "update"]
+    },
+    {
+      "id": "pg-3-5",
+      "titulo": "UPDATE com expressão",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, cada like em um post aumenta o contador em 1. Você não precisa saber o valor atual — só manda incrementar, como dar +1 na contagem do placar.",
+      "pergunta": "Qual comando incrementa em 1 o valor da coluna likes na tabela posts com id=10?",
+      "alternativas": [
+        "UPDATE posts SET likes = likes + 1 WHERE id = 10;",
+        "UPDATE posts SET likes + 1 WHERE id = 10;",
+        "UPDATE posts ADD likes = 1 WHERE id = 10;",
+        "UPDATE posts SET likes = 1 WHERE id = 10;"
+      ],
+      "correta": "UPDATE posts SET likes = likes + 1 WHERE id = 10;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "update", "expressao"]
+    },
+    {
+      "id": "pg-3-6",
+      "titulo": "UPDATE com subquery",
+      "tipo": "multipla-escolha",
+      "explicacao": "De vez em quando você precisa buscar um dado de outra tabela para usar no UPDATE. É como consultar o catálogo de cursos do DevEstudos para saber o valor e aplicar no boleto.",
+      "pergunta": "Qual comando atualiza o plano de todos os usuarios para o mesmo plano do usuario com id=1?",
+      "alternativas": [
+        "UPDATE usuarios SET plano = (SELECT plano FROM usuarios WHERE id = 1);",
+        "UPDATE usuarios SET plano = SELECT plano FROM usuarios WHERE id = 1;",
+        "UPDATE usuarios (SELECT plano FROM usuarios WHERE id = 1) SET plano;",
+        "UPDATE usuarios SET plano = id=1.plano;"
+      ],
+      "correta": "UPDATE usuarios SET plano = (SELECT plano FROM usuarios WHERE id = 1);",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "update", "subquery"]
+    },
+    {
+      "id": "pg-3-7",
+      "titulo": "UPDATE com RETURNING",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Assim como no INSERT, o UPDATE também pode devolver os registros alterados — útil para conferir se a atualização foi feita correta.",
+      "pergunta": "O comando `UPDATE usuarios SET nome = 'Ana' WHERE id = 1 RETURNING *;` exibe os dados do usuário após a atualização.",
+      "alternativas": [],
+      "correta": "Verdadeiro",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "update", "returning"]
+    },
+    {
+      "id": "pg-3-8",
+      "titulo": "Desafio — UPDATE com data e condição",
+      "tipo": "desafio-pratico",
+      "explicacao": "O DevEstudos quer desativar (status = 'inativo') todos os usuarios que não fazem login há mais de 365 dias. Você precisa de dois campos para isso.",
+      "pergunta": "Escreva um comando UPDATE que define status='inativo' para todos os usuarios cujo ultimo_login seja anterior a data atual menos 365 dias. Use CURRENT_DATE ou NOW().",
+      "alternativas": [],
+      "correta": "UPDATE usuarios SET status = 'inativo' WHERE ultimo_login < CURRENT_DATE - INTERVAL '365 days';",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "update", "data", "desafio"]
+    }
+  ]
+}

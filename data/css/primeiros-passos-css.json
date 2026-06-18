@@ -1,0 +1,142 @@
+{
+  "id": "css-1",
+  "nome": "Missão 1 — Primeiros Passos no CSS",
+  "descricao": "Sintaxe, seletores, cores e como aplicar CSS. O batismo no mundo do estilo.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Primeiros estilos no HTML",
+  "questoes": [
+    {
+      "id": "css-1-1",
+      "titulo": "📖 O que é CSS?",
+      "tipo": "aula",
+      "explicacao": "CSS (Cascading Style Sheets) é a linguagem que dá estilo ao HTML. Se o HTML é o esqueleto de uma página, o CSS é a roupa, as cores, o design. Ele define como os elementos aparecem na tela.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["css", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "CSS significa **Cascading Style Sheets** — Folhas de Estilo em Cascata. 'Cascata' porque as regras se sobrepõem: se você define uma cor azul no topo e depois uma vermelha embaixo, a última vence (a menos que a primeira seja mais específica)." },
+        { "tipo": "codigo", "linguagem": "css", "valor": "/* Sintaxe básica do CSS */\np {\n  color: blue;\n  font-size: 16px;\n}" },
+        { "tipo": "texto", "valor": "A sintaxe é simples: um **seletor** (quem vai receber o estilo), entre chaves uma **propriedade** (o que mudar) e um **valor** (como mudar). É como preencher uma ficha: 'parágrafos, cor do texto: azul'." },
+        { "tipo": "texto", "valor": "Existem três formas de aplicar CSS: **inline** (dentro da tag HTML), **interno** (dentro de `<style>` no `<head>`) e **externo** (arquivo `.css` separado). O externo é o mais organizado — tipo separar estilo do conteúdo em pastas diferentes." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<!-- CSS Externo -->\n<head>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>" },
+        { "tipo": "resultado", "valor": "O navegador carrega o arquivo CSS e aplica os estilos a todos os elementos da página." }
+      ]
+    },
+    {
+      "id": "css-1-2",
+      "titulo": "👀 Como Aplicar CSS",
+      "tipo": "exemplo",
+      "explicacao": "Vamos ver na prática as três formas de aplicar CSS e como cada uma se comporta. Teste cada uma e veja a diferença no visual da página.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["css", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Primeiro, o **CSS inline**: o estilo vai direto no atributo `style` da tag. É prático para testes rápidos, mas bagunça o HTML se usado demais." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<p style=\"color: red; font-weight: bold;\">\n  Este parágrafo é vermelho e negrito (inline).\n</p>" },
+        { "tipo": "resultado", "valor": "Parágrafo exibido em vermelho e negrito." },
+        { "tipo": "texto", "valor": "Agora o **CSS interno**: usamos `<style>` dentro do `<head>`. Funciona para uma página só, mas se repetir em muitas páginas, fica difícil de manter." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<head>\n  <style>\n    .destaque {\n      color: blue;\n      font-size: 20px;\n    }\n  </style>\n</head>\n<body>\n  <p class=\"destaque\">Este é azul com 20px (interno).</p>\n</body>" },
+        { "tipo": "texto", "valor": "Por fim, o **CSS externo**: um arquivo separado `style.css` linkado via `<link>`. Esse é o método profissional — um arquivo pode estilizar centenas de páginas." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<!-- index.html -->\n<head>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>" },
+        { "tipo": "resultado", "valor": "Todos os elementos da página recebem os estilos definidos no arquivo externo." }
+      ]
+    },
+    {
+      "id": "css-1-3",
+      "titulo": "A Receita do CSS",
+      "tipo": "multipla-escolha",
+      "explicacao": "CSS segue essa receita: seletor { propriedade: valor; }. É igual preencher uma ficha: 'quem' (seletor), 'o que' (propriedade), 'qual' (valor). Exemplo: p { color: red; } = 'parágrafos, cor do texto: vermelho'.",
+      "pergunta": "Qual a sintaxe correta do CSS?",
+      "alternativas": ["seletor: { propriedade: valor }", "seletor { propriedade: valor; }", "seletor = { propriedade = valor }", "<seletor> { propriedade: valor }"],
+      "correta": "seletor { propriedade: valor; }",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sintaxe", "css"]
+    },
+    {
+      "id": "css-1-4",
+      "titulo": "ID vs Classe",
+      "tipo": "multipla-escolha",
+      "explicacao": "#id seleciona um elemento ÚNICO (como RG — só um por página). .classe seleciona VÁRIOS (como uma turma de alunos — vários com o mesmo adesivo). No CSS: #logo { } vs .card { }.",
+      "pergunta": "Qual desses é um seletor de ID no CSS?",
+      "alternativas": [".meu-id", "#meu-id", "meu-id", "*meu-id"],
+      "correta": "#meu-id",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["id", "seletor"]
+    },
+    {
+      "id": "css-1-5",
+      "titulo": "Inline, Interno ou Externo?",
+      "tipo": "multipla-escolha",
+      "explicacao": "CSS pode ser: inline (dentro da tag — <p style=\"color: red\">), interno (dentro de <style> no head) e externo (arquivo .css separado linkado). Externo é o mais organizado — tipo separar a roupa do armário em prateleiras diferentes.",
+      "pergunta": "Onde colocamos o link pro CSS EXTERNO no HTML?",
+      "alternativas": ["Dentro do <body>", "Dentro do <head>", "Depois do </html>", "Em qualquer lugar"],
+      "correta": "Dentro do <head>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["externo", "link"]
+    },
+    {
+      "id": "css-1-6",
+      "titulo": "Erro Real: Especificidade Indomável",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro: o seletor .classe NÃO sobrescreve #id porque ID tem especificidade maior (0-1-0-0 vs 0-0-1-0). O navegador sempre prioriza o seletor mais específico. Solução: usar #id ou aumentar a especificidade do seletor de classe (ex: div.minha-classe ou !important, mas !important é gambiarra).",
+      "pergunta": "Tenho um <div id=\"cabecalho\" class=\"destaque\"> e no CSS: #cabecalho { color: red; } .destaque { color: blue; }. O texto aparece vermelho. Por que meu estilo com classe não está sendo aplicado?",
+      "alternativas": [
+        "A classe .destaque tem erro de sintaxe",
+        "O seletor #id tem maior especificidade que .classe, então vence",
+        "A ordem no CSS define: o último vence sempre",
+        "Classes não funcionam em elementos com id"
+      ],
+      "correta": "O seletor #id tem maior especificidade que .classe, então vence",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "especificidade"]
+    },
+    {
+      "id": "css-1-7",
+      "titulo": "🧪 Seletor de Classe na Prática",
+      "tipo": "complete-codigo",
+      "explicacao": "Seletor de classe começa com ponto (.). No HTML: class=\"destaque\". No CSS: .destaque { color: red; }. É tipo colocar um adesivo vermelho em alguns itens — só os que têm o adesivo são afetados.",
+      "pergunta": "Crie CSS pra classe 'destaque' com cor azul e tamanho de fonte 20px.",
+      "codigoInicial": ".destaque {\n  ",
+      "correta": ".destaque {\n  color: blue;\n  font-size: 20px;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["seletor", "classe", "laboratorio"]
+    },
+    {
+      "id": "css-1-8",
+      "titulo": "🧪 Cores Hexadecimais",
+      "tipo": "complete-codigo",
+      "explicacao": "Cores em hex: #RRGGBB. #FF0000 é vermelho (R máximo, G zero, B zero). #00FF00 é verde. #0000FF é azul. É como misturar tintas: cada dois dígitos representam a quantidade de uma cor primária.",
+      "pergunta": "Crie CSS pra classe 'titulo' com cor vermelha (#FF0000) e fundo amarelo (#FFFF00).",
+      "codigoInicial": ".titulo {\n  ",
+      "correta": ".titulo {\n  color: #FF0000;\n  background-color: #FFFF00;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["cores", "hex", "laboratorio"]
+    },
+    {
+      "id": "css-1-9",
+      "titulo": "🧪 Conectando o CSS",
+      "tipo": "complete-codigo",
+      "explicacao": "Pra linkar CSS externo, usamos <link> dentro do <head>: <link rel=\"stylesheet\" href=\"estilo.css\">. rel='stylesheet' diz 'isso é uma folha de estilo' e href é o caminho do arquivo. É tipo ligar o carregador no celular.",
+      "pergunta": "Adicione no head o link pro arquivo 'style.css'.",
+      "codigoInicial": "<head>\n  <title>Meu Site</title>\n  ",
+      "correta": "<head>\n  <title>Meu Site</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["link", "externo", "laboratorio"]
+    }
+  ]
+}

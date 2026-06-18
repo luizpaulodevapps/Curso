@@ -1,0 +1,88 @@
+{
+  "id": "js-moderno-5",
+  "nome": "Clean Code — Código Limpo é Cortesia",
+  "descricao": "Escrever código que humanos entendem. Nomes claros, funções pequenas, sem repetição.",
+  "ordem": 5,
+  "duracao": "2 semanas",
+  "projeto": "Refatorar função bagunçada do DevEstudos",
+  "questoes": [
+    {
+      "id": "js-moderno-5-1",
+      "titulo": "Código é pra Pessoas",
+      "tipo": "multipla-escolha",
+      "explicacao": "Código é lido por humanos. O computador só executa. Escreva pensando em QUEM vai ler (inclusive você daqui 6 meses). Código limpo não precisa de comentário pra ser entendido.",
+      "pergunta": "Pra quem escrevemos código primeiro?",
+      "alternativas": ["Pra máquina", "Pra outros humanos", "Pro navegador", "Pro compilador"],
+      "correta": "Pra outros humanos",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["clean code", "leitura"]
+    },
+    {
+      "id": "js-moderno-5-2",
+      "titulo": "Nome de Verdade",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nomeie pelo que a coisa é. NÃO: let x = 'João'. SIM: let nomeUsuario = 'João'. NÃO: function calc(a,b). SIM: function calcularMedia(nota1, nota2). Nomes são 50% do clean code.",
+      "pergunta": "Qual nome de variável é MAIS claro?",
+      "alternativas": ["d", "data", "dadosUsuario", "x1"],
+      "correta": "dadosUsuario",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["nomes", "clareza"]
+    },
+    {
+      "id": "js-moderno-5-3",
+      "titulo": "Responsabilidade Única",
+      "tipo": "multipla-escolha",
+      "explicacao": "Princípio da Responsabilidade Única (SRP): uma função deve fazer UMA coisa e fazer bem. Se sua função tem 'e' no nome (ex: 'buscarEExibir'), tá errada. Divida. É tipo canivete: melhor ter uma faca boa que um canivete que faz tudo meia-boca.",
+      "pergunta": "Qual função VIOLA responsabilidade única?",
+      "alternativas": ["function buscarUsuarios()", "function buscarEExibirUsuarios()", "function salvarUsuario()", "function validarEmail()"],
+      "correta": "function buscarEExibirUsuarios()",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["srp", "responsabilidade"]
+    },
+    {
+      "id": "js-moderno-5-4",
+      "titulo": "Função Pequena",
+      "tipo": "complete-codigo",
+      "explicacao": "Função deve fazer UMA coisa só. 'Extrair para função' = pegar um pedaço e dar um nome. Em vez de 30 linhas, várias funções de 5 linhas. É tipo ter várias caixas pequenas organizadas vs uma caixa gigante bagunçada.",
+      "pergunta": "Extraia a validação de email pra função 'validarEmail'.",
+      "codigoInicial": "function validarEmail(email) {\n  return email.includes('@') && email.includes('.');\n}\n\n// Use ela\nconst email = 'joao@email.com';\n",
+      "correta": "function validarEmail(email) {\n  return email.includes('@') && email.includes('.');\n}\n\nconst email = 'joao@email.com';\nif (validarEmail(email)) {\n  console.log('Email válido');\n} else {\n  console.log('Email inválido');\n}",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["funcao", "extrair"],
+      "validacao": ""
+    },
+    {
+      "id": "js-moderno-5-5",
+      "titulo": "DRY - Não se Repita",
+      "tipo": "multipla-escolha",
+      "explicacao": "DRY = Don't Repeat Yourself. Se você copiou e colou código, é hora de criar uma função. Código repetido = 2 lugares pra arrumar quando algo mudar. É tipo ter dois despertadores: um você lembra de ajustar, o outro não.",
+      "pergunta": "O que significa DRY?",
+      "alternativas": ["Don't Repeat Yourself", "Do Repeat Yourself", "Don't Run Yesterday", "Delete Repeated Yaks"],
+      "correta": "Don't Repeat Yourself",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["dry", "repeticao"]
+    },
+    {
+      "id": "js-moderno-5-6",
+      "titulo": "Comentário Explica o PORQUÊ",
+      "tipo": "multipla-escolha",
+      "explicacao": "Comentário bom explica POR QUE o código é assim (decisão, gambiarra necessária), não O QUE ele faz. Se precisa comentar o que faz, o nome da função tá ruim. '// delay de 3s porque a API demora' é útil. '// soma dois números' é inútil.",
+      "pergunta": "Qual comentário é REALMENTE útil?",
+      "alternativas": [
+        "// soma a e b",
+        "// incrementa i",
+        "// timeout de 5s pra evitar rate limit da API",
+        "// função importante"
+      ],
+      "correta": "// timeout de 5s pra evitar rate limit da API",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["comentario", "documentacao"]
+    }
+  ]
+}

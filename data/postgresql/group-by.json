@@ -1,0 +1,136 @@
+{
+  "id": "pg-7",
+  "nome": "Missão 7 — GROUP BY e Agregação",
+  "descricao": "Agrupar e agregar dados estatísticos.",
+  "ordem": 7,
+  "duracao": "3 horas",
+  "projeto": "Gerar estatísticas do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-7-1",
+      "titulo": "COUNT(*)",
+      "tipo": "multipla-escolha",
+      "explicacao": "COUNT é o 'contador de alunos' do DevEstudos. COUNT(*) conta todas as linhas. É como bater o olho na sala e falar 'temos 30 alunos hoje'.",
+      "pergunta": "Qual comando conta quantos usuarios estão cadastrados?",
+      "alternativas": [
+        "SELECT COUNT(*) FROM usuarios;",
+        "SELECT * FROM usuarios COUNT;",
+        "SELECT TOTAL(*) FROM usuarios;",
+        "SELECT COUNT(usuarios);"
+      ],
+      "correta": "SELECT COUNT(*) FROM usuarios;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "group-by", "count"]
+    },
+    {
+      "id": "pg-7-2",
+      "titulo": "GROUP BY com COUNT",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quer saber quantos alunos tem em cada cidade? GROUP BY cidade agrupa e COUNT conta cada grupo. É como separar a turma do DevEstudos por bairro e contar quantos são de cada.",
+      "pergunta": "Qual query conta quantos usuarios existem em cada cidade?",
+      "alternativas": [
+        "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade;",
+        "SELECT cidade, COUNT(*) FROM usuarios;",
+        "SELECT COUNT(*), cidade FROM usuarios ORDER BY cidade;",
+        "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade HAVING cidade IS NOT NULL;"
+      ],
+      "correta": "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "group-by", "count"]
+    },
+    {
+      "id": "pg-7-3",
+      "titulo": "SUM, AVG, MIN, MAX",
+      "tipo": "multipla-escolha",
+      "explicacao": "SUM é somar a pontuação total da turma. AVG é a média. MIN é a menor nota. MAX é a maior. No DevEstudos, essas funções revelam o desempenho geral dos alunos.",
+      "pergunta": "Qual query retorna a média de pontuação dos usuarios por cidade?",
+      "alternativas": [
+        "SELECT cidade, AVG(pontuacao) FROM usuarios GROUP BY cidade;",
+        "SELECT cidade, SUM(pontuacao) FROM usuarios GROUP BY pontuacao;",
+        "SELECT AVG(pontuacao), cidade FROM usuarios;",
+        "SELECT cidade, AVG(pontuacao) FROM usuarios;"
+      ],
+      "correta": "SELECT cidade, AVG(pontuacao) FROM usuarios GROUP BY cidade;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "group-by", "avg", "sum"]
+    },
+    {
+      "id": "pg-7-4",
+      "titulo": "Erro real — SELECT sem GROUP BY",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você pede o nome de cada aluno e a média da turma. Mas o PostgreSQL não sabe qual nome mostrar junto com a média geral. É confuso: 'mostre o nome de cada um E a média de todos' ao mesmo tempo.",
+      "pergunta": "O que acontece ao executar `SELECT nome, AVG(pontuacao) FROM usuarios;`?",
+      "alternativas": [
+        "Retorna o nome do primeiro usuario e a média geral.",
+        "Erro: coluna 'nome' deve aparecer no GROUP BY ou ser usada em uma função de agregação.",
+        "Retorna todos os nomes e a média repetida em cada linha.",
+        "Calcula a média por nome automaticamente."
+      ],
+      "correta": "Erro: coluna 'nome' deve aparecer no GROUP BY ou ser usada em uma função de agregação.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "group-by"]
+    },
+    {
+      "id": "pg-7-5",
+      "titulo": "HAVING vs WHERE",
+      "tipo": "multipla-escolha",
+      "explicacao": "WHERE filtra linhas ANTES de agrupar. HAVING filtra grupos DEPOIS de agrupar. É como no DevEstudos: WHERE elimina alunos antes da contagem, HAVING elimina grupos depois da contagem.",
+      "pergunta": "Qual query retorna apenas as cidades com MAIS DE 10 usuarios?",
+      "alternativas": [
+        "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade HAVING COUNT(*) > 10;",
+        "SELECT cidade, COUNT(*) FROM usuarios WHERE COUNT(*) > 10 GROUP BY cidade;",
+        "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade WHERE COUNT(*) > 10;",
+        "SELECT cidade, COUNT(*) FROM usuarios HAVING COUNT(*) > 10;"
+      ],
+      "correta": "SELECT cidade, COUNT(*) FROM usuarios GROUP BY cidade HAVING COUNT(*) > 10;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "having", "where"]
+    },
+    {
+      "id": "pg-7-6",
+      "titulo": "Erro real — HAVING sem GROUP BY",
+      "tipo": "multipla-escolha",
+      "explicacao": "HAVING foi feito para filtrar grupos. Usar HAVING sem GROUP BY é como pedir 'filtre os times com mais de 10 jogadores' sem nunca ter formado os times.",
+      "pergunta": "O que acontece com `SELECT * FROM usuarios HAVING COUNT(*) > 5;`?",
+      "alternativas": [
+        "Retorna os usuarios onde a contagem total é > 5.",
+        "Erro: HAVING não pode ser usado sem GROUP BY ou função de agregação no SELECT.",
+        "Funciona normalmente como um WHERE.",
+        "Retorna apenas os 5 primeiros usuarios."
+      ],
+      "correta": "Erro: HAVING não pode ser usado sem GROUP BY ou função de agregação no SELECT.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "having"]
+    },
+    {
+      "id": "pg-7-7",
+      "titulo": "GROUP BY múltiplas colunas",
+      "tipo": "complete-codigo",
+      "explicacao": "Às vezes um grupo só não basta. No DevEstudos, você quer saber quantos alunos ativos e inativos existem em cada cidade. Dois níveis de agrupamento.",
+      "pergunta": "Complete a query para contar usuarios agrupados por cidade E por status:\n\nSELECT cidade, status, COUNT(*)\nFROM usuarios\n________ cidade, status;",
+      "alternativas": [],
+      "correta": "SELECT cidade, status, COUNT(*) FROM usuarios GROUP BY cidade, status;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "group-by", "multi-coluna"]
+    },
+    {
+      "id": "pg-7-8",
+      "titulo": "Desafio — relatório completo",
+      "tipo": "desafio-pratico",
+      "explicacao": "O coordenador do DevEstudos quer um relatório por curso: quantos alunos matriculados, qual a média de progresso e a data da matrícula mais recente. Apenas cursos com mais de 5 alunos.",
+      "pergunta": "Usando as tabelas cursos, matriculas e progresso, escreva a query que retorna: nome do curso, total de alunos (COUNT), média de progresso (AVG), última matrícula (MAX data_matricula), agrupado por curso e filtrando apenas cursos com COUNT(*) > 5.",
+      "alternativas": [],
+      "correta": "SELECT c.nome, COUNT(*) AS total_alunos, AVG(p.percentual) AS media_progresso, MAX(m.data_matricula) AS ultima_matricula FROM cursos c JOIN matriculas m ON c.id = m.curso_id LEFT JOIN progresso p ON m.id = p.matricula_id GROUP BY c.nome HAVING COUNT(*) > 5;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "group-by", "having", "desafio"]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "html-4",
+  "nome": "Missão 4 — Tabelas de Dados",
+  "descricao": "Table, tr, th, td, thead, tbody. Organizando dados em linhas e colunas.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Tabela de dados",
+  "questoes": [
+    {
+      "id": "html-4-1",
+      "titulo": "A Planilha do HTML",
+      "tipo": "multipla-escolha",
+      "explicacao": "<table> é a tag que cria uma tabela, tipo uma planilha do Excel. Dentro dela vêm linhas (<tr>) e dentro das linhas, células (<td> pra dados, <th> pra cabeçalho). É grade de dados pura.",
+      "pergunta": "Qual tag é o contêiner principal de uma tabela HTML?",
+      "alternativas": ["<tr>", "<td>", "<table>", "<grid>"],
+      "correta": "<table>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["table", "tabela"]
+    },
+    {
+      "id": "html-4-2",
+      "titulo": "Primeira Tabela",
+      "tipo": "complete-codigo",
+      "explicacao": "Uma tabela é montada por linhas. <tr> = table row (linha). Dentro de cada tr, você coloca <td> = table data (célula). É tipo preencher uma grade: vai linha por linha, célula por célula.",
+      "pergunta": "Crie uma tabela com 2 linhas: na primeira, 'Nome' e 'Idade'; na segunda, 'Ana' e '25'.",
+      "codigoInicial": "<table>\n  <tr>\n    <td>",
+      "correta": "<table>\n  <tr>\n    <td>Nome</td>\n    <td>Idade</td>\n  </tr>\n  <tr>\n    <td>Ana</td>\n    <td>25</td>\n  </tr>\n</table>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["table", "tr", "td"]
+    },
+    {
+      "id": "html-4-3",
+      "titulo": "Cabeçalho vs Dados",
+      "tipo": "multipla-escolha",
+      "explicacao": "<th> = table header (célula de cabeçalho) — fica em negrito e centralizado por padrão. <td> = table data (célula normal). O th é tipo o título da coluna no Excel, td é cada valor abaixo.",
+      "pergunta": "Qual a diferença entre <th> e <td>?",
+      "alternativas": ["th é mais largo que td", "th é cabeçalho (negrito), td é dado normal", "th é linha, td é coluna", "td só funciona com imagens"],
+      "correta": "th é cabeçalho (negrito), td é dado normal",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["th", "td", "cabecalho"]
+    },
+    {
+      "id": "html-4-4",
+      "titulo": "Cabeça e Corpo da Tabela",
+      "tipo": "complete-codigo",
+      "explicacao": "<thead> agrupa as linhas de cabeçalho e <tbody> agrupa as linhas de dados. É tipo separar o índice do resto do livro. Ajuda navegadores e leitores de tela a entenderem a estrutura.",
+      "pergunta": "Crie uma tabela com thead (Nome, Nota) e tbody (João 9, Maria 10).",
+      "codigoInicial": "<table>\n  <thead>\n    <tr>\n      <th>Nome</th>\n      <th>Nota</th>\n    </tr>\n  </thead>\n  <tbody>",
+      "correta": "<table>\n  <thead>\n    <tr>\n      <th>Nome</th>\n      <th>Nota</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>João</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <td>Maria</td>\n      <td>10</td>\n    </tr>\n  </tbody>\n</table>",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["thead", "tbody", "tabela"]
+    },
+    {
+      "id": "html-4-5",
+      "titulo": "Mesclando Células",
+      "tipo": "multipla-escolha",
+      "explicacao": "colspan faz uma célula ocupar VÁRIAS colunas. Tipo quando no Excel você 'mescla células' pra juntar horizontalmente. Útil pra título que se estende sobre toda a tabela.",
+      "pergunta": "O que o atributo 'colspan' faz?",
+      "alternativas": ["Mescla linhas verticalmente", "Mescla colunas horizontalmente", "Adiciona cor", "Aumenta a largura da tabela"],
+      "correta": "Mescla colunas horizontalmente",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["colspan", "mesclagem"]
+    },
+    {
+      "id": "html-4-6",
+      "titulo": "Tabela de Horários",
+      "tipo": "complete-codigo",
+      "explicacao": "Agora é juntar tudo: tabela com cabeçalho e dados. Uma tabela de horários de aula: as colunas são os dias da semana (th) e as linhas são os horários com as matérias (td).",
+      "pergunta": "Crie uma tabela de horários: cabeçalho 'Segunda' e 'Terça', dados 'Matemática' e 'Português'.",
+      "codigoInicial": "<table>\n  <thead>\n    <tr>\n      <th>Segunda</th>\n      <th>Terça</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>",
+      "correta": "<table>\n  <thead>\n    <tr>\n      <th>Segunda</th>\n      <th>Terça</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Matemática</td>\n      <td>Português</td>\n    </tr>\n  </tbody>\n</table>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["tabela", "horarios"]
+    },
+    {
+      "id": "html-4-7",
+      "titulo": "Erro Real: Tabela Tortolona",
+      "tipo": "multipla-escolha",
+      "explicacao": "Numa tabela, todas as linhas precisam ter o mesmo número de colunas (a menos que use colspan pra mesclar). Se uma linha tem 3 células <td> e outra tem 2, o layout fica todo torto — colunas desalinhadas, espaços vazios, conteúdo no lugar errado. Conte sempre o número de <td> por linha pra garantir que bate.",
+      "pergunta": "Uma tabela tem 3 colunas na primeira linha mas 2 colunas na segunda linha, e o layout ficou desalinhado. Qual a causa mais provável?",
+      "alternativas": ["Faltou o <thead>", "Número diferente de células por linha sem colspan pra compensar", "A tabela precisa de border pra funcionar", "O <tbody> é obrigatório"],
+      "correta": "Número diferente de células por linha sem colspan pra compensar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "tabela"]
+    }
+  ]
+}

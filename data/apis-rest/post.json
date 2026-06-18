@@ -1,0 +1,99 @@
+{
+  "id": "api-3",
+  "nome": "Missão 3 — POST: Criando Recursos",
+  "descricao": "O método POST para criar novos recursos via API.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Implementar cadastro de usuário no DevEstudos via POST",
+  "questoes": [
+    {
+      "id": "api-3-1",
+      "titulo": "O que é POST",
+      "tipo": "multipla-escolha",
+      "explicacao": "POST cria um novo recurso. É como preencher uma ficha de matrícula na academia.",
+      "pergunta": "Qual método HTTP deve ser usado para CRIAR um novo curso no DevEstudos?",
+      "alternativas": [
+        "POST /api/cursos",
+        "GET /api/cursos",
+        "DELETE /api/cursos",
+        "PATCH /api/cursos"
+      ],
+      "correta": "POST /api/cursos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["post", "http-methods"]
+    },
+    {
+      "id": "api-3-2",
+      "titulo": "Content-Type é obrigatório",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erro real: esquecer o header Content-Type. O servidor precisa saber que você está mandando JSON, não texto puro.",
+      "pergunta": "Qual header é essencial em uma requisição POST com corpo JSON?",
+      "alternativas": [
+        "Content-Type: application/json",
+        "Accept: text/html",
+        "Content-Encoding: gzip",
+        "Authorization: Bearer token"
+      ],
+      "correta": "Content-Type: application/json",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["post", "headers", "content-type", "erro-real"]
+    },
+    {
+      "id": "api-3-3",
+      "titulo": "fetch() com POST",
+      "tipo": "complete-codigo",
+      "explicacao": "No POST, você precisa configurar method, headers e body no fetch(). O body precisa ser convertido com JSON.stringify.",
+      "pergunta": "Complete o fetch() para cadastrar um novo curso no DevEstudos:",
+      "codigoInicial": "fetch('https://api.devestudos.com/cursos', {\n  method: '___',\n  headers: { 'Content-Type': '___' },\n  body: ___\n})",
+      "codigoCompleto": "fetch('https://api.devestudos.com/cursos', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ nome: 'Node.js', categoria: 'backend' })\n})",
+      "respostaEsperada": "POST, application/json, JSON.stringify(...)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["fetch", "post", "javascript"]
+    },
+    {
+      "id": "api-3-4",
+      "titulo": "Status 201 Created",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando um POST cria um recurso com sucesso, o servidor responde com 201 Created. É como receber uma confirmação de pedido.",
+      "pergunta": "Qual status code indica que um POST criou um recurso com sucesso?",
+      "alternativas": [
+        "201 Created",
+        "200 OK",
+        "204 No Content",
+        "301 Moved Permanently"
+      ],
+      "correta": "201 Created",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["post", "status-codes"]
+    },
+    {
+      "id": "api-3-5",
+      "titulo": "POST não é idempotente",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Diferente do GET, POST não é idempotente. Se você enviar duas vezes, cria dois recursos. Igual clicar duas vezes em \"comprar\".",
+      "pergunta": "O método POST é idempotente, assim como o GET.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["post", "idempotencia"]
+    },
+    {
+      "id": "api-3-6",
+      "titulo": "Estrutura do body no POST",
+      "tipo": "complete-codigo",
+      "explicacao": "O corpo da requisição POST precisa ser uma string JSON válida. O JSON.stringify converte objeto JavaScript em string.",
+      "pergunta": "Qual código JavaScript prepara corretamente um objeto para ser enviado como body de um POST?",
+      "codigoInicial": "const novoUsuario = { nome: 'João', email: 'joao@email.com' };\nconst body = ___;",
+      "codigoCompleto": "const novoUsuario = { nome: 'João', email: 'joao@email.com' };\nconst body = JSON.stringify(novoUsuario);",
+      "respostaEsperada": "JSON.stringify(novoUsuario)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["post", "json", "javascript"]
+    }
+  ]
+}

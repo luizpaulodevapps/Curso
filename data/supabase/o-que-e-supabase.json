@@ -1,0 +1,143 @@
+{
+  "id": "supa-1",
+  "nome": "Missão 1 — O que é Supabase?",
+  "descricao": "Conhecendo a plataforma Supabase e seu ecossistema.",
+  "ordem": 1,
+  "duracao": "1 hora",
+  "projeto": "Criar o primeiro projeto Supabase para o DevEstudos",
+  "questoes": [
+    {
+      "id": "supa-1-aula",
+      "titulo": "📖 O que é Supabase?",
+      "tipo": "aula",
+      "explicacao": "Supabase é uma plataforma open source que substitui o Firebase. Em vez de NoSQL, usa PostgreSQL de verdade com Auth, Storage e Realtime.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["supabase", "postgresql"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Supabase é uma plataforma back-end como serviço (BaaS). Diferente do Firebase (que usa NoSQL), o Supabase é construído sobre PostgreSQL — SQL puro e poderoso." },
+        { "tipo": "codigo", "linguagem": "bash", "valor": "# Instalar CLI do Supabase\nnpm install supabase --save-dev\n\n# Iniciar projeto local\nnpx supabase init" },
+        { "tipo": "legenda", "valor": "A CLI do Supabase permite desenvolver localmente e depois subir para produção." },
+        { "tipo": "texto", "valor": "A stack completa do Supabase inclui: PostgreSQL (banco), Auth (autenticação), Storage (arquivos), Realtime (tempo real) e Edge Functions (serverless)." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Conectar ao Supabase pelo SDK\nimport { createClient } from '@supabase/supabase-js';\n\nconst supabase = createClient(\n  'https://seu-projeto.supabase.co',\n  'sua-chave-publica'\n);" }
+      ]
+    },
+    {
+      "id": "supa-1-exemplo",
+      "titulo": "👀 Supabase Dashboard na Prática",
+      "tipo": "exemplo",
+      "explicacao": "Vamos explorar o Dashboard do Supabase criando uma tabela e inserindo dados visualmente.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["supabase", "dashboard", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "No SQL Editor do Supabase Dashboard, você pode rodar queries diretamente. Vamos criar uma tabela de alunos do DevEstudos:" },
+        { "tipo": "codigo", "linguagem": "sql", "valor": "CREATE TABLE alunos (\n  id SERIAL PRIMARY KEY,\n  nome TEXT NOT NULL,\n  email TEXT UNIQUE,\n  curso TEXT\n);\n\nINSERT INTO alunos (nome, email, curso) VALUES\n  ('Luiz', 'luiz@email.com', 'React'),\n  ('Ana', 'ana@email.com', 'Node.js');" },
+        { "tipo": "resultado", "valor": "INSERT 0 2\n\nTabela 'alunos' criada com 2 registros." },
+        { "tipo": "legenda", "valor": "O Dashboard tem abas: Table Editor, SQL Editor, Auth, Storage e mais." },
+        { "tipo": "texto", "valor": "Depois de criar a tabela, você pode consultar os dados direto pelo Table Editor visualmente, sem escrever SQL." }
+      ]
+    },
+    {
+      "id": "supa-1-1",
+      "titulo": "O que é Supabase?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Supabase é uma plataforma open source que substitui o Firebase. Em vez de NoSQL, usa PostgreSQL de verdade.",
+      "pergunta": "Qual banco de dados o Supabase utiliza como base?",
+      "alternativas": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "SQLite"
+      ],
+      "correta": "PostgreSQL",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "postgresql"]
+    },
+    {
+      "id": "supa-1-2",
+      "titulo": "Stack do Supabase",
+      "tipo": "multipla-escolha",
+      "explicacao": "Supabase não é só banco. Ele entrega Postgres + Auth + Storage + Realtime + Edge Functions. É um combo completo.",
+      "pergunta": "Qual destes NÃO é um serviço do Supabase?",
+      "alternativas": [
+        "Cloud Functions (Google Cloud)",
+        "Authentication",
+        "Storage",
+        "Realtime subscriptions"
+      ],
+      "correta": "Cloud Functions (Google Cloud)",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["supabase", "stack"]
+    },
+    {
+      "id": "supa-1-3",
+      "titulo": "Dashboard vs CLI vs SDK",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você pode gerenciar o Supabase pelo Dashboard (visual), CLI (terminal) ou SDK (código). Cada um tem seu melhor uso.",
+      "pergunta": "Qual ferramenta você usa para criar migrações de banco locais no Supabase?",
+      "alternativas": [
+        "Supabase CLI (supabase migration new)",
+        "Dashboard do Supabase",
+        "SDK JavaScript (@supabase/supabase-js)",
+        "Supabase Studio"
+      ],
+      "correta": "Supabase CLI (supabase migration new)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "cli"]
+    },
+    {
+      "id": "supa-1-4",
+      "titulo": "Supabase vs Firebase",
+      "tipo": "multipla-escolha",
+      "explicacao": "Firebase usa NoSQL (Firestore). Supabase usa SQL (PostgreSQL). Se você ama SQL, Supabase é seu lugar.",
+      "pergunta": "Qual é a diferença fundamental entre Supabase e Firebase?",
+      "alternativas": [
+        "Supabase usa PostgreSQL (SQL); Firebase usa NoSQL (Firestore)",
+        "Supabase é pago; Firebase é gratuito",
+        "Firebase é open source; Supabase é proprietário",
+        "Supabase só funciona com React; Firebase só com Angular"
+      ],
+      "correta": "Supabase usa PostgreSQL (SQL); Firebase usa NoSQL (Firestore)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "firebase"]
+    },
+    {
+      "id": "supa-1-5",
+      "titulo": "Erro real: Supabase é só banco",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real de iniciantes: achar que Supabase é só um PostgreSQL hospedado. Ignoram Auth, RLS, Storage e Realtime.",
+      "pergunta": "Usar apenas o banco PostgreSQL do Supabase e ignorar Auth, RLS e Storage é subutilizar a plataforma.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["supabase", "erro-real"]
+    },
+    {
+      "id": "supa-1-6",
+      "titulo": "Row Level Security",
+      "tipo": "multipla-escolha",
+      "explicacao": "RLS é o recurso que permite controlar acesso a cada linha do banco. É uma das razões principais para escolher Supabase.",
+      "pergunta": "O que significa RLS (Row Level Security) no Supabase?",
+      "alternativas": [
+        "Políticas de segurança que controlam acesso a linhas individuais no banco",
+        "Criptografia de senhas em nível de banco",
+        "Backup automático das tabelas",
+        "Segurança de rede no nível do servidor"
+      ],
+      "correta": "Políticas de segurança que controlam acesso a linhas individuais no banco",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "rls", "seguranca"]
+    }
+  ]
+}

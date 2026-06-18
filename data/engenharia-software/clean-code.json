@@ -1,0 +1,113 @@
+{
+  "id": "es-1",
+  "nome": "Missão 1 — Clean Code: Código Legível é Código Amoroso",
+  "descricao": "Nomes, funções pequenas e comentários que importam.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Refatorar funções do DevEstudos",
+  "questoes": [
+    {
+      "id": "es-1-1",
+      "titulo": "Nomes significativos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nome de variável é como etiqueta de marmita: 'comida' não ajuda, 'lasanha-quarta-feira' diz tudo. Seu código é lido por humanos, não por máquinas. Gaste tempo escolhendo nomes bons.",
+      "pergunta": "Qual destes nomes de variável é mais significativo?",
+      "alternativas": [
+        "let d = new Date()",
+        "let dataAtual = new Date()",
+        "let x = new Date()",
+        "let tmp = new Date()"
+      ],
+      "correta": "let dataAtual = new Date()",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["nomes", "legibilidade", "boas-praticas"]
+    },
+    {
+      "id": "es-1-2",
+      "titulo": "Funções pequenas",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Uma função deve fazer UMA coisa. Se tem 'e' no nome (criarEValidarUsuario), provavelmente faz duas coisas. Funções pequenas são mais fáceis de testar, entender e manter.",
+      "pergunta": "Uma função com 200 linhas que processa pagamento, envia e-mail e atualiza estoque está seguindo os princípios de Clean Code.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["funcoes", "responsabilidade-unica"]
+    },
+    {
+      "id": "es-1-3",
+      "titulo": "Comentários: o quê vs porquê",
+      "tipo": "multipla-escolha",
+      "explicacao": "Comentário que explica O QUE o código faz é inútil — o código já diz isso. Comentário que explica POR QUE algo é feito daquele jeito é ouro. Ex: '// delay de 3s porque a API externa rate-limit a 20 req/min'.",
+      "pergunta": "Qual comentário é útil e deve permanecer no código?",
+      "alternativas": [
+        "// Soma dois números",
+        "let total = a + b;",
+        "",
+        "// Delay de 200ms porque a API do governo bloqueia acima de 5 req/s",
+        "await delay(200);",
+        "",
+        "// Incrementa contador",
+        "contador++",
+        "",
+        "// Fim da função"
+      ],
+      "correta": "// Delay de 200ms porque a API do governo bloqueia acima de 5 req/s",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["comentarios", "documentacao", "boas-praticas"]
+    },
+    {
+      "id": "es-1-4",
+      "titulo": "Regra do Escoteiro",
+      "tipo": "multipla-escolha",
+      "explicacao": "Regra do Escoteiro: deixe o acampamento mais limpo que encontrou. No código: ao mexer num arquivo, refatore um nome ruim, extraia uma função, remova um comentário obsoleto. Melhoria contínua sem ter um 'projeto de refatoração' separado.",
+      "pergunta": "Você está corrigindo um bug e encontra uma variável chamada 'a' que representa o ID do usuário. O que fazer?",
+      "alternativas": [
+        "Ignorar, o bug é a prioridade",
+        "Renomear para 'usuarioId' já que você está tocando no código",
+        "Criar uma tarefa no Jira pra refatorar depois",
+        "Adicionar um comentário explicando que 'a' é o ID"
+      ],
+      "correta": "Renomear para 'usuarioId' já que você está tocando no código",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["escoteiro", "refatoracao", "boas-praticas"]
+    },
+    {
+      "id": "es-1-5",
+      "titulo": "Erro real: comentário redundante",
+      "tipo": "desafio-pratico",
+      "explicacao": "Código real encontrado num sistema: '// Soma dois números' — em cima de 'return a + b'. O comentário não agregava nada. Pior: meses depois alguém mudou pra 'return a + b + taxa' e esqueceu de atualizar o comentário. Agora o comentário MENTE sobre o código.",
+      "pergunta": "Por que comentários redundantes são problemáticos?",
+      "alternativas": [
+        "Ocupam espaço no arquivo",
+        "Ficam desatualizados e passam a mentir sobre o que o código faz",
+        "Deixam o código mais lento",
+        "Impedem a compilação"
+      ],
+      "correta": "Ficam desatualizados e passam a mentir sobre o que o código faz",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["erro-real", "comentarios", "manutencao"]
+    },
+    {
+      "id": "es-1-6",
+      "titulo": "Refatorando no DevEstudos",
+      "tipo": "desafio-pratico",
+      "explicacao": "No DevEstudos, encontramos uma função 'salvar' de 150 linhas que valida dados, salva no banco, envia e-mail e loga. Ela precisa ser quebrada em funções menores: validarDados(), salvarNoBanco(), notificarUsuario(), registrarLog().",
+      "pergunta": "Quantas responsabilidades a função 'salvar' original tinha?",
+      "alternativas": [
+        "1 — salvar dados",
+        "2 — validar e salvar",
+        "4 — validar, salvar, notificar e registrar log",
+        "3 — validar, salvar e logar"
+      ],
+      "correta": "4 — validar, salvar, notificar e registrar log",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["refatoracao", "devetudos", "responsabilidade"]
+    }
+  ]
+}

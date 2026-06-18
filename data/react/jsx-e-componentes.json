@@ -1,0 +1,123 @@
+{
+  "id": "react-1",
+  "nome": "JSX e Componentes — Lego de Código",
+  "descricao": "React monta a página com blocos reutilizáveis (componentes). JSX é HTML dentro do JS.",
+  "ordem": 1,
+  "duracao": "1 semana",
+  "projeto": "Criar componentes de UI do DevEstudos",
+  "questoes": [
+    {
+      "id": "react-1-aula",
+      "titulo": "📖 O que é React, Componentes e JSX?",
+      "tipo": "aula",
+      "explicacao": "React é uma biblioteca para construir interfaces com componentes reutilizáveis. JSX é a sintaxe que mistura HTML e JavaScript.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["react", "jsx", "componentes"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "React é uma biblioteca JavaScript para construir interfaces de usuário. Tudo no React é um componente: um pedaço isolado e reutilizável de UI." },
+        { "tipo": "codigo", "linguagem": "jsx", "valor": "function Botao() {\n  return <button>Clique aqui</button>;\n}\n\n// Usando o componente\n<Botao />" },
+        { "tipo": "legenda", "valor": "Componentes são funções que retornam JSX. Reutilizáveis como Lego." },
+        { "tipo": "texto", "valor": "JSX é a 'sintaxe especial' que permite escrever HTML dentro do JavaScript. As chaves {} abrem 'portas' para executar JS dentro do HTML." },
+        { "tipo": "codigo", "linguagem": "jsx", "valor": "const nome = 'DevEstudos';\nconst elemento = <h1>Bem-vindo ao {nome}!</h1>;\n// Renderiza: <h1>Bem-vindo ao DevEstudos!</h1>" },
+        { "tipo": "resultado", "valor": "<h1>Bem-vindo ao DevEstudos!</h1>" }
+      ]
+    },
+    {
+      "id": "react-1-exemplo",
+      "titulo": "👀 Componente na Prática",
+      "tipo": "exemplo",
+      "explicacao": "Vamos criar um componente Card que exibe informações de um curso e reutilizá-lo com dados diferentes.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["react", "componente", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Crie um arquivo Card.jsx e defina um componente que recebe props (propriedades) para personalizar seu conteúdo:" },
+        { "tipo": "codigo", "linguagem": "jsx", "valor": "function Card(props) {\n  return (\n    <div className=\"card\">\n      <h2>{props.titulo}</h2>\n      <p>{props.descricao}</p>\n      <span>Duração: {props.duracao}</span>\n    </div>\n  );\n}\n\nexport default Card;" },
+        { "tipo": "legenda", "valor": "Props são os parâmetros do componente. Cada uso pode passar valores diferentes." },
+        { "tipo": "texto", "valor": "Agora use o Card em qualquer lugar, passando dados diferentes:" },
+        { "tipo": "codigo", "linguagem": "jsx", "valor": "function App() {\n  return (\n    <div>\n      <Card titulo=\"React\" descricao=\"Biblioteca de UI\" duracao=\"4 semanas\" />\n      <Card titulo=\"Node.js\" descricao=\"Runtime JavaScript\" duracao=\"3 semanas\" />\n    </div>\n  );\n}" },
+        { "tipo": "resultado", "valor": "| React                | Node.js              |\n| Biblioteca de UI     | Runtime JavaScript   |\n| Duração: 4 semanas   | Duração: 3 semanas   |" }
+      ]
+    },
+    {
+      "id": "react-1-1",
+      "titulo": "JSX = HTML + JS",
+      "tipo": "multipla-escolha",
+      "explicacao": "JSX é a 'sintaxe especial' do React que MISTURA HTML e JavaScript. const el = <h1>Olá {nome}</h1>. As chaves {} são 'portas' pro JavaScript dentro do HTML. É tipo massa de pão com pedaços de chocolate: HTML com JS dentro.",
+      "pergunta": "Em JSX, o que as chaves {} fazem?",
+      "alternativas": ["Criam um objeto", "Executam JavaScript dentro do HTML", "Comentam o código", "Definem CSS"],
+      "correta": "Executam JavaScript dentro do HTML",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["jsx", "sintaxe"]
+    },
+    {
+      "id": "react-1-2",
+      "titulo": "Componente Função",
+      "tipo": "complete-codigo",
+      "explicacao": "Componente = função que retorna JSX. function MeuComponente() { return <h1>Oi</h1> }. Depois usa <MeuComponente />. É tipo carimbo: desenha uma vez, carimba onde quiser.",
+      "pergunta": "Crie componente 'Saudacao' que retorna <h1>Olá, Mundo!</h1>.",
+      "codigoInicial": "function Saudacao() {\n  return ",
+      "correta": "function Saudacao() {\n  return <h1>Olá, Mundo!</h1>;\n}\n\nexport default Saudacao;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["componente", "funcao"],
+      "validacao": ""
+    },
+    {
+      "id": "react-1-3",
+      "titulo": "Props - Parâmetros",
+      "tipo": "complete-codigo",
+      "explicacao": "Props são os 'parâmetros' do componente. function Card(props) usa props.titulo. <Card titulo=\"JavaScript\" />. É tipo cartão de visita: o molde é sempre o mesmo, mas o nome e telefone (props) mudam.",
+      "pergunta": "Crie componente Card que recebe props {titulo, descricao} e renderiza ambos.",
+      "codigoInicial": "function Card(props) {\n  return <div>\n    <h2>{props.titulo}</h2>\n    ",
+      "correta": "function Card(props) {\n  return <div>\n    <h2>{props.titulo}</h2>\n    <p>{props.descricao}</p>\n  </div>;\n}\n\n<Card titulo=\"React\" descricao=\"Biblioteca de UI\" />",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["props", "parametro"],
+      "validacao": ""
+    },
+    {
+      "id": "react-1-4",
+      "titulo": "Children - Filhos",
+      "tipo": "multipla-escolha",
+      "explicacao": "props.children é o que está DENTRO do componente. <Card>Qualquer coisa aqui</Card> — 'Qualquer coisa aqui' vira props.children. É tipo moldura de quadro: o que importa é o que você coloca DENTRO.",
+      "pergunta": "props.children representa o quê?",
+      "alternativas": ["O título do componente", "O conteúdo dentro das tags do componente", "As props passadas", "O estado"],
+      "correta": "O conteúdo dentro das tags do componente",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["children", "conteudo"]
+    },
+    {
+      "id": "react-1-5",
+      "titulo": "Fragmentos sem Div",
+      "tipo": "multipla-escolha",
+      "explicacao": "<> </> é atalho pra Fragment. Permite retornar múltiplos elementos sem div extra. É tipo 'embrulho invisível': agrupa sem adicionar estrutura ao HTML.",
+      "pergunta": "O que <> </> representa no React?",
+      "alternativas": ["Uma div", "Um Fragment (agrupa sem elemento extra)", "Um array", "Um componente especial"],
+      "correta": "Um Fragment (agrupa sem elemento extra)",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["fragment", "jsx"]
+    },
+    {
+      "id": "react-1-6",
+      "titulo": "Renderizar Lista",
+      "tipo": "complete-codigo",
+      "explicacao": "Array.map() dentro de JSX renderiza listas. {itens.map(item => <li key={item.id}>{item.nome}</li>)}. O key é o 'RG' de cada item pro React controlar. É tipo chamada escolar: cada aluno tem um número de matrícula.",
+      "pergunta": "Renderize const cursos = ['React', 'Next.js', 'Node'] como <li> usando map com key.",
+      "codigoInicial": "const cursos = ['React', 'Next.js', 'Node'];\n\nfunction ListaCursos() {\n  return <ul>\n    {cursos.map((c, i) => <li key={i}>{c}</li>)}\n  </ul>;\n}\n",
+      "correta": "const cursos = ['React', 'Next.js', 'Node'];\n\nfunction ListaCursos() {\n  return <ul>\n    {cursos.map((c, i) => <li key={i}>{c}</li>)}\n  </ul>;\n}\n\nexport default ListaCursos;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["lista", "map"],
+      "validacao": ""
+    }
+  ]
+}

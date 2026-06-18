@@ -1,0 +1,108 @@
+{
+  "id": "git-5",
+  "nome": "Missão 5 — GitHub: Seu Código na Nuvem",
+  "descricao": "Conectar repositório local ao GitHub, push, pull e clone.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Enviar o DevEstudos para o GitHub",
+  "questoes": [
+    {
+      "id": "git-5-1",
+      "titulo": "GitHub não é Git",
+      "tipo": "multipla-escolha",
+      "explicacao": "Git é o sistema de versionamento (roda local). GitHub é uma plataforma na nuvem que hospeda repositórios Git. Você usa Git para versionar localmente e GitHub para compartilhar, fazer backup e colaborar. Pense: Git é o motor do carro, GitHub é a garagem onde você estaciona.",
+      "pergunta": "Qual a diferença entre Git e GitHub?",
+      "alternativas": [
+        "Git é o sistema de versionamento local; GitHub é a plataforma na nuvem que hospeda repositórios Git",
+        "São a mesma coisa",
+        "GitHub é uma versão paga do Git",
+        "Git é da Microsoft, GitHub é da Oracle"
+      ],
+      "correta": "Git é o sistema de versionamento local; GitHub é a plataforma na nuvem que hospeda repositórios Git",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "github"]
+    },
+    {
+      "id": "git-5-2",
+      "titulo": "git remote add origin",
+      "tipo": "multipla-escolha",
+      "explicacao": "git remote add origin https://github.com/seuuser/devestudos.git conecta seu repositório local a um remoto. 'origin' é o nome padrão do remoto. Você pode ter vários remotos (origin, backup, etc.). git remote -v lista os remotos configurados.",
+      "pergunta": "O que 'git remote add origin URL' faz?",
+      "alternativas": [
+        "Conecta o repositório local a um repositório remoto chamado 'origin'",
+        "Cria um repositório no GitHub",
+        "Baixa um repositório remoto",
+        "Deleta o repositório remoto"
+      ],
+      "correta": "Conecta o repositório local a um repositório remoto chamado 'origin'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "remote"]
+    },
+    {
+      "id": "git-5-3",
+      "titulo": "git push — Enviar para o Remoto",
+      "tipo": "multipla-escolha",
+      "explicacao": "git push origin main envia seus commits locais para o repositório remoto. git push -u origin main (primeira vez) define a branch local como rastreadora da remota. Depois de -u, só git push já basta. Pense: push é 'publicar' suas mudanças.",
+      "pergunta": "Qual comando envia commits locais para o GitHub?",
+      "alternativas": [
+        "git push origin main",
+        "git send origin main",
+        "git upload main",
+        "git publish main"
+      ],
+      "correta": "git push origin main",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "push"]
+    },
+    {
+      "id": "git-5-4",
+      "titulo": "git pull — Trazer do Remoto",
+      "tipo": "multipla-escolha",
+      "explicacao": "git pull origin main baixa os commits do remoto e faz merge na sua branch local. É a combinação de git fetch (baixar) + git merge (incorporar). Sempre faça git pull antes de começar a trabalhar para ter a versão mais recente.",
+      "pergunta": "Qual a diferença entre git pull e git fetch?",
+      "alternativas": [
+        "fetch só baixa, pull baixa e já faz merge na branch atual",
+        "pull só baixa, fetch baixa e faz merge",
+        "São a mesma coisa",
+        "fetch é para arquivos grandes"
+      ],
+      "correta": "fetch só baixa, pull baixa e já faz merge na branch atual",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "pull", "fetch"]
+    },
+    {
+      "id": "git-5-5",
+      "titulo": "git clone — Copiar um Repositório",
+      "tipo": "multipla-escolha",
+      "explicacao": "git clone URL copia um repositório remoto inteiro para sua máquina. Já vem com histórico completo, todas as branches e o remote origin configurado. É como 'baixar' o projeto, mas com todo o versionamento. Use clone quando for entrar em um projeto existente.",
+      "pergunta": "Quando usar 'git clone'?",
+      "alternativas": [
+        "Para baixar um repositório existente com todo o histórico e branches",
+        "Para criar um repositório novo",
+        "Para fazer backup do repositório local",
+        "Para deletar um repositório"
+      ],
+      "correta": "Para baixar um repositório existente com todo o histórico e branches",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "clone"]
+    },
+    {
+      "id": "git-5-6",
+      "titulo": "Practical: Push do DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Você criou o repositório no GitHub e quer enviar o DevEstudos.",
+      "pergunta": "Complete a sequência:",
+      "codigoInicial": "# Repositório já criado no GitHub como 'devestudos'\n# Repositório local já tem commits\n",
+      "correta": "git remote add origin https://github.com/seuuser/devestudos.git\ngit branch -M main\ngit push -u origin main",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "push"],
+      "validacao": ""
+    }
+  ]
+}

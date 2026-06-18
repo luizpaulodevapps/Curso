@@ -1,0 +1,97 @@
+{
+  "id": "html-2",
+  "nome": "Missão 2 — Navegação e Listas",
+  "descricao": "Links, listas e barras de navegação. A estrada e os mapas do seu site.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Barra de navegação com links",
+  "questoes": [
+    {
+      "id": "html-2-1",
+      "titulo": "O Portal pra Outro Lugar",
+      "tipo": "multipla-escolha",
+      "explicacao": "<a> é o link, o 'teletransporte' pra outra página. O atributo href é o endereço de destino — tipo você digitar o endereço no GPS. Sem href, o link não leva a lugar nenhum.",
+      "pergunta": "Qual atributo do <a> define o destino do link?",
+      "alternativas": ["src", "link", "href", "url"],
+      "correta": "href",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["link", "a", "href"]
+    },
+    {
+      "id": "html-2-2",
+      "titulo": "Criando um Link",
+      "tipo": "complete-codigo",
+      "explicacao": "O link fica entre a tag de abertura e fechamento: <a href=\"url\">Texto clicável</a>. O texto é o que o usuário vê e clica. É tipo uma placa 'Saída →' que você aperta.",
+      "pergunta": "Crie um link que vai pro Google e mostra o texto 'Visitar Google'.",
+      "codigoInicial": "<a ",
+      "correta": "<a href=\"https://www.google.com\">Visitar Google</a>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["link", "a"]
+    },
+    {
+      "id": "html-2-3",
+      "titulo": "Lista Ordenada vs Não Ordenada",
+      "tipo": "multipla-escolha",
+      "explicacao": "<ul> é lista sem ordem (top 3 filmes = qualquer ordem) com bolinhas. <ol> é lista ordenada (passo 1, passo 2, passo 3) com números. Tipo lista de compras (não ordenada) vs receita de bolo (ordenada).",
+      "pergunta": "Qual tag cria uma lista COM numeração (1, 2, 3)?",
+      "alternativas": ["<ul>", "<li>", "<ol>", "<dl>"],
+      "correta": "<ol>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["lista", "ol", "ul"]
+    },
+    {
+      "id": "html-2-4",
+      "titulo": "Montando uma Lista",
+      "tipo": "complete-codigo",
+      "explicacao": "Dentro de <ul> ou <ol>, cada item é um <li> (list item). Sempre tem essa aninhamento: lista → itens. É tipo uma mochila: a bolsa (ul/ol) + os objetos dentro (li).",
+      "pergunta": "Crie uma lista não ordenada com: HTML, CSS e JavaScript.",
+      "codigoInicial": "<ul>\n  <li>",
+      "correta": "<ul>\n  <li>HTML</li>\n  <li>CSS</li>\n  <li>JavaScript</li>\n</ul>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["ul", "li", "lista"]
+    },
+    {
+      "id": "html-2-5",
+      "titulo": "Barra de Navegação",
+      "tipo": "complete-codigo",
+      "explicacao": "A <nav> é a seção de navegação do site. Dentro dela colocamos uma lista de links. É tipo o menu do restaurante: uma lista de opções que te levam a cada página.",
+      "pergunta": "Crie uma nav com uma lista não ordenada contendo links para: Home, Sobre e Contato.",
+      "codigoInicial": "<nav>\n  <ul>\n    <li><a ",
+      "correta": "<nav>\n  <ul>\n    <li><a href=\"index.html\">Home</a></li>\n    <li><a href=\"sobre.html\">Sobre</a></li>\n    <li><a href=\"contato.html\">Contato</a></li>\n  </ul>\n</nav>",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["nav", "navegacao", "links"]
+    },
+    {
+      "id": "html-2-6",
+      "titulo": "Abrindo em Nova Aba",
+      "tipo": "multipla-escolha",
+      "explicacao": "target=\"_blank\" faz o link abrir em uma nova aba do navegador. É tipo você falar 'abre essa porta em outra sala' — a página atual continua lá, e uma nova janela aparece por cima.",
+      "pergunta": "Qual atributo faz um link abrir em nova aba?",
+      "alternativas": ["href=\"_blank\"", "target=\"_blank\"", "rel=\"_blank\"", "new=\"_blank\""],
+      "correta": "target=\"_blank\"",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["target", "blank", "link"]
+    },
+    {
+      "id": "html-2-7",
+      "titulo": "Erro Real: O Link Que Fugiu pro Lugar Errado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Se você escreve href=\"www.google.com\" sem o https://, o navegador interpreta como caminho RELATIVO — tipo 'clica em www.google.com dentro da mesma pasta'. O link vai tentar abrir 'seudominio.com/www.google.com' ao invés do Google real. URL absoluta precisa do protocolo (https://) na frente.",
+      "pergunta": "Por que um link com href=\"www.google.com\" não vai para o Google, mas tenta abrir 'meusite.com/www.google.com'?",
+      "alternativas": ["O atributo href está no lugar errado", "Faltou o https:// — o navegador interpretou como caminho relativo", "O link precisa de target=\"_blank\" pra funcionar", "A tag <a> não suporta domínios externos"],
+      "correta": "Faltou o https:// — o navegador interpretou como caminho relativo",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "link"]
+    }
+  ]
+}

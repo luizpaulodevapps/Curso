@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-7",
+  "nome": "Documentação e Revisão de Código com IA",
+  "descricao": "Gerar documentação, JSDoc, README e revisar código automaticamente.",
+  "ordem": 7,
+  "duracao": "2 horas",
+  "projeto": "Documentar e revisar o DevEstudos",
+  "questoes": [
+    {
+      "id": "ia1-7-1",
+      "titulo": "Gerar JSDoc Automaticamente",
+      "tipo": "multipla-escolha",
+      "explicacao": "Peça: 'Adicione JSDoc em todas as funções exportadas deste arquivo. Descreva parâmetros, retorno, e exemplos de uso.' O agente analisa a função e gera a documentação. Muito mais rápido que escrever manualmente.",
+      "pergunta": "Como documentar funções de um arquivo inteiro?",
+      "alternativas": [
+        "'Adicione JSDoc em todas as funções exportadas com @param e @returns'",
+        "Escrever manualmente função por função",
+        "Não documentar",
+        "Só nos nomes das funções"
+      ],
+      "correta": "'Adicione JSDoc em todas as funções exportadas com @param e @returns'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["documentacao", "jsdoc"]
+    },
+    {
+      "id": "ia1-7-2",
+      "titulo": "Gerar README",
+      "tipo": "multipla-escolha",
+      "explicacao": "Peça: 'Crie um README.md para este projeto. Inclua: descrição, como instalar, como usar, tecnologias, estrutura de pastas, e link para deploy.' O agente examina o projeto e gera um README contextualizado e consistente.",
+      "pergunta": "O que pedir para gerar um bom README?",
+      "alternativas": [
+        "'Crie README com descrição, instalação, uso, tecnologias, estrutura de pastas'",
+        "'Faz um readme aí'",
+        "Só o título e descrição",
+        "README não é necessário com IA"
+      ],
+      "correta": "'Crie README com descrição, instalação, uso, tecnologias, estrutura de pastas'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["documentacao", "readme"]
+    },
+    {
+      "id": "ia1-7-3",
+      "titulo": "Code Review Automático",
+      "tipo": "multipla-escolha",
+      "explicacao": "Peça: 'Revise este arquivo. Aponte: bugs potenciais, problemas de performance, violações de boas práticas, sugestões de melhoria. Seja crítico.' Use o agente como revisor antes de abrir um PR. Ele pega erros que você não viu.",
+      "pergunta": "Como usar o agente como revisor de código?",
+      "alternativas": [
+        "'Revise este arquivo: bugs, performance, boas práticas, sugestões. Seja crítico.'",
+        "'Tá certo?'",
+        "'Olha esse código'",
+        "'Me diz se tá bom'"
+      ],
+      "correta": "'Revise este arquivo: bugs, performance, boas práticas, sugestões. Seja crítico.'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["code-review", "revisao"]
+    },
+    {
+      "id": "ia1-7-4",
+      "titulo": "Explicar Código Legado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Caiu num código que ninguém entende? Peça: 'Explique o que este arquivo faz, como se eu tivesse 5 anos. Depois dê um resumo técnico para um dev pleno.' O agente lê o código e produz explicação em camadas. Melhor que passar horas tentando entender.",
+      "pergunta": "Qual prompt ajuda a entender código legado?",
+      "alternativas": [
+        "'Explique o que este arquivo faz (resumo simples + resumo técnico)'",
+        "'O que isso faz?'",
+        "Ler linha por linha manualmente",
+        "'Traduz esse código'"
+      ],
+      "correta": "'Explique o que este arquivo faz (resumo simples + resumo técnico)'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["explicacao", "legado"]
+    },
+    {
+      "id": "ia1-7-5",
+      "titulo": "Templates de PR e Issues",
+      "tipo": "multipla-escolha",
+      "explicacao": "Peça ao agente para escrever descrições de PR, issues do GitHub, ou changelogs. 'Crie uma descrição de PR para as mudanças que fizemos: adicionamos sistema de XP com cálculo, barra de progresso e animação.' Ele estrutura em tópicos.",
+      "pergunta": "O agente pode ajudar com:",
+      "alternativas": [
+        "Descrição de PR, issues do GitHub, changelogs, documentação técnica",
+        "Apenas código",
+        "Apenas texto simples",
+        "Nada de documentação"
+      ],
+      "correta": "Descrição de PR, issues do GitHub, changelogs, documentação técnica",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["pr", "issues", "changelog"]
+    },
+    {
+      "id": "ia1-7-6",
+      "titulo": "Practical: Review e Documentação",
+      "tipo": "complete-codigo",
+      "explicacao": "Peça para revisar e documentar um arquivo do DevEstudos.",
+      "pergunta": "Complete o prompt:",
+      "codigoInicial": "Revise @lib/calcular-xp.ts:\n1. Aponte bugs potenciais\n2. ",
+      "correta": "2. Sugira melhorias de performance\n3. Verifique boas práticas\n4. Adicione JSDoc nas funções exportadas\n\nRetorne: review em lista + diff das melhorias.",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["pratica", "revisao"],
+      "validacao": ""
+    }
+  ]
+}

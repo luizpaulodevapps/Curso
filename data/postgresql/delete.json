@@ -1,0 +1,131 @@
+{
+  "id": "pg-4",
+  "nome": "Missão 4 — DELETE",
+  "descricao": "Remover dados de uma tabela.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Remover contas inativas do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-4-1",
+      "titulo": "DELETE básico",
+      "tipo": "multipla-escolha",
+      "explicacao": "Remover um registro é como retirar a ficha de um ex-aluno do arquivo do DevEstudos. Você localiza (WHERE) e remove só aquela ficha específica.",
+      "pergunta": "Qual comando remove o usuário com id=7 da tabela usuarios?",
+      "alternativas": [
+        "DELETE FROM usuarios WHERE id = 7;",
+        "DELETE usuarios WHERE id = 7;",
+        "REMOVE FROM usuarios WHERE id = 7;",
+        "DELETE FROM usuarios id = 7;"
+      ],
+      "correta": "DELETE FROM usuarios WHERE id = 7;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "delete"]
+    },
+    {
+      "id": "pg-4-2",
+      "titulo": "Erro real — DELETE sem WHERE",
+      "tipo": "multipla-escolha",
+      "explicacao": "Mandaram você 'limpar os testes' e você rodou DELETE FROM usuarios. Sem WHERE. Adeus, dados reais. É o erro mais caro que um dev pode cometer — igual jogar no lixo a pasta inteira do DevEstudos em vez de um papel.",
+      "pergunta": "O que acontece ao executar `DELETE FROM usuarios;` sem cláusula WHERE?",
+      "alternativas": [
+        "Retorna erro — DELETE exige WHERE obrigatoriamente.",
+        "Remove todos os registros da tabela usuarios.",
+        "Remove apenas o primeiro registro.",
+        "Remove um registro aleatório."
+      ],
+      "correta": "Remove todos os registros da tabela usuarios.",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "erro-real", "delete"]
+    },
+    {
+      "id": "pg-4-3",
+      "titulo": "DELETE vs TRUNCATE",
+      "tipo": "multipla-escolha",
+      "explicacao": "DELETE é apagar quadro por quadro no quadro negro. TRUNCATE é passar o apagador de uma vez. No DevEstudos, DELETE permite WHERE; TRUNCATE remove TUDO sem olhar para trás.",
+      "pergunta": "Qual a diferença prática entre DELETE FROM logs; e TRUNCATE TABLE logs;?",
+      "alternativas": [
+        "São idênticos em performance e resultado.",
+        "DELETE pode usar WHERE e dispara triggers; TRUNCATE não usa WHERE, é mais rápido e não dispara triggers.",
+        "TRUNCATE pode usar WHERE, DELETE não.",
+        "DELETE não pode ser desfeito; TRUNCATE pode com ROLLBACK."
+      ],
+      "correta": "DELETE pode usar WHERE e dispara triggers; TRUNCATE não usa WHERE, é mais rápido e não dispara triggers.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "delete", "truncate"]
+    },
+    {
+      "id": "pg-4-4",
+      "titulo": "Erro real — FK impede deleção",
+      "tipo": "multipla-escolha",
+      "explicacao": "Tentar deletar um curso do DevEstudos que ainda tem alunos matriculados é como demolir um prédio com gente dentro. O banco impede porque a chave estrangeira não deixa.",
+      "pergunta": "A tabela matriculas tem uma FK para usuarios. O que acontece ao tentar deletar um usuario que possui matrículas ativas?",
+      "alternativas": [
+        "As matrículas são deletadas automaticamente.",
+        "As matrículas ficam órfãs (com usuario_id inválido).",
+        "Erro: violação de chave estrangeira — não é possível deletar.",
+        "O DELETE ignora as matrículas e remove o usuário."
+      ],
+      "correta": "Erro: violação de chave estrangeira — não é possível deletar.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "delete", "foreign-key"]
+    },
+    {
+      "id": "pg-4-5",
+      "titulo": "CASCADE",
+      "tipo": "multipla-escolha",
+      "explicacao": "ON DELETE CASCADE é a 'demolição controlada': quando o prédio cai (pai deletado), as salas dentro dele (filhos) também vão abaixo automaticamente.",
+      "pergunta": "O que faz a opção ON DELETE CASCADE em uma FOREIGN KEY?",
+      "alternativas": [
+        "Ao deletar o registro pai, os registros filhos são deletados automaticamente.",
+        "Ao deletar o registro filho, o pai é deletado automaticamente.",
+        "Impede a deleção de qualquer registro na tabela.",
+        "Permite deletar apenas se houver registros filhos."
+      ],
+      "correta": "Ao deletar o registro pai, os registros filhos são deletados automaticamente.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "delete", "cascade"]
+    },
+    {
+      "id": "pg-4-6",
+      "titulo": "DELETE com subquery",
+      "tipo": "complete-codigo",
+      "explicacao": "Você precisa remover todos os usuários do DevEstudos que nunca completaram nenhum módulo. A lista de 'quem deve ser removido' está em outra tabela.",
+      "pergunta": "Complete o comando para deletar usuarios que nunca aparecem na tabela progresso:\n\nDELETE FROM usuarios WHERE id ________ (SELECT usuario_id FROM progresso);",
+      "alternativas": [],
+      "correta": "DELETE FROM usuarios WHERE id NOT IN (SELECT usuario_id FROM progresso);",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "delete", "subquery"]
+    },
+    {
+      "id": "pg-4-7",
+      "titulo": "DELETE com RETURNING",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Assim como INSERT e UPDATE, o DELETE também pode usar RETURNING para mostrar o que foi removido — tipo um comprovante de exclusão.",
+      "pergunta": "O comando `DELETE FROM usuarios WHERE id = 1 RETURNING *;` retorna os dados do usuário que foi deletado.",
+      "alternativas": [],
+      "correta": "Verdadeiro",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "delete", "returning"]
+    },
+    {
+      "id": "pg-4-8",
+      "titulo": "Desafio — deletar dados antigos",
+      "tipo": "desafio-pratico",
+      "explicacao": "O DevEstudos gera logs de acesso diários. Para manter o banco leve, a política é deletar logs com mais de 90 dias. O comando é executado todo mês.",
+      "pergunta": "Escreva um comando que deleta todos os registros da tabela logs onde a data (coluna created_at) seja anterior a '2024-01-01'. Depois, explique qual risco existe se você omitir o WHERE.",
+      "alternativas": [],
+      "correta": "DELETE FROM logs WHERE created_at < '2024-01-01'; Se omitir o WHERE, deleta TODOS os logs, inclusive os recentes.",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "delete", "data", "desafio"]
+    }
+  ]
+}

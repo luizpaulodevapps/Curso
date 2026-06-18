@@ -1,0 +1,112 @@
+{
+  "id": "es-4",
+  "nome": "Missão 4 — DDD: Domain-Driven Design na Veia",
+  "descricao": "Ubiquitous Language, Entidades, Value Objects, Aggregates, Bounded Contexts.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Modelar domínios do DevEstudos com DDD",
+  "questoes": [
+    {
+      "id": "es-4-1",
+      "titulo": "Ubiquitous Language",
+      "tipo": "multipla-escolha",
+      "explicacao": "Ubiquitous Language = todo mundo fala a mesma língua. Dev, PO, QA, cliente — todos usam os mesmos termos. Se o cliente chama de 'matrícula', o código não chama de 'inscricao'. O código reflete a linguagem do negócio, não o contrário.",
+      "pergunta": "O cliente chama de 'turma'. O banco de dados tem a tabela 'class_group'. O frontend chama de 'sala'. O que está errado?",
+      "alternativas": [
+        "Está tudo certo, cada camada tem seu nome",
+        "A linguagem não é ubíqua — cada parte usa um termo diferente pro mesmo conceito",
+        "O banco deve usar o mesmo nome do frontend",
+        "O cliente deve aprender os termos técnicos"
+      ],
+      "correta": "A linguagem não é ubíqua — cada parte usa um termo diferente pro mesmo conceito",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["ubiquitous-language", "ddd", "comunicacao"]
+    },
+    {
+      "id": "es-4-2",
+      "titulo": "Entidades vs Value Objects",
+      "tipo": "multipla-escolha",
+      "explicacao": "Entidade: tem ID único, muda com o tempo (ex: Usuario, Pedido). Value Object: definido pelos atributos, imutável (ex: Endereco, CPF, Dinheiro). CPF '123.456.789-00' é igual a qualquer outro CPF com os mesmos dígitos — não importa o ID, importa o valor.",
+      "pergunta": "Qual destes é um Value Object (não uma Entidade)?",
+      "alternativas": [
+        "Usuario (identificado por ID)",
+        "Pedido (identificado por número do pedido)",
+        "Email (definido pelo endereço de e-mail em si)",
+        "Curso (identificado por ID)"
+      ],
+      "correta": "Email (definido pelo endereço de e-mail em si)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["value-object", "entidade", "ddd"]
+    },
+    {
+      "id": "es-4-3",
+      "titulo": "Aggregates",
+      "tipo": "multipla-escolha",
+      "explicacao": "Aggregate é um grupo de objetos que devem ser tratados como uma unidade. Ex: Pedido + Itens do Pedido. O Pedido é o Aggregate Root — você mexe nos itens ATRAVÉS do pedido, não diretamente. É como uma família: você fala com os pais, não diretamente com as crianças.",
+      "pergunta": "Em um aggregate de CURSO com MÓDULOS e AULAS, quem é o Aggregate Root?",
+      "alternativas": [
+        "Aula (é a menor unidade)",
+        "Curso (tudo passa pelo curso)",
+        "Módulo (está no meio)",
+        "Nenhum, todos são independentes"
+      ],
+      "correta": "Curso (tudo passa pelo curso)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["aggregate", "ddd", "modelagem"]
+    },
+    {
+      "id": "es-4-4",
+      "titulo": "Bounded Contexts no DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, 'Aluno' no Contexto de Gamificação tem pontos, badges e ranking. 'Aluno' no Contexto de Conteúdo tem matrículas, progresso em aulas e notas. É o MESMO aluno, mas cada contexto só vê o que importa pra ele. Separação evita um modelo gigante que ninguém entende.",
+      "pergunta": "Por que separar os contextos de Gamificação e Conteúdo no DevEstudos?",
+      "alternativas": [
+        "Pra usar bancos de dados diferentes",
+        "Pra cada time poder evoluir seu modelo sem acoplar com o outro",
+        "Pra deixar o código mais bonito",
+        "Pra usar microsserviços obrigatoriamente"
+      ],
+      "correta": "Pra cada time poder evoluir seu modelo sem acoplar com o outro",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["bounded-context", "ddd", "devetudos", "contexto"]
+    },
+    {
+      "id": "es-4-5",
+      "titulo": "Erro real: modelo anêmico",
+      "tipo": "desafio-pratico",
+      "explicacao": "Modelo anêmico: a classe 'Pedido' só tem getters e setters. Toda lógica (calcularTotal, aplicarDesconto, validarItens) fica num 'PedidoService' externo. Isso é uma struct com nome de classe, não um objeto de verdade. Quebra o encapsulation da POO.",
+      "pergunta": "Qual característica define um modelo anêmico?",
+      "alternativas": [
+        "A classe tem muitos atributos",
+        "A classe só tem getters/setters, sem comportamento (lógica em services)",
+        "A classe herda de muitas outras",
+        "A classe usa pouca memória"
+      ],
+      "correta": "A classe só tem getters/setters, sem comportamento (lógica em services)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["erro-real", "modelo-anemico", "ddd", "poo"]
+    },
+    {
+      "id": "es-4-6",
+      "titulo": "Repository Pattern no DDD",
+      "tipo": "complete-codigo",
+      "explicacao": "Repository é a ponte entre o domínio e o banco. O domínio pede 'me dá um Curso por ID' e o repository busca. O domínio não sabe se é PostgreSQL, MongoDB ou arquivo JSON. Repository parece uma coleção (como um array) que você pede coisas.",
+      "pergunta": "Complete a interface de um Repository no DDD:",
+      "alternativas": [
+        "interface CursoRepository { salvar(curso: Curso): void; buscarPorId(id: string): Curso | null; buscarTodos(): Curso[] }",
+        "interface CursoRepository { insert(curso: Curso): void; select(id: string): any }",
+        "interface CursoRepository { executaQuery(sql: string): any }",
+        "interface CursoRepository { salvarNoBanco(curso: Curso): void }"
+      ],
+      "correta": "interface CursoRepository { salvar(curso: Curso): void; buscarPorId(id: string): Curso | null; buscarTodos(): Curso[] }",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["repository", "ddd", "banco", "interface"]
+    }
+  ]
+}

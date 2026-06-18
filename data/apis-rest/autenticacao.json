@@ -1,0 +1,103 @@
+{
+  "id": "api-7",
+  "nome": "Missão 7 — Autenticação e Autorização",
+  "descricao": "Protegendo APIs com autenticação e controle de acesso.",
+  "ordem": 7,
+  "duracao": "2 horas",
+  "projeto": "Implementar login e controle de acesso no DevEstudos",
+  "questoes": [
+    {
+      "id": "api-7-1",
+      "titulo": "Autenticação vs Autorização",
+      "tipo": "multipla-escolha",
+      "explicacao": "Autenticação é \"quem é você?\". Autorização é \"o que você pode fazer?\". Portaria vs chave de sala.",
+      "pergunta": "Fazer login no DevEstudos (digitar email e senha) é um ato de:",
+      "alternativas": [
+        "Autenticação",
+        "Autorização",
+        "Autenticação e autorização simultaneamente",
+        "Nenhum dos dois"
+      ],
+      "correta": "Autenticação",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["autenticacao", "autorizacao"]
+    },
+    {
+      "id": "api-7-2",
+      "titulo": "Bearer Token",
+      "tipo": "complete-codigo",
+      "explicacao": "Bearer token é a chave que você envia no header. O servidor valida e libera o acesso. É igual pulseira de evento.",
+      "pergunta": "Complete a requisição autenticada para listar cursos do DevEstudos:",
+      "codigoInicial": "fetch('/api/cursos', {\n  headers: {\n    'Authorization': '___ ___'\n  }\n})",
+      "codigoCompleto": "fetch('/api/cursos', {\n  headers: {\n    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'\n  }\n})",
+      "respostaEsperada": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["authentication", "bearer-token"]
+    },
+    {
+      "id": "api-7-3",
+      "titulo": "O que é JWT?",
+      "tipo": "multipla-escolha",
+      "explicacao": "JWT (JSON Web Token) é um token que carrega informações dentro dele. É como um crachá que já tem seu nome e cargo.",
+      "pergunta": "O que significa JWT?",
+      "alternativas": [
+        "JSON Web Token",
+        "JavaScript Web Tool",
+        "Java Web Transaction",
+        "JSON With Text"
+      ],
+      "correta": "JSON Web Token",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["jwt", "tokens"]
+    },
+    {
+      "id": "api-7-4",
+      "titulo": "Erro real: token no body",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real: enviar o token no corpo da requisição em vez do header Authorization. Isso é inseguro e fora do padrão.",
+      "pergunta": "Enviar o token de autenticação no body de um POST é a prática recomendada.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["authentication", "boas-praticas", "erro-real"]
+    },
+    {
+      "id": "api-7-5",
+      "titulo": "API Key vs Bearer Token",
+      "tipo": "multipla-escolha",
+      "explicacao": "API Key é uma chave fixa do cliente (identifica o app). Bearer Token é do usuário (identifica quem está logado).",
+      "pergunta": "Qual a diferença entre API Key e Bearer Token?",
+      "alternativas": [
+        "API Key identifica a aplicação; Bearer Token identifica o usuário autenticado",
+        "API Key é mais segura que Bearer Token",
+        "Bearer Token é usado apenas em GET",
+        "São a mesma coisa com nomes diferentes"
+      ],
+      "correta": "API Key identifica a aplicação; Bearer Token identifica o usuário autenticado",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["api-key", "bearer-token"]
+    },
+    {
+      "id": "api-7-6",
+      "titulo": "Refresh Token",
+      "tipo": "multipla-escolha",
+      "explicacao": "O token de acesso expira (ex: 15 min). O refresh token gera novos tokens sem o usuário fazer login de novo.",
+      "pergunta": "Para que serve o refresh token?",
+      "alternativas": [
+        "Obter um novo token de acesso sem o usuário relogar",
+        "Renovar a senha do usuário",
+        "Atualizar dados do perfil",
+        "Deletar a conta do usuário"
+      ],
+      "correta": "Obter um novo token de acesso sem o usuário relogar",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["jwt", "refresh-token", "sessions"]
+    }
+  ]
+}

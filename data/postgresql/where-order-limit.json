@@ -1,0 +1,136 @@
+{
+  "id": "pg-5",
+  "nome": "Missão 5 — WHERE, ORDER BY e LIMIT",
+  "descricao": "Filtrar, ordenar e limitar resultados.",
+  "ordem": 5,
+  "duracao": "3 horas",
+  "projeto": "Filtrar e ordenar alunos do DevEstudos",
+  "questoes": [
+    {
+      "id": "pg-5-1",
+      "titulo": "WHERE com AND/OR",
+      "tipo": "multipla-escolha",
+      "explicacao": "Filtrar alunos do DevEstudos é como peneirar ingredientes: 'maiores de 18 anos E que moram em SP' ou 'que nasceram em janeiro OU que são premium'.",
+      "pergunta": "Qual query retorna usuarios com nome 'João' E email que contém 'gmail'?",
+      "alternativas": [
+        "SELECT * FROM usuarios WHERE nome = 'João' AND email LIKE '%gmail%';",
+        "SELECT * FROM usuarios WHERE nome = 'João' OR email LIKE '%gmail%';",
+        "SELECT * FROM usuarios WHERE nome = 'João' && email LIKE '%gmail%';",
+        "SELECT * FROM usuarios HAVING nome = 'João' AND email LIKE '%gmail%';"
+      ],
+      "correta": "SELECT * FROM usuarios WHERE nome = 'João' AND email LIKE '%gmail%';",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "where"]
+    },
+    {
+      "id": "pg-5-2",
+      "titulo": "ORDER BY ASC/DESC",
+      "tipo": "multipla-escolha",
+      "explicacao": "Ordenar é como organizar a lista de chamada do DevEstudos: em ordem alfabética (A-Z) ou do mais novo para o mais velho.",
+      "pergunta": "Qual query retorna usuarios ordenados do mais recente (maior id) para o mais antigo (menor id)?",
+      "alternativas": [
+        "SELECT * FROM usuarios ORDER BY id DESC;",
+        "SELECT * FROM usuarios ORDER BY id ASC;",
+        "SELECT * FROM usuarios SORT BY id DESC;",
+        "SELECT * FROM usuarios ORDER DESC BY id;"
+      ],
+      "correta": "SELECT * FROM usuarios ORDER BY id DESC;",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "order-by"]
+    },
+    {
+      "id": "pg-5-3",
+      "titulo": "LIMIT e OFFSET",
+      "tipo": "multipla-escolha",
+      "explicacao": "A página inicial do DevEstudos mostra 10 alunos por vez. LIMIT 10 é 'mostra 10'. OFFSET 10 é 'pula os primeiros 10' — igual virar a página de um catálogo.",
+      "pergunta": "Qual query retorna 5 usuarios, pulando os 10 primeiros (página 3, assumindo 5 por página)?",
+      "alternativas": [
+        "SELECT * FROM usuarios LIMIT 5 OFFSET 10;",
+        "SELECT * FROM usuarios OFFSET 10 LIMIT 5;",
+        "SELECT * FROM usuarios LIMIT 5 SKIP 10;",
+        "SELECT * FROM usuarios TOP 5 START 10;"
+      ],
+      "correta": "SELECT * FROM usuarios LIMIT 5 OFFSET 10;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "limit", "offset"]
+    },
+    {
+      "id": "pg-5-4",
+      "titulo": "LIKE e padrões",
+      "tipo": "multipla-escolha",
+      "explicacao": "O LIKE é como um 'nome parcial' na busca do DevEstudos: 'alunos que começam com A' ou 'emails que terminam com @devestudos.com.br'.",
+      "pergunta": "Qual query retorna usuarios cujo nome começa com 'Mar'?",
+      "alternativas": [
+        "SELECT * FROM usuarios WHERE nome LIKE 'Mar%';",
+        "SELECT * FROM usuarios WHERE nome = 'Mar%';",
+        "SELECT * FROM usuarios WHERE nome LIKE '%Mar%';",
+        "SELECT * FROM usuarios WHERE nome STARTS WITH 'Mar';"
+      ],
+      "correta": "SELECT * FROM usuarios WHERE nome LIKE 'Mar%';",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "postgresql", "like"]
+    },
+    {
+      "id": "pg-5-5",
+      "titulo": "BETWEEN, IN, IS NULL",
+      "tipo": "multipla-escolha",
+      "explicacao": "BETWEEN é 'entre esses valores', tipo alunos entre 18 e 25 anos. IN é 'em uma lista', tipo cursos específicos. IS NULL é 'campo vazio', tipo quem não preencheu o telefone.",
+      "pergunta": "Qual combinação de filtros está correta?",
+      "alternativas": [
+        "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 25 AND cidade IN ('SP', 'RJ') AND telefone IS NULL;",
+        "SELECT * FROM usuarios WHERE idade BETWEEN 18, 25 AND cidade IN ('SP', 'RJ') AND telefone = NULL;",
+        "SELECT * FROM usuarios WHERE idade BETWEEN 18-25 AND cidade = 'SP' OR 'RJ' AND telefone IS NULL;",
+        "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 25 AND cidade IN 'SP' AND telefone = NULL;"
+      ],
+      "correta": "SELECT * FROM usuarios WHERE idade BETWEEN 18 AND 25 AND cidade IN ('SP', 'RJ') AND telefone IS NULL;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "between", "in", "is-null"]
+    },
+    {
+      "id": "pg-5-6",
+      "titulo": "Erro real — NULL = NULL é falso",
+      "tipo": "multipla-escolha",
+      "explicacao": "No PostgreSQL, NULL não é um valor — é a ausência de valor. Comparar NULL = NULL é como perguntar 'o vazio é igual ao vazio?' — não faz sentido, então retorna falso.",
+      "pergunta": "O que retorna `SELECT * FROM usuarios WHERE telefone = NULL;`?",
+      "alternativas": [
+        "Retorna todos os usuarios com telefone NULL.",
+        "Retorna erro de sintaxe.",
+        "Retorna 0 registros (vazio) — NULL = NULL resulta em NULL, que é interpretado como falso no WHERE.",
+        "Retorna os usuarios com telefone vazio (string '')."
+      ],
+      "correta": "Retorna 0 registros (vazio) — NULL = NULL resulta em NULL, que é interpretado como falso no WHERE.",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "erro-real", "null", "where"]
+    },
+    {
+      "id": "pg-5-7",
+      "titulo": "Combinação completa",
+      "tipo": "complete-codigo",
+      "explicacao": "No DevEstudos, você precisa dos 5 alunos mais velhos que moram em SP e têm email cadastrado. O ORDER BY e WHERE trabalham juntos.",
+      "pergunta": "Complete a query: selecione nome e email dos usuarios de cidade='SP', com email IS NOT NULL, ordenados por idade DESC, limitado a 5:\n\nSELECT nome, email FROM usuarios\nWHERE cidade = 'SP' AND email IS NOT NULL\n________ idade DESC\n________ 5;",
+      "alternativas": [],
+      "correta": "SELECT nome, email FROM usuarios WHERE cidade = 'SP' AND email IS NOT NULL ORDER BY idade DESC LIMIT 5;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["sql", "postgresql", "where", "order-by", "limit"]
+    },
+    {
+      "id": "pg-5-8",
+      "titulo": "Desafio — filtros complexos",
+      "tipo": "desafio-pratico",
+      "explicacao": "O dashboard do DevEstudos precisa exibir os 10 usuarios mais engajados: que fizeram login nos últimos 30 dias, têm pontuação acima de 100, ordenados por pontuação decrescente.",
+      "pergunta": "Escreva a query completa: selecione id, nome e pontuacao da tabela usuarios onde ultimo_login >= CURRENT_DATE - 30 e pontuacao > 100, ordenados por pontuacao DESC, limitado a 10 registros.",
+      "alternativas": [],
+      "correta": "SELECT id, nome, pontuacao FROM usuarios WHERE ultimo_login >= CURRENT_DATE - INTERVAL '30 days' AND pontuacao > 100 ORDER BY pontuacao DESC LIMIT 10;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["sql", "postgresql", "desafio", "where", "order-by", "limit"]
+    }
+  ]
+}

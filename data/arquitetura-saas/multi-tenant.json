@@ -1,0 +1,112 @@
+{
+  "id": "arq-saas-2",
+  "nome": "Missão 2 — Multi-tenant: Um Código, Vários Clientes",
+  "descricao": "Single-tenant vs Multi-tenant e isolamento de dados.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Modelar o multi-tenant do DevEstudos",
+  "questoes": [
+    {
+      "id": "arq-saas-2-1",
+      "titulo": "Single-tenant vs Multi-tenant",
+      "tipo": "multipla-escolha",
+      "explicacao": "Single-tenant é como cada cliente ter sua própria casa. Multi-tenant é um prédio de apartamentos: todo mundo no mesmo terreno, cada um no seu espaço. Multi-tenant é mais barato de manter, mas o isolamento precisa ser impecável.",
+      "pergunta": "Qual a principal vantagem do modelo multi-tenant sobre single-tenant?",
+      "alternativas": [
+        "Maior segurança de dados",
+        "Menor custo operacional por cliente (compartilhamento de infraestrutura)",
+        "Cada cliente pode escolher a versão do software",
+        "Isolamento físico de dados"
+      ],
+      "correta": "Menor custo operacional por cliente (compartilhamento de infraestrutura)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["multitenant", "singletenant", "saas"]
+    },
+    {
+      "id": "arq-saas-2-2",
+      "titulo": "Modelos de isolamento",
+      "tipo": "multipla-escolha",
+      "explicacao": "Três jeitos de isolar: (1) banco separado pra cada tenant — mais seguro, mais caro; (2) schema separado no mesmo banco — meio-termo; (3) mesmo banco, mesmo schema, coluna tenant_id — mais barato, exige disciplina. O DevEstudos começa com a opção 3 pela simplicidade.",
+      "pergunta": "No modelo de coluna tenant_id (banco compartilhado), qual o maior risco?",
+      "alternativas": [
+        "Performance lenta por causa de joins",
+        "Esquecer o filtro WHERE tenant_id = ? e vazar dados entre clients",
+        "Não suporta mais de 100 tenants",
+        "O banco de dados não aceita coluna tenant_id"
+      ],
+      "correta": "Esquecer o filtro WHERE tenant_id = ? e vazar dados entre clients",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["isolamento", "tenant_id", "banco"]
+    },
+    {
+      "id": "arq-saas-2-3",
+      "titulo": "tenant_id em queries",
+      "tipo": "complete-codigo",
+      "explicacao": "No DevEstudos, cada escola é um tenant. Toda query precisa do tenant_id. Se esquecer, o professor da Escola A vê as turmas da Escola B. Desastre.",
+      "pergunta": "Complete o código abaixo para listar apenas os cursos do tenant correto:",
+      "alternativas": [
+        "SELECT * FROM cursos WHERE tenant_id = ?",
+        "SELECT * FROM cursos",
+        "SELECT * FROM cursos GROUP BY tenant_id",
+        "SELECT * FROM cursos HAVING tenant_id = ?"
+      ],
+      "correta": "SELECT * FROM cursos WHERE tenant_id = ?",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["sql", "tenant_id", "seguranca"]
+    },
+    {
+      "id": "arq-saas-2-4",
+      "titulo": "Middleware de tenant",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pra não esquecer o tenant_id em toda rota, cria-se um middleware que identifica o tenant (pelo subdomínio ou header) e injeta automaticamente em todas as queries. É como um porteiro que confirma seu apartamento antes de você entrar.",
+      "pergunta": "Qual estratégia ajuda a evitar vazamento de dados entre tenants?",
+      "alternativas": [
+        "Pedir pro desenvolvedor lembrar de adicionar tenant_id manualmente",
+        "Criar um middleware global que extrai o tenant do contexto e aplica em todas as queries",
+        "Criar um banco separado pra cada tenant",
+        "Usar stored procedures no banco"
+      ],
+      "correta": "Criar um middleware global que extrai o tenant do contexto e aplica em todas as queries",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["middleware", "boas-praticas", "seguranca"]
+    },
+    {
+      "id": "arq-saas-2-5",
+      "titulo": "Erro real: esquecer tenant_id",
+      "tipo": "desafio-pratico",
+      "explicacao": "Caso real: uma SaaS de gestão escolar tinha uma rota /api/alunos/export que gerava CSV. Alguém esqueceu o filtro de tenant_id. Quando a Escola B exportou alunos, veio metade dos alunos da Escola A junto. Violação de LGPD na certa.",
+      "pergunta": "Um desenvolvedor do DevEstudos criou esta rota. O que está errado?",
+      "alternativas": [
+        "A rota não valida autenticação",
+        "A query não filtra por tenant_id, permitindo que uma escola veja dados de outra",
+        "O formato CSV não é recomendado",
+        "A rota não tem paginação"
+      ],
+      "correta": "A query não filtra por tenant_id, permitindo que uma escola veja dados de outra",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "seguranca", "lgpd", "tenant"]
+    },
+    {
+      "id": "arq-saas-2-6",
+      "titulo": "Onboarding de novo tenant",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando uma nova escola se cadastra no DevEstudos, precisamos criar o registro do tenant, configurar um plano padrão (Free) e garantir que as tabelas iniciais estejam prontas. Nada de criar banco novo — só inserir uma linha na tabela tenants.",
+      "pergunta": "Ao cadastrar uma nova escola no DevEstudos (modelo banco compartilhado), o que precisa acontecer?",
+      "alternativas": [
+        "Criar um novo banco de dados para a escola",
+        "Criar um novo schema no banco existente",
+        "Inserir um registro na tabela tenants com um tenant_id único",
+        "Restaurar um backup para a nova escola"
+      ],
+      "correta": "Inserir um registro na tabela tenants com um tenant_id único",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["onboarding", "tenant", "devestudos"]
+    }
+  ]
+}

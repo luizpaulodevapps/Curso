@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-2",
+  "nome": "Prompting Efetivo — Falar a Língua do Agente",
+  "descricao": "Contexto, tarefa, formato, restrições — os 4 pilares.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Escrever prompts que funcionam de primeira",
+  "questoes": [
+    {
+      "id": "ia1-2-1",
+      "titulo": "Os 4 Elementos Essenciais",
+      "tipo": "multipla-escolha",
+      "explicacao": "Contexto → Tarefa → Formato → Restrições. Exemplo: 'Estamos no Header (contexto). Adicione um botão de login (tarefa). Use Tailwind, retorne só JSX (formato). Não instale pacotes (restrição).'",
+      "pergunta": "Qual a ordem recomendada dos elementos em um prompt?",
+      "alternativas": [
+        "Contexto → Tarefa → Formato → Restrições",
+        "Tarefa → Restrições → Contexto → Formato",
+        "Restrições → Formato → Tarefa → Contexto",
+        "Formato → Tarefa → Contexto → Restrições"
+      ],
+      "correta": "Contexto → Tarefa → Formato → Restrições",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["estrutura", "fundamentos"]
+    },
+    {
+      "id": "ia1-2-2",
+      "titulo": "Específico, Não Vago",
+      "tipo": "multipla-escolha",
+      "explicacao": "'Extraia a validação de email para uma função separada' é melhor que 'melhora esse código'. O agente segue instruções literais. Seja o mais específico possível.",
+      "pergunta": "Qual prompt é mais eficiente?",
+      "alternativas": [
+        "'Extraia a validação de email em cadastrarUsuario para uma função validarEmail separada'",
+        "'Melhora a função de cadastro'",
+        "'Faz a função ficar boa'",
+        "'Refatora tudo'"
+      ],
+      "correta": "'Extraia a validação de email em cadastrarUsuario para uma função validarEmail separada'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["especificidade"]
+    },
+    {
+      "id": "ia1-2-3",
+      "titulo": "Use @ para Referenciar",
+      "tipo": "multipla-escolha",
+      "explicacao": "No AntiGravity, @ abre seletor de arquivos. No Cursor é #. Anexa o conteúdo ao prompt. Use para incluir arquivos, funções ou interfaces relevantes.",
+      "pergunta": "Quando usar @ (AntiGravity) ou # (Cursor) no prompt?",
+      "alternativas": [
+        "Sempre que precisar que o agente leia ou modifique um arquivo específico",
+        "Apenas para CSS",
+        "Nunca, o agente já sabe onde tudo está",
+        "Só no final da conversa"
+      ],
+      "correta": "Sempre que precisar que o agente leia ou modifique um arquivo específico",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["@", "referencia"]
+    },
+    {
+      "id": "ia1-2-4",
+      "titulo": "Prompt com Exemplo (Few-shot)",
+      "tipo": "multipla-escolha",
+      "explicacao": "Dar um exemplo do que você quer é o jeito mais rápido de acertar. 'Crie um hook useLocalStorage igual a este useSessionStorage, mas em localStorage.' O exemplo vira template.",
+      "pergunta": "Qual a vantagem de incluir um exemplo no prompt?",
+      "alternativas": [
+        "O agente segue o padrão do exemplo, reduzindo erros de interpretação",
+        "O exemplo confunde o agente",
+        "Não faz diferença",
+        "Só funciona em inglês"
+      ],
+      "correta": "O agente segue o padrão do exemplo, reduzindo erros de interpretação",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["few-shot", "exemplo"]
+    },
+    {
+      "id": "ia1-2-5",
+      "titulo": "Formato da Resposta",
+      "tipo": "multipla-escolha",
+      "explicacao": "Se quer só código sem explicação, peça. Se quer diff, peça. Se quer uma lista de opções, especifique. Controlar o formato economiza tempo.",
+      "pergunta": "Como pedir apenas o código sem explicações?",
+      "alternativas": [
+        "'Retorne apenas o código, sem markdown, sem comentários, sem explicação'",
+        "'Me dá o código aí'",
+        "'Código'",
+        "Esperar que o agente adivinhe"
+      ],
+      "correta": "'Retorne apenas o código, sem markdown, sem comentários, sem explicação'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["formato", "resposta"]
+    },
+    {
+      "id": "ia1-2-6",
+      "titulo": "Practical: Prompt para o DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Monte um prompt completo seguindo os 4 elementos para adicionar variante outline no Button.",
+      "pergunta": "Complete:",
+      "codigoInicial": "Temos @components/ui/Button.tsx com variante solid.\n\n",
+      "correta": "Adicione a prop 'variant' com suporte a 'solid' (padrão) e 'outline'. A outline deve ter borda e fundo transparente.\n\nRetorne apenas o código modificado, sem markdown.\n\nUse Tailwind. Não instale pacotes.",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["pratica", "estrutura"],
+      "validacao": ""
+    }
+  ]
+}

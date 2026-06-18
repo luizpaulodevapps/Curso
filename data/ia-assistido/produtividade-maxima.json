@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-8",
+  "nome": "Produtividade Máxima — Dicas Avançadas",
+  "descricao": "Anti-padrões, segurança, customização e truques avançados.",
+  "ordem": 8,
+  "duracao": "2 horas",
+  "projeto": "Configurar o ambiente DevEstudos para produtividade máxima",
+  "questoes": [
+    {
+      "id": "ia1-8-1",
+      "titulo": "Customize o Comportamento do Agente",
+      "tipo": "multipla-escolha",
+      "explicacao": "No AntiGravity, o AGENTS.md na raiz funciona como instruções permanentes. No Cursor, .cursorrules. Coloque: tecnologias, convenções, regras. Uma vez escrito, o agente segue sempre. É o melhor investimento de 10 minutos que você pode fazer.",
+      "pergunta": "O que colocar no AGENTS.md?",
+      "alternativas": [
+        "Tecnologias do projeto, convenções de código e regras que o agente deve seguir",
+        "Nome do desenvolvedor",
+        "História do projeto",
+        "Orçamento do cliente"
+      ],
+      "correta": "Tecnologias do projeto, convenções de código e regras que o agente deve seguir",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["agents.md", "customizacao"]
+    },
+    {
+      "id": "ia1-8-2",
+      "titulo": "Não Peça Tudo de Uma Vez",
+      "tipo": "multipla-escolha",
+      "explicacao": "10 requisitos em um prompt = agente esquece metade. Divida em 2-3 prompts focados. Cada prompt = resultado melhor.",
+      "pergunta": "Qual o risco de muitos requisitos num prompt?",
+      "alternativas": [
+        "O agente esquece ou prioriza mal alguns requisitos",
+        "O prompt fica bonito",
+        "O agente trava",
+        "Não há risco"
+      ],
+      "correta": "O agente esquece ou prioriza mal alguns requisitos",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["anti-pattern", "escopo"]
+    },
+    {
+      "id": "ia1-8-3",
+      "titulo": "Segurança — Não Vaze Segredos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nunca cole .env, senhas, tokens, dados de clientes. Agentes podem usar conversas para treinamento. Ofusque: 'minha string de conexão tem formato X' em vez de colar a real.",
+      "pergunta": "Qual cuidado tomar com dados sensíveis?",
+      "alternativas": [
+        "Nunca colar senhas, tokens ou dados pessoais — ofusque antes de compartilhar",
+        "Pode colar tudo, o agente é confiável",
+        "Só não colar senhas",
+        "Usar apenas conversas privadas"
+      ],
+      "correta": "Nunca colar senhas, tokens ou dados pessoais — ofusque antes de compartilhar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["seguranca", "dados"]
+    },
+    {
+      "id": "ia1-8-4",
+      "titulo": "Revise Antes de Aceitar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Sempre leia o diff antes de aceitar. O agente pode importar arquivo errado, esquecer caso de borda, gerar código que não compila. Use o diff viewer do editor.",
+      "pergunta": "Qual a atitude correta antes de aceitar código?",
+      "alternativas": [
+        "Revisar o diff para conferir se está correto",
+        "Aceitar sem ler, confiando no agente",
+        "Testar em produção direto",
+        "Pedir para outro agente revisar"
+      ],
+      "correta": "Revisar o diff para conferir se está correto",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["revisao", "qualidade"]
+    },
+    {
+      "id": "ia1-8-5",
+      "titulo": "Saiba Quando NÃO Usar IA",
+      "tipo": "multipla-escolha",
+      "explicacao": "IA não é sempre a melhor ferramenta. Renomear 50 arquivos = script bash. Lógica de negócio crítica = escreva você mesmo. Decisões de arquitetura = use como conselheiro. Saber quando NÃO usar é tão importante quanto saber usar.",
+      "pergunta": "Quando é melhor NÃO usar o agente?",
+      "alternativas": [
+        "Tarefas mecânicas (rename massivo) ou lógica de negócio crítica que precisa dominar",
+        "Nunca, IA é sempre melhor",
+        "Só quando está offline",
+        "Quando o código é muito simples"
+      ],
+      "correta": "Tarefas mecânicas (rename massivo) ou lógica de negócio crítica que precisa dominar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["quando-usar", "decisao"]
+    },
+    {
+      "id": "ia1-8-6",
+      "titulo": "Practical: Prompt Ruim → Prompt Bom",
+      "tipo": "complete-codigo",
+      "explicacao": "Transforme 'Faz um formulário de cadastro' num prompt completo.",
+      "pergunta": "Complete a transformação:",
+      "codigoInicial": "// Ruim:\n'Faz um formulário de cadastro'\n\n// Bom:\n'Estamos em Next.js 16 com Tailwind.\n\n",
+      "correta": "Crie @components/CadastroForm.tsx:\n- Campos: nome, email, senha, confirmar senha\n- Validação: email válido, senha >6 caracteres\n- Loading no botão\n- Link para login\n- Toast de sucesso\n\nRetorne apenas o código.\nUse Server Actions.\nNÃO instale bibliotecas de formulário.'",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "final"],
+      "validacao": ""
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "bd-2",
+  "nome": "Missão 2 — Tabelas e Registros",
+  "descricao": "O que são tabelas, colunas e linhas, tipos de dados e como modelar sua primeira tabela.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Projetar a tabela usuarios do DevEstudos",
+  "questoes": [
+    {
+      "id": "bd-2-1",
+      "titulo": "Tabela é como uma planilha… mas com regras",
+      "tipo": "multipla-escolha",
+      "explicacao": "Uma tabela de banco de dados é como uma planilha do Excel, mas com regras rígidas. Cada coluna tem um tipo fixo (número, texto, data), e cada linha é um registro único. Na planilha você pode colocar qualquer coisa em qualquer célula; no banco, se a coluna é INT, você SÓ pode colocar números. Isso evita bagunça.",
+      "pergunta": "Qual a diferença entre uma tabela de banco e uma planilha?",
+      "alternativas": [
+        "No banco, cada coluna tem um tipo fixo e você não pode misturar dados",
+        "Planilha é mais rápida que banco de dados",
+        "Banco não permite criar tabelas",
+        "Não há diferença, são a mesma coisa"
+      ],
+      "correta": "No banco, cada coluna tem um tipo fixo e você não pode misturar dados",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["banco", "tabelas"]
+    },
+    {
+      "id": "bd-2-2",
+      "titulo": "Tipos de Dados no DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cada coluna exige um tipo: INT para números inteiros (ex: xp, idade), VARCHAR para texto curto (ex: nome, email), TEXT para texto longo (ex: descrição de curso), BOOLEAN para verdadeiro/falso (ex: ativo), DATE para datas (ex: data_cadastro), DECIMAL para números com vírgula (ex: preço, nota). No DevEstudos, o campo 'email' é VARCHAR(255) pois emails têm tamanho variável, e 'xp' é INT porque são pontos inteiros.",
+      "pergunta": "No DevEstudos, o campo 'data_cadastro' do usuário deve ser qual tipo?",
+      "alternativas": [
+        "DATE",
+        "INT",
+        "BOOLEAN",
+        "VARCHAR"
+      ],
+      "correta": "DATE",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["banco", "tipos", "dados"]
+    },
+    {
+      "id": "bd-2-3",
+      "titulo": "Modelando a Tabela USUARIOS",
+      "tipo": "desafio-pratico",
+      "explicacao": "A tabela USUARIOS do DevEstudos precisa guardar: id (inteiro único), nome (texto curto), email (texto curto), xp (pontos inteiros), data_cadastro (data). Cada campo deve ter o tipo correto. Um erro comum é colocar xp como VARCHAR — aí não dá pra somar os pontos!",
+      "pergunta": "Qual o tipo correto para cada campo da tabela USUARIOS?",
+      "alternativas": [
+        "id: INT, nome: VARCHAR, email: VARCHAR, xp: INT, data_cadastro: DATE",
+        "id: VARCHAR, nome: TEXT, email: TEXT, xp: VARCHAR, data_cadastro: VARCHAR",
+        "id: INT, nome: INT, email: INT, xp: INT, data_cadastro: INT",
+        "id: BOOLEAN, nome: BOOLEAN, email: BOOLEAN, xp: BOOLEAN, data_cadastro: BOOLEAN"
+      ],
+      "correta": "id: INT, nome: VARCHAR, email: VARCHAR, xp: INT, data_cadastro: DATE",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["banco", "modelagem", "tabelas"]
+    },
+    {
+      "id": "bd-2-4",
+      "titulo": "Erro Real: Misturar Tipos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um erro real que acontece em sistemas reais: alguém cria o campo 'valor' como VARCHAR porque 'não sabia o tipo certo'. Depois descobre que não consegue somar, ordenar ou fazer cálculos. No DevEstudos, se o campo 'xp' for VARCHAR, o sistema não consegue calcular o ranking de usuários corretamente — '500' > '1000' em texto porque '5' > '1'!",
+      "pergunta": "O que acontece se você armazenar xp como VARCHAR no DevEstudos?",
+      "alternativas": [
+        "A ordenação vira alfabética: '900' vem antes de '1000' porque '9' > '1'",
+        "Funciona normalmente, texto e número são a mesma coisa",
+        "O banco converte automaticamente",
+        "Não é possível criar a tabela"
+      ],
+      "correta": "A ordenação vira alfabética: '900' vem antes de '1000' porque '9' > '1'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["banco", "erro", "tipos"]
+    },
+    {
+      "id": "bd-2-5",
+      "titulo": "Complete: CREATE TABLE usuarios",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos criar a tabela USUARIOS de verdade. Complete o SQL com os tipos corretos.",
+      "pergunta": "Complete o comando para criar a tabela usuarios:",
+      "codigoInicial": "CREATE TABLE usuarios (\n  id ___,\n  nome VARCHAR(100),\n  email VARCHAR(255),\n  xp ___,\n  data_cadastro ___\n);",
+      "correta": "INT, INT, DATE",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["banco", "sql", "pratica"],
+      "validacao": ""
+    }
+  ]
+}

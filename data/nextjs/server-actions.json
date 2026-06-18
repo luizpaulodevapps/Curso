@@ -1,0 +1,84 @@
+{
+  "id": "next-4",
+  "nome": "Server Actions — Mutação sem API",
+  "descricao": "Funções que rodam no servidor, chamadas direto do formulário. Sem precisar criar endpoint.",
+  "ordem": 4,
+  "duracao": "2 semanas",
+  "projeto": "Submissões de formulário do DevEstudos",
+  "questoes": [
+    {
+      "id": "next-4-1",
+      "titulo": "O que é Server Action?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Server Action = função que roda NO SERVIDOR, chamada diretamente do formulário. 'use server' no topo da função. Não precisa criar API route. É tipo telefonar pra cozinha do restaurante: o garçom não precisa levar o pedido, é direto.",
+      "pergunta": "O que 'use server' faz?",
+      "alternativas": ["Roda no navegador", "Roda no servidor", "Só funciona no Node", "Desabilita JavaScript"],
+      "correta": "Roda no servidor",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["server action", "use server"]
+    },
+    {
+      "id": "next-4-2",
+      "titulo": "Form com Server Action",
+      "tipo": "complete-codigo",
+      "explicacao": "action={criarUsuario} no form chama a server action. Ela recebe FormData automaticamente. formData.get('nome') pega o campo. Tudo server-side.",
+      "pergunta": "Crie server action que recebe formData e loga o nome do campo 'nome'.",
+      "codigoInicial": "async function criarUsuario(formData) {\n  'use server';\n  const nome = formData.get('nome');\n  console.log('Criando usuário:', nome);\n}\n\nfunction FormUsuario() {\n  return <form action={criarUsuario}>\n    <input name=\"nome\" placeholder=\"Nome\" />\n    <button type=\"submit\">Criar</button>\n  </form>;\n}\n",
+      "correta": "async function criarUsuario(formData) {\n  'use server';\n  const nome = formData.get('nome');\n  console.log('Criando usuário:', nome);\n}\n\nfunction FormUsuario() {\n  return <form action={criarUsuario}>\n    <input name=\"nome\" placeholder=\"Nome\" />\n    <button type=\"submit\">Criar</button>\n  </form>;\n}\n\nexport default FormUsuario;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["form", "action"],
+      "validacao": ""
+    },
+    {
+      "id": "next-4-3",
+      "titulo": "Server Action com Banco",
+      "tipo": "multipla-escolha",
+      "explicacao": "Server Actions podem salvar em banco, enviar email, processar pagamento — tudo seguro no servidor, sem expor lógica ao cliente. É tipo caixa do supermercado: você entrega o dinheiro (dados) e a caixa processa (servidor).",
+      "pergunta": "Server Actions rodam onde?",
+      "alternativas": ["No navegador", "No servidor", "Em ambos", "No service worker"],
+      "correta": "No servidor",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["server", "seguranca"]
+    },
+    {
+      "id": "next-4-4",
+      "titulo": "Revalidar Cache",
+      "tipo": "complete-codigo",
+      "explicacao": "revalidatePath('/caminho') limpa o cache daquela página. Útil após server action pra mostrar dados atualizados. É tipo limpar a lousa e escrever de novo com a info correta.",
+      "pergunta": "Adicione revalidatePath('/cursos') após criar curso na server action.",
+      "codigoInicial": "import { revalidatePath } from 'next/cache';\n\nasync function criarCurso(formData) {\n  'use server';\n  const nome = formData.get('nome');\n  // salva no banco...\n  revalidatePath('/cursos');\n}\n",
+      "correta": "import { revalidatePath } from 'next/cache';\n\nasync function criarCurso(formData) {\n  'use server';\n  const nome = formData.get('nome');\n  revalidatePath('/cursos');\n  console.log('Curso criado:', nome);\n}\n\nexport default function Form() {\n  return <form action={criarCurso}>\n    <input name=\"nome\" />\n    <button type=\"submit\">Criar</button>\n  </form>;\n}",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["revalidate", "cache"],
+      "validacao": ""
+    },
+    {
+      "id": "next-4-5",
+      "titulo": "Erro em Server Action",
+      "tipo": "multipla-escolha",
+      "explicacao": "Erros em server action podem ser capturados com try/catch. O erro vai pro cliente. useActionState (React 19) monitora estado: pending, error, data. Ideal pra mostrar feedback visual pro usuário sem estado manual.",
+      "pergunta": "useActionState serve pra monitorar...",
+      "alternativas": ["Rotas", "Estado da server action (carregando, erro, sucesso)", "Server components", "Imagens"],
+      "correta": "Estado da server action (carregando, erro, sucesso)",
+      "xp": 10,
+      "nivel": "avancado",
+      "tags": ["useActionState", "feedback"]
+    },
+    {
+      "id": "next-4-6",
+      "titulo": "Server Action em Arquivo Separado",
+      "tipo": "multipla-escolha",
+      "explicacao": "Server actions podem ficar em arquivo separado com 'use server' no topo do arquivo (todas as funções viram server actions). Ou 'use server' dentro de cada função. Organização: arquivo actions.ts com todas as ações do DevEstudos.",
+      "pergunta": "Onde colocar 'use server' pra marcar o arquivo INTEIRO como server action?",
+      "alternativas": ["Em cada função", "No topo do arquivo", "No componente", "No package.json"],
+      "correta": "No topo do arquivo",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["organizacao", "actions"]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "logica-5",
+  "nome": "Missão 5 — Loops: O Poder da Repetição",
+  "descricao": "for, while, break, continue. Repetindo tarefas sem esforço manual.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Percorrer lista de módulos com loop",
+  "questoes": [
+    {
+      "id": "logica-5-1",
+      "titulo": "Estrutura do for",
+      "tipo": "multipla-escolha",
+      "explicacao": "for tem três partes separadas por ;: inicialização (let i = 0), condição (i < 5), e incremento (i++). É tipo um relógio: começa em 0, enquanto for menor que 5, avança 1 por vez.",
+      "pergunta": "Quantas vezes um for (let i = 0; i < 3; i++) executa o bloco?",
+      "alternativas": ["2", "3", "4", "Infinito"],
+      "correta": "3",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["for", "loop"]
+    },
+    {
+      "id": "logica-5-2",
+      "titulo": "Loop Infinito",
+      "tipo": "multipla-escolha",
+      "explicacao": "Se a condição do loop nunca fica false, ele roda pra sempre — trava o programa! Tipo: for (let i = 0; i >= 0; i++) — i só aumenta, nunca fica menor que 0. Cuidado!",
+      "pergunta": "O que causa um loop infinito?",
+      "alternativas": ["Usar const no loop", "Uma condição que nunca fica false", "Faltar o console.log", "Usar while ao invés de for"],
+      "correta": "Uma condição que nunca fica false",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["loop", "infinito"]
+    },
+    {
+      "id": "logica-5-3",
+      "titulo": "while vs for",
+      "tipo": "multipla-escolha",
+      "explicacao": "for é tipo 'dê 10 voltas na pista' — você sabe quantas repetições. while é tipo 'enquanto tiver fome, continua comendo' — repete enquanto uma condição for verdade, sem saber quantas vezes.",
+      "pergunta": "Quando usar while em vez de for?",
+      "alternativas": ["Sempre", "Quando não sabemos quantas repetições serão necessárias", "Quando sabemos exatamente quantas repetições", "while não existe em JavaScript"],
+      "correta": "Quando não sabemos quantas repetições serão necessárias",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["while", "for", "comparacao"]
+    },
+    {
+      "id": "logica-5-4",
+      "titulo": "break no Loop",
+      "tipo": "multipla-escolha",
+      "explicacao": "break é o 'pode parar' do loop. Tipo: você tá procurando um livro numa estante — assim que achar, pára de procurar. O break sai do loop imediatamente, mesmo se a condição ainda for true.",
+      "pergunta": "O que o 'break' faz dentro de um loop?",
+      "alternativas": ["Pula pra próxima iteração", "Encerra o loop imediatamente", "Reinicia o loop", "Mostra um erro"],
+      "correta": "Encerra o loop imediatamente",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["break", "loop"]
+    },
+    {
+      "id": "logica-5-5",
+      "titulo": "continue no Loop",
+      "tipo": "complete-codigo",
+      "explicacao": "continue pula a iteração atual e vai pra próxima. Tipo: 'pular a música que não gosta' no playlist. O loop continua, só aquela volta específica que é ignorada.",
+      "pergunta": "Use for de 1 a 5. Com if e continue, pule o número 3. Exiba os outros.",
+      "codigoInicial": "for (let i = 1; i <= 5; i++) {\n  if (i === 3) {\n    // complete aqui\n  }\n  console.log(i);\n}",
+      "correta": "for (let i = 1; i <= 5; i++) {\n  if (i === 3) {\n    continue;\n  }\n  console.log(i);\n}",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["continue", "loop", "for"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-5-6",
+      "titulo": "Percorrer Módulos",
+      "tipo": "complete-codigo",
+      "explicacao": "Na vida real, loops servem pra percorrer listas. Dado um array de módulos, use for pra exibir cada um. O length do array diz quantos itens tem. Vá de 0 até length-1.",
+      "pergunta": "Dado const modulos = ['Missão 1', 'Missão 2', 'Missão 3'], exiba cada um usando for.",
+      "codigoInicial": "const modulos = ['Missão 1', 'Missão 2', 'Missão 3'];\nfor (",
+      "correta": "const modulos = ['Missão 1', 'Missão 2', 'Missão 3'];\nfor (let i = 0; i < modulos.length; i++) {\n  console.log(modulos[i]);\n}",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["for", "array", "projeto"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-5-7",
+      "titulo": "Erro Real: O Loop Que Nunca Dorme",
+      "tipo": "multipla-escolha",
+      "explicacao": "O loop for (let i = 0; i >= 0; i++) começa em 0, que é >= 0, então roda. i aumenta pra 1, 2, 3... e sempre será >= 0, então nunca sai. É como um ventilador que você liga e o botão de desligar não funciona — vai girar pra sempre até queimar. A condição precisa poder se tornar falsa em algum momento.",
+      "pergunta": "O navegador travou. O loop nunca termina: for (let i = 0; i >= 0; i++). Onde está o erro?",
+      "alternativas": ["No incremento i++", "Na condição i >= 0 que nunca fica false porque i só aumenta", "Na declaração let i = 0", "Não tem erro, o loop é normal"],
+      "correta": "Na condição i >= 0 que nunca fica false porque i só aumenta",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    }
+  ]
+}

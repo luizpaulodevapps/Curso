@@ -1,0 +1,96 @@
+{
+  "id": "logica-2",
+  "nome": "Missão 2 — Variáveis e Tipos: Os Guardiões da Informação",
+  "descricao": "Variáveis (let/const), tipos de dados (number, string, boolean, null, undefined), typeof. Como guardar informações.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Criar variáveis para dados de usuário do DevEstudos",
+  "questoes": [
+    {
+      "id": "logica-2-1",
+      "titulo": "O que é uma Variável?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Variável é uma caixinha com nome onde você guarda um valor. Tipo uma gaveta etiquetada: você abre a gaveta 'idade', guarda o número 17, e quando precisar, só puxar pela etiqueta.",
+      "pergunta": "O que é uma variável em programação?",
+      "alternativas": ["Um número que nunca muda", "Um espaço na memória com um nome pra guardar valores", "Um tipo de função", "Um erro de sintaxe"],
+      "correta": "Um espaço na memória com um nome pra guardar valores",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["variavel", "conceito"]
+    },
+    {
+      "id": "logica-2-2",
+      "titulo": "Regras de Nomeação",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nomes de variáveis seguem regras: pode usar letras, $, _ e números (mas não no começo). Nada de espaços ou palavras reservadas. camelCase é o padrão no JavaScript.",
+      "pergunta": "Qual desses NÃO é um nome válido de variável?",
+      "alternativas": ["nomeUsuario", "_temp", "2aOpcao", "$preco"],
+      "correta": "2aOpcao",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["nomenclatura", "regras"]
+    },
+    {
+      "id": "logica-2-3",
+      "titulo": "let vs const",
+      "tipo": "multipla-escolha",
+      "explicacao": "let permite trocar o valor depois (reatribuir). const não deixa — é tipo placa de concreto, uma vez colocado, não sai mais. Use const sempre que possível, let só quando precisar mudar.",
+      "pergunta": "Qual palavra-chave cria uma variável que NÃO pode ser reatribuída?",
+      "alternativas": ["let", "const", "var", "function"],
+      "correta": "const",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["let", "const"]
+    },
+    {
+      "id": "logica-2-4",
+      "titulo": "Quatro Tipos Básicos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Os tipos mais comuns: number (números), string (texto entre aspas), boolean (true/false, tipo interruptor), e undefined (variável criada mas sem valor ainda, tipo caixa vazia).",
+      "pergunta": "Qual o tipo do valor 'João' (com aspas)?",
+      "alternativas": ["number", "string", "boolean", "undefined"],
+      "correta": "string",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["string", "tipo"]
+    },
+    {
+      "id": "logica-2-5",
+      "titulo": "typeof na Prática",
+      "tipo": "complete-codigo",
+      "explicacao": "typeof é um detector de tipos. typeof 42 vira 'number', typeof 'Oi' vira 'string'. Útil quando você não tem certeza do que tá lidando.",
+      "pergunta": "Crie uma variável 'nome' com seu nome e exiba o tipo dela usando typeof.",
+      "codigoInicial": "// crie a variavel 'nome' com seu nome\n// exiba o tipo dela",
+      "correta": "let nome = 'João';\nconsole.log(typeof nome);",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["typeof", "tipo"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-2-6",
+      "titulo": "Dados de Usuário DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Vamos criar variáveis para representar um usuário do DevEstudos. Use tipos adequados: string pra nome, number pra idade, boolean pra ativo, null pra avatar (sem foto ainda).",
+      "pergunta": "Crie as variáveis: 'nome' (string), 'idade' (number), 'ativo' (boolean true), 'avatar' (null).",
+      "codigoInicial": "// Crie as variaveis do usuario DevEstudos\nconst nome = ",
+      "correta": "const nome = 'Maria';\nconst idade = 25;\nconst ativo = true;\nconst avatar = null;",
+      "xp": 25,
+      "nivel": "iniciante",
+      "tags": ["variavel", "tipo", "projeto"],
+      "validacao": ""
+    },
+    {
+      "id": "logica-2-7",
+      "titulo": "Erro Real: Soma Virou Concatenação",
+      "tipo": "multipla-escolha",
+      "explicacao": "O JavaScript trata '10' (string) + 5 (number) como concatenação porque um dos operandos é string. É como juntar 'ana' + 'nas' = 'bananas' — ele vê os dois como texto. Pra somar de verdade, converta o string pra número: Number('10') + 5 = 15.",
+      "pergunta": "let total = '10' + 5 resulta em '105' em vez de 15. Por quê?",
+      "alternativas": ["Porque o JavaScript somou errado", "Porque '10' é string, então o + concatenou em vez de somar", "Porque falta ponto e vírgula", "Porque let não permite números"],
+      "correta": "Porque '10' é string, então o + concatenou em vez de somar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["logica", "erro", "debug"]
+    }
+  ]
+}

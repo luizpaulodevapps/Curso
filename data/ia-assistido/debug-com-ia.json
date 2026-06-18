@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-4",
+  "nome": "Debug com IA — Encontrar e Corrigir Erros",
+  "descricao": "Usar o agente para depurar erros, interpretar stack traces e achar bugs.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Debugar um erro no DevEstudos com ajuda do agente",
+  "questoes": [
+    {
+      "id": "ia1-4-1",
+      "titulo": "Cole o Erro Completo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Quando der erro, cole a mensagem COMPLETA com stack trace. O agente lê o stack trace, identifica a linha exata e o tipo do erro. 'TypeError: Cannot read properties of undefined (reading map) em @components/Lista.tsx:23' é muito mais útil que 'deu erro'.",
+      "pergunta": "Qual informação incluir ao pedir ajuda com erro?",
+      "alternativas": [
+        "Mensagem de erro completa com stack trace e o arquivo relevante",
+        "Só 'deu erro'",
+        "Apenas o número da linha",
+        "Foto da tela"
+      ],
+      "correta": "Mensagem de erro completa com stack trace e o arquivo relevante",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["debug", "erro"]
+    },
+    {
+      "id": "ia1-4-2",
+      "titulo": "Atual vs Desejado",
+      "tipo": "multipla-escolha",
+      "explicacao": "'Atualmente X acontece, mas quero que Y aconteça.' Esse padrão dá ao agente o estado atual e o alvo, e ele descobre o caminho entre os dois.",
+      "pergunta": "Qual a estrutura eficaz para pedir correção?",
+      "alternativas": [
+        "'Atualmente [problema], mas quero [comportamento esperado]'",
+        "'Tá bugado, arruma'",
+        "'Isso não funciona'",
+        "'Faz funcionar'"
+      ],
+      "correta": "'Atualmente [problema], mas quero [comportamento esperado]'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["debug", "bug"]
+    },
+    {
+      "id": "ia1-4-3",
+      "titulo": "Console.log no Prompt",
+      "tipo": "multipla-escolha",
+      "explicacao": "Se o erro é lógico (sem mensagem de erro), cole o valor das variáveis no ponto crítico. 'O usuário é', usuário, 'e cursos é', cursos. Mostrar os dados que o código está processando ajuda o agente a ver onde a lógica quebra.",
+      "pergunta": "Como debugar um erro lógico sem mensagem de erro?",
+      "alternativas": [
+        "Mostrar os valores das variáveis no ponto crítico: 'usuário é X, cursos é Y'",
+        "Pedir para o agente adivinhar",
+        "Reescrever o código do zero",
+        "Ignorar o erro"
+      ],
+      "correta": "Mostrar os valores das variáveis no ponto crítico: 'usuário é X, cursos é Y'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["debug", "variaveis"]
+    },
+    {
+      "id": "ia1-4-4",
+      "titulo": "Peça para Explicar o Erro Primeiro",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de pedir correção, peça: 'Explique por que esse erro acontece.' Se o agente explicar corretamente, a correção será boa. Se a explicação for errada, você sabe que não deve aceitar a correção. É um teste de sanidade.",
+      "pergunta": "Por que pedir explicação antes da correção?",
+      "alternativas": [
+        "Para verificar se o agente entendeu o erro antes de sugerir correções",
+        "Porque é mais rápido",
+        "Para economizar tokens",
+        "O agente exige explicação"
+      ],
+      "correta": "Para verificar se o agente entendeu o erro antes de sugerir correções",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["debug", "explicacao"]
+    },
+    {
+      "id": "ia1-4-5",
+      "titulo": "Peça Causa Raiz, Não Paliativo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Às vezes o agente sugere um 'gambi' que esconde o erro em vez de corrigi-lo. 'Adicione um if (usuario && usuario.cursos)' trata sintoma, não causa. Peça: 'Qual a causa raiz? Não quero paliativo, quero corrigir a origem.'",
+      "pergunta": "Como pedir uma correção definitiva em vez de paliativa?",
+      "alternativas": [
+        "'Qual a causa raiz? Corrija a origem, não o sintoma'",
+        "'Faz funcionar de qualquer jeito'",
+        "'Só não deixa quebrar'",
+        "'Bota um try catch'"
+      ],
+      "correta": "'Qual a causa raiz? Corrija a origem, não o sintoma'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["debug", "causa-raiz"]
+    },
+    {
+      "id": "ia1-4-6",
+      "titulo": "Practical: Debug no DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "O cálculo de XP está retornando NaN quando o módulo não tem questões.",
+      "pergunta": "Complete o prompt de debug:",
+      "codigoInicial": "Em @lib/calcular-xp.ts:\n\nAtualmente: quando o módulo não tem questões, calcularTotalXp retorna NaN.\n\nDesejado: deve retornar 0 quando não houver questões.\n\n",
+      "correta": "Antes de corrigir, me explique por que NaN acontece.\nNÃO use paliativos. Quero a correção na origem.\nRetorne apenas o diff.",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "debug"],
+      "validacao": ""
+    }
+  ]
+}

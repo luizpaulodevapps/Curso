@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-5",
+  "nome": "Refatoração com IA — Código Limpo e Organizado",
+  "descricao": "Extrair funções, melhorar legibilidade, quebrar arquivos grandes.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Refatorar componentes do DevEstudos",
+  "questoes": [
+    {
+      "id": "ia1-5-1",
+      "titulo": "Objetivo Claro de Refatoração",
+      "tipo": "multipla-escolha",
+      "explicacao": "'Refatora isso' é subjetivo. Seja específico: 'Extraia a validação para hook separado', 'Converta classe para função com hooks', 'Quebre este arquivo de 500 linhas em 3'. O agente segue instruções literais.",
+      "pergunta": "Qual prompt de refatoração é mais eficaz?",
+      "alternativas": [
+        "'Extraia a validação de Form.tsx para hooks/useFormValidation.ts'",
+        "'Refatora esse código'",
+        "'Melhora isso'",
+        "'Deixa bonito'"
+      ],
+      "correta": "'Extraia a validação de Form.tsx para hooks/useFormValidation.ts'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["refatoracao", "objetivo"]
+    },
+    {
+      "id": "ia1-5-2",
+      "titulo": "Extrair sem Quebrar",
+      "tipo": "multipla-escolha",
+      "explicacao": "Ao extrair código, peça: 'Preserve a interface pública. Não mude a assinatura da função original. Apenas mova a lógica interna.' Isso evita que o agente 'melhore' demais e quebre quem chama a função.",
+      "pergunta": "Como garantir que a extração não quebre chamadas existentes?",
+      "alternativas": [
+        "'Preserve a assinatura original. Mova apenas a lógica interna.'",
+        "'Faz o que achar melhor'",
+        "'Refatora mas não muda nada'",
+        "Não tem como garantir"
+      ],
+      "correta": "'Preserve a assinatura original. Mova apenas a lógica interna.'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["refatoracao", "extracao"]
+    },
+    {
+      "id": "ia1-5-3",
+      "titulo": "Quebrar Arquivo Grande",
+      "tipo": "multipla-escolha",
+      "explicacao": "Para quebrar um arquivo de 500 linhas: 'Crie os arquivos A.ts, B.ts, C.ts. Em A.ts coloque as funções de validação. Em B.ts as de formatação. Em C.ts as de API. O arquivo original deve importar dos 3.' Dê o plano antes de executar.",
+      "pergunta": "Qual a melhor abordagem para quebrar um arquivo grande?",
+      "alternativas": [
+        "Dar o plano: 'Crie X.ts com funções de validação, Y.ts com formatação. Original importa de ambos.'",
+        "Pedir 'quebra esse arquivo' e deixar o agente decidir",
+        "Criar os arquivos manualmente vazios",
+        "Manter tudo em um arquivo só"
+      ],
+      "correta": "Dar o plano: 'Crie X.ts com funções de validação, Y.ts com formatação. Original importa de ambos.'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["refatoracao", "divisao"]
+    },
+    {
+      "id": "ia1-5-4",
+      "titulo": "Renomear Variáveis",
+      "tipo": "multipla-escolha",
+      "explicacao": "O agente é excelente para renomear variáveis em massa: 'Renomeie todas as ocorrências de 'd' para 'dados', 'arr' para 'lista', 'fn' para 'funcaoProcessar'. Use replaceAll.' Isso é rápido e consistente.",
+      "pergunta": "Como pedir renomeação consistente de variáveis?",
+      "alternativas": [
+        "'Renomeie 'd' para 'dados', 'arr' para 'lista', 'fn' para 'funcaoProcessar' em todo o arquivo'",
+        "'Melhora os nomes das variáveis'",
+        "'Deixa mais legível'",
+        "Fazer manualmente"
+      ],
+      "correta": "'Renomeie 'd' para 'dados', 'arr' para 'lista', 'fn' para 'funcaoProcessar' em todo o arquivo'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["refatoracao", "renomear"]
+    },
+    {
+      "id": "ia1-5-5",
+      "titulo": "Padronizar Estilo",
+      "tipo": "multipla-escolha",
+      "explicacao": "Peça ao agente para padronizar o código: 'Converta todas as functions para arrow functions. Use early return. Converta if/else para ternary onde couber em 1 linha. Adicione tipos explícitos.' Uma só instrução aplica o padrão no arquivo inteiro.",
+      "pergunta": "Qual instrução padroniza o estilo de um arquivo inteiro?",
+      "alternativas": [
+        "'Converta para arrow functions, early return e tipos explícitos em todo o arquivo'",
+        "'Deixa o código bonito'",
+        "'Padroniza aí'",
+        "'Faz no estilo do projeto'"
+      ],
+      "correta": "'Converta para arrow functions, early return e tipos explícitos em todo o arquivo'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["refatoracao", "padronizacao"]
+    },
+    {
+      "id": "ia1-5-6",
+      "titulo": "Practical: Refatorar Processamento",
+      "tipo": "complete-codigo",
+      "explicacao": "A função processarDados tem 80 linhas. Extraia cada etapa.",
+      "pergunta": "Complete:",
+      "codigoInicial": "Em @src/utils/processamento.ts, processarDados tem 80 linhas.\n\nExtraia: validarDados, transformarDados, calcularTotais, formatarSaida.\n\n",
+      "correta": "Mantenha export apenas em processarDados.\nFunções extraídas: sem export.\nNÃO mude a assinatura de processarDados.\nRetorne apenas o código completo.",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["pratica", "refatoracao"],
+      "validacao": ""
+    }
+  ]
+}

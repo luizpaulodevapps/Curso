@@ -1,0 +1,108 @@
+{
+  "id": "git-7",
+  "nome": "Missão 7 — GitHub Flow: O Fluxo que as Empresas Usam",
+  "descricao": "O padrão de colaboração profissional usado por equipes do mundo todo: feature branch → PR → review → merge.",
+  "ordem": 7,
+  "duracao": "2 horas",
+  "projeto": "Simular o GitHub Flow no DevEstudos",
+  "questoes": [
+    {
+      "id": "git-7-1",
+      "titulo": "O que é GitHub Flow?",
+      "tipo": "multipla-escolha",
+      "explicacao": "GitHub Flow é um modelo simples e eficaz: main está sempre pronta para produção → cria branch para cada feature → abre PR → revisa → faz merge → deleta branch. Isso é o que times de verdade usam no dia a dia. Não tem 'develop' ou 'staging' — só main + branches curtas.",
+      "pergunta": "Qual a regra principal do GitHub Flow sobre a branch main?",
+      "alternativas": [
+        "Main deve estar sempre pronta para produção",
+        "Main só pode ser alterada às sextas-feiras",
+        "Main é apenas para código legado",
+        "Main nunca recebe merge direto"
+      ],
+      "correta": "Main deve estar sempre pronta para produção",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "github-flow"]
+    },
+    {
+      "id": "git-7-2",
+      "titulo": "GitHub Flow vs Git Flow",
+      "tipo": "multipla-escolha",
+      "explicacao": "GitHub Flow é simplificado (main + feature branches). Git Flow é complexo (main, develop, release, hotfix). GitHub Flow é mais usado hoje, especialmente em times pequenos e startups. Git Flow ainda existe em empresas tradicionais. GitHub Flow = agilidade. Git Flow = burocracia.",
+      "pergunta": "Qual a principal diferença do GitHub Flow para o Git Flow?",
+      "alternativas": [
+        "GitHub Flow tem apenas main + feature branches; Git Flow tem develop, release, hotfix",
+        "GitHub Flow usa SVN, Git Flow usa Git",
+        "GitHub Flow é pago, Git Flow é gratuito",
+        "Não há diferença, são sinônimos"
+      ],
+      "correta": "GitHub Flow tem apenas main + feature branches; Git Flow tem develop, release, hotfix",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "github-flow", "git-flow"]
+    },
+    {
+      "id": "git-7-3",
+      "titulo": "Draft PR — Trabalho em Andamento",
+      "tipo": "multipla-escolha",
+      "explicacao": "Draft PR é um PR marcado como 'rascunho'. O código ainda não está pronto para revisão, mas já dá para compartilhar e pedir feedback cedo. Quando estiver pronto, clica em 'Ready for Review'. Draft PR = 'olha só, estou indo por esse caminho, o que acham?'",
+      "pergunta": "Quando usar um Draft PR?",
+      "alternativas": [
+        "Quando o código ainda está em desenvolvimento mas você quer feedback precoce",
+        "Quando o PR está pronto para produção",
+        "Quando o PR tem conflitos de merge",
+        "Apenas para projetos pessoais"
+      ],
+      "correta": "Quando o código ainda está em desenvolvimento mas você quer feedback precoce",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "draft-pr"]
+    },
+    {
+      "id": "git-7-4",
+      "titulo": "Erro Real: PR Aberto para Branch Errada",
+      "tipo": "multipla-escolha",
+      "explicacao": "Você abriu um PR de feature/login para a branch errada, ou esqueceu de selecionar o repositório correto. No GitHub, você pode mudar a branch base do PR editando o título do PR. Basta clicar em 'Edit' ao lado do título e alterar a base. O PR recalcula os diffs automaticamente.",
+      "pergunta": "Como corrigir um PR apontando para a branch errada no GitHub?",
+      "alternativas": [
+        "Editar o PR e alterar a branch base — o GitHub recalcula os diffs",
+        "Fechar o PR e criar um novo do zero",
+        "Fazer merge mesmo na branch errada e corrigir depois",
+        "Deletar o repositório e clonar de novo"
+      ],
+      "correta": "Editar o PR e alterar a branch base — o GitHub recalcula os diffs",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "pr", "erro"]
+    },
+    {
+      "id": "git-7-5",
+      "titulo": "Mantendo a Branch Atualizada",
+      "tipo": "multipla-escolha",
+      "explicacao": "Enquanto você trabalha na sua feature, outras pessoas podem fazer merge na main. Sua branch fica desatualizada. Isso pode causar conflitos. Solução: git merge main (enquanto está na feature) ou git rebase main. Regra de ouro: antes de abrir PR, atualize sua branch contra a main.",
+      "pergunta": "O que fazer antes de abrir um PR para evitar conflitos?",
+      "alternativas": [
+        "Atualizar a feature branch contra a main com merge ou rebase",
+        "Nada, o Git resolve sozinho",
+        "Deletar a branch e começar de novo",
+        "Pedir para outro dev revisar sem atualizar"
+      ],
+      "correta": "Atualizar a feature branch contra a main com merge ou rebase",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "atualizacao", "conflito"]
+    },
+    {
+      "id": "git-7-6",
+      "titulo": "Practical: Fluxo GitHub Flow",
+      "tipo": "complete-codigo",
+      "explicacao": "Simule o GitHub Flow completo para a feature 'sistema-de-conquistas'.",
+      "pergunta": "Complete:",
+      "codigoInicial": "# Feature: sistema de conquistas\n\n# 1. Criar branch\n",
+      "correta": "git switch -c feature/sistema-de-conquistas\n\n# 2. Fazer alterações\ngit add .\ngit commit -m 'Adiciona sistema de conquistas com badges'\n\n# 3. Atualizar contra main\ngit switch main\ngit pull origin main\ngit switch feature/sistema-de-conquistas\ngit merge main\n\n# 4. Enviar e abrir PR\ngit push -u origin feature/sistema-de-conquistas\n\n# 5. Após aprovação, merge no GitHub\n# 6. Deletar branch remota e local\ngit switch main\ngit pull origin main\ngit branch -d feature/sistema-de-conquistas",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "github-flow"],
+      "validacao": ""
+    }
+  ]
+}

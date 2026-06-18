@@ -1,0 +1,86 @@
+{
+  "id": "firebase-2",
+  "nome": "Firebase Auth — Login do DevEstudos",
+  "descricao": "Autenticação com email, Google, observer de estado e logout.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Sistema de login do DevEstudos",
+  "questoes": [
+    {
+      "id": "firebase-2-1",
+      "titulo": "Criar Conta",
+      "tipo": "complete-codigo",
+      "explicacao": "createUserWithEmailAndPassword(auth, email, password) cria um usuário novo. Se o email já existir, lança erro 'auth/email-already-in-use'. É tipo fazer cadastro num site: preenche os dados e clica em 'Criar conta'.",
+      "pergunta": "Crie um usuário no DevEstudos com email 'aluno@email.com' e senha '123456'.",
+      "codigoInicial": "import { createUserWithEmailAndPassword } from 'firebase/auth';\nimport { auth } from './firebase';\n\ntry {\n  const cred = await createUserWithEmailAndPassword(auth, 'aluno@email.com', '123456');\n  console.log('Conta criada:', cred.user.email);\n} catch (err) {\n  console.error('Erro:', err.message);\n}\n",
+      "correta": "import { createUserWithEmailAndPassword } from 'firebase/auth';\nimport { auth } from './firebase';\n\ntry {\n  const cred = await createUserWithEmailAndPassword(auth, 'aluno@email.com', '123456');\n  console.log('Conta criada:', cred.user.email);\n} catch (err) {\n  console.error('Erro:', err.message);\n}",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["createUser", "cadastro"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-2-2",
+      "titulo": "Login com Email",
+      "tipo": "complete-codigo",
+      "explicacao": "signInWithEmailAndPassword(auth, email, password) autentica o usuário. Retorna um UserCredential com user e token. Se senha errada, erro 'auth/wrong-password'. É tipo mostrar a carteirinha na portaria: 'pode entrar'.",
+      "pergunta": "Faça login no DevEstudos com email 'aluno@email.com' e senha '123456'.",
+      "codigoInicial": "import { signInWithEmailAndPassword } from 'firebase/auth';\nimport { auth } from './firebase';\n\ntry {\n  const cred = await signInWithEmailAndPassword(auth, 'aluno@email.com', '123456');\n  console.log('Logado:', cred.user.email);\n} catch (err) {\n  console.error('Erro:', err.message);\n}\n",
+      "correta": "import { signInWithEmailAndPassword } from 'firebase/auth';\nimport { auth } from './firebase';\n\ntry {\n  const cred = await signInWithEmailAndPassword(auth, 'aluno@email.com', '123456');\n  console.log('Logado:', cred.user.email);\n} catch (err) {\n  console.error('Erro:', err.message);\n}",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["signIn", "login"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-2-3",
+      "titulo": "Login com Google",
+      "tipo": "multipla-escolha",
+      "explicacao": "signInWithPopup(auth, googleProvider) abre janela do Google pro usuário escolher a conta. O Firebase cuida do token OAuth. Depois de autorizar, o usuário está autenticado. É tipo 'Entrar com Google' — um clique e pronto.",
+      "pergunta": "Qual provedor usar pra login com Google no Firebase Auth?",
+      "alternativas": ["GoogleAuthProvider()", "FacebookAuthProvider()", "GithubAuthProvider()", "EmailAuthProvider()"],
+      "correta": "GoogleAuthProvider()",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["google", "oauth"]
+    },
+    {
+      "id": "firebase-2-4",
+      "titulo": "Observer de Auth",
+      "tipo": "complete-codigo",
+      "explicacao": "onAuthStateChanged(auth, callback) roda sempre que o estado de login muda. É o jeito certo de controlar rotas: se user existe, mostra o app; se não, redireciona pro login. É tipo sensor de presença que acende a luz quando você entra.",
+      "pergunta": "Use onAuthStateChanged pra mostrar 'Bem-vindo, email' se logado ou 'Não logado' se não.",
+      "codigoInicial": "import { onAuthStateChanged } from 'firebase/auth';\nimport { auth } from './firebase';\n\nonAuthStateChanged(auth, (user) => {\n  if (user) {\n    console.log('Bem-vindo,', user.email);\n  } else {\n    console.log('Não logado');\n  }\n});\n",
+      "correta": "import { onAuthStateChanged } from 'firebase/auth';\nimport { auth } from './firebase';\n\nonAuthStateChanged(auth, (user) => {\n  if (user) {\n    console.log('Bem-vindo,', user.email);\n  } else {\n    console.log('Não logado');\n  }\n});",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["onAuthStateChanged", "observer"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-2-5",
+      "titulo": "Logout",
+      "tipo": "complete-codigo",
+      "explicacao": "signOut(auth) desloga o usuário. O onAuthStateChanged detecta e roda com user = null. É tipo 'sair do sistema' — limpa a sessão e volta pra tela de login.",
+      "pergunta": "Execute logout e exiba 'Usuário deslogado'.",
+      "codigoInicial": "import { signOut } from 'firebase/auth';\nimport { auth } from './firebase';\n\nawait signOut(auth);\n",
+      "correta": "import { signOut } from 'firebase/auth';\nimport { auth } from './firebase';\n\nawait signOut(auth);\nconsole.log('Usuário deslogado');",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["signOut", "logout"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-2-6",
+      "titulo": "Estado de Auth no App",
+      "tipo": "multipla-escolha",
+      "explicacao": "A melhor prática é criar um AuthContext com React que expõe user e loading. O provedor usa onAuthStateChanged internamente. Assim qualquer componente sabe se o usuário tá logado sem repetir código. É tipo disjuntor geral: controla a energia de toda a casa.",
+      "pergunta": "Qual a melhor forma de compartilhar o estado de auth no app?",
+      "alternativas": ["Passar por props em cada página", "Salvar no localStorage", "Context API + onAuthStateChanged", "Chamar getAuth toda vez"],
+      "correta": "Context API + onAuthStateChanged",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["context", "estado-global"]
+    }
+  ]
+}

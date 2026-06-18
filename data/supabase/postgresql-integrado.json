@@ -1,0 +1,103 @@
+{
+  "id": "supa-2",
+  "nome": "Missão 2 — PostgreSQL Integrado",
+  "descricao": "Gerenciando bancos PostgreSQL dentro do Supabase.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Modelar o banco de dados do DevEstudos usando SQL Editor e Table Editor",
+  "questoes": [
+    {
+      "id": "supa-2-1",
+      "titulo": "Table Editor vs SQL Editor",
+      "tipo": "multipla-escolha",
+      "explicacao": "Table Editor é visual (arrastar e soltar). SQL Editor é raw (escrever SQL puro). Os dois alteram o mesmo banco.",
+      "pergunta": "Qual a diferença entre Table Editor e SQL Editor no Supabase Dashboard?",
+      "alternativas": [
+        "Table Editor é visual; SQL Editor é para comandos SQL manuais",
+        "Table Editor cria tabelas temporárias; SQL Editor cria tabelas permanentes",
+        "São a mesma ferramenta com nomes diferentes",
+        "Table Editor só funciona com PostgreSQL 15"
+      ],
+      "correta": "Table Editor é visual; SQL Editor é para comandos SQL manuais",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "postgresql", "dashboard"]
+    },
+    {
+      "id": "supa-2-2",
+      "titulo": "Criando tabelas com SQL",
+      "tipo": "complete-codigo",
+      "explicacao": "No SQL Editor você escreve CREATE TABLE como em qualquer PostgreSQL. O Supabase executa direto no banco.",
+      "pergunta": "Complete o SQL para criar a tabela de cursos do DevEstudos:",
+      "codigoInicial": "CREATE TABLE cursos (\n  id SERIAL PRIMARY KEY,\n  nome VARCHAR(200) ___,\n  descricao ___,\n  created_at TIMESTAMP DEFAULT ___\n);",
+      "codigoCompleto": "CREATE TABLE cursos (\n  id SERIAL PRIMARY KEY,\n  nome VARCHAR(200) NOT NULL,\n  descricao TEXT,\n  created_at TIMESTAMP DEFAULT NOW()\n);",
+      "respostaEsperada": "NOT NULL, TEXT, NOW()",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "sql", "create-table"]
+    },
+    {
+      "id": "supa-2-3",
+      "titulo": "Relacionamentos no Dashboard",
+      "tipo": "multipla-escolha",
+      "explicacao": "O Dashboard mostra graficamente os relacionamentos entre tabelas (foreign keys). Dá pra ver quem é filho de quem.",
+      "pergunta": "Como o Supabase Dashboard representa um relacionamento entre tabelas?",
+      "alternativas": [
+        "Foreign keys são exibidas como linhas conectando tabelas no esquema visual",
+        "Relacionamentos aparecem como JSON na lateral",
+        "Não é possível ver relacionamentos no Dashboard",
+        "Relacionamentos são mostrados apenas no SQL Editor"
+      ],
+      "correta": "Foreign keys são exibidas como linhas conectando tabelas no esquema visual",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["supabase", "relacionamentos", "dashboard"]
+    },
+    {
+      "id": "supa-2-4",
+      "titulo": "Migrations com Prisma/Supabase CLI",
+      "tipo": "multipla-escolha",
+      "explicacao": "Migrations são o histórico de mudanças no banco. Com Supabase CLI ou Prisma, cada alteração vira um arquivo versionado.",
+      "pergunta": "Qual a vantagem de usar migrations em vez de editar tabelas pelo Table Editor?",
+      "alternativas": [
+        "Migrations são versionadas e reproduzíveis em qualquer ambiente",
+        "Table Editor é mais seguro que migrations",
+        "Migrations são mais lentas que edição visual",
+        "Não há diferença prática"
+      ],
+      "correta": "Migrations são versionadas e reproduzíveis em qualquer ambiente",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "migrations", "prisma"]
+    },
+    {
+      "id": "supa-2-5",
+      "titulo": "Erro real: editar sem saber SQL",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "Erro real: usar Table Editor para tudo sem nunca ver o SQL gerado. Quando algo quebra, você não sabe o que aconteceu.",
+      "pergunta": "Usar apenas o Table Editor sem entender o SQL gerado por baixo pode causar problemas difíceis de depurar.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Verdadeiro",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["supabase", "sql", "erro-real"]
+    },
+    {
+      "id": "supa-2-6",
+      "titulo": "Tipos de dados no PostgreSQL",
+      "tipo": "multipla-escolha",
+      "explicacao": "PostgreSQL tem tipos ricos: SERIAL (auto incremento), UUID, JSONB, ARRAY, etc. O Supabase suporta todos.",
+      "pergunta": "Qual tipo PostgreSQL é mais adequado para armazenar tags de um curso (ex: ['react', 'frontend'])?",
+      "alternativas": [
+        "TEXT[] ou JSONB",
+        "VARCHAR",
+        "INTEGER",
+        "BOOLEAN"
+      ],
+      "correta": "TEXT[] ou JSONB",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["postgresql", "data-types"]
+    }
+  ]
+}

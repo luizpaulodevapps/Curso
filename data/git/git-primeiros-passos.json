@@ -1,0 +1,168 @@
+{
+  "id": "git-1",
+  "nome": "Missão 1 — Seu Primeiro Commit",
+  "descricao": "O que é Git, como inicializar um repositório, adicionar arquivos e fazer o primeiro commit.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Iniciar o versionamento do DevEstudos",
+  "questoes": [
+    {
+      "id": "git-1-1",
+      "titulo": "📖 O que é Git?",
+      "tipo": "aula",
+      "explicacao": "Git é a ferramenta que salva o histórico do seu projeto. Cada commit é um ponto de restauração.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["git", "conceito"],
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "valor": "Imagine que você está escrevendo um livro.\n\nTodos os dias você salva uma nova versão:\n\n📄 livro-v1.doc\n📄 livro-v2.doc  \n📄 livro-v3.doc\n\nAgora imagine que seu computador FAZ ISSO AUTOMATICAMENTE para cada arquivo do seu projeto. Cada versão salva é um ponto que você pode visitar de novo."
+        },
+        {
+          "tipo": "texto",
+          "valor": "Git é um sistema de controle de versão.\n\nEle tira 📸 FOTOS (snapshots) do seu projeto em momentos diferentes. Cada foto é um **commit**.\n\nCom Git você pode:\n• Voltar no tempo\n• Ver o que mudou entre versões\n• Trabalhar em paralelo com outras pessoas\n• Nunca perder código"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "bash",
+          "valor": "# O ciclo básico do Git:\ngit init         # Liga o gravador\ngit add .        # Escolhe o que gravar\ngit commit -m \"msg\"  # Tira a foto"
+        },
+        {
+          "tipo": "legenda",
+          "valor": "Não se preocupe em decorar agora. Vamos ver cada comando em detalhe."
+        }
+      ]
+    },
+    {
+      "id": "git-1-2",
+      "titulo": "👀 Git Init na Prática",
+      "tipo": "exemplo",
+      "explicacao": "git init cria a pasta .git que guarda todo o histórico do projeto.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["git", "init"],
+      "conteudo": [
+        {
+          "tipo": "texto",
+          "valor": "Vamos ver o git init em ação. Este é o PRIMEIRO comando em qualquer projeto Git."
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "bash",
+          "valor": "# Dentro da pasta do seu projeto:\ncd meu-projeto\ngit init"
+        },
+        {
+          "tipo": "resultado",
+          "valor": "Initialized empty Git repository in /caminho/meu-projeto/.git/"
+        },
+        {
+          "tipo": "texto",
+          "valor": "O que aconteceu? Uma pasta escondida chamada .git foi criada dentro do seu projeto. É lá que o Git guarda TODO o histórico.\n\nAntes do git init:\n📁 meu-projeto/\n    index.html\n    style.css\n\nDepois do git init:\n📁 meu-projeto/\n    📁 .git/          ← NOVA! (histórico do projeto)\n    index.html\n    style.css"
+        }
+      ]
+    },
+    {
+      "id": "git-1-3",
+      "titulo": "O que é Git?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Git é um sistema de controle de versão. Ele tira fotos (snapshots) do seu projeto em momentos diferentes. Cada foto é um commit. Você pode voltar no tempo, ver o que mudou, e trabalhar em paralelo com outras pessoas sem medo de perder nada.",
+      "pergunta": "O que é um commit no Git?",
+      "alternativas": [
+        "Um snapshot do projeto em um determinado momento",
+        "O nome do arquivo principal do Git",
+        "Um tipo de branch",
+        "Uma ferramenta de deploy"
+      ],
+      "correta": "Um snapshot do projeto em um determinado momento",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "commit"]
+    },
+    {
+      "id": "git-1-4",
+      "titulo": "git init — Nasce um Repositório",
+      "tipo": "multipla-escolha",
+      "explicacao": "git init cria um repositório Git vazio na pasta atual. Ele cria uma pasta .git escondida onde todo o histórico fica salvo. É o primeiro comando em qualquer projeto novo. Pense como ligar o 'gravador' do projeto — antes do init, nada é gravado.",
+      "pergunta": "O que o comando 'git init' faz?",
+      "alternativas": [
+        "Cria um repositório Git vazio na pasta atual",
+        "Baixa um repositório da internet",
+        "Remove o versionamento do projeto",
+        "Mostra o histórico de commits"
+      ],
+      "correta": "Cria um repositório Git vazio na pasta atual",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "init"]
+    },
+    {
+      "id": "git-1-5",
+      "titulo": "git add — O Palco (Staging)",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de fazer um commit, você precisa preparar os arquivos com git add. É como separar as roupas que vão na mala antes de viajar. git add arquivo.js coloca aquele arquivo no 'palco' (staging area). git add . adiciona tudo. Só o que está no staging vai para o próximo commit.",
+      "pergunta": "Qual a função do 'git add'?",
+      "alternativas": [
+        "Adicionar arquivos ao staging area para preparar o próximo commit",
+        "Salvar permanentemente as mudanças",
+        "Criar um novo repositório",
+        "Deletar arquivos do projeto"
+      ],
+      "correta": "Adicionar arquivos ao staging area para preparar o próximo commit",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "add", "staging"]
+    },
+    {
+      "id": "git-1-6",
+      "titulo": "git commit — A Foto",
+      "tipo": "multipla-escolha",
+      "explicacao": "git commit -m 'mensagem' tira a foto do que está no staging. Cada commit tem um hash único (ex: a1b2c3d), um autor, uma data e uma mensagem. A mensagem deve descrever O QUE mudou e POR QUE. 'Corrige bug no cálculo de XP' é melhor que 'arrumei umas coisas'.",
+      "pergunta": "Qual mensagem de commit é mais informativa?",
+      "alternativas": [
+        "'Corrige cálculo de XP quando usuário completa módulo'",
+        "'arrumei'",
+        "'commit'",
+        "'vai'"
+      ],
+      "correta": "'Corrige cálculo de XP quando usuário completa módulo'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "commit"]
+    },
+    {
+      "id": "git-1-7",
+      "titulo": "git status — Como Está o Repositório?",
+      "tipo": "multipla-escolha",
+      "explicacao": "git status mostra: quais arquivos foram modificados, quais estão no staging, quais não estão sendo trackeados. É o comando mais usado do Git. Antes de qualquer operação, digite git status para saber onde você está. É como olhar o espelho antes de sair de casa.",
+      "pergunta": "O que 'git status' mostra?",
+      "alternativas": [
+        "Arquivos modificados, no staging, e não trackeados",
+        "Apenas o último commit",
+        "O conteúdo dos arquivos alterados",
+        "Quem fez o último commit"
+      ],
+      "correta": "Arquivos modificados, no staging, e não trackeados",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "status"]
+    },
+    {
+      "id": "git-1-8",
+      "titulo": "Practical: Fluxo Básico",
+      "tipo": "complete-codigo",
+      "explicacao": "Complete a sequência de comandos para versionar o DevEstudos.",
+      "pergunta": "Complete a sequência:",
+      "codigoInicial": "# Na pasta do DevEstudos:\ngit init\n",
+      "correta": "git add .\ngit commit -m 'Inicializa projeto DevEstudos'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["pratica", "fluxo"],
+      "validacao": ""
+    }
+  ]
+}

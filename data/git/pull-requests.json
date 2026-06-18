@@ -1,0 +1,108 @@
+{
+  "id": "git-6",
+  "nome": "Missão 6 — Colaborando com Pull Requests",
+  "descricao": "Pull requests, code review e fluxo de contribuição em equipe.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Fluxo completo de contribuição no DevEstudos",
+  "questoes": [
+    {
+      "id": "git-6-1",
+      "titulo": "O que é um Pull Request?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pull Request (PR) é um pedido para incorporar mudanças de uma branch em outra. No GitHub, você abre um PR, escreve descrição do que mudou, e outros devs revisam antes de aprovar. Não é um comando Git — é uma funcionalidade do GitHub. PR é onde acontece a colaboração: discussão, revisão, ajustes.",
+      "pergunta": "O que é um Pull Request?",
+      "alternativas": [
+        "Um pedido de revisão e incorporação de mudanças via GitHub",
+        "Um comando Git para puxar código",
+        "Uma branch especial",
+        "Uma ferramenta de deploy"
+      ],
+      "correta": "Um pedido de revisão e incorporação de mudanças via GitHub",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "pr", "pull-request"]
+    },
+    {
+      "id": "git-6-2",
+      "titulo": "Fluxo de PR Ideal",
+      "tipo": "multipla-escolha",
+      "explicacao": "1) Cria branch da feature 2) Faz commits 3) git push origin feature/login 4) Abre PR no GitHub 5) Colegas revisam 6) Ajusta se necessário 7) Aprovam 8) Faz merge. O PR pequeno e focado é mais fácil de revisar. Um PR de 5 arquivos é melhor que um de 50.",
+      "pergunta": "Qual o tamanho ideal de um Pull Request?",
+      "alternativas": [
+        "Pequeno e focado em uma única funcionalidade ou correção",
+        "O máximo de mudanças possível para aprovar tudo de uma vez",
+        "Apenas 1 arquivo por PR",
+        "Qualquer tamanho, desde que tenha descrição"
+      ],
+      "correta": "Pequeno e focado em uma única funcionalidade ou correção",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "pr", "fluxo"]
+    },
+    {
+      "id": "git-6-3",
+      "titulo": "Descrição de PR",
+      "tipo": "multipla-escolha",
+      "explicacao": "Um bom PR tem: título claro, descrição do que foi feito, motivo, screenshots (se UI), e links para issues. Exemplo: 'Adiciona sistema de XP — Implementa cálculo de XP por módulo concluído, barra de progresso no perfil, e animação ao ganhar XP. Closes #42.'",
+      "pergunta": "O que NÃO deve faltar em uma descrição de PR?",
+      "alternativas": [
+        "Todas as opções: título claro, descrição, screenshots, links para issues",
+        "Apenas o título",
+        "Só o link da issue",
+        "Código fonte completo no comentário"
+      ],
+      "correta": "Todas as opções: título claro, descrição, screenshots, links para issues",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "pr", "descricao"]
+    },
+    {
+      "id": "git-6-4",
+      "titulo": "Code Review",
+      "tipo": "multipla-escolha",
+      "explicacao": "Code review é quando outro dev olha seu código antes de aprovar. O revisor busca: bugs, segurança, performance, legibilidade, aderência a padrões. Comente com respeito: 'O que achas de extrair essa lógica para uma função?' é melhor que 'Isso tá errado'. Todo mundo erra — review não é competição.",
+      "pergunta": "Qual a melhor forma de dar feedback em um code review?",
+      "alternativas": [
+        "Comentar de forma construtiva: 'Sugiro extrair essa lógica para uma função separada'",
+        "'Isso tá horrível, refaz'",
+        "Apenas aprovar sem ler",
+        "Reescrever o código e mandar no comentário"
+      ],
+      "correta": "Comentar de forma construtiva: 'Sugiro extrair essa lógica para uma função separada'",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "code-review"]
+    },
+    {
+      "id": "git-6-5",
+      "titulo": ".gitignore e Segurança",
+      "tipo": "multipla-escolha",
+      "explicacao": "Nunca commite: .env (senhas e chaves), node_modules/, arquivos de build. Se acidentalmente commiteu um .env, mude as senhas IMEDIATAMENTE — mesmo que remova depois, o histórico do Git ainda tem a informação. Use git filter-repo ou BFG Repo Cleaner para remover do histórico. git filter-branch está obsoleto e não deve mais ser usado.",
+      "pergunta": "O que fazer se você acidentalmente commitar um .env com senhas?",
+      "alternativas": [
+        "Mudar as senhas imediatamente e remover o arquivo do histórico com git filter-branch",
+        "Só remover o arquivo e fazer novo commit",
+        "Ignorar, ninguém vai ver",
+        "Deletar o repositório e começar de novo"
+      ],
+      "correta": "Mudar as senhas imediatamente e remover o arquivo do histórico com git filter-repo ou BFG Repo Cleaner",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "seguranca"]
+    },
+    {
+      "id": "git-6-6",
+      "titulo": "Practical: Fluxo Completo",
+      "tipo": "complete-codigo",
+      "explicacao": "Simule o fluxo completo de uma contribuição: branch, commits, push, PR.",
+      "pergunta": "Complete o fluxo de contribuição:",
+      "codigoInicial": "# 1. Criar branch para a feature\n",
+      "correta": "git switch -c feature/adiciona-sistema-xp\n\n# 2. Fazer alterações e commitar\ngit add .\ngit commit -m 'Adiciona cálculo de XP e barra de progresso'\n\n# 3. Enviar para o GitHub\ngit push -u origin feature/adiciona-sistema-xp\n\n# 4. Abrir Pull Request no GitHub via interface web\n# 5. Após aprovação, fazer merge no GitHub\n# 6. Voltar para main e atualizar localmente\ngit switch main\ngit pull origin main",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "fluxo-completo"],
+      "validacao": ""
+    }
+  ]
+}

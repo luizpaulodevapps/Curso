@@ -1,0 +1,112 @@
+{
+  "id": "arq-saas-6",
+  "nome": "Missão 6 — Billing: Pagamentos, Webhooks e Ciclo de Cobrança",
+  "descricao": "Integração com Stripe/Mercado Pago e gestão de assinaturas.",
+  "ordem": 6,
+  "duracao": "2 horas",
+  "projeto": "Integrar pagamento no DevEstudos",
+  "questoes": [
+    {
+      "id": "arq-saas-6-1",
+      "titulo": "Gateway de pagamento",
+      "tipo": "multipla-escolha",
+      "explicacao": "Gateway é o intermediário entre seu SaaS e o cartão do cliente. Stripe, Mercado Pago, PagSeguro. Você nunca toca no número do cartão — o gateway cuida da segurança (PCI Compliance). É como um caixa de loja: você só ouve 'aprovado' ou 'recusado', não vê a senha do cliente.",
+      "pergunta": "Por que um SaaS deve usar um gateway de pagamento em vez de processar cartões diretamente?",
+      "alternativas": [
+        "Gateways são mais baratos",
+        "Para não precisar de certificação PCI Compliance (segurança de dados de cartão)",
+        "Gateways são mais rápidos",
+        "Para evitar integração com banco"
+      ],
+      "correta": "Para não precisar de certificação PCI Compliance (segurança de dados de cartão)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["gateway", "pagamento", "stripe", "pci"]
+    },
+    {
+      "id": "arq-saas-6-2",
+      "titulo": "Webhooks de pagamento",
+      "tipo": "multipla-escolha",
+      "explicacao": "Webhook é o gateway batendo na sua porta pra avisar: 'pagamento aprovado!', 'assinatura cancelada!', 'cartão recusado!'. Seu backend precisa ter uma rota que escuta esses eventos. É o carteiro entregando uma correspondência — você precisa estar em casa pra receber.",
+      "pergunta": "O que acontece se o backend do DevEstudos estiver offline quando um webhook de pagamento for disparado?",
+      "alternativas": [
+        "O pagamento é cancelado automaticamente",
+        "O gateway tenta novamente em intervalos (retry) por alguns dias",
+        "O cliente perde o dinheiro",
+        "O webhook é perdido permanentemente"
+      ],
+      "correta": "O gateway tenta novamente em intervalos (retry) por alguns dias",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["webhook", "pagamento", "stripe"]
+    },
+    {
+      "id": "arq-saas-6-3",
+      "titulo": "Ciclo de cobrança",
+      "tipo": "multipla-escolha",
+      "explicacao": "Mensal vs Anual: mensal é pagar o aluguel todo mês, anual é pagar o ano inteiro com desconto. Mês fecha, gateway cobra de novo. Se o cartão falhar, o sistema tenta de novo (dunning) antes de cancelar.",
+      "pergunta": "Qual a vantagem do plano anual sobre o mensal para o SaaS?",
+      "alternativas": [
+        "Menos código pra implementar",
+        "Maior previsibilidade de receita e menor taxa de churn",
+        "O gateway não cobra taxa em planos anuais",
+        "Não precisa de webhook"
+      ],
+      "correta": "Maior previsibilidade de receita e menor taxa de churn",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["cobranca", "ciclo", "anual", "mensal"]
+    },
+    {
+      "id": "arq-saas-6-4",
+      "titulo": "Trials",
+      "tipo": "multipla-escolha",
+      "explicacao": "Trial = período grátis com tudo liberado. 7 dias, 14 dias, 30 dias. No trial, o usuário usa o plano Pro de graça. No fim, vira Pro pagante ou cai pra Free. É como testar um carro por uma semana — se gostar, financia.",
+      "pergunta": "Durante o trial de 14 dias do DevEstudos, qual plano o tenant deve ter?",
+      "alternativas": [
+        "Free com todas as features bloqueadas",
+        "Pro com todos os recursos liberados (inclusive os pagos)",
+        "Um plano especial 'Trial' com limitações próprias",
+        "Enterprise com suporte prioritário"
+      ],
+      "correta": "Pro com todos os recursos liberados (inclusive os pagos)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["trial", "planos", "experiencia"]
+    },
+    {
+      "id": "arq-saas-6-5",
+      "titulo": "Erro real: tratar downgrade como upgrade",
+      "tipo": "desafio-pratico",
+      "explicacao": "Um SaaS de CRM tinha uma função 'atualizarPlano(novoPlano)'. Alguém passou 'free' como novoPlano de um cliente Pro. A função não verificava se o novo plano era maior ou menor — só aplicava. Resultado: cliente Pro perdeu todas as features. Era pra ser um downgrade programado pro fim do mês, mas virou imediato.",
+      "pergunta": "Qual condição faltou na função 'atualizarPlano'?",
+      "alternativas": [
+        "Verificar se o novo plano existe no banco",
+        "Verificar se novoPlano é diferente do plano atual",
+        "Verificar se novoPlano tem prioridade maior ou menor que o plano atual, e tratar upgrade e downgrade de forma diferente",
+        "Verificar se o usuário é admin"
+      ],
+      "correta": "Verificar se novoPlano tem prioridade maior ou menor que o plano atual, e tratar upgrade e downgrade de forma diferente",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["erro-real", "downgrade", "upgrade", "logica"]
+    },
+    {
+      "id": "arq-saas-6-6",
+      "titulo": "Cancelamento e retenção",
+      "tipo": "multipla-escolha",
+      "explicacao": "Cancelamento: oferecer downgrade pra Free em vez de cancelar de vez. 'Não quer nos pagar? Sem problemas, continua usando de graça com limites.' É melhor ter um usuário Free (que pode voltar a pagar) do que um ex-usuário que nunca mais abre o sistema.",
+      "pergunta": "Qual estratégia de retenção o DevEstudos deve tentar antes de cancelar uma assinatura?",
+      "alternativas": [
+        "Oferecer 50% de desconto por 3 meses",
+        "Oferecer downgrade para o plano Free em vez de cancelamento total",
+        "Bloquear o acesso imediatamente",
+        "Enviar um e-mail de despedida"
+      ],
+      "correta": "Oferecer downgrade para o plano Free em vez de cancelamento total",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["cancelamento", "retencao", "churn"]
+    }
+  ]
+}

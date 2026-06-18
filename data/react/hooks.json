@@ -1,0 +1,83 @@
+{
+  "id": "react-3",
+  "nome": "Hooks — Ganchos do React",
+  "descricao": "useEffect, useRef, useMemo, useCallback. Ferramentas que o React dá pra controlar o componente.",
+  "ordem": 3,
+  "duracao": "2 semanas",
+  "projeto": "Custom hooks para o DevEstudos",
+  "questoes": [
+    {
+      "id": "react-3-1",
+      "titulo": "useEffect - Efeito Colateral",
+      "tipo": "multipla-escolha",
+      "explicacao": "useEffect executa código 'depois que o componente renderizar'. Perfeito pra: buscar dados, inscrever em eventos, manipular DOM. É tipo 'quando terminar de montar o móvel, passa o pano'.",
+      "pergunta": "Quando o useEffect executa?",
+      "alternativas": ["Antes de renderizar", "Depois da renderização", "Durante a renderização", "Só no clique"],
+      "correta": "Depois da renderização",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["useEffect", "efeito"]
+    },
+    {
+      "id": "react-3-2",
+      "titulo": "Dependências do useEffect",
+      "tipo": "multipla-escolha",
+      "explicacao": "O array de dependências controla QUANDO o efeito re-executa. [] = uma vez (montagem). [valor] = quando 'valor' mudar. Sem array = executa em toda renderização (cuidado com loop!). É tipo 'me avise quando isso mudar'.",
+      "pergunta": "Se useEffect tem [], quando executa?",
+      "alternativas": ["A cada render", "Só na montagem do componente", "Nunca", "Só no clique"],
+      "correta": "Só na montagem do componente",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["dependencias", "array"]
+    },
+    {
+      "id": "react-3-3",
+      "titulo": "Cleanup - Limpeza",
+      "tipo": "multipla-escolha",
+      "explicacao": "useEffect pode RETORNAR uma função de limpeza. Executada quando o componente DESMONTAR. Usar pra: cancelar timeout, remover event listener, limpar subscription. É tipo 'apagar as luzes ao sair da sala'.",
+      "pergunta": "A função retornada pelo useEffect é usada pra...",
+      "alternativas": ["Renderizar de novo", "Fazer cleanup quando desmontar", "Atualizar estado", "Buscar dados"],
+      "correta": "Fazer cleanup quando desmontar",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["cleanup", "desmontar"]
+    },
+    {
+      "id": "react-3-4",
+      "titulo": "useRef - Referência",
+      "tipo": "multipla-escolha",
+      "explicacao": "useRef segura uma referência que NÃO causa re-renderização ao mudar. Útil pra: focar input, medir elemento, guardar valor sem causar loop. É tipo 'marcar página com post-it' — você marca mas o livro não reescreve.",
+      "pergunta": "useRef NÃO causa...",
+      "alternativas": ["Renderização quando muda", "Persistência entre renders", "Acesso ao DOM", "Nenhuma das anteriores"],
+      "correta": "Renderização quando muda",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["useRef", "referencia"]
+    },
+    {
+      "id": "react-3-5",
+      "titulo": "Custom Hook",
+      "tipo": "complete-codigo",
+      "explicacao": "Custom Hook = função que começa com 'use' e usa hooks nativos. useLocalStorage, useFetch, useDebounce. Reutiliza lógica entre componentes. É tipo 'receita de bolo' — você cria uma vez, usa em vários lugares. O DevEstudos pode ter useModulos, useProgresso.",
+      "pergunta": "Crie custom hook 'useTitulo' que define document.title com valor passado.",
+      "codigoInicial": "import { useEffect } from 'react';\n\nfunction useTitulo(titulo) {\n  useEffect(() => {\n    document.title = titulo;\n  }, [titulo]);\n}\n\n// Use\nfunction Pagina() {\n  useTitulo('DevEstudos - Home');\n  return <h1>Home</h1>;\n}\n",
+      "correta": "import { useEffect } from 'react';\n\nfunction useTitulo(titulo) {\n  useEffect(() => {\n    document.title = titulo;\n  }, [titulo]);\n}\n\nfunction Pagina() {\n  useTitulo('DevEstudos - Home');\n  return <h1>Home</h1>;\n}\n\nexport default Pagina;",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["custom hook", "hook"],
+      "validacao": ""
+    },
+    {
+      "id": "react-3-6",
+      "titulo": "Regras dos Hooks",
+      "tipo": "multipla-escolha",
+      "explicacao": "Regras: 1) Chame hooks SÓ no top level (não dentro de if/for/funções), 2) Chame SÓ em componentes React ou custom hooks. Violar causa bugs estranhos. É tipo 'lei da física' do React — não negocie.",
+      "pergunta": "Onde NÃO podemos chamar hooks?",
+      "alternativas": ["No topo do componente", "Dentro de um if", "Em custom hooks", "Fora de funções aninhadas? Nenhuma"],
+      "correta": "Dentro de um if",
+      "xp": 10,
+      "nivel": "avancado",
+      "tags": ["regras", "hooks"]
+    }
+  ]
+}

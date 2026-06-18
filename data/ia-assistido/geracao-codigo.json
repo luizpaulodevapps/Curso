@@ -1,0 +1,108 @@
+{
+  "id": "ia-assistido-3",
+  "nome": "Gerando Código Novo com IA",
+  "descricao": "Criar componentes, funções e APIs do zero com a ajuda do agente.",
+  "ordem": 3,
+  "duracao": "2 horas",
+  "projeto": "Gerar um componente DataTable para o DevEstudos",
+  "questoes": [
+    {
+      "id": "ia1-3-1",
+      "titulo": "Informe o Contexto do Projeto",
+      "tipo": "multipla-escolha",
+      "explicacao": "Antes de pedir código, conte onde está: 'Next.js 16, App Router, Tailwind v4, TypeScript'. Sem isso, o agente pode gerar com bibliotecas que você não usa.",
+      "pergunta": "Por que informar o contexto do projeto antes de pedir código novo?",
+      "alternativas": [
+        "Para o agente gerar código compatível com as tecnologias do projeto",
+        "Para o agente saber o nome do projeto",
+        "Porque o agente se recusa a trabalhar sem contexto",
+        "Para aumentar a janela de contexto"
+      ],
+      "correta": "Para o agente gerar código compatível com as tecnologias do projeto",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["contexto", "geracao"]
+    },
+    {
+      "id": "ia1-3-2",
+      "titulo": "Escopo Exato",
+      "tipo": "multipla-escolha",
+      "explicacao": "'Crie um formulário de login' é vago. Especifique: campos, validação, ações, destino. 'Crie um formulário de login com email validado, senha com toggle, loading no botão, link para cadastro, Server Actions, redirect para dashboard.'",
+      "pergunta": "Qual prompt gera o código mais alinhado?",
+      "alternativas": [
+        "'Crie formulário de login com email validado, senha com toggle, loading no botão, link para /cadastro, Server Actions, redirect /dashboard'",
+        "'Faz uma tela de login'",
+        "'Preciso de login'",
+        "'Cria o auth'"
+      ],
+      "correta": "'Crie formulário de login com email validado, senha com toggle, loading no botão, link para /cadastro, Server Actions, redirect /dashboard'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["escopo", "precisao"]
+    },
+    {
+      "id": "ia1-3-3",
+      "titulo": "Peça Código + Testes Junto",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pedir código e testes no mesmo prompt alinha os dois. 'Crie uma função formatCurrency que formata BRL. Inclua testes vitest para: inteiro, decimal, zero, negativo.'",
+      "pergunta": "Qual a vantagem de pedir código e testes no mesmo prompt?",
+      "alternativas": [
+        "O agente gera código e testes alinhados, economizando iterações",
+        "Não há vantagem",
+        "O código fica mais lento",
+        "Os testes ficam mais complexos"
+      ],
+      "correta": "O agente gera código e testes alinhados, economizando iterações",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["testes", "geracao"]
+    },
+    {
+      "id": "ia1-3-4",
+      "titulo": "Especifique o Caminho",
+      "tipo": "multipla-escolha",
+      "explicacao": "'Crie @components/ui/Modal.tsx' diz exatamente onde criar. Evita que o agente coloque o arquivo na raiz ou em pasta aleatória.",
+      "pergunta": "Como especificar onde criar um novo arquivo?",
+      "alternativas": [
+        "Usando @src/components/MeuComponente.tsx ou escrevendo o caminho completo no prompt",
+        "Criando manualmente e pedindo para preencher",
+        "O agente sempre acerta o local automaticamente",
+        "Não precisa, o agente descobre"
+      ],
+      "correta": "Usando @src/components/MeuComponente.tsx ou escrevendo o caminho completo no prompt",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["caminho", "arquivo"]
+    },
+    {
+      "id": "ia1-3-5",
+      "titulo": "Restrições Evitam Código Morto",
+      "tipo": "multipla-escolha",
+      "explicacao": "Sem restrições, o agente adiciona imports desnecessários, funções extras, comentários. Peça: 'Apenas o essencial. Sem funções extras. Sem comentários.'",
+      "pergunta": "Como evitar funcionalidades não solicitadas?",
+      "alternativas": [
+        "Especificando restrições claras: 'Apenas o essencial, sem funções extras'",
+        "Não tem como evitar",
+        "Deletando manualmente depois",
+        "Usando outro modelo"
+      ],
+      "correta": "Especificando restrições claras: 'Apenas o essencial, sem funções extras'",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["restricoes", "codigo-morto"]
+    },
+    {
+      "id": "ia1-3-6",
+      "titulo": "Practical: DataTable",
+      "tipo": "complete-codigo",
+      "explicacao": "Gere um prompt para criar DataTable com ordenação.",
+      "pergunta": "Complete:",
+      "codigoInicial": "Estamos em Next.js 16, Tailwind v4, TypeScript.\n\nCrie @components/ui/DataTable.tsx que:\n1. Recebe { dados: T[], colunas: Coluna[] }\n2. Renderiza tabela responsiva\n3. Ordena ao clicar no cabeçalho\n4. Linhas zebradas\n\nRetorne apenas o código.\n\n",
+      "correta": "Inclua interface Coluna. Use generics para T.\nNÃO use bibliotecas externas.\nNÃO adicione paginação.",
+      "xp": 20,
+      "nivel": "intermediario",
+      "tags": ["pratica", "geracao"],
+      "validacao": ""
+    }
+  ]
+}

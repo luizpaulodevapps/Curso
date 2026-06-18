@@ -1,0 +1,107 @@
+{
+  "id": "es-2",
+  "nome": "Missão 2 — SOLID: Os 5 Mandamentos da Orientação a Objetos",
+  "descricao": "Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion.",
+  "ordem": 2,
+  "duracao": "2 horas",
+  "projeto": "Aplicar SOLID no DevEstudos",
+  "questoes": [
+    {
+      "id": "es-2-1",
+      "titulo": "SRP — Single Responsibility",
+      "tipo": "multipla-escolha",
+      "explicacao": "SRP: uma classe, um motivo pra mudar. Se sua classe 'Usuario' salva no banco, envia e-mail e gera relatório, ela tem 3 motivos pra mudar. Devia ser 3 classes diferentes. É como um canivete suíço que faz tudo, mas faz tudo mal.",
+      "pergunta": "Qual classe viola o SRP?",
+      "alternativas": [
+        "class EmailService { enviar(email) }",
+        "class PedidoService { calcularTotal, salvarPedido, enviarEmailConfirmacao, gerarNotaFiscal }",
+        "class RepositorioDeUsuarios { salvar(usuario) }",
+        "class RelatorioService { gerar(dados) }"
+      ],
+      "correta": "class PedidoService { calcularTotal, salvarPedido, enviarEmailConfirmacao, gerarNotaFiscal }",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["srp", "solid", "responsabilidade"]
+    },
+    {
+      "id": "es-2-2",
+      "titulo": "OCP — Open/Closed",
+      "tipo": "multipla-escolha",
+      "explicacao": "OCP: aberto pra extensão, fechado pra modificação. Em vez de ficar alterando uma classe com ifs pra cada novo tipo, crie uma estrutura que permite ADICIONAR sem MODIFICAR. Tipo uma tomada: você não abre a parede pra ligar um novo aparelho — só pluga.",
+      "pergunta": "Como aplicar OCP em um sistema de cálculo de frete que hoje só tem 'sedex' e 'pac'?",
+      "alternativas": [
+        "Adicionar um if novo no método calcularFrete pra cada transportadora",
+        "Criar uma interface Frete com método calcular() e cada transportadora implementa",
+        "Usar switch case no método principal",
+        "Colocar todas as regras num arquivo de configuração"
+      ],
+      "correta": "Criar uma interface Frete com método calcular() e cada transportadora implementa",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["ocp", "solid", "extensibilidade"]
+    },
+    {
+      "id": "es-2-3",
+      "titulo": "LSP — Liskov Substitution",
+      "tipo": "multipla-escolha",
+      "explicacao": "LSP: se você tem uma classe Pai e uma Filha, dá pra trocar o Pai pela Filha sem quebrar o sistema. O exemplo clássico que VIOLA: Pássaro com método voar(), e Pinguim herda de Pássaro. Pinguim não voa! Se o código espera que todo pássaro voe, pinguim quebra.",
+      "pergunta": "Qual cenário viola o Princípio de Liskov?",
+      "alternativas": [
+        "Retangulo tem setLargura() e setAltura(). Quadrado herda Retangulo e sobrescreve para manter lados iguais.",
+        "Cachorro estende Animal e implementa fazerSom() como 'late'",
+        "Carro implements Veiculo com método acelerar()",
+        "ContaCorrente estende Conta com método sacar()"
+      ],
+      "correta": "Retangulo tem setLargura() e setAltura(). Quadrado herda Retangulo e sobrescreve para manter lados iguais.",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["lsp", "liskov", "solid", "heranca"]
+    },
+    {
+      "id": "es-2-4",
+      "titulo": "ISP — Interface Segregation",
+      "tipo": "verdadeiro-falso",
+      "explicacao": "ISP: melhor várias interfaces específicas que uma interface genérica. Se sua interface Ave tem voar() e nadar(), classes que implementam precisam implementar métodos que não usam. Melhor separar em AveVoadora e AveAquatica.",
+      "pergunta": "ISP defende que uma interface grande e genérica é melhor que várias interfaces pequenas e específicas.",
+      "alternativas": ["Verdadeiro", "Falso"],
+      "correta": "Falso",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["isp", "solid", "interfaces"]
+    },
+    {
+      "id": "es-2-5",
+      "titulo": "DIP — Dependency Inversion",
+      "tipo": "complete-codigo",
+      "explicacao": "DIP: dependa de abstrações, não de implementações. Em vez de 'new PostgreSQL()' dentro da classe, receba uma interface 'BancoDeDados' por parâmetro. Assim você troca PostgreSQL por MySQL sem alterar a classe principal. É como um carregador USB: qualquer fonte USB carrega, não importa a marca.",
+      "pergunta": "Complete o código para aplicar DIP:",
+      "alternativas": [
+        "class UsuarioService { constructor(private repo: IRepositorioUsuarios) {} }",
+        "class UsuarioService { constructor() { this.repo = new RepositorioPostgreSQL() } }",
+        "class UsuarioService { repo = new RepositorioPostgreSQL() }",
+        "class UsuarioService { private repo: any }"
+      ],
+      "correta": "class UsuarioService { constructor(private repo: IRepositorioUsuarios) {} }",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["dip", "solid", "injecao-dependencia"]
+    },
+    {
+      "id": "es-2-6",
+      "titulo": "Erro real: God Object",
+      "tipo": "desafio-pratico",
+      "explicacao": "Um sistema real tinha uma classe 'Gerenciador' que fazia TUDO: autenticação, cálculo de nota fiscal, envio de e-mail, geração de relatório, conexão com banco, validação de dados. 5000 linhas. Qualquer bug virava pesadelo. Qualquer mudança quebrava algo inesperado. Violava SRP descaradamente.",
+      "pergunta": "Qual princípio SOLID a classe 'Gerenciador' violava mais gravemente?",
+      "alternativas": [
+        "DIP (Dependency Inversion)",
+        "LSP (Liskov Substitution)",
+        "SRP (Single Responsibility)",
+        "ISP (Interface Segregation)"
+      ],
+      "correta": "SRP (Single Responsibility)",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["erro-real", "god-object", "srp", "solid"]
+    }
+  ]
+}

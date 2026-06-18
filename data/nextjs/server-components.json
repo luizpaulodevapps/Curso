@@ -1,0 +1,83 @@
+{
+  "id": "next-3",
+  "nome": "Server Components — React sem JavaScript no Cliente",
+  "descricao": "Componentes que rodam no servidor. Menos JS pro navegador, mais performance.",
+  "ordem": 3,
+  "duracao": "2 semanas",
+  "projeto": "Páginas server-rendered do DevEstudos",
+  "questoes": [
+    {
+      "id": "next-3-1",
+      "titulo": "Client vs Server",
+      "tipo": "multipla-escolha",
+      "explicacao": "Server Component = executa NO SERVIDOR, manda HTML pro cliente. Client Component = executa no NAVEGADOR (tem interatividade). Por padrão, TODO componente no Next.js é Server Component. 'use client' no topo vira Client. É tipo: comida congelada (pronta no server) vs pizza montada na hora (interativa no client).",
+      "pergunta": "O que 'use client' faz?",
+      "alternativas": ["Marca como server component", "Marca como client component", "Importa CSS", "Desativa JavaScript"],
+      "correta": "Marca como client component",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["server", "client"]
+    },
+    {
+      "id": "next-3-2",
+      "titulo": "Server Component - Dados",
+      "tipo": "complete-codigo",
+      "explicacao": "Server component pode ser async e buscar dados DIRETO, sem useEffect. O código NUNCA vai pro navegador. É tipo cozinha do restaurante: os ingredientes (dados) são preparados lá atrás, o cliente só vê o prato pronto.",
+      "pergunta": "Crie server component async que busca usuários e renderiza lista.",
+      "codigoInicial": "export default async function ListaUsuarios() {\n  const res = await fetch('https://jsonplaceholder.typicode.com/users');\n  const usuarios = await res.json();\n  \n  return <ul>\n    {usuarios.map(u => <li key={u.id}>{u.name}</li>)}\n  </ul>;\n}\n",
+      "correta": "export default async function ListaUsuarios() {\n  const res = await fetch('https://jsonplaceholder.typicode.com/users');\n  const usuarios = await res.json();\n  \n  return <ul>\n    {usuarios.map(u => <li key={u.id}>{u.name}</li>)}\n  </ul>;\n}",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["server", "async"],
+      "validacao": ""
+    },
+    {
+      "id": "next-3-3",
+      "titulo": "Cliente precisa de 'use client'",
+      "tipo": "multipla-escolha",
+      "explicacao": "Componentes que usam useState, useEffect, onClick, onChange PRECISAM ser Client Components. Adicione 'use client' no topo do arquivo. Server components NÃO podem usar hooks — são funções async puras.",
+      "pergunta": "Qual desses PRECISA de 'use client'?",
+      "alternativas": ["Componente que busca dados com fetch", "Componente que usa useState", "Componente que renderiza HTML", "Componente com CSS modules"],
+      "correta": "Componente que usa useState",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["use client", "hooks"]
+    },
+    {
+      "id": "next-3-4",
+      "titulo": "Cache de fetch",
+      "tipo": "multipla-escolha",
+      "explicacao": "fetch em Server Components é CACHEADO automático. O Next guarda o resultado e reusa. cache: 'no-store' desativa cache (dados em tempo real). É tipo: receita que você já fez e guardou na gaveta (cache) vs fazer do zero toda vez.",
+      "pergunta": "Como desativar cache num fetch de server component?",
+      "alternativas": ["cache: false", "cache: 'no-store'", "{cached: false}", "É obrigatório cache"],
+      "correta": "cache: 'no-store'",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["cache", "fetch"]
+    },
+    {
+      "id": "next-3-5",
+      "titulo": "Streaming - Carregar aos Poucos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Streaming = o servidor manda partes da página conforme ficam prontas. loading.tsx + Suspense mostram 'esqueleto' enquanto carrega. É tipo Netflix: o filme começa a tocar mesmo carregando o resto.",
+      "pergunta": "Streaming no Next.js serve pra...",
+      "alternativas": ["Acelerar o servidor", "Mostrar partes da página conforme carregam", "Bloquear tudo até carregar", "Compactar imagens"],
+      "correta": "Mostrar partes da página conforme carregam",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["streaming", "loading"]
+    },
+    {
+      "id": "next-3-6",
+      "titulo": "Async Component com Tipagem",
+      "tipo": "multipla-escolha",
+      "explicacao": "Server components async precisam tipar o retorno como Promise<JSX.Element> ou deixar o TypeScript inferir. O Next.js trata componentes async automaticamente — você só precisa do async e await no fetch.",
+      "pergunta": "Server components async retornam...",
+      "alternativas": ["void", "Promise de JSX", "null", "Um objeto"],
+      "correta": "Promise de JSX",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["async", "typescript"]
+    }
+  ]
+}

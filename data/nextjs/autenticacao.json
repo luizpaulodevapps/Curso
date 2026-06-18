@@ -1,0 +1,84 @@
+{
+  "id": "next-5",
+  "nome": "Autenticação Next.js — Login de Verdade",
+  "descricao": "NextAuth, middleware, login com GitHub/Google.",
+  "ordem": 5,
+  "duracao": "2 semanas",
+  "projeto": "Sistema de autenticação do DevEstudos",
+  "questoes": [
+    {
+      "id": "next-5-1",
+      "titulo": "Por que Autenticar?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Autenticação verifica QUEM é o usuário. Autorização verifica o que ele PODE fazer. Login = identificação. Sem autenticação, qualquer um acessa qualquer coisa. É tipo porteiro de prédio: 'quem é você?' e 'pode entrar?'.",
+      "pergunta": "Qual a diferença de autenticação pra autorização?",
+      "alternativas": ["São a mesma coisa", "Autenticação = quem é, Autorização = o que pode fazer", "Autenticação = senha, Autorização = email", "Nenhuma"],
+      "correta": "Autenticação = quem é, Autorização = o que pode fazer",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["auth", "seguranca"]
+    },
+    {
+      "id": "next-5-2",
+      "titulo": "NextAuth (Auth.js)",
+      "tipo": "multipla-escolha",
+      "explicacao": "NextAuth/Auth.js é a lib pronta pra autenticação em Next. Suporta Google, GitHub, email, credenciais. Providers = 'portas de entrada' (Google, GitHub...). É tipo ter várias catracas diferentes no mesmo estádio.",
+      "pergunta": "No NextAuth, um 'provider' é...",
+      "alternativas": ["Um usuário", "Uma forma de login (Google, GitHub)", "Um banco de dados", "Um componente"],
+      "correta": "Uma forma de login (Google, GitHub)",
+      "xp": 5,
+      "nivel": "intermediario",
+      "tags": ["nextauth", "provider"]
+    },
+    {
+      "id": "next-5-3",
+      "titulo": "Middleware - Proteger Rotas",
+      "tipo": "multipla-escolha",
+      "explicacao": "middleware.ts intercepta requisições ANTES de chegar na página. Se não tiver sessão, redireciona pro login. É tipo segurança de shopping: verifica sua bolsa antes de entrar na loja.",
+      "pergunta": "O middleware no Next.js executa quando?",
+      "alternativas": ["Depois da página carregar", "Antes da requisição chegar na página", "Só em server actions", "Só em produção"],
+      "correta": "Antes da requisição chegar na página",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["middleware", "protecao"]
+    },
+    {
+      "id": "next-5-4",
+      "titulo": "useSession - Sessão no Cliente",
+      "tipo": "complete-codigo",
+      "explicacao": "useSession() do NextAuth retorna {data: session, status}. Session tem user, email, imagem. Status: 'loading', 'authenticated', 'unauthenticated'. É tipo 'carteirinha' que prova que você tá logado.",
+      "pergunta": "Mostre 'Olá, EMAIL' se logado, senão 'Deslogado' com useSession.",
+      "codigoInicial": "import { useSession } from 'next-auth/react';\n\nfunction Perfil() {\n  const { data: session, status } = useSession();\n  \n  if (status === 'loading') return <p>Carregando...</p>;\n  if (session) return <p>Olá, {session.user.email}</p>;\n  return <p>Deslogado</p>;\n}\n",
+      "correta": "import { useSession } from 'next-auth/react';\n\nfunction Perfil() {\n  const { data: session, status } = useSession();\n  \n  if (status === 'loading') return <p>Carregando...</p>;\n  if (session) return <p>Olá, {session.user.email}</p>;\n  return <p>Deslogado</p>;\n}\n\nexport default Perfil;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["session", "auth"],
+      "validacao": ""
+    },
+    {
+      "id": "next-5-5",
+      "titulo": "Proteger API Route",
+      "tipo": "multipla-escolha",
+      "explicacao": "API Routes também precisam de proteção. Dentro da route, chama getServerSession() pra verificar se tem sessão. Se não tiver, retorna 401. É tipo 'entrada de funcionários' — só quem tem crachá passa.",
+      "pergunta": "Como proteger uma API route no Next.js?",
+      "alternativas": ["Com middleware", "Com getServerSession() dentro da route", "Só com localStorage", "Não precisa"],
+      "correta": "Com getServerSession() dentro da route",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["api route", "protecao"]
+    },
+    {
+      "id": "next-5-6",
+      "titulo": "SignIn e SignOut",
+      "tipo": "complete-codigo",
+      "explicacao": "signIn('github') redireciona pro login do GitHub. signOut() desloga. Pronto. NextAuth cuida do resto (redirecionamento, token, sessão). É tipo 'entrar com Google' da vida: clicou, logou.",
+      "pergunta": "Crie botões: 'Entrar com GitHub' (signIn) e 'Sair' (signOut).",
+      "codigoInicial": "import { signIn, signOut, useSession } from 'next-auth/react';\n\nfunction Auth() {\n  const { data: session } = useSession();\n  \n  if (session) {\n    return <button onClick={() => signOut()}>Sair</button>;\n  }\n  \n  return <button onClick={() => signIn('github')}>Entrar com GitHub</button>;\n}\n",
+      "correta": "import { signIn, signOut, useSession } from 'next-auth/react';\n\nfunction Auth() {\n  const { data: session } = useSession();\n  \n  if (session) {\n    return <button onClick={() => signOut()}>Sair</button>;\n  }\n  \n  return <button onClick={() => signIn('github')}>Entrar com GitHub</button>;\n}\n\nexport default Auth;",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["signin", "signout"],
+      "validacao": ""
+    }
+  ]
+}

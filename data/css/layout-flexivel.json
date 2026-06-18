@@ -1,0 +1,102 @@
+{
+  "id": "css-4",
+  "nome": "Missão 4 — Layout Flexível",
+  "descricao": "Flexbox, grid e organização de páginas. Diga adeus ao posicionamento na base do chute.",
+  "ordem": 4,
+  "duracao": "2 horas",
+  "projeto": "Layout flexível com Flexbox",
+  "questoes": [
+    {
+      "id": "css-4-1",
+      "titulo": "O Poder do Flex",
+      "tipo": "multipla-escolha",
+      "explicacao": "display: flex transforma o elemento em um contêiner flexível. Os filhos desse contêiner se alinham automaticamente em linha ou coluna. É tipo um bando de ímãs: eles se organizam sozinhos, sem você precisar empurrar cada um.",
+      "pergunta": "O que display: flex faz?",
+      "alternativas": ["Esconde o elemento", "Torna o elemento um contêiner flexível", "Deixa o elemento flutuando", "Centraliza tudo"],
+      "correta": "Torna o elemento um contêiner flexível",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["flexbox", "display"]
+    },
+    {
+      "id": "css-4-2",
+      "titulo": "Flex Container",
+      "tipo": "complete-codigo",
+      "explicacao": "display: flex + flex-direction: row (padrão, horizontal) ou column (vertical). Os filhos viram 'flex items' e se alinham automaticamente. É como um varal: a corda (container) segura as roupas (itens) em fila.",
+      "pergunta": "Crie uma .container com display flex e direção horizontal (row), fundo #EEE e gap de 10px.",
+      "codigoInicial": ".container {\n  display: flex;\n  ",
+      "correta": ".container {\n  display: flex;\n  flex-direction: row;\n  background-color: #EEE;\n  gap: 10px;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["flexbox", "flex-direction"]
+    },
+    {
+      "id": "css-4-3",
+      "titulo": "Justificar e Alinhar",
+      "tipo": "multipla-escolha",
+      "explicacao": "justify-content alinha no eixo PRINCIPAL (horizontal se row) — é tipo organizar livros numa estante: no começo (flex-start), no fim (flex-end), no centro (center), ou com espaço entre eles (space-between).",
+      "pergunta": "Qual propriedade centraliza os itens no eixo principal do flex?",
+      "alternativas": ["align-items: center", "justify-content: center", "text-align: center", "flex-align: center"],
+      "correta": "justify-content: center",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["justify-content", "flexbox"]
+    },
+    {
+      "id": "css-4-4",
+      "titulo": "Alinhamento Duplo",
+      "tipo": "complete-codigo",
+      "explicacao": "justify-content = eixo principal, align-items = eixo transversal (vertical se row). justify-content: center + align-items: center centraliza no MEIO exato do contêiner, igual o 'centralizar' do PowerPoint.",
+      "pergunta": "Crie uma .container com flex, 100vh de altura, centralizando os itens no centro (ambos os eixos) e gap 20px.",
+      "codigoInicial": ".container {\n  display: flex;\n  justify-content: center;\n  ",
+      "correta": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  gap: 20px;\n}",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["flexbox", "centralizar"]
+    },
+    {
+      "id": "css-4-5",
+      "titulo": "Quebrando a Linha",
+      "tipo": "multipla-escolha",
+      "explicacao": "flex-wrap: wrap faz os itens quebrarem pra linha de baixo se não couberem. É como texto num balão de fala: quando acaba o espaço na direita, a palavra vai pra linha de baixo. Sem wrap, os itens encolhem pra caber.",
+      "pergunta": "O que flex-wrap: wrap faz?",
+      "alternativas": ["Impede a quebra de linha", "Permite que os itens quebrem pra linha de baixo", "Enrola o texto", "Cria uma grade"],
+      "correta": "Permite que os itens quebrem pra linha de baixo",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["flex-wrap", "quebra"]
+    },
+    {
+      "id": "css-4-6",
+      "titulo": "Layout de Página com Flex",
+      "tipo": "complete-codigo",
+      "explicacao": "Com flexbox dá pra montar layouts completos: header sempre no topo, sidebar na esquerda, conteúdo no centro, footer embaixo. É como montar um móvel: cada peça se encaixa no lugar certo sem força.",
+      "pergunta": "Crie um layout: .header (100px, fundo azul), .main (display flex com sidebar 200px + content flexível) e .footer (80px, fundo cinza).",
+      "codigoInicial": ".header {\n  height: 100px;\n  background: blue;\n}\n.main {\n  display: flex;\n  ",
+      "correta": ".header {\n  height: 100px;\n  background: blue;\n}\n.main {\n  display: flex;\n}\n.sidebar {\n  width: 200px;\n  background: #EEE;\n}\n.content {\n  flex: 1;\n  background: white;\n}\n.footer {\n  height: 80px;\n  background: gray;\n}",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["layout", "flexbox"]
+    },
+    {
+      "id": "css-4-7",
+      "titulo": "Erro Real: Flexbox Sem Quebra",
+      "tipo": "multipla-escolha",
+      "explicacao": "O erro: sem flex-wrap: wrap, o Flexbox tenta encolher todos os itens para caber numa linha só (shrink), em vez de quebrar pra linha de baixo. Solução: adicionar flex-wrap: wrap ao container Flex. Os itens então quebram naturalmente conforme a tela reduz.",
+      "pergunta": "Meus cards em um container display: flex não estão indo para a linha de baixo quando a tela diminui — eles só encolhem. O que falta?",
+      "alternativas": [
+        "justify-content: space-between",
+        "flex-wrap: wrap — sem isso os itens encolhem em vez de quebrar",
+        "align-items: flex-start",
+        "flex-direction: column"
+      ],
+      "correta": "flex-wrap: wrap — sem isso os itens encolhem em vez de quebrar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "flex-wrap"]
+    }
+  ]
+}

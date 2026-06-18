@@ -1,0 +1,108 @@
+{
+  "id": "git-8",
+  "nome": "Missão 8 — Trabalhando com Issues",
+  "descricao": "Criar, organizar e gerenciar issues no GitHub: bugs, features, tasks e epics.",
+  "ordem": 8,
+  "duracao": "2 horas",
+  "projeto": "Criar issues para o DevEstudos no GitHub e vinculá-las a PRs",
+  "questoes": [
+    {
+      "id": "git-8-1",
+      "titulo": "O que é uma Issue?",
+      "tipo": "multipla-escolha",
+      "explicacao": "Issue é uma tarefa no GitHub. Pode ser: Bug (algo quebrado), Feature (algo novo), Task (trabalho técnico), ou Epic (feature grande que vira várias issues). Cada issue tem: título, descrição, labels (etiquetas), assignees (responsáveis), milestone (marco). O time discute e acompanha o progresso ali.",
+      "pergunta": "Qual tipo de issue descreve uma funcionalidade nova?",
+      "alternativas": [
+        "Feature request",
+        "Bug report",
+        "Task",
+        "Epic"
+      ],
+      "correta": "Feature request",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "issues"]
+    },
+    {
+      "id": "git-8-2",
+      "titulo": "Escrevendo uma Boa Issue",
+      "tipo": "multipla-escolha",
+      "explicacao": "Issue boa = título claro + descrição detalhada + passos para reproduzir (se bug) + screenshots + ambiente + expectativa vs realidade. Ex: 'Botão de salvar não funciona — 1. Abrir formulário 2. Preencher dados 3. Clicar em Salvar 4. Nada acontece. Esperado: mostrar toast de sucesso.'",
+      "pergunta": "O que NÃO deve faltar em uma issue de bug?",
+      "alternativas": [
+        "Passos para reproduzir, comportamento atual vs esperado, screenshots",
+        "Apenas o título",
+        "O código corrigido",
+        "O nome do desenvolvedor que causou o bug"
+      ],
+      "correta": "Passos para reproduzir, comportamento atual vs esperado, screenshots",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "issues", "bug"]
+    },
+    {
+      "id": "git-8-3",
+      "titulo": "Vinculando Issue ao PR",
+      "tipo": "multipla-escolha",
+      "explicacao": "No corpo do PR, escreva 'Closes #42' ou 'Fixes #42' (42 é o número da issue). Quando o PR for mergeado, a issue é fechada automaticamente. Isso conecta o código à tarefa. Projetos sérios usam isso — todo PR deve referenciar pelo menos uma issue.",
+      "pergunta": "Como vincular um PR a uma issue para que ela feche automaticamente?",
+      "alternativas": [
+        "Escrever 'Closes #42' na descrição do PR",
+        "Mencionar a issue em um comentário qualquer",
+        "Não precisa, o GitHub vincula automaticamente",
+        "Criar uma label especial"
+      ],
+      "correta": "Escrever 'Closes #42' na descrição do PR",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "issues", "pr"]
+    },
+    {
+      "id": "git-8-4",
+      "titulo": "Labels e Milestones",
+      "tipo": "multipla-escolha",
+      "explicacao": "Labels categorizam issues: bug, enhancement, help wanted, good first issue. Milestones agrupam issues para uma versão: v1.0, Sprint 3, etc. Um milestone mostra progresso: X de Y issues concluídas. É como o roadmap do projeto.",
+      "pergunta": "Qual a diferença entre label e milestone?",
+      "alternativas": [
+        "Label categoriza o tipo, milestone agrupa issues para uma versão/sprint",
+        "São a mesma coisa com nomes diferentes",
+        "Label é para bugs, milestone é para features",
+        "Label é da issue, milestone é do repositório"
+      ],
+      "correta": "Label categoriza o tipo, milestone agrupa issues para uma versão/sprint",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["git", "issues", "labels", "milestones"]
+    },
+    {
+      "id": "git-8-5",
+      "titulo": "Erro Real: Issue Duplicada",
+      "tipo": "multipla-escolha",
+      "explicacao": "Duas pessoas abriram a mesma issue. No GitHub, você marca uma como duplicata da outra com /duplicate #numero. A issue duplicada fica fechada e linkada à original. Isso mantém a conversa centralizada. Antes de abrir issue nova, SEMPRE pesquise se já existe.",
+      "pergunta": "Como lidar com issues duplicadas no GitHub?",
+      "alternativas": [
+        "Marcar como duplicata com /duplicate #numero — ela fecha e linka à original",
+        "Manter as duas abertas, uma hora alguém resolve",
+        "Deletar a mais nova",
+        "Ignorar, o GitHub resolve automaticamente"
+      ],
+      "correta": "Marcar como duplicata com /duplicate #numero — ela fecha e linka à original",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["git", "issues", "erro"]
+    },
+    {
+      "id": "git-8-6",
+      "titulo": "Practical: Issue + PR no DevEstudos",
+      "tipo": "complete-codigo",
+      "explicacao": "Crie uma issue e um PR vinculado para o sistema de conquistas.",
+      "pergunta": "Complete o fluxo issue → branch → PR:",
+      "codigoInicial": "# 1. Criar issue no GitHub:\n# Título: 'Adicionar sistema de conquistas'\n# Descrição: 'Criar badges que...' (preencha)\n",
+      "correta": "# Labels: enhancement, good-first-issue\n# Milestone: v2.0\n\n# 2. Criar branch referenciando a issue\ngit switch -c feature/sistema-de-conquistas\n\n# 3. Fazer alterações e commitar\ngit add .\ngit commit -m 'Adiciona sistema de conquistas'\n\n# 4. Abrir PR com:\ngit push -u origin feature/sistema-de-conquistas\n# Na descrição do PR:\n# 'Closes #1' \n# 'Implementa badges de progresso, nível e streaks'",
+      "xp": 25,
+      "nivel": "avancado",
+      "tags": ["pratica", "issues", "pr"],
+      "validacao": ""
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "css-5",
+  "nome": "Missão 5 — Responsividade",
+  "descricao": "Media queries, unidades relativas e design que se adapta em qualquer tela.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "Página responsiva",
+  "questoes": [
+    {
+      "id": "css-5-1",
+      "titulo": "Site que Se Adapta",
+      "tipo": "multipla-escolha",
+      "explicacao": "@media é uma 'condicional' do CSS: 'SE a tela for menor que 768px, aplique essas regras'. É tipo uma roupa que se ajusta: se você emagrece (tela menor), o cinto aperta (layout muda). Essencial pra celular vs desktop.",
+      "pergunta": "O que é uma @media query?",
+      "alternativas": ["Um tipo de fonte", "Uma condicional que aplica CSS conforme o tamanho da tela", "Uma função JavaScript", "Uma tag HTML"],
+      "correta": "Uma condicional que aplica CSS conforme o tamanho da tela",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["media-query", "responsivo"]
+    },
+    {
+      "id": "css-5-2",
+      "titulo": "Primeira Media Query",
+      "tipo": "complete-codigo",
+      "explicacao": "@media (max-width: 600px) { ... } aplica o CSS dentro das chaves só quando a tela for MENOR ou IGUAL a 600px. Perfeito pra celular: 'se for telinha, muda o layout'.",
+      "pergunta": "Faça uma media query que muda a .sidebar pra width: 100% quando a tela for menor que 768px.",
+      "codigoInicial": "@media (max-width: 768px) {\n  .sidebar {\n    ",
+      "correta": "@media (max-width: 768px) {\n  .sidebar {\n    width: 100%;\n  }\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["media-query", "responsivo"]
+    },
+    {
+      "id": "css-5-3",
+      "titulo": "Unidades que Respiram",
+      "tipo": "multipla-escolha",
+      "explicacao": "rem = 'root em'. 1rem = tamanho da fonte do elemento raiz (<html>), normalmente 16px. 2rem = 32px. Diferente do px (fixo), o rem se adapta se o usuário aumentar a fonte do navegador. É tipo ter um sofá que aumenta se a sala crescer.",
+      "pergunta": "O que significa 'rem' no CSS?",
+      "alternativas": ["Root em — relativo à fonte do elemento raiz", "Pixel arredondado", "Porcentagem da tela", "Medida de margem"],
+      "correta": "Root em — relativo à fonte do elemento raiz",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["rem", "unidades"]
+    },
+    {
+      "id": "css-5-4",
+      "titulo": "Largura que Não Transborda",
+      "tipo": "complete-codigo",
+      "explicacao": "max-width: 100% faz o elemento nunca ultrapassar a largura do contêiner pai. Se a imagem for 800px e a tela 400px, a imagem se ajusta. height: auto mantém a proporção. É tipo água num copo: se o copo for menor, a água se adapta.",
+      "pergunta": "Crie CSS pra img responsiva: max-width 100%, height auto e display block.",
+      "codigoInicial": "img {\n  max-width: 100%;\n  ",
+      "correta": "img {\n  max-width: 100%;\n  height: auto;\n  display: block;\n}",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["imagem", "responsivo"]
+    },
+    {
+      "id": "css-5-5",
+      "titulo": "Mobile First",
+      "tipo": "multipla-escolha",
+      "explicacao": "Mobile First = começar o CSS pelo celular (tela pequena) e depois ir ADICIONANDO estilo pra telas maiores com min-width. 'Começo mínimo, vou melhorando'. Ao contrário de começar pelo desktop e ir removendo.",
+      "pergunta": "O que é a abordagem 'Mobile First' no design responsivo?",
+      "alternativas": ["Fazer só pra celular", "Começar pelo celular e adicionar pra telas maiores", "Usar só medidas fixas", "Ignorar celular"],
+      "correta": "Começar pelo celular e adicionar pra telas maiores",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["mobile-first", "responsivo"]
+    },
+    {
+      "id": "css-5-6",
+      "titulo": "Página que se Adapta",
+      "tipo": "complete-codigo",
+      "explicacao": "Uma página responsiva completa: .container com max-width, flexível com flexbox, e media query que reorganiza o layout pra celular. É tipo um site que veste a roupa certa pra cada tela.",
+      "pergunta": "Crie: .container (max-width 1200px, margin auto, display flex com gap), media query 768px que muda .container pra column.",
+      "codigoInicial": ".container {\n  max-width: 1200px;\n  margin: 0 auto;\n  display: flex;\n  gap: 20px;\n}\n\n@media (max-width: 768px) {\n  .container {\n    ",
+      "correta": ".container {\n  max-width: 1200px;\n  margin: 0 auto;\n  display: flex;\n  gap: 20px;\n}\n\n@media (max-width: 768px) {\n  .container {\n    flex-direction: column;\n  }\n}",
+      "validacao": "",
+      "xp": 25,
+      "nivel": "intermediario",
+      "tags": ["responsivo", "layout"]
+    },
+    {
+      "id": "css-5-7",
+      "titulo": "Erro Real: Celular Encolhido",
+      "tipo": "multipla-escolha",
+      "explicacao": "Sem <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> no <head>, o navegador mobile renderiza o site como se fosse uma tela de desktop (tipicamente 980px) e depois 'encolhe' para caber na tela do celular. Solução: adicionar a meta tag viewport com width=device-width.",
+      "pergunta": "O site aparece todo 'encolhido' no celular — parece que foi miniaturizado. Qual a causa mais provável?",
+      "alternativas": [
+        "Falta da tag <meta name=\"viewport\"> no HTML",
+        "O CSS tem font-size muito grande",
+        "O servidor bloqueia dispositivos móveis",
+        "Falta definir height: 100% no body"
+      ],
+      "correta": "Falta da tag <meta name=\"viewport\"> no HTML",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["css", "erro", "debug", "viewport"]
+    }
+  ]
+}

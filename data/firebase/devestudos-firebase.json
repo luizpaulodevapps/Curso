@@ -1,0 +1,84 @@
+{
+  "id": "firebase-5",
+  "nome": "DevEstudos Firebase — Tudo Conectado",
+  "descricao": "Integração completa: Auth + Firestore + Storage, regras de segurança, índices e offline.",
+  "ordem": 5,
+  "duracao": "2 horas",
+  "projeto": "DevEstudos totalmente conectado com Firebase",
+  "questoes": [
+    {
+      "id": "firebase-5-1",
+      "titulo": "Auth + Firestore Juntos",
+      "tipo": "complete-codigo",
+      "explicacao": "Quando um usuário se cadastra no DevEstudos, criamos um documento de perfil no Firestore com o mesmo UID. Assim o perfil fica vinculado à conta. A function auth.user().onCreate faz isso automaticamente.",
+      "pergunta": "Crie uma Cloud Function que cria perfil no Firestore ao cadastrar usuário.",
+      "codigoInicial": "const functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\nexports.criarPerfilDevEstudos = functions.auth.user().onCreate(async (user) => {\n  await admin.firestore().collection('perfis').doc(user.uid).set({\n    email: user.email,\n    nome: user.displayName || 'Aluno',\n    xp: 0,\n    criadoEm: admin.firestore.FieldValue.serverTimestamp()\n  });\n});\n",
+      "correta": "const functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\nexports.criarPerfilDevEstudos = functions.auth.user().onCreate(async (user) => {\n  await admin.firestore().collection('perfis').doc(user.uid).set({\n    email: user.email,\n    nome: user.displayName || 'Aluno',\n    xp: 0,\n    criadoEm: admin.firestore.FieldValue.serverTimestamp()\n  });\n  console.log('Perfil criado:', user.uid);\n});",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["auth", "firestore", "integracao"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-5-2",
+      "titulo": "Upload com UID",
+      "tipo": "complete-codigo",
+      "explicacao": "No DevEstudos, o avatar fica em avatares/{uid}/avatar.jpg. Usar o UID do usuário evita conflitos entre arquivos. A URL do avatar é salva no perfil do Firestore pra acesso rápido sem chamar getDownloadURL toda vez.",
+      "pergunta": "Faça upload do avatar do usuário logado, usando o uid no caminho.",
+      "codigoInicial": "import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';\nimport { storage } from './firebase';\nimport { auth } from './firebase';\n\nconst uid = auth.currentUser.uid;\nconst storageRef = ref(storage, 'avatares/' + uid + '/avatar.jpg');\nawait uploadBytes(storageRef, arquivo);\nconst url = await getDownloadURL(storageRef);\n",
+      "correta": "import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';\nimport { storage } from './firebase';\nimport { auth } from './firebase';\n\nconst uid = auth.currentUser.uid;\nconst storageRef = ref(storage, 'avatares/' + uid + '/avatar.jpg');\nawait uploadBytes(storageRef, arquivo);\nconst url = await getDownloadURL(storageRef);\nconsole.log('Avatar atualizado:', url);",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["storage", "uid", "avatar"],
+      "validacao": ""
+    },
+    {
+      "id": "firebase-5-3",
+      "titulo": "Security Rules",
+      "tipo": "multipla-escolha",
+      "explicacao": "As regras de segurança do Firestore protegem os dados. Pro DevEstudos: allow read, write: if request.auth != nil && request.auth.uid == resource.data.userId. Isso garante que ninguém mexe nos dados dos outros. É tipo cada aluno só vê a própria prova.",
+      "pergunta": "Qual regra garante que o usuário só acessa os PRÓPRIOS documentos?",
+      "alternativas": ["allow read: if true", "allow read: if request.auth != null", "allow read: if request.auth.uid == resource.data.userId", "allow read: if resource.data.publico == true"],
+      "correta": "allow read: if request.auth.uid == resource.data.userId",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["security-rules", "seguranca"]
+    },
+    {
+      "id": "firebase-5-4",
+      "titulo": "Índices Compostos",
+      "tipo": "multipla-escolha",
+      "explicacao": "Firestore exige índices compostos pra consultas com where + orderBy em campos diferentes. Sem o índice, a query lança erro pedindo pra criar um. Dá pra criar pelo link no erro ou pelo console do Firebase. É tipo catálogo de biblioteca: se não tiver índice, você não acha o livro.",
+      "pergunta": "Quando precisamos criar um índice composto no Firestore?",
+      "alternativas": ["Sempre", "Quando usamos where + orderBy em campos diferentes", "Nunca, é automático", "Só em consultas de um campo"],
+      "correta": "Quando usamos where + orderBy em campos diferentes",
+      "xp": 10,
+      "nivel": "intermediario",
+      "tags": ["indices", "performance"]
+    },
+    {
+      "id": "firebase-5-5",
+      "titulo": "Persistência Offline",
+      "tipo": "multipla-escolha",
+      "explicacao": "enableMultiTabIndexedDbPersistence(db) ativa cache local do Firestore. Os dados ficam salvos no navegador mesmo sem internet. Quando a conexão volta, o Firestore sincroniza automaticamente. É tipo ver vídeo baixado na Netflix: funciona sem internet e atualiza quando volta.",
+      "pergunta": "O que enableMultiTabIndexedDbPersistence faz?",
+      "alternativas": ["Acelera as queries", "Habilita cache local (funciona offline)", "Criptografa os dados", "Cria backup no servidor"],
+      "correta": "Habilita cache local (funciona offline)",
+      "xp": 15,
+      "nivel": "avancado",
+      "tags": ["offline", "cache"]
+    },
+    {
+      "id": "firebase-5-6",
+      "titulo": "Estrutura DevEstudos",
+      "tipo": "multipla-escolha",
+      "explicacao": "No DevEstudos, a coleção 'cursos' contém documentos com módulos, questões e progresso do aluno. Cada resposta fica em 'respostas/{uid}/{moduloId}/{questaoId}'. Essa estrutura aninhada por UID garante isolamento e consultas rápidas.",
+      "pergunta": "Qual a melhor estrutura pra respostas no DevEstudos?",
+      "alternativas": ["respostas/{id}", "respostas/{uid}/{moduloId}/{questaoId}", "respostas/{moduloId}/{id}", "respostas/{questaoId}"],
+      "correta": "respostas/{uid}/{moduloId}/{questaoId}",
+      "xp": 20,
+      "nivel": "avancado",
+      "tags": ["estrutura", "arquitetura"]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "html-1",
+  "nome": "Missão 1 — Meu Primeiro Site",
+  "descricao": "Html, head, body, headings e parágrafos. Seu primeiro passo na web.",
+  "ordem": 1,
+  "duracao": "2 horas",
+  "projeto": "Minha primeira página web",
+  "questoes": [
+    {
+      "id": "html-1-1",
+      "titulo": "📖 O que é HTML?",
+      "tipo": "aula",
+      "explicacao": "HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web. Pense no HTML como o esqueleto de um site: ele define a estrutura, os ossos, enquanto o CSS e o JavaScript vêm depois para dar estilo e movimento.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["html", "conceito", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "HTML significa **HyperText Markup Language** — Linguagem de Marcação de Hipertexto. Ele não é uma linguagem de programação, mas sim de marcação: você usa **tags** para marcar o conteúdo e dizer ao navegador como ele deve ser exibido." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<strong>Texto em negrito</strong>\n<em>Texto em itálico</em>\n<h1>Título principal</h1>\n<p>Parágrafo de texto</p>" },
+        { "tipo": "texto", "valor": "As tags geralmente vêm em pares: uma de abertura `<tag>` e uma de fechamento `</tag>`. Entre elas colocamos o conteúdo. É como um sanduíche: o pão de cima abre, o recheio vai no meio, o pão de baixo fecha." },
+        { "tipo": "texto", "valor": "Toda página HTML tem uma estrutura básica obrigatória: `<!DOCTYPE html>` (declara o tipo), `<html>` (raiz), `<head>` (configurações) e `<body>` (conteúdo visível). É a planta da casa que todo navegador entende." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <title>Título da Aba</title>\n</head>\n<body>\n  <h1>Meu Primeiro Site</h1>\n  <p>Olá, mundo!</p>\n</body>\n</html>" },
+        { "tipo": "resultado", "valor": "Página renderizada com título 'Meu Primeiro Site' e parágrafo 'Olá, mundo!'" },
+        { "tipo": "legenda", "valor": "💡 Dica: Sempre idente seu HTML com 2 espaços. Isso não afeta o resultado, mas ajuda você (e outros devs) a ler o código." }
+      ]
+    },
+    {
+      "id": "html-1-2",
+      "titulo": "👀 Primeira Página HTML",
+      "tipo": "exemplo",
+      "explicacao": "Vamos montar uma página HTML completa passo a passo. Observe como cada tag tem seu lugar e função — igual montar um móvel seguindo o manual.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["html", "exemplo"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Vamos criar uma página simples de apresentação. Primeiro, declaramos o DOCTYPE e abrimos a tag `<html>`. Dentro dela, o `<head>` guarda o título da aba e outras informações invisíveis." },
+        { "tipo": "codigo", "linguagem": "html", "valor": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <title>Apresentação</title>\n</head>\n<body>\n  <h1>Bem-vindo ao Meu Site</h1>\n  <p>Esta é minha primeira página criada com HTML.</p>\n  <p>Estou aprendendo a usar <strong>tags</strong> e <em>semântica</em>!</p>\n</body>\n</html>" },
+        { "tipo": "texto", "valor": "Veja como cada parte se encaixa: `<h1>` é o título principal (grude), `<p>` são parágrafos, `<strong>` destaca em negrito e `<em>` em itálico. O navegador lê tudo isso e monta a página visualmente." },
+        { "tipo": "resultado", "valor": "Página com título 'Bem-vindo ao Meu Site', dois parágrafos, sendo o segundo com 'tags' em negrito e 'semântica' em itálico." },
+        { "tipo": "legenda", "valor": "💡 Dica: Salve este código num arquivo `.html` e abra no navegador. Você criou sua primeira página web!" }
+      ]
+    },
+    {
+      "id": "html-1-3",
+      "titulo": "A Estrutura da Casa",
+      "tipo": "multipla-escolha",
+      "explicacao": "Pensa numa casa: <html> é o terreno, <head> é o escritório (configurações que ninguém vê) e <body> é a sala de estar (tudo que aparece na tela). O <html> abraça tudo.",
+      "pergunta": "Qual tag é a raiz que CONTÉM todas as outras na página?",
+      "alternativas": ["<head>", "<body>", "<html>", "<main>"],
+      "correta": "<html>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["html", "estrutura"]
+    },
+    {
+      "id": "html-1-4",
+      "titulo": "Título Importante vs Título Menos Importante",
+      "tipo": "multipla-escolha",
+      "explicacao": "<h1> é o título principal, tipo o nome do filme na pipoca. <h2> é o subtítulo, <h3> é sub-subtítulo, até <h6>. É uma hierarquia: quanto menor o número, maior a importância.",
+      "pergunta": "Qual heading é o MAIS importante visualmente e hierarquicamente?",
+      "alternativas": ["<h6>", "<h1>", "<h4>", "<h2>"],
+      "correta": "<h1>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["headings", "h1"]
+    },
+    {
+      "id": "html-1-5",
+      "titulo": "Texto em Negrito e Itálico",
+      "tipo": "multipla-escolha",
+      "explicacao": "<strong> deixa em negrito (ênfase forte) e <em> em itálico (ênfase suave). Tipo quando você FALA ALTO pra destacar algo vs quando você faz uma entonação diferente.",
+      "pergunta": "Qual tag usamos pra dar ênfase forte (negrito) em um texto?",
+      "alternativas": ["<i>", "<em>", "<strong>", "<b>"],
+      "correta": "<strong>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["strong", "formatacao"]
+    },
+    {
+      "id": "html-1-6",
+      "titulo": "Parágrafo na Vida Real",
+      "tipo": "multipla-escolha",
+      "explicacao": "<p> cria um parágrafo. Cada <p> pula uma linha automaticamente. É tipo dar Enter num bloco de notas: cada parágrafo é um bloco de texto separado por um espaçozinho. Não precisa usar <br> pra pular linha entre parágrafos.",
+      "pergunta": "Qual tag cria um parágrafo novo no HTML?",
+      "alternativas": ["<text>", "<paragraph>", "<p>", "<txt>"],
+      "correta": "<p>",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["paragrafo", "p"]
+    },
+    {
+      "id": "html-1-7",
+      "titulo": "Erro Real: O Fantasma do Quirks Mode",
+      "tipo": "multipla-escolha",
+      "explicacao": "Sem o <!DOCTYPE html>, o navegador entra em 'quirks mode' — um modo de compatibilidade com IE5 que quebra layouts modernos. É como tirar a planta da casa antes de construir: cada navegador faz o que quer. Sempre comece toda página com <!DOCTYPE html> pra garantir o modo padrão (standards mode).",
+      "pergunta": "O que acontece se você esquecer de declarar <!DOCTYPE html> no início de uma página?",
+      "alternativas": ["A página não carrega", "O navegador entra em quirks mode e o layout pode quebrar", "O HTML para de funcionar", "Aparece um aviso no topo da página"],
+      "correta": "O navegador entra em quirks mode e o layout pode quebrar",
+      "xp": 15,
+      "nivel": "intermediario",
+      "tags": ["html", "erro", "debug", "doctype"]
+    },
+    {
+      "id": "html-1-8",
+      "titulo": "🧪 Minha Primeira Página",
+      "tipo": "complete-codigo",
+      "explicacao": "DOCTYPE + html + head + body é a receita de bolo de toda página. Dentro do body, usamos <h1> pro título principal e <p> pros parágrafos. É tipo escrever uma redação: título + parágrafos.",
+      "pergunta": "Monte uma página completa com DOCTYPE, html, head (title 'Meu Site'), body com h1 'Bem-vindo' e um parágrafo qualquer.",
+      "codigoInicial": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <title>",
+      "correta": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <title>Meu Site</title>\n</head>\n<body>\n  <h1>Bem-vindo</h1>\n  <p>Este é meu primeiro site.</p>\n</body>\n</html>",
+      "validacao": "",
+      "xp": 20,
+      "nivel": "iniciante",
+      "tags": ["html", "estrutura", "heading", "laboratorio"]
+    },
+    {
+      "id": "html-1-9",
+      "titulo": "🧪 Hierarquia de Títulos",
+      "tipo": "complete-codigo",
+      "explicacao": "h1 > h2 > h3 > ... > h6. É a tabela de organização do conteúdo. Num livro: h1 é o título do livro, h2 é o capítulo, h3 é a seção dentro do capítulo, h4 é subseção.",
+      "pergunta": "Crie um h1 'Receitas', um h2 'Bolos' e um h3 'Bolo de Cenoura' com um parágrafo explicando.",
+      "codigoInicial": "<h1>Receitas</h1>\n<h2>Bolos</h2>",
+      "correta": "<h1>Receitas</h1>\n<h2>Bolos</h2>\n<h3>Bolo de Cenoura</h3>\n<p>Uma receita deliciosa e fácil de fazer.</p>",
+      "validacao": "",
+      "xp": 15,
+      "nivel": "iniciante",
+      "tags": ["headings", "hierarquia", "laboratorio"]
+    }
+  ]
+}

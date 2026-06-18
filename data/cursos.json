@@ -1,0 +1,371 @@
+{
+  "cursos": [
+    {
+      "id": "mentalidade",
+      "nome": "Mentalidade de Programador",
+      "nivel": "Iniciante",
+      "descricao": "Antes de HTML. Entenda o que é um programa: entrada, processamento, saída, variáveis e fluxo. Sem navegador, só lógica.",
+      "icone": "🧠",
+      "modulos": 3,
+      "moduloLista": [
+        "o-que-e-um-programa",
+        "variaveis-e-memoria",
+        "fluxo-de-dados"
+      ],
+      "horasEstimadas": 6,
+      "xpTotal": 300,
+      "projetoFinal": null,
+      "prerequisitos": [],
+      "desbloqueia": ["html"]
+    },
+    {
+      "id": "html",
+      "nome": "HTML — Meu Primeiro Site",
+      "nivel": "Iniciante",
+      "descricao": "Construa um site do zero. Cada módulo é uma missão: criar título, adicionar imagem, montar tabela, fazer formulário. Ao final, você tem uma landing page completa.",
+      "icone": "🏗️",
+      "modulos": 7,
+      "moduloLista": [
+        "meu-primeiro-site",
+        "navegacao-e-listas",
+        "imagens-e-multimidia",
+        "tabelas",
+        "formularios",
+        "projeto-landing-page"
+      ],
+      "horasEstimadas": 12,
+      "xpTotal": 900,
+      "projetoFinal": "Landing Page Pessoal",
+      "prerequisitos": ["mentalidade"],
+      "desbloqueia": ["css"]
+    },
+    {
+      "id": "css",
+      "nome": "CSS — A Roupa da Página",
+      "nivel": "Iniciante",
+      "descricao": "Vista seu HTML. Cores, fontes, layout, responsividade. Cada módulo é uma camada de estilo no seu site. O projeto final: aplicar o tema escuro do DevEstudos.",
+      "icone": "🎨",
+      "modulos": 7,
+      "moduloLista": [
+        "primeiros-passos-css",
+        "tipografia-e-cores",
+        "box-model",
+        "layout-flexivel",
+        "responsividade",
+        "tema-devestudos"
+      ],
+      "horasEstimadas": 14,
+      "xpTotal": 1000,
+      "projetoFinal": "Tema escuro do DevEstudos",
+      "prerequisitos": ["html"],
+      "desbloqueia": ["logica"]
+    },
+    {
+      "id": "logica",
+      "nome": "Lógica de Programação — Pensar como um Computador",
+      "nivel": "Iniciante",
+      "descricao": "Receita de bolo, potes com etiqueta, bifurcações na estrada. Tudo com editor de código e validação automática.",
+      "icone": "⚙️",
+      "modulos": 7,
+      "moduloLista": [
+        "pensamento-computacional",
+        "variaveis-e-tipos",
+        "operadores",
+        "condicionais",
+        "loops",
+        "arrays-e-colecoes"
+      ],
+      "horasEstimadas": 14,
+      "xpTotal": 1000,
+      "projetoFinal": "Calculadora de XP do DevEstudos",
+      "prerequisitos": ["css"],
+      "desbloqueia": ["git"]
+    },
+    {
+      "id": "git",
+      "nome": "Git e GitHub — Versionamento e Colaboração",
+      "nivel": "Júnior",
+      "descricao": "Commits, branches, merges, pull requests, GitHub Flow, Issues e o fluxo completo de contribuição profissional. Aprenda versionando o próprio DevEstudos.",
+      "icone": "🔀",
+      "modulos": 9,
+      "moduloLista": [
+        "git-primeiros-passos",
+        "commits-e-historia",
+        "branches",
+        "merge-e-conflitos",
+        "github",
+        "pull-requests",
+        "github-flow",
+        "issues",
+        "missao-final"
+      ],
+      "horasEstimadas": 16,
+      "xpTotal": 1400,
+      "projetoFinal": "Repositório do DevEstudos no GitHub",
+      "prerequisitos": ["logica"],
+      "desbloqueia": ["javascript"]
+    },
+    {
+      "id": "javascript",
+      "nome": "JavaScript — Torne o Site Vivo",
+      "nivel": "Júnior",
+      "descricao": "Fundamentos, DOM, storage, APIs, destructuring, classes, async/await, clean code. JavaScript completo do básico ao moderno. Cada módulo adiciona interatividade ao DevEstudos.",
+      "icone": "🟨",
+      "modulos": 13,
+      "moduloLista": [
+        "fundamentos-js",
+        "arrays-e-metodos",
+        "objetos",
+        "dom",
+        "eventos",
+        "storage",
+        "apis-fetch",
+        "quiz-devestudos",
+        "destructuring-e-spread",
+        "modules",
+        "classes-poo",
+        "async-await-avancado",
+        "clean-code"
+      ],
+      "horasEstimadas": 32,
+      "xpTotal": 2400,
+      "projetoFinal": "Quiz interativo do DevEstudos + Sistema de módulos",
+      "prerequisitos": ["git"],
+      "desbloqueia": ["banco-dados"]
+    },
+    {
+      "id": "banco-dados",
+      "nome": "Banco de Dados para Desenvolvedores",
+      "nivel": "Júnior",
+      "descricao": "Conceitos fundamentais antes do SQL. O que é banco, tabelas, registros, chaves, relacionamentos, normalização, modelagem. Modele o banco do DevEstudos.",
+      "icone": "🗄️",
+      "modulos": 6,
+      "moduloLista": [
+        "o-que-e-banco",
+        "tabelas-e-registros",
+        "chaves-primarias",
+        "relacionamentos",
+        "normalizacao",
+        "modelagem"
+      ],
+      "horasEstimadas": 10,
+      "xpTotal": 800,
+      "projetoFinal": "Modelo de dados do DevEstudos",
+      "prerequisitos": ["javascript"],
+      "desbloqueia": ["postgresql"]
+    },
+    {
+      "id": "postgresql",
+      "nome": "PostgreSQL Completo",
+      "nivel": "Pleno",
+      "descricao": "SQL na prática. SELECT, INSERT, UPDATE, DELETE, WHERE, JOIN, GROUP BY, VIEW, INDEX. Construa o banco real do DevEstudos com PostgreSQL.",
+      "icone": "🐘",
+      "modulos": 9,
+      "moduloLista": [
+        "select",
+        "insert",
+        "update",
+        "delete",
+        "where-order-limit",
+        "joins",
+        "group-by",
+        "views-indexes",
+        "projeto-banco-devestudos"
+      ],
+      "horasEstimadas": 18,
+      "xpTotal": 1400,
+      "projetoFinal": "Banco de dados do DevEstudos em PostgreSQL",
+      "prerequisitos": ["banco-dados"],
+      "desbloqueia": ["apis-rest"]
+    },
+    {
+      "id": "apis-rest",
+      "nome": "APIs REST — Conectando Sistemas",
+      "nivel": "Pleno",
+      "descricao": "HTTP, GET, POST, PUT, PATCH, DELETE, JSON, Status Codes, Autenticação. Construa a API do DevEstudos do zero.",
+      "icone": "🔌",
+      "modulos": 7,
+      "moduloLista": [
+        "http-e-api",
+        "get",
+        "post",
+        "put-patch",
+        "delete",
+        "json-status-codes",
+        "autenticacao"
+      ],
+      "horasEstimadas": 16,
+      "xpTotal": 1200,
+      "projetoFinal": "API REST do DevEstudos",
+      "prerequisitos": ["postgresql"],
+      "desbloqueia": ["supabase"]
+    },
+    {
+      "id": "supabase",
+      "nome": "Supabase para SaaS",
+      "nivel": "Pleno",
+      "descricao": "PostgreSQL hospedado, Auth, Storage, Row Level Security. Supabase é o Firebase open source que você precisa conhecer para construir SaaS.",
+      "icone": "⚡",
+      "modulos": 5,
+      "moduloLista": [
+        "o-que-e-supabase",
+        "postgresql-integrado",
+        "auth",
+        "storage",
+        "rls"
+      ],
+      "horasEstimadas": 12,
+      "xpTotal": 900,
+      "projetoFinal": "DevEstudos com Supabase",
+      "prerequisitos": ["apis-rest"],
+      "desbloqueia": ["react"]
+    },
+    {
+      "id": "react",
+      "nome": "React — Componentes que Ganham Vida",
+      "nivel": "Pleno",
+      "descricao": "State, props, hooks, contexto. Transforme o DevEstudos em uma SPA de verdade. Cada módulo componentiza uma parte da plataforma.",
+      "icone": "⚛️",
+      "modulos": 6,
+      "moduloLista": [
+        "jsx-e-componentes",
+        "estado-e-eventos",
+        "hooks",
+        "contexto",
+        "formularios-react",
+        "componentizando-devestudos"
+      ],
+      "horasEstimadas": 18,
+      "xpTotal": 1300,
+      "projetoFinal": "DevEstudos como SPA React",
+      "prerequisitos": ["supabase"],
+      "desbloqueia": ["nextjs"]
+    },
+    {
+      "id": "nextjs",
+      "nome": "Next.js — O Framework em Produção",
+      "nivel": "Sênior",
+      "descricao": "App Router, Server Components, Server Actions, autenticação. Migre o DevEstudos para Next.js e prepare para produção.",
+      "icone": "▲",
+      "modulos": 6,
+      "moduloLista": [
+        "fundamentos-next",
+        "rotas-e-navegacao",
+        "server-components",
+        "server-actions",
+        "autenticacao",
+        "devestudos-next"
+      ],
+      "horasEstimadas": 16,
+      "xpTotal": 1200,
+      "projetoFinal": "DevEstudos em Next.js com autenticação",
+      "prerequisitos": ["react"],
+      "desbloqueia": ["firebase"]
+    },
+    {
+      "id": "firebase",
+      "nome": "Firebase — Backend sem Servidor",
+      "nivel": "Sênior",
+      "descricao": "Firestore, Auth, Storage, Functions. Conecte o DevEstudos a um backend real com autenticação e persistência.",
+      "icone": "🔥",
+      "modulos": 5,
+      "moduloLista": [
+        "firestore",
+        "autenticacao-firebase",
+        "storage",
+        "functions",
+        "devestudos-firebase"
+      ],
+      "horasEstimadas": 14,
+      "xpTotal": 1000,
+      "projetoFinal": "DevEstudos com Firebase",
+      "prerequisitos": ["nextjs"],
+      "desbloqueia": ["arquitetura-saas"]
+    },
+    {
+      "id": "arquitetura-saas",
+      "nome": "Arquitetura SaaS — Sistemas que Escalam",
+      "nivel": "Sênior",
+      "descricao": "Monolito vs microsserviços, multi-tenant, RBAC, permissões, planos, assinaturas, billing. A arquitetura que transforma sistemas em produtos.",
+      "icone": "🏢",
+      "modulos": 6,
+      "moduloLista": [
+        "monolito",
+        "multi-tenant",
+        "rbac",
+        "permissoes",
+        "planos-assinaturas",
+        "billing"
+      ],
+      "horasEstimadas": 14,
+      "xpTotal": 1100,
+      "projetoFinal": "Arquitetura multi-tenant do DevEstudos",
+      "prerequisitos": ["firebase"],
+      "desbloqueia": ["engenharia-software"]
+    },
+    {
+      "id": "engenharia-software",
+      "nome": "Engenharia de Software Prática",
+      "nivel": "Sênior",
+      "descricao": "Clean Code, SOLID, Arquitetura, DDD, Padrões de Projeto, Refatoração. O próximo salto: organizar aplicações grandes como ERP, FleetOS, LexFlow.",
+      "icone": "🧩",
+      "modulos": 6,
+      "moduloLista": [
+        "clean-code",
+        "solid",
+        "arquitetura",
+        "ddd",
+        "padroes-projeto",
+        "refatoracao"
+      ],
+      "horasEstimadas": 16,
+      "xpTotal": 1300,
+      "projetoFinal": "Refatoração do DevEstudos com padrões profissionais",
+      "prerequisitos": ["arquitetura-saas"],
+      "desbloqueia": ["ia-assistido"]
+    },
+    {
+      "id": "ia-assistido",
+      "nome": "Desenvolvimento Assistido por IA",
+      "nivel": "Sênior",
+      "descricao": "Use IA para programar melhor. Prompting, geração, debug, refatoração, arquitetura, documentação e revisão de código com agentes no VS Code, Cursor e AntiGravity.",
+      "icone": "🤖",
+      "modulos": 8,
+      "moduloLista": [
+        "fundamentos-agentes",
+        "prompting-efetivo",
+        "geracao-codigo",
+        "debug-com-ia",
+        "refatoracao-com-ia",
+        "arquitetura-com-ia",
+        "documentacao-e-revisao",
+        "produtividade-maxima"
+      ],
+      "horasEstimadas": 16,
+      "xpTotal": 1200,
+      "projetoFinal": "Assistente inteligente do DevEstudos",
+      "prerequisitos": ["engenharia-software"],
+      "desbloqueia": ["projeto-final"]
+    },
+    {
+      "id": "projeto-final",
+      "nome": "🚀 Projeto Final — DevEstudos Completo",
+      "nivel": "Sênior",
+      "descricao": "Aplique TUDO que aprendeu. Planeje, arquitete, implemente, faça deploy e apresente o DevEstudos como produto real. O certificado de conclusão da sua jornada.",
+      "icone": "🚀",
+      "modulos": 5,
+      "moduloLista": [
+        "planejamento",
+        "arquitetura-final",
+        "implementacao",
+        "deploy-e-producao",
+        "apresentacao"
+      ],
+      "horasEstimadas": 24,
+      "xpTotal": 2500,
+      "projetoFinal": "DevEstudos Completo — seu portfólio profissional",
+      "prerequisitos": ["ia-assistido"],
+      "desbloqueia": []
+    }
+  ]
+}
