@@ -13,28 +13,34 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID!,
 }
 
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
-const db = getFirestore(app)
-const auth = getAuth(app)
-const googleProvider = new GoogleAuthProvider()
+const hasFirebaseConfig = typeof process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "string" && process.env.NEXT_PUBLIC_FIREBASE_API_KEY.length > 0
+
+const app = hasFirebaseConfig ? (getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]) : null
+const db = app ? getFirestore(app) : null
+const auth = app ? getAuth(app) : null
+const googleProvider = app ? new GoogleAuthProvider() : null
 
 const COLECAO = "progresso"
 
 export { auth, googleProvider, onAuthStateChanged, sendPasswordResetEmail, updateProfile }
 
 export function loginGoogle(): Promise<User> {
+  if (!auth || !googleProvider) return Promise.reject(new Error("Firebase não configurado"))
   return signInWithPopup(auth, googleProvider).then(r => r.user)
 }
 
 export function loginEmail(email: string, senha: string): Promise<User> {
+  if (!auth) return Promise.reject(new Error("Firebase não configurado"))
   return signInWithEmailAndPassword(auth, email, senha).then(r => r.user)
 }
 
 export function cadastrarEmail(email: string, senha: string): Promise<User> {
+  if (!auth) return Promise.reject(new Error("Firebase não configurado"))
   return createUserWithEmailAndPassword(auth, email, senha).then(r => r.user)
 }
 
 export function logout(): Promise<void> {
+  if (!auth) return Promise.resolve()
   return signOut(auth)
 }
 
@@ -51,7 +57,7 @@ function getUsuarioId(user?: User | null): string {
 
 export async function salvarProgressoFirebase(perfil: Perfil, user?: User | null): Promise<void> {
   const uid = getUsuarioId(user)
-  if (!uid) return
+  if (!uid || !db) return
   try {
     await setDoc(doc(db, COLECAO, uid), { ...perfil, atualizadoEm: Date.now() })
   } catch (err) {
@@ -61,7 +67,7 @@ export async function salvarProgressoFirebase(perfil: Perfil, user?: User | null
 
 export async function carregarProgressoFirebase(user?: User | null): Promise<Perfil | null> {
   const uid = getUsuarioId(user)
-  if (!uid) return null
+  if (!uid || !db) return null
   try {
     const snap = await getDoc(doc(db, COLECAO, uid))
     if (snap.exists()) {

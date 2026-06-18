@@ -13,6 +13,10 @@ export function useAuth() {
   const router = useRouter()
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false)
+      return
+    }
     const unsub = onAuthStateChanged(auth, u => {
       setUser(u)
       setLoading(false)
@@ -69,6 +73,10 @@ export function useAuth() {
   }, [router])
 
   const redefinirSenha = useCallback(async (email: string) => {
+    if (!auth) {
+      setErro("Firebase não configurado")
+      return
+    }
     setErro("")
     setEnviando(true)
     try {
@@ -84,7 +92,7 @@ export function useAuth() {
   }, [])
 
   const atualizarNome = useCallback(async (nome: string) => {
-    if (!auth.currentUser) return
+    if (!auth || !auth.currentUser) return
     setErro("")
     try {
       await updateProfile(auth.currentUser, { displayName: nome })
