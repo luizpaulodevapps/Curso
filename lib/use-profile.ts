@@ -52,8 +52,8 @@ export function useProfile() {
     return () => clearTimeout(timerRef.current ?? undefined)
   }, [perfil, user])
 
-  const responder = useCallback((questao: Questao, resposta: string, cursoId?: string, moduloId?: string, totalQuestoesNoModulo?: number): ResultadoQuestao => {
-    const resultado = responderQuestao({ ...perfil }, questao, resposta)
+  const responder = useCallback((questao: Questao, resposta: string, cursoId?: string, moduloId?: string, totalQuestoesNoModulo?: number, forcarCorreta?: boolean): ResultadoQuestao => {
+    const resultado = responderQuestao({ ...perfil }, questao, resposta, forcarCorreta)
 
     const novas = verificarNovasConquistas(resultado.correta
       ? { ...perfil, acertos: perfil.acertos + 1, xp: perfil.xp + questao.xp, totalQuestoes: perfil.totalQuestoes + 1 }
@@ -61,6 +61,7 @@ export function useProfile() {
     )
 
     const perfilAtualizado = { ...perfil }
+    perfilAtualizado.progressoCursos = { ...perfilAtualizado.progressoCursos }
     perfilAtualizado.totalQuestoes++
     if (resultado.correta) {
       perfilAtualizado.acertos++
@@ -71,17 +72,21 @@ export function useProfile() {
 
     if (cursoId && moduloId) {
       const chave = `${cursoId}/${moduloId}`
-      const atual = perfilAtualizado.progressoCursos[chave] || {
-        cursoId, moduloId, questoesRespondidas: {}, acertos: 0, erros: 0, xpGanho: 0, concluido: false,
+      const atual = {
+        ...(perfilAtualizado.progressoCursos[chave] || {
+          cursoId, moduloId, questoesRespondidas: {}, acertos: 0, erros: 0, xpGanho: 0, concluido: false,
+        })
       }
+      atual.questoesRespondidas = { ...atual.questoesRespondidas }
+      
       atual.questoesRespondidas[questao.id] = resultado.correta
       if (resultado.correta) atual.acertos++
       else atual.erros++
       atual.xpGanho += resultado.xpGanho
 
-      if (resultado.correta && totalQuestoesNoModulo) {
-        const respondidas = Object.keys(atual.questoesRespondidas).length
-        atual.concluido = respondidas >= totalQuestoesNoModulo
+      if (totalQuestoesNoModulo) {
+        const corretas = Object.values(atual.questoesRespondidas).filter(v => v === true).length
+        atual.concluido = corretas >= totalQuestoesNoModulo
       }
 
       perfilAtualizado.progressoCursos[chave] = atual
@@ -94,6 +99,38 @@ export function useProfile() {
 
     setPerfil(perfilAtualizado)
     return resultado
+  }, [perfil])
+
+  const concluirLeitura = useCallback((cursoId: string, moduloId: string, aulas: Questao[], totalQuestoes: number) => {
+    const perfilAtualizado = { ...perfil }
+    perfilAtualizado.progressoCursos = { ...perfilAtualizado.progressoCursos }
+
+    const chave = `${cursoId}/${moduloId}`
+    const atual = {
+      ...(perfilAtualizado.progressoCursos[chave] || {
+        cursoId, moduloId, questoesRespondidas: {}, acertos: 0, erros: 0, xpGanho: 0, concluido: false,
+      })
+    }
+    atual.questoesRespondidas = { ...atual.questoesRespondidas }
+
+    aulas.forEach(aula => {
+      if (atual.questoesRespondidas[aula.id] !== true) {
+        atual.questoesRespondidas[aula.id] = true
+        atual.acertos++
+        atual.xpGanho += aula.xp
+        perfilAtualizado.xp += aula.xp
+        perfilAtualizado.acertos++
+        perfilAtualizado.totalQuestoes++
+      }
+    })
+
+    if (totalQuestoes) {
+      const corretas = Object.values(atual.questoesRespondidas).filter(v => v === true).length
+      atual.concluido = corretas >= totalQuestoes
+    }
+
+    perfilAtualizado.progressoCursos[chave] = atual
+    setPerfil(perfilAtualizado)
   }, [perfil])
 
   const adicionarFlashcard = useCallback((pergunta: string, resposta: string, cursoId: string, moduloId: string) => {
@@ -122,6 +159,7 @@ export function useProfile() {
     novasConquistas,
     sincronizado,
     responder,
+    concluirLeitura,
     adicionarFlashcard,
     revisarFlashcards,
     pendentes: flashcardsPendentes(perfil.flashcards),

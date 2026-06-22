@@ -10,9 +10,11 @@ export interface ResultadoQuestao {
 export function responderQuestao(
   perfil: Perfil,
   questao: Questao,
-  respostaUsuario: string
+  respostaUsuario: string,
+  forcarCorreta?: boolean
 ): ResultadoQuestao {
-  const correta = normalizarResposta(respostaUsuario) === normalizarResposta(questao.correta)
+  const isLecture = questao.tipo === "aula" || questao.tipo === "exemplo"
+  const correta = isLecture || (forcarCorreta !== undefined ? forcarCorreta : (normalizarResposta(respostaUsuario) === normalizarResposta(questao.correta)))
 
   perfil.totalQuestoes++
   if (correta) {

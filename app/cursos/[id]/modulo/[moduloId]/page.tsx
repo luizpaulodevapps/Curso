@@ -29,10 +29,10 @@ export default function ModuloDetalhe() {
   const params = useParams()
   const cursoId = params.id as string
   const moduloId = params.moduloId as string
-  const { perfil } = useProfile()
+  const { perfil, concluirLeitura } = useProfile()
   const [curso, setCurso] = useState<Curso | null>(null)
   const [modulo, setModulo] = useState<Modulo | null>(null)
-  const [abaAtiva, setAbaAtiva] = useState<"objetivos" | "estudo">("estudo")
+  const [abaAtiva, setAbaAtiva] = useState<"avaliacao" | "estudo">("estudo")
   const [desbloqueado, setDesbloqueado] = useState(false)
 
   const key = `${cursoId}/${moduloId}`
@@ -69,10 +69,14 @@ export default function ModuloDetalhe() {
   const acertosNoModulo = prog?.acertos ?? 0
   const errosNoModulo = prog?.erros ?? 0
 
-  const handleLiberarObjetivos = () => {
+  const handleLiberarAvaliacao = () => {
     localStorage.setItem(`estudado/${cursoId}/${moduloId}`, "true")
     setDesbloqueado(true)
-    setAbaAtiva("objetivos")
+    if (modulo) {
+      const lectures = modulo.questoes.filter(q => q.tipo === "aula" || q.tipo === "exemplo")
+      concluirLeitura(cursoId, moduloId, lectures, modulo.questoes.length)
+    }
+    setAbaAtiva("avaliacao")
   }
 
   const getCourseTheme = (id: string) => {
@@ -207,18 +211,18 @@ export default function ModuloDetalhe() {
         <button
           onClick={() => {
             if (!desbloqueado) return
-            setAbaAtiva("objetivos")
+            setAbaAtiva("avaliacao")
           }}
           className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border text-xs font-black uppercase tracking-wider transition-all duration-200 ${
             !desbloqueado
               ? "border-transparent text-gray-600 cursor-not-allowed"
-              : abaAtiva === "objetivos"
+              : abaAtiva === "avaliacao"
               ? `${t.tabActive} shadow-lg shadow-blue-500/5`
               : "border-transparent text-gray-500 hover:text-gray-300 hover:bg-white/[0.02]"
           }`}
           disabled={!desbloqueado}
         >
-          🎯 Objetivos {!desbloqueado && "🔒"}
+          🎯 Avaliação {!desbloqueado && "🔒"}
         </button>
         <button
           onClick={() => setAbaAtiva("estudo")}
@@ -239,11 +243,11 @@ export default function ModuloDetalhe() {
         </div>
       )}
 
-      {abaAtiva === "objetivos" ? (
+      {abaAtiva === "avaliacao" ? (
         /* Quests timeline */
         <section className="space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400">
-            🎯 Lista de Objetivos
+            🎯 Avaliação do Módulo
           </h2>
 
           <div className="space-y-3">
@@ -391,7 +395,7 @@ export default function ModuloDetalhe() {
             ) : (
               <div className="bg-white/[0.01] border border-white/[0.06] rounded-2xl p-8 text-center space-y-3">
                 <p className="text-gray-400">Esta missão foca principalmente em desafios práticos e projetos.</p>
-                <p className="text-xs text-gray-500">Confira a lista de objetivos ou as referências oficiais abaixo para se preparar.</p>
+                <p className="text-xs text-gray-500">Confira a avaliação do módulo ou as referências oficiais abaixo para se preparar.</p>
               </div>
             )}
           </div>
@@ -434,7 +438,7 @@ export default function ModuloDetalhe() {
           {!desbloqueado && (
             <div className="pt-6 text-center">
               <button
-                onClick={handleLiberarObjetivos}
+                onClick={handleLiberarAvaliacao}
                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-650 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-emerald-950/45 hover:shadow-emerald-500/20 transition-all duration-300 hover:translate-y-[-2px] active:translate-y-[0px] flex items-center justify-center gap-2"
               >
                 ✨ Concluir Leitura e Liberar Exercícios →

@@ -22,7 +22,7 @@ const googleProvider = app ? new GoogleAuthProvider() : null
 
 const COLECAO = "progresso"
 
-export { auth, googleProvider, onAuthStateChanged, sendPasswordResetEmail, updateProfile }
+export { auth, googleProvider, onAuthStateChanged, sendPasswordResetEmail, updateProfile, db }
 
 export function loginGoogle(): Promise<User> {
   if (!auth || !googleProvider) return Promise.reject(new Error("Firebase não configurado"))

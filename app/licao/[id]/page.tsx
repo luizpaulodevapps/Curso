@@ -83,7 +83,7 @@ export default function LicaoPage() {
 
   function handleContinuar() {
     if (!ctx) return
-    responder(ctx.questao, "visto", cursoId, moduloId, ctx.totalNoModulo)
+    responder(ctx.questao, "visto", cursoId, moduloId, ctx.totalNoModulo, true)
     setEstado("correto")
     setFeedback("📖 Conteúdo visto! Continue sua jornada.")
   }
@@ -120,7 +120,7 @@ export default function LicaoPage() {
   function verificarTexto() {
     if (!ctx) return
     const isCorrect = resposta.trim().toLowerCase() === ctx.questao.correta.trim().toLowerCase()
-    responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo)
+    responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, isCorrect)
     setEstado(isCorrect ? "correto" : "errado")
     setFeedback(isCorrect ? "Correto! 🎉" : `Resposta esperada: ${ctx.questao.correta}`)
   }
@@ -132,7 +132,7 @@ export default function LicaoPage() {
 
     const comparacaoExata = validarPorComparacao(resposta, ctx.questao.correta)
     if (comparacaoExata) {
-      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo)
+      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, true)
       setEstado("correto")
       setFeedback("Correto! 🎉")
       setLinhasConsole([{ tipo: "sistema", texto: "Código correto!" }])
@@ -143,13 +143,14 @@ export default function LicaoPage() {
     if (ctx.questao.validacao) {
       const result = validarComExpressao(resposta, ctx.questao.validacao)
       if (result.valido) {
-        responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo)
+        responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, true)
         setEstado("correto")
         setFeedback("Correto! 🎉")
         setLinhasConsole([{ tipo: "sistema", texto: "Código correto!" }])
         setTempoExecMs(result.tempoMs)
         setStatusConsole("ok")
       } else {
+        responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, false)
         setEstado("errado")
         setErroCompilacao(result.erro)
         setFeedback("Quase! Verifique a sintaxe e os valores.")
@@ -170,12 +171,13 @@ export default function LicaoPage() {
       if (!isExpectedJS) {
         const similar = resposta.trim().toLowerCase() === ctx.questao.correta.trim().toLowerCase()
         if (similar) {
-          responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo)
+          responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, true)
           setEstado("correto")
           setFeedback("Correto! 🎉")
           setLinhasConsole([{ tipo: "sistema", texto: "Código correto!" }])
           setStatusConsole("ok")
         } else {
+          responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, false)
           setEstado("errado")
           setFeedback("Quase! Dica: " + ctx.questao.explicacao)
           setLinhasConsole([{ tipo: "sistema", texto: "Código não corresponde ao esperado." }])
@@ -184,6 +186,7 @@ export default function LicaoPage() {
         return
       }
 
+      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, false)
       setEstado("errado")
       setErroCompilacao(exec.erro)
       setFeedback("Erro de sintaxe!")
@@ -196,12 +199,13 @@ export default function LicaoPage() {
     const similar = exec.saida.trim() === (expectedExec.valido ? expectedExec.saida.trim() : "")
 
     if (similar) {
-      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo)
+      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, true)
       setEstado("correto")
       setFeedback("Correto! 🎉")
       setLinhasConsole(exec.logs.map(l => ({ tipo: "log" as const, texto: l })))
       setStatusConsole("ok")
     } else {
+      responder(ctx.questao, resposta, cursoId, moduloId, ctx.totalNoModulo, false)
       setEstado("errado")
       setFeedback("Quase! Verifique a lógica. Dica: " + ctx.questao.explicacao)
       setLinhasConsole(exec.logs.length > 0 ? exec.logs.map(l => ({ tipo: "log" as const, texto: l })) : [{ tipo: "sistema", texto: "Saída não corresponde ao esperado." }])
