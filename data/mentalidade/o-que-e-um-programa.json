@@ -2,7 +2,7 @@
   "id": "o-que-e-um-programa",
   "nome": "O que é um Programa — A Cozinha da Programação",
   "descricao": "Entrada, processamento e saída explicados de forma simples usando a lógica de uma cozinha.",
-  "ordem": 1,
+  "ordem": 2,
   "duracao": "1 semana",
   "questoes": [
     {

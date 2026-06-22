@@ -30,6 +30,11 @@ export async function getModulo(cursoId: string, moduloId: string): Promise<Modu
     const res = await fetch(`/api/data/${cursoId}/${moduloId}`)
     if (!res.ok) return undefined
     const mod = await res.json() as Modulo
+    
+    // Sobrescrever o ID interno com o slug (moduloId/filename)
+    // para evitar inconsistências nas URLs de lições, progresso e navegação.
+    mod.id = moduloId
+
     cacheModulos.set(key, mod)
     return mod
   } catch {

@@ -2,7 +2,7 @@
   "id": "fluxo-de-dados",
   "nome": "Fluxo de Dados — O DNA do Programa",
   "descricao": "Como os dados caminham pelo programa: de variável em variável até se transformarem no resultado final.",
-  "ordem": 3,
+  "ordem": 4,
   "duracao": "1 semana",
   "questoes": [
     {

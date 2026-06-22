@@ -6,14 +6,15 @@
       "nivel": "Iniciante",
       "descricao": "Antes de HTML. Entenda o que é um programa: entrada, processamento, saída, variáveis e fluxo. Sem navegador, só lógica.",
       "icone": "🧠",
-      "modulos": 3,
+      "modulos": 4,
       "moduloLista": [
+        "introducao-e-historia",
         "o-que-e-um-programa",
         "variaveis-e-memoria",
         "fluxo-de-dados"
       ],
-      "horasEstimadas": 6,
-      "xpTotal": 300,
+      "horasEstimadas": 8,
+      "xpTotal": 370,
       "projetoFinal": null,
       "prerequisitos": [],
       "desbloqueia": ["html"]

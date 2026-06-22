@@ -21,7 +21,7 @@ export default function LicaoPage() {
   const cursoId = searchParams.get("cursoId") ?? ""
   const moduloId = searchParams.get("moduloId") ?? ""
 
-  const { responder } = useProfile()
+  const { perfil, responder } = useProfile()
   const [ctx, setCtx] = useState<ContextoQuestao | null>(null)
   const [resposta, setResposta] = useState("")
   const [estado, setEstado] = useState<Estado>("respondendo")
@@ -32,6 +32,23 @@ export default function LicaoPage() {
   const [statusConsole, setStatusConsole] = useState<"idle" | "executando" | "ok" | "erro">("idle")
   const [tempoExecMs, setTempoExecMs] = useState<number | undefined>()
   const [navegando, setNavegando] = useState(false)
+  const [bloqueado, setBloqueado] = useState(false)
+
+  useEffect(() => {
+    if (ctx && cursoId && moduloId) {
+      const isTest = ctx.questao.tipo !== "aula" && ctx.questao.tipo !== "exemplo"
+      const hasStudied = localStorage.getItem(`estudado/${cursoId}/${moduloId}`) === "true"
+      const key = `${cursoId}/${moduloId}`
+      const prog = perfil.progressoCursos[key]
+      const questoesFeitas = prog ? Object.keys(prog.questoesRespondidas || {}).length : 0
+      
+      if (isTest && !hasStudied && questoesFeitas === 0) {
+        setBloqueado(true)
+      } else {
+        setBloqueado(false)
+      }
+    }
+  }, [ctx, cursoId, moduloId, perfil])
 
   useEffect(() => {
     setEstado("respondendo")
@@ -199,6 +216,38 @@ export default function LicaoPage() {
     setEstado(result.correta ? "correto" : "errado")
     setFeedback(result.correta ? "Correto! 🎉" : `Resposta: ${ctx.questao.correta}`)
   }, [estado, ctx, cursoId, moduloId, responder])
+
+  if (bloqueado) {
+    return (
+      <div className="max-w-md mx-auto my-12 p-8 bg-[#1a1a2e] border border-red-500/20 rounded-3xl text-center space-y-6 shadow-2xl">
+        <div className="w-16 h-16 bg-red-500/10 border border-red-500/20 rounded-full flex items-center justify-center mx-auto text-2xl animate-bounce">
+          🔒
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-xl font-black text-white">Acesso Bloqueado</h2>
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Nesta plataforma de e-learning, priorizamos o aprendizado completo. Você deve estudar o material teórico antes de realizar os testes e desafios práticos.
+          </p>
+        </div>
+        <div className="pt-2">
+          <Link
+            href={`/cursos/${cursoId}/modulo/${moduloId}`}
+            className="inline-flex w-full items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-blue-900/40 hover:translate-y-[-1px] active:translate-y-[0px]"
+          >
+            📖 Ler Material de Estudo
+          </Link>
+        </div>
+        <div>
+          <Link
+            href={`/cursos/${cursoId}`}
+            className="text-xs text-gray-500 hover:text-gray-300 underline font-medium transition-colors"
+          >
+            Voltar ao painel do curso
+          </Link>
+        </div>
+      </div>
+    )
+  }
 
   if (!ctx) {
     return (

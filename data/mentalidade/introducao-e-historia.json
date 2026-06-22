@@ -1,0 +1,164 @@
+{
+  "id": "introducao-e-historia",
+  "nome": "Introdução — O Código, a História e os Bits",
+  "descricao": "Fatos históricos, o que é um bit, como funcionam os componentes físicos (CPU, RAM, Disco) e a lógica dos computadores de forma simples para leigos.",
+  "ordem": 1,
+  "duracao": "1 semana",
+  "questoes": [
+    {
+      "id": "intro-aula-1",
+      "titulo": "📖 O que é Programar?",
+      "tipo": "aula",
+      "explicacao": "Programar é apenas dar instruções claras, lógicas e passo a passo para que um computador execute uma tarefa. Computadores são extremamente rápidos, mas são 'burros' — eles não adivinham nada, apenas obedecem cegamente.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["conceito", "programar", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Muitas pessoas acham que programar é algo místico ou exclusivo para gênios da matemática. Na verdade, **programar é como escrever uma receita de bolo** ou montar um manual de instruções." },
+        { "tipo": "texto", "valor": "O computador é uma máquina incrível: ele consegue fazer bilhões de cálculos por segundo sem se cansar. Porém, ele tem inteligência zero. Ele não sabe o que é um 'usuário', um 'botão' ou um 'vídeo no YouTube' até que alguém dê a instrução exata de como desenhar e processar essas coisas." },
+        { "tipo": "texto", "valor": "Quando você escreve um código, você está apenas traduzindo um problema do mundo real para uma **sequência de passos lógicos** (que chamamos de **algoritmo**) que a máquina consiga entender e executar." },
+        { "tipo": "legenda", "valor": "💡 Dica: O maior superpoder de um programador não é saber digitar rápido, mas sim conseguir quebrar um problema grande em pequenos passos muito simples." }
+      ]
+    },
+    {
+      "id": "intro-aula-2",
+      "titulo": "📖 Breve História do Código",
+      "tipo": "aula",
+      "explicacao": "A programação nasceu antes mesmo da invenção dos chips elétricos. Ada Lovelace escreveu o primeiro algoritmo da história no século XIX, e Alan Turing criou as bases teóricas do computador moderno.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["historia", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Aqui estão dois fatos históricos fundamentais que todo programador deve conhecer:" },
+        { "tipo": "texto", "valor": "1. **Ada Lovelace (1843):** Uma matemática britânica que trabalhou com Charles Babbage em uma máquina de calcular mecânica gigante chamada *Máquina Analítica*. Ada percebeu que aquela máquina poderia fazer mais do que calcular números simples. Ela escreveu um algoritmo para calcular uma sequência de números complexos (os números de Bernoulli). Por isso, **Ada Lovelace é considerada a primeira programadora da história da humanidade**." },
+        { "tipo": "texto", "valor": "2. **Alan Turing (1936):** Considerado o **Pai da Computação**. Ele inventou o conceito teórico da *Máquina de Turing*, um modelo matemático que provou que uma única máquina genérica poderia executar qualquer tarefa lógica se recebesse o programa correto. Durante a Segunda Guerra Mundial, ele liderou a equipe que decifrou a máquina de criptografia nazista Enigma, salvando milhões de vidas." },
+        { "tipo": "legenda", "valor": "💡 Curiosidade: O famoso teste de Turing foi proposto por ele para avaliar se uma máquina conseguiria imitar o comportamento humano a ponto de nos enganar em uma conversa por texto." }
+      ]
+    },
+    {
+      "id": "intro-aula-3",
+      "titulo": "📖 O que é um BIT?",
+      "tipo": "aula",
+      "explicacao": "O BIT (Binary Digit) é a menor unidade de informação em um computador. Ele pode representar apenas dois estados: ligado (1) ou desligado (0).",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["bit", "binario", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Computadores modernos funcionam usando eletricidade. Internamente, eles possuem bilhões de minúsculos interruptores chamados **transistores**." },
+        { "tipo": "texto", "valor": "Esses transistores funcionam exatamente como o interruptor de lâmpada da sua sala:\n- Se a eletricidade passa: representamos como **1** (Verdadeiro / Ligado).\n- Se a eletricidade não passa: representamos como **0** (Falso / Desligado)." },
+        { "tipo": "texto", "valor": "Esse dígito binário é chamado de **BIT** (de *Binary Digit*). Como um único bit só consegue dizer sim ou não, nós agrupamos eles:\n- **1 Byte = 8 bits.** Com 8 bits juntos (ex: `01000001`), conseguimos criar 256 combinações diferentes, o suficiente para representar letras (o código `01000001` representa a letra 'A' maiúscula), números e caracteres." },
+        { "tipo": "codigo", "linguagem": "javascript", "valor": "// Como o computador enxerga o caractere 'A':\nconst letraA = '01000001'; // 8 bits (1 Byte)" },
+        { "tipo": "legenda", "valor": "💡 Dica: Um arquivo de texto de 1 Kilobyte (KB) contém aproximadamente 1.000 Bytes, ou seja, 8.000 interruptores elétricos (bits) ligados ou desligados organizados de forma precisa." }
+      ]
+    },
+    {
+      "id": "intro-aula-4",
+      "titulo": "📖 Como funciona o Hardware",
+      "tipo": "aula",
+      "explicacao": "Entenda a lógica de funcionamento dos componentes físicos do computador: CPU, memória RAM e Disco (HD ou SSD) através da analogia da cozinha.",
+      "pergunta": "",
+      "correta": "",
+      "xp": 5,
+      "nivel": "iniciante",
+      "tags": ["hardware", "cpu", "ram", "aula"],
+      "conteudo": [
+        { "tipo": "texto", "valor": "Todo computador ou celular tem três partes físicas essenciais que trabalham juntas:" },
+        { "tipo": "texto", "valor": "1. **CPU (Processador):** É o **Cozinheiro**. É o componente que executa as instruções do código, faz as contas matemáticas e toma decisões lógicas. Ele é incrivelmente rápido, mas precisa que os dados cheguem até ele para trabalhar." },
+        { "tipo": "texto", "valor": "2. **Memória RAM:** É a **Tábua de Corte** ou a bancada de trabalho. Quando você abre um aplicativo ou jogo, o computador copia os arquivos necessários para a RAM. A RAM é extremamente rápida para a CPU ler e escrever dados, mas é temporária: se o computador desligar, tudo na RAM desaparece." },
+        { "tipo": "texto", "valor": "3. **Disco Rígido (HD ou SSD):** É a **Despensa** ou geladeira. É onde seus arquivos, fotos e o sistema operacional ficam guardados de forma permanente, mesmo com o computador desligado. Ele é muito grande, mas ler dele é bem mais lento do que ler da RAM." },
+        { "tipo": "legenda", "valor": "💡 Entendendo o fluxo: Quando você clica num programa (Despensa), ele é carregado na RAM (Bancada) para que a CPU (Cozinheiro) consiga executá-lo de forma super rápida." }
+      ]
+    },
+    {
+      "id": "intro-q-1",
+      "titulo": "Primeira Programadora",
+      "tipo": "multipla-escolha",
+      "explicacao": "Ada Lovelace escreveu o primeiro algoritmo para a máquina mecânica de Babbage em 1843, muito antes dos computadores eletrônicos modernos existirem.",
+      "pergunta": "Quem é considerada a primeira pessoa programadora da história?",
+      "alternativas": [
+        "Alan Turing",
+        "Ada Lovelace",
+        "Bill Gates",
+        "Grace Hopper"
+      ],
+      "correta": "Ada Lovelace",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["historia", "ada-lovelace"]
+    },
+    {
+      "id": "intro-q-2",
+      "titulo": "O Significado do Bit",
+      "tipo": "multipla-escolha",
+      "explicacao": "A palavra BIT vem da junção das palavras em inglês 'Binary' e 'Digit' (dígito binário), que representam o menor bloco de dados em um sistema digital (0 ou 1).",
+      "pergunta": "A palavra BIT é uma abreviação para qual termo?",
+      "alternativas": [
+        "Binary Digit (Dígito Binário)",
+        "Basic Information Tech",
+        "Byte Integration Tracker",
+        "Billion Instructions Tool"
+      ],
+      "correta": "Binary Digit (Dígito Binário)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["bit", "conceito"]
+    },
+    {
+      "id": "intro-q-3",
+      "titulo": "Tamanho do Byte",
+      "tipo": "multipla-escolha",
+      "explicacao": "Por padrão de arquitetura de computadores, agrupamos 8 bits para formar 1 Byte. Com 8 bits (ou interruptores de 0 e 1), conseguimos codificar letras, números e símbolos comuns.",
+      "pergunta": "Quantos BITS existem dentro de 1 BYTE de dados?",
+      "alternativas": [
+        "4 bits",
+        "8 bits",
+        "16 bits",
+        "1024 bits"
+      ],
+      "correta": "8 bits",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["bit", "byte"]
+    },
+    {
+      "id": "intro-q-4",
+      "titulo": "Componente Cozinheiro",
+      "tipo": "multipla-escolha",
+      "explicacao": "O processador (CPU) é o coração lógico e executor do computador. Ele processa todas as operações matemáticas e decisões lógicas instruídas pelo software.",
+      "pergunta": "Na analogia da cozinha da programação, qual componente físico representa o 'Cozinheiro'?",
+      "alternativas": [
+        "A memória RAM",
+        "O Disco Rígido (HD/SSD)",
+        "O Processador (CPU)",
+        "A Placa de Vídeo"
+      ],
+      "correta": "O Processador (CPU)",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["hardware", "cpu"]
+    },
+    {
+      "id": "intro-q-5",
+      "titulo": "Memória Temporária",
+      "tipo": "multipla-escolha",
+      "explicacao": "A memória RAM é uma memória volátil e de trabalho (a tábua da cozinha). Os dados nela são temporários e são apagados assim que a energia é cortada (computador desligado).",
+      "pergunta": "O que acontece com os dados armazenados na memória RAM quando o computador é desligado?",
+      "alternativas": [
+        "Eles continuam guardados lá para sempre",
+        "Eles são apagados por completo",
+        "Eles são transferidos de forma permanente para a CPU",
+        "O computador faz um backup deles em papel"
+      ],
+      "correta": "Eles são apagados por completo",
+      "xp": 10,
+      "nivel": "iniciante",
+      "tags": ["hardware", "ram"]
+    }
+  ]
+}

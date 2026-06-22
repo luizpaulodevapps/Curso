@@ -38,6 +38,12 @@ export interface Questao {
   validacao?: string
 }
 
+export interface ReferenceLink {
+  title: string
+  url: string
+  description?: string
+}
+
 export interface Modulo {
   id: string
   nome: string
@@ -46,6 +52,8 @@ export interface Modulo {
   questoes: Questao[]
   projeto?: string
   duracao?: string
+  conceitos?: string[]
+  referencias?: ReferenceLink[]
 }
 
 export interface Curso {
