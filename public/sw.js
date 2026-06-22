@@ -14,7 +14,18 @@ self.addEventListener("activate", event => {
 })
 
 self.addEventListener("fetch", event => {
+  // Only handle HTTP and HTTPS requests to prevent handling scheme-less or other protocols
+  if (!event.request.url.startsWith("http")) return;
+
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request).catch(() =>
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        // Rejecting the promise instead of returning undefined avoids TypeError: Failed to convert value to 'Response'
+        throw new Error("Offline: Resource not in cache");
+      })
+    )
   )
 })
