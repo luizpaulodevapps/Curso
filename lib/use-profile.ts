@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect, useRef } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { Perfil, Questao } from "./types"
 import { ResultadoQuestao } from "./engine"
 import { carregarPerfil, salvarPerfil, perfilVazio } from "./storage"
@@ -15,15 +15,19 @@ export function useProfile() {
   const [perfil, setPerfil] = useState<Perfil>(perfilVazio)
   const [novasConquistas, setNovasConquistas] = useState<string[]>([])
   const [sincronizado, setSincronizado] = useState(true)
-  const timerRef = useRef<number | null>(null)
 
   useEffect(() => {
     const local = carregarPerfil()
     setPerfil(local)
 
     carregarProgressoFirebase(user).then(firebase => {
-      if (firebase && firebase.totalQuestoes > local.totalQuestoes) {
-        setPerfil(firebase)
+      if (firebase) {
+        const isFirebaseMoreRecent = firebase.totalQuestoes > local.totalQuestoes || firebase.xp > local.xp
+        const isLocalEmpty = local.xp === 0 && local.totalQuestoes === 0
+        if (isFirebaseMoreRecent || isLocalEmpty) {
+          setPerfil(firebase)
+          salvarPerfil(firebase)
+        }
       }
     })
 
@@ -31,10 +35,13 @@ export function useProfile() {
       const anonId = localStorage.getItem("firebase-usuario-id")
       if (anonId) {
         carregarProgressoFirebase(null).then(anonPerfil => {
-          if (anonPerfil && anonPerfil.totalQuestoes > local.totalQuestoes) {
-            setPerfil(prev =>
-              anonPerfil.totalQuestoes > prev.totalQuestoes ? anonPerfil : prev
-            )
+          if (anonPerfil) {
+            const isAnonMoreRecent = anonPerfil.totalQuestoes > local.totalQuestoes || anonPerfil.xp > local.xp
+            if (isAnonMoreRecent) {
+              setPerfil(anonPerfil)
+              salvarPerfil(anonPerfil)
+              salvarProgressoFirebase(anonPerfil, user)
+            }
           }
         })
         localStorage.removeItem("firebase-usuario-id")
@@ -42,15 +49,14 @@ export function useProfile() {
     }
   }, [user])
 
-  useEffect(() => {
-    salvarPerfil(perfil)
+  const atualizarEGravarPerfil = useCallback((perfilAtualizado: Perfil) => {
+    setPerfil(perfilAtualizado)
+    salvarPerfil(perfilAtualizado)
     setSincronizado(false)
-    clearTimeout(timerRef.current ?? undefined)
-    timerRef.current = setTimeout(() => {
-      salvarProgressoFirebase(perfil, user).finally(() => setSincronizado(true))
-    }, 1000) as unknown as number
-    return () => clearTimeout(timerRef.current ?? undefined)
-  }, [perfil, user])
+    salvarProgressoFirebase(perfilAtualizado, user).finally(() => {
+      setSincronizado(true)
+    })
+  }, [user])
 
   const responder = useCallback((questao: Questao, resposta: string, cursoId?: string, moduloId?: string, totalQuestoesNoModulo?: number, forcarCorreta?: boolean): ResultadoQuestao => {
     const resultado = responderQuestao({ ...perfil }, questao, resposta, forcarCorreta)
@@ -97,9 +103,9 @@ export function useProfile() {
       setNovasConquistas(prev => [...prev, ...novas.map(n => n.titulo)])
     }
 
-    setPerfil(perfilAtualizado)
+    atualizarEGravarPerfil(perfilAtualizado)
     return resultado
-  }, [perfil])
+  }, [perfil, atualizarEGravarPerfil])
 
   const concluirLeitura = useCallback((cursoId: string, moduloId: string, aulas: Questao[], totalQuestoes: number) => {
     const perfilAtualizado = { ...perfil }
@@ -130,22 +136,27 @@ export function useProfile() {
     }
 
     perfilAtualizado.progressoCursos[chave] = atual
-    setPerfil(perfilAtualizado)
-  }, [perfil])
+    atualizarEGravarPerfil(perfilAtualizado)
+  }, [perfil, atualizarEGravarPerfil])
 
   const adicionarFlashcard = useCallback((pergunta: string, resposta: string, cursoId: string, moduloId: string) => {
     const card = criarFlashcard(pergunta, resposta, cursoId, moduloId)
-    setPerfil(prev => ({ ...prev, flashcards: [...prev.flashcards, card] }))
-  }, [])
+    const perfilAtualizado = {
+      ...perfil,
+      flashcards: [...perfil.flashcards, card]
+    }
+    atualizarEGravarPerfil(perfilAtualizado)
+  }, [perfil, atualizarEGravarPerfil])
 
   const revisarFlashcards = useCallback((cardId: string, qualidade: number) => {
-    setPerfil(prev => ({
-      ...prev,
-      flashcards: prev.flashcards.map(c =>
+    const perfilAtualizado = {
+      ...perfil,
+      flashcards: perfil.flashcards.map(c =>
         c.id === cardId ? revisarFlashcard({ ...c }, qualidade) : c
       )
-    }))
-  }, [])
+    }
+    atualizarEGravarPerfil(perfilAtualizado)
+  }, [perfil, atualizarEGravarPerfil])
 
   const limparNotificacoes = useCallback(() => {
     setNovasConquistas([])
